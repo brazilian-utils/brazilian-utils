@@ -27,8 +27,7 @@
     ]
   },
   "keywords": [
-    "cpf",
-    "cnpj"
+    "cpf"
   ],
   "license": "MIT",
   "devDependencies": {

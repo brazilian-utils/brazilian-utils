@@ -16,6 +16,13 @@ const validsCpfs = [
 ];
 
 const invalidsCpfs = [
+  {},
+  [],
+  undefined,
+  null,
+  0,
+  false,
+  true,
   '00000000000',
   '11111111111',
   '22222222222',

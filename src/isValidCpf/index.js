@@ -11,21 +11,23 @@ const BLACKLIST = [
   '99999999999',
 ];
 
-const isValidLength = (cpf) => cpf.length === 11;
+const CPF_LENGTH = 11;
+
+const CHECK_DIGITS_INDEX = [9, 10];
+
+const isValidLength = (cpf) => cpf.length === CPF_LENGTH;
 
 const belongsToBlacklist = (cpf) => BLACKLIST.includes(cpf);
 
-const calculateMod = (cpf) => {
-  let sequence = cpf.length + 1;
+const isValidCheckDigits = (cpf) => CHECK_DIGITS_INDEX.every((index) => {
+  const numbers = cpf.slice(0, index).split('');
 
-  const mod = cpf.split('').reduce((acc, number) => acc + (number * sequence--), 0) % 11;
+  let sequence = numbers.length + 1;
 
-  return (mod < 2 ? 0 : 11 - mod);
-}
+  const mod = numbers.reduce((acc, number) => acc + (number * sequence--), 0) % 11;
 
-const isValidFirstCheckDigit = (cpf) => cpf[9] == calculateMod(cpf.slice(0, 9));
-
-const isValidSecondCheckDigit = (cpf) => cpf[10] == calculateMod(cpf.slice(0, 10));
+  return cpf[index] == (mod < 2 ? 0 : 11 - mod);
+});
 
 const normalize = (cpf) => cpf.replace(/[^\d]/g, '');
 
@@ -34,5 +36,5 @@ export default function isValidCpf(cpf) {
 
   const normalizedCpf = normalize(cpf);
 
-  return isValidLength(normalizedCpf) && !belongsToBlacklist(normalizedCpf) && isValidFirstCheckDigit(normalizedCpf) && isValidSecondCheckDigit(normalizedCpf);
+  return isValidLength(normalizedCpf) && !belongsToBlacklist(normalizedCpf) && isValidCheckDigits(normalizedCpf);
 }

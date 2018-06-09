@@ -1,0 +1,24 @@
+sudo: false
+language: node_js
+
+cache:
+  yarn: true
+  directories:
+    - node_modules
+
+node_js:
+  - '10'
+  - '9'
+  - '8'
+  - '6'
+
+env:
+  global:
+    - PATH=$HOME/.yarn/bin:$PATH
+
+before_install:
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+
+install: yarn --ignore-engines
+
+script: yarn test

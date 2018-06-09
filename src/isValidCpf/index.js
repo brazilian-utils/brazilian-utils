@@ -29,7 +29,7 @@ const isValidCheckDigits = (cpf) => CHECK_DIGITS_INDEX.every((index) => {
   return cpf[index] == (mod < 2 ? 0 : 11 - mod);
 });
 
-const normalize = (cpf) => cpf.replace(/[^\d]/g, '');
+const normalize = (cpf) => String(cpf).replace(/[^\d]/g, '');
 
 export default function isValidCpf(cpf) {
   if (!cpf) return false;

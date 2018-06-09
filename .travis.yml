@@ -19,6 +19,8 @@ env:
 before_install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash
 
-install: yarn --ignore-engines
+install:
+  - yarn global add codecov
+  - yarn --ignore-engines
 
-script: yarn test
+script: yarn test && codecov

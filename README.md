@@ -1,5 +1,5 @@
 # :brazil: Brazilian Utils (under construction)
-[![Travis Build Status](https://travis-ci.org/hyanmandian/brazilian-utils.svg?branch=master)](https://travis-ci.org/facebook/jest) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Travis Build Status](https://travis-ci.org/hyanmandian/brazilian-utils.svg?branch=master)](https://travis-ci.org/hyanmandian/brazilian-utils) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 Utils library for specific Brazilian business
 
 # Contributors

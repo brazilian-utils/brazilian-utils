@@ -1,6 +1,6 @@
 # :brazil: Brazilian Utils (under construction)
 
-[![Travis Build Status](https://travis-ci.org/hyanmandian/brazilian-utils.svg?branch=master)](https://travis-ci.org/hyanmandian/brazilian-utils) [![codecov](https://codecov.io/gh/hyanmandian/brazilian-utils/branch/master/graph/badge.svg)](https://codecov.io/gh/hyanmandian/brazilian-utils) [![License: MIT](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+[![Travis Build Status](https://travis-ci.org/hyanmandian/brazilian-utils.svg?branch=master)](https://travis-ci.org/hyanmandian/brazilian-utils) [![codecov](https://codecov.io/gh/hyanmandian/brazilian-utils/branch/master/graph/badge.svg)](https://codecov.io/gh/hyanmandian/brazilian-utils) [![License: MIT](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat)](https://opensource.org/licenses/MIT)
 
 Utils library for specific Brazilian business
 

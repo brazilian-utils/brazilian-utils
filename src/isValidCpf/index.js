@@ -13,18 +13,18 @@ const BLACKLIST = [
 
 const CPF_LENGTH = 11;
 
-const CHECK_DIGITS_INDEX = [9, 10];
+const CHECK_DIGITS = [9, 10];
 
 const isValidLength = (cpf) => cpf.length === CPF_LENGTH;
 
 const belongsToBlacklist = (cpf) => BLACKLIST.includes(cpf);
 
-const isValidCheckDigits = (cpf) => CHECK_DIGITS_INDEX.every((index) => {
-  const numbers = cpf.slice(0, index).split('');
+const isValidChecksum = (cpf) => CHECK_DIGITS.every((index) => {
+  const digits = cpf.slice(0, index).split('');
 
-  let sequence = numbers.length + 1;
+  let weight = digits.length + 1;
 
-  const mod = numbers.reduce((acc, number) => acc + (number * sequence--), 0) % 11;
+  const mod = digits.reduce((acc, digit) => acc + (digit * weight--), 0) % 11;
 
   return cpf[index] == (mod < 2 ? 0 : 11 - mod);
 });
@@ -36,5 +36,5 @@ export default function isValidCpf(cpf) {
 
   const normalizedCpf = normalize(cpf);
 
-  return isValidLength(normalizedCpf) && !belongsToBlacklist(normalizedCpf) && isValidCheckDigits(normalizedCpf);
+  return isValidLength(normalizedCpf) && !belongsToBlacklist(normalizedCpf) && isValidChecksum(normalizedCpf);
 }

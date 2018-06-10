@@ -1,6 +1,6 @@
 # :brazil: Brazilian Utils (under construction)
 
-[![Build Status](https://travis-ci.org/hyanmandian/brazilian-utils.svg?branch=master)](https://travis-ci.org/hyanmandian/brazilian-utils) [![Coverage Status](https://codecov.io/gh/hyanmandian/brazilian-utils/branch/master/graph/badge.svg)](https://codecov.io/gh/hyanmandian/brazilian-utils) [![Known Vulnerabilities](https://snyk.io/test/github/hyanmandian/brazilian-utils/badge.svg?targetFile=package.json)](https://snyk.io/test/github/hyanmandian/brazilian-utils?targetFile=package.json) [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg)](#contributors) [![License: MIT](https://img.shields.io/github/license/hyanmandian/brazilian-utils.svg)](https://opensource.org/licenses/MIT)
+[![Build Status](https://travis-ci.org/hyanmandian/brazilian-utils.svg?branch=master)](https://travis-ci.org/hyanmandian/brazilian-utils) [![Coverage Status](https://codecov.io/gh/hyanmandian/brazilian-utils/branch/master/graph/badge.svg)](https://codecov.io/gh/hyanmandian/brazilian-utils) [![Known Vulnerabilities](https://snyk.io/test/github/hyanmandian/brazilian-utils/badge.svg?targetFile=package.json)](https://snyk.io/test/github/hyanmandian/brazilian-utils?targetFile=package.json) [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg)](#contributors) [![License: MIT](https://img.shields.io/github/license/hyanmandian/brazilian-utils.svg)](LICENSE)
 
 Utils library for specific Brazilian business
 
@@ -19,4 +19,4 @@ This project follows the [all-contributors](https://github.com/kentcdodds/all-co
 
 ## License
 
-MIT
+[MIT](LICENSE)

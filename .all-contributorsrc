@@ -1,0 +1,43 @@
+{
+  "projectName": "brazilian-utils",
+  "projectOwner": "hyanmandian",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "contributors": [
+    {
+      "login": "hyanmandian",
+      "name": "Hyan Mandian",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/5044101?v=3",
+      "profile": "https://github.com/hyanmandian",
+      "contributions": [
+        "code",
+        "doc",
+        "ideas",
+        "test"
+      ]
+    },
+    {
+      "login": "lucassveloso",
+      "name": "Lucas Veloso",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/4587602?v=3",
+      "profile": "https://github.com/lucassveloso",
+      "contributions": [
+        "code",
+        "ideas",
+        "test"
+      ]
+    },
+    {
+      "login": "andreoav",
+      "name": "Andreo Vieira",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/508827?v=3",
+      "profile": "https://github.com/andreoav",
+      "contributions": [
+        "ideas"
+      ]
+    }
+  ]
+}

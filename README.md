@@ -4,8 +4,6 @@
 
 Utils library for specific Brazilian business.
 
-http://img.badgesize.io/https://unpkg.com/@brazilian-utils/is-valid-cpf/dist/index.js?compression=gzip
-
 ## Packages
 
 | Package                        | Description            | Size |

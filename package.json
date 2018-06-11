@@ -22,11 +22,6 @@
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate"
   },
-  "babel": {
-    "presets": [
-      "@babel/preset-env"
-    ]
-  },
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.49",

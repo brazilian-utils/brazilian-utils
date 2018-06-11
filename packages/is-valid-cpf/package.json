@@ -1,5 +1,5 @@
 {
-  "name": "@brazilian-utils/isValidCpf",
+  "name": "@brazilian-utils/is-valid-cpf",
   "description": "Check if CPF is valid.",
   "version": "0.1.0",
   "main": "dist/index.js",

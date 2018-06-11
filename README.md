@@ -4,6 +4,11 @@
 
 Utils library for specific Brazilian business.
 
+## Packages
+
+- [@brazilian-utils/is-valid-cpf](./packages/is-valid-cpf) - Valid if CPF is valid
+- [@brazilian-utils/is-valid-cnpj](./packages/is-valid-cnpj) - Valid if CNPJ is valid
+
 ## Contributors
 
 Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):

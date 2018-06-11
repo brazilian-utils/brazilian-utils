@@ -1,5 +1,5 @@
 {
-  "name": "@brazilian-utils/isValidCnpj",
+  "name": "@brazilian-utils/is-valid-cnpj",
   "description": "Check if CNPJ is valid.",
   "version": "0.1.0",
   "main": "dist/index.js",

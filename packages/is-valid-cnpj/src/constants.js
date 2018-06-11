@@ -14,5 +14,3 @@ export const BLACKLIST = [
 export const CNPJ_LENGTH = 14;
 
 export const CHECK_DIGITS = [12, 13];
-
-export const WEIGHTS = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];

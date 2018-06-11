@@ -4,10 +4,14 @@
 
 Utils library for specific Brazilian business.
 
+http://img.badgesize.io/https://unpkg.com/@brazilian-utils/is-valid-cpf/dist/index.js?compression=gzip
+
 ## Packages
 
-- [@brazilian-utils/is-valid-cpf](./packages/is-valid-cpf) - Valid if CPF is valid
-- [@brazilian-utils/is-valid-cnpj](./packages/is-valid-cnpj) - Valid if CNPJ is valid
+| Package                        | Description            | Size |
+|:-------------------------------|:-----------------------|:-----|
+| [@brazilian-utils/is-valid-cpf](./packages/is-valid-cpf)  | Valid if CPF is valid  | [![Install size](https://packagephobia.now.sh/badge?p=@brazilian-utils/is-valid-cpf)](https://packagephobia.now.sh/result?p=@brazilian-utils/is-valid-cpf) [![GZIP size](http://img.badgesize.io/https://unpkg.com/@brazilian-utils/is-valid-cpf/dist/index.js?compression=gzip)](https://unpkg.com/@brazilian-utils/is-valid-cpf/dist/index.js)     |
+| [@brazilian-utils/is-valid-cnpj](./packages/is-valid-cnpj) | Valid if CNPJ is valid | [![Install size](https://packagephobia.now.sh/badge?p=@brazilian-utils/is-valid-cnpj)](https://packagephobia.now.sh/result?p=@brazilian-utils/is-valid-cnpj) [![GZIP size](http://img.badgesize.io/https://unpkg.com/@brazilian-utils/is-valid-cnpj/dist/index.js?compression=gzip)](https://unpkg.com/@brazilian-utils/is-valid-cnpj/dist/index.js)     |
 
 ## Contributors
 

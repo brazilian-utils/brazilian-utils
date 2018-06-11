@@ -18,7 +18,7 @@
   "scripts": {
     "build": "microbundle",
     "dev": "microbundle watch",
-    "test": "cross-env NODE_ENV=test jest",
+    "test": "jest",
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate"
   },
@@ -34,7 +34,6 @@
     "all-contributors-cli": "^5.0.0",
     "babel-core": "^7.0.0-0",
     "babel-jest": "^23.0.1",
-    "cross-env": "^5.1.6",
     "jest": "^23.1.0",
     "lerna": "^2.11.0",
     "microbundle": "^0.4.4"

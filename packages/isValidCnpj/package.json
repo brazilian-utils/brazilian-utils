@@ -1,0 +1,20 @@
+{
+  "name": "@brazilian-utils/isValidCnpj",
+  "description": "Check if CNPJ is valid.",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "umd:main": "dist/index.umd.js",
+  "module": "dist/index.m.js",
+  "files": [
+    "dist"
+  ],
+  "author": "Hyan Mandian <hyanmandian@hotmail.com>",
+  "repository": "hyanmandian/brazilian-utils",
+  "bugs": {
+    "url": "https://github.com/hyanmandian/brazilian-utils/issues"
+  },
+  "keywords": [
+    "cnpj"
+  ],
+  "license": "MIT"
+}

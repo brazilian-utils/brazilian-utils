@@ -1,18 +1,12 @@
 {
   "name": "brazilian-utils",
-  "description": "Utils library for specific Brazilian business",
+  "description": "Utils library for specific Brazilian business.",
   "version": "0.1.0",
-  "main": "dist/index.js",
-  "umd:main": "dist/index.umd.js",
-  "module": "dist/index.m.js",
-  "files": [
-    "dist"
+  "workspaces": [
+    "packages/*"
   ],
   "author": "Hyan Mandian <hyanmandian@hotmail.com>",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/hyanmandian/brazilian-utils.git"
-  },
+  "repository": "hyanmandian/brazilian-utils",
   "bugs": {
     "url": "https://github.com/hyanmandian/brazilian-utils/issues"
   },
@@ -32,9 +26,6 @@
       "@babel/preset-env"
     ]
   },
-  "keywords": [
-    "cpf"
-  ],
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.49",
@@ -44,6 +35,7 @@
     "babel-jest": "^23.0.1",
     "cross-env": "^5.1.6",
     "jest": "^23.1.0",
+    "lerna": "^2.11.0",
     "microbundle": "^0.4.4"
   }
 }

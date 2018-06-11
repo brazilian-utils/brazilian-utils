@@ -1,13 +1,17 @@
 {
   "name": "@brazilian-utils/is-valid-cpf",
   "description": "Check if CPF is valid.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "dist/index.js",
   "umd:main": "dist/index.umd.js",
   "module": "dist/index.m.js",
+  "source": "src/index.js",
   "files": [
     "dist"
   ],
+  "scripts": {
+    "build": "microbundle"
+  },
   "author": "Hyan Mandian <hyanmandian@hotmail.com>",
   "repository": "hyanmandian/brazilian-utils",
   "bugs": {
@@ -18,6 +22,9 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@brazilian-utils/utils": "^0.1.0"
+    "@brazilian-utils/utils": "^0.1.1"
+  },
+  "devDependencies": {
+    "microbundle": "^0.4.4"
   }
 }

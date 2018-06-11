@@ -1,7 +1,8 @@
 {
   "name": "@brazilian-utils/utils",
   "description": "Collection of utils functions used by us.",
-  "version": "0.1.0",
+  "version": "0.1.1",
+  "private": true,
   "author": "Hyan Mandian <hyanmandian@hotmail.com>",
   "repository": "hyanmandian/brazilian-utils",
   "bugs": {

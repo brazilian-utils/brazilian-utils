@@ -1,0 +1,11 @@
+{
+  "name": "@brazilian-utils/utils",
+  "description": "Collection of utils functions used by us.",
+  "version": "0.1.0",
+  "author": "Hyan Mandian <hyanmandian@hotmail.com>",
+  "repository": "hyanmandian/brazilian-utils",
+  "bugs": {
+    "url": "https://github.com/hyanmandian/brazilian-utils/issues"
+  },
+  "license": "MIT"
+}

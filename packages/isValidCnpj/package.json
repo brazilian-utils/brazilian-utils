@@ -16,5 +16,8 @@
   "keywords": [
     "cnpj"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@brazilian-utils/utils/normalize": "0.1.0"
+  }
 }

@@ -1,19 +1,6 @@
-const BLACKLIST = [
-  '00000000000',
-  '11111111111',
-  '22222222222',
-  '33333333333',
-  '44444444444',
-  '55555555555',
-  '66666666666',
-  '77777777777',
-  '88888888888',
-  '99999999999',
-];
+import normalize from '@brazilian-utils/utils/normalize';
 
-const CPF_LENGTH = 11;
-
-const CHECK_DIGITS = [9, 10];
+import { BLACKLIST, CPF_LENGTH, CHECK_DIGITS } from './constants';
 
 const isValidLength = (cpf) => cpf.length === CPF_LENGTH;
 
@@ -28,8 +15,6 @@ const isValidChecksum = (cpf) => CHECK_DIGITS.every((index) => {
 
   return cpf[index] == (mod < 2 ? 0 : 11 - mod);
 });
-
-const normalize = (cpf) => String(cpf).replace(/[^\d]/g, '');
 
 export default function isValidCpf(cpf) {
   if (!cpf) return false;

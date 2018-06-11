@@ -1,4 +1,4 @@
-import normalize from "@brazilian-utils/utils/normalize";
+import normalize from "../../utils/normalize";
 
 import { BLACKLIST, CNPJ_LENGTH, CHECK_DIGITS } from "./constants";
 

@@ -1,5 +1,5 @@
-/dist
-/node_modules
+dist
+node_modules
 yarn-error.log
 /coverage
 lerna-debug.log

@@ -16,9 +16,9 @@
     "collectCoverage": true
   },
   "scripts": {
-    "build": "microbundle",
-    "dev": "microbundle watch",
+    "build": "lerna run build",
     "test": "jest",
+    "publish": "yarn test && yarn build && lerna publish",
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate"
   },
@@ -30,7 +30,6 @@
     "babel-core": "^7.0.0-0",
     "babel-jest": "^23.0.1",
     "jest": "^23.1.0",
-    "lerna": "^2.11.0",
-    "microbundle": "^0.4.4"
+    "lerna": "^2.11.0"
   }
 }

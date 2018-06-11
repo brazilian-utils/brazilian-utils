@@ -18,7 +18,6 @@
   "scripts": {
     "build": "lerna run build",
     "test": "jest",
-    "publish": "yarn test && yarn build && lerna publish",
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate"
   },

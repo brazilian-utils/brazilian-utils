@@ -2,6 +2,7 @@
   "name": "brazilian-utils",
   "description": "Utils library for specific Brazilian business.",
   "version": "0.1.0",
+  "private": true,
   "workspaces": [
     "packages/*"
   ],

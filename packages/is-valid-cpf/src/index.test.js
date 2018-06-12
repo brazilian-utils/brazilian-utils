@@ -40,10 +40,10 @@ const invalidsCpfs = [
 
 describe('isValidCpf', () => {
   test('should return true if cpf is valid', () => {
-    validsCpfs.forEach((cpf) => expect(isValidCpf(cpf)).toBe(true));
+    validsCpfs.forEach(cpf => expect(isValidCpf(cpf)).toBe(true));
   });
 
   test('should return false if cpf is invalid', () => {
-    invalidsCpfs.forEach((cpf) => expect(isValidCpf(cpf)).toBe(false));
+    invalidsCpfs.forEach(cpf => expect(isValidCpf(cpf)).toBe(false));
   });
 });

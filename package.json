@@ -13,7 +13,8 @@
   },
   "scripts": {
     "build": "lerna run build",
-    "test": "eslint . && jest",
+    "lint": "eslint .",
+    "test": "yarn lint && jest",
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate"
   },

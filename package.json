@@ -11,13 +11,9 @@
   "bugs": {
     "url": "https://github.com/hyanmandian/brazilian-utils/issues"
   },
-  "jest": {
-    "coverageDirectory": "./coverage/",
-    "collectCoverage": true
-  },
   "scripts": {
     "build": "lerna run build",
-    "test": "jest",
+    "test": "eslint . && jest",
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate"
   },
@@ -28,6 +24,9 @@
     "all-contributors-cli": "^5.0.0",
     "babel-core": "^7.0.0-0",
     "babel-jest": "^23.0.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.12.0",
     "jest": "^23.1.0",
     "lerna": "^2.11.0"
   }

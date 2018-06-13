@@ -40,10 +40,10 @@ const invalidsCnpjs = [
 
 describe('isValidCnpj', () => {
   test('should return true if cnpj is valid', () => {
-    validsCnpjs.forEach((cnpj) => expect(isValidCnpj(cnpj)).toBe(true));
+    validsCnpjs.forEach(cnpj => expect(isValidCnpj(cnpj)).toBe(true));
   });
 
   test('should return false if cnpj is invalid', () => {
-    invalidsCnpjs.forEach((cnpj) => expect(isValidCnpj(cnpj)).toBe(false));
+    invalidsCnpjs.forEach(cnpj => expect(isValidCnpj(cnpj)).toBe(false));
   });
 });

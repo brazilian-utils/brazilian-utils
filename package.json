@@ -13,22 +13,27 @@
   },
   "scripts": {
     "build": "lerna run build",
+    "prebuild": "lerna bootstrap",
     "lint": "eslint .",
-    "test": "yarn lint && jest",
+    "test": "jest",
+    "pretest": "npm run lint",
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate"
   },
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.49",
-    "@babel/preset-env": "^7.0.0-beta.49",
+    "@babel/core": "^7.0.0-beta.50",
+    "@babel/preset-env": "^7.0.0-beta.50",
     "all-contributors-cli": "^5.0.0",
     "babel-core": "^7.0.0-0",
     "babel-jest": "^23.0.1",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-prettier": "^2.6.0",
     "jest": "^23.1.0",
-    "lerna": "^2.11.0"
+    "lerna": "^2.11.0",
+    "prettier": "^1.13.5"
   }
 }

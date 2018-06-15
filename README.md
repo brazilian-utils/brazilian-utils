@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/hyanmandian/brazilian-utils.svg?branch=master)](https://travis-ci.org/hyanmandian/brazilian-utils) [![Coverage Status](https://codecov.io/gh/hyanmandian/brazilian-utils/branch/master/graph/badge.svg)](https://codecov.io/gh/hyanmandian/brazilian-utils) [![Known Vulnerabilities](https://snyk.io/test/github/hyanmandian/brazilian-utils/badge.svg?targetFile=package.json)](https://snyk.io/test/github/hyanmandian/brazilian-utils?targetFile=package.json) [![Maintainability](https://api.codeclimate.com/v1/badges/05d3cd8492ed438bf51d/maintainability)](https://codeclimate.com/github/hyanmandian/brazilian-utils/maintainability) [![Lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lernajs.io/) [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg)](#contributors) [![License: MIT](https://img.shields.io/github/license/hyanmandian/brazilian-utils.svg)](LICENSE)
 
-Utils library for specific Brazilian business.
+Utils library for specific Brazilian businesses.
 
 ## Packages
 
@@ -13,7 +13,7 @@ Utils library for specific Brazilian business.
 
 ## Contributors
 
-Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
+Thanks go to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->

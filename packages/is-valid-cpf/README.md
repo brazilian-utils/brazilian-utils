@@ -1,6 +1,6 @@
 # @brazilian-utils/is-valid-cpf
 
-Valid if CPF is valid
+Check if CPF is valid
 
 ## Installation
 
@@ -8,7 +8,7 @@ Valid if CPF is valid
 # Yarn
 yarn add @brazilian-utils/is-valid-cpf
 
-# NPM
+# npm
 npm install @brazilian-utils/is-valid-cpf --save
 ```
 

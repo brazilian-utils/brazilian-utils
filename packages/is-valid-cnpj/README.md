@@ -1,6 +1,6 @@
 # @brazilian-utils/is-valid-cnpj
 
-Valid if CNPJ is valid
+Check if CNPJ is valid
 
 ## Installation
 
@@ -8,7 +8,7 @@ Valid if CNPJ is valid
 # Yarn
 yarn add @brazilian-utils/is-valid-cnpj
 
-# NPM
+# npm
 npm install @brazilian-utils/is-valid-cnpj --save
 ```
 

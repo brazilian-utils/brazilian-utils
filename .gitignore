@@ -2,4 +2,6 @@ dist
 node_modules
 yarn-error.log
 /coverage
+/.vscode
+/.idea
 lerna-debug.log

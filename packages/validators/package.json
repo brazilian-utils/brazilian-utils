@@ -1,0 +1,30 @@
+{
+  "name": "@brazilian-utils/validators",
+  "version": "0.1.4",
+  "description": "A collection of useful validators",
+  "main": "dist/index.js",
+  "umd:main": "dist/index.umd.js",
+  "module": "dist/index.m.js",
+  "source": "src/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "microbundle"
+  },
+  "repository": "https://github.com/hyanmandian/brazilian-utils/tree/master/packages/validators",
+  "author": "Andreo Vieira <contato@andreovieira.com.br>",
+  "license": "MIT",
+  "keywords": [
+    "cpf",
+    "cnpj",
+    "validators"
+  ],
+  "dependencies": {
+    "@brazilian-utils/is-valid-cnpj": "^0.1.4",
+    "@brazilian-utils/is-valid-cpf": "^0.1.4"
+  },
+  "devDependencies": {
+    "microbundle": "^0.4.4"
+  }
+}

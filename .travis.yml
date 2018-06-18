@@ -22,5 +22,6 @@ before_install:
 install:
   - yarn global add codecov
   - yarn --ignore-engines
+  - yarn build
 
 script: yarn test && codecov

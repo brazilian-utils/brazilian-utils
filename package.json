@@ -15,7 +15,7 @@
     "build": "lerna run build",
     "prebuild": "lerna bootstrap",
     "lint": "eslint .",
-    "test": "jest",
+    "test": "yarn lint && jest",
     "pretest": "npm run lint",
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate"

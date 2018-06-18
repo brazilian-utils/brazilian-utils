@@ -1,4 +1,4 @@
-import normalize from '../../utils/normalize';
+import onlyNumbers from '@brazilian-utils/helper-only-numbers';
 
 import { BLACKLIST, CPF_LENGTH, CHECK_DIGITS } from './constants';
 
@@ -20,7 +20,7 @@ const isValidChecksum = cpf =>
 export default function isValidCpf(cpf) {
   if (!cpf) return false;
 
-  const normalizedCpf = normalize(cpf);
+  const numericCPF = onlyNumbers(cpf);
 
-  return isValidLength(normalizedCpf) && !belongsToBlacklist(normalizedCpf) && isValidChecksum(normalizedCpf);
+  return isValidLength(numericCPF) && !belongsToBlacklist(numericCPF) && isValidChecksum(numericCPF);
 }

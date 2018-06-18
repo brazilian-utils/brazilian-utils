@@ -1,6 +1,6 @@
 {
   "name": "@brazilian-utils/validators",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A collection of useful validators",
   "main": "dist/index.js",
   "umd:main": "dist/index.umd.js",
@@ -21,10 +21,13 @@
     "validators"
   ],
   "dependencies": {
-    "@brazilian-utils/is-valid-cnpj": "^0.1.5",
-    "@brazilian-utils/is-valid-cpf": "^0.1.5"
+    "@brazilian-utils/is-valid-cnpj": "^0.1.6",
+    "@brazilian-utils/is-valid-cpf": "^0.1.6"
   },
   "devDependencies": {
     "microbundle": "^0.4.4"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

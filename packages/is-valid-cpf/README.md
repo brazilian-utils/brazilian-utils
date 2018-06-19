@@ -10,6 +10,9 @@ yarn add @brazilian-utils/is-valid-cpf
 
 # npm
 npm install @brazilian-utils/is-valid-cpf --save
+
+# UMD
+<script type="text/javascript" src='https://unpkg.com/@brazilian-utils/is-valid-cpf/dist/index.umd.js'></script>
 ```
 
 ## Usage

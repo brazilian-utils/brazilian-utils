@@ -12,7 +12,7 @@ yarn add @brazilian-utils/is-valid-cnpj
 npm install @brazilian-utils/is-valid-cnpj --save
 
 # UMD
-<script type="text/javascript" src='https://unpkg.com/@brazilian-utils/is-valid-cnpj@0.1.6/dist/index.umd.js'></script>
+<script type="text/javascript" src='https://unpkg.com/@brazilian-utils/is-valid-cnpj/dist/index.umd.js'></script>
 ```
 
 ## Usage

@@ -18,7 +18,12 @@
     "url": "https://github.com/hyanmandian/brazilian-utils/issues"
   },
   "keywords": [
-    "cnpj"
+    "cnpj",
+    "brasil",
+    "brazilian",
+    "utils",
+    "validador",
+    "validator"
   ],
   "license": "MIT",
   "devDependencies": {

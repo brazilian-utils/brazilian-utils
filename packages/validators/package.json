@@ -18,7 +18,12 @@
   "keywords": [
     "cpf",
     "cnpj",
-    "validators"
+    "validators",
+    "brasil",
+    "brazilian",
+    "utils",
+    "validador",
+    "validator"
   ],
   "dependencies": {
     "@brazilian-utils/is-valid-cnpj": "^0.1.6",

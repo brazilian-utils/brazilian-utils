@@ -1,0 +1,15 @@
+{
+  "name": "cpf-generator",
+  "version": "0.0.0",
+  "description": "Generates a valid CPF",
+  "main": "index.js",
+  "author": "",
+  "keywords": [
+    "cpf",
+    "brasil",
+    "brazilian",
+    "utils",
+    "generator"
+  ],
+  "license": "MIT"
+}

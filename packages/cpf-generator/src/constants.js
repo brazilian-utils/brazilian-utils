@@ -1,6 +1,4 @@
-export const CPF_LENGTH_WITHOUT_MASK = 11;
-
-export const CPF_LENGTH_WITH_MASK = 14;
+export const CPF_LENGTH = 11;
 
 export const STATES_CODE = {
   RS: '0',

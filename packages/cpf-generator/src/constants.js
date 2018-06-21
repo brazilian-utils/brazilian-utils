@@ -2,7 +2,7 @@ export const CPF_LENGTH_WITHOUT_MASK = 11;
 
 export const CPF_LENGTH_WITH_MASK = 14;
 
-export const STATE_CODE = {
+export const STATES_CODE = {
   RS: '0',
   DF: '1',
   GO: '1',

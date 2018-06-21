@@ -1,5 +1,5 @@
 {
-  "name": "cpf-generator",
+  "name": "@brazilian-utils/generate-cpf",
   "version": "0.0.0",
   "description": "Generates a valid CPF",
   "main": "index.js",

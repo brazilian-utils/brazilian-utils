@@ -1,4 +1,5 @@
-import formatCpf, { CPF_LENGTH } from '../';
+import formatCpf from '../';
+import { CPF_LENGTH } from '../constants';
 
 describe('formatCpf', () => {
   test('should format cpf with mask', () => {

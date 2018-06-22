@@ -9,16 +9,16 @@ export default function formatCnpj(cnpj) {
 
   const numericCNPJ = onlyNumbers(cnpj);
 
-  const arrayCNPJ = numericCNPJ.split('');
-
-  return arrayCNPJ
-    .map((digit, index) => {
+  return numericCNPJ
+    .slice(0, CNPJ_LENGTH)
+    .split('')
+    .reduce((acc, digit, index) => {
+      const result = `${acc}${digit}`;
       if (!isLastDigit(numericCNPJ, index)) {
-        if (DOT_INDEXES.includes(index)) return `${digit}.`;
-        if (SLASH_INDEXES.includes(index)) return `${digit}/`;
-        if (HYPHEN_INDEXES.includes(index)) return `${digit}-`;
+        if (DOT_INDEXES.includes(index)) return `${result}.`;
+        if (SLASH_INDEXES.includes(index)) return `${result}/`;
+        if (HYPHEN_INDEXES.includes(index)) return `${result}-`;
       }
-      return index < CNPJ_LENGTH ? digit : '';
-    })
-    .join('');
+      return result;
+    }, '');
 }

@@ -9,15 +9,15 @@ export default function formatCpf(cpf) {
 
   const numericCPF = onlyNumbers(cpf);
 
-  const arrayCPF = numericCPF.split('');
-
-  return arrayCPF
-    .map((digit, index) => {
+  return numericCPF
+    .slice(0, CPF_LENGTH)
+    .split('')
+    .reduce((acc, digit, index) => {
+      const result = `${acc}${digit}`;
       if (!isLastDigit(numericCPF, index)) {
-        if (DOT_INDEXES.includes(index)) return `${digit}.`;
-        if (HYPHEN_INDEXES.includes(index)) return `${digit}-`;
+        if (DOT_INDEXES.includes(index)) return `${result}.`;
+        if (HYPHEN_INDEXES.includes(index)) return `${result}-`;
       }
-      return index < CPF_LENGTH ? digit : '';
-    })
-    .join('');
+      return result;
+    }, '');
 }

@@ -1,5 +1,7 @@
 import onlyNumbers from '@brazilian-utils/helper-only-numbers';
 
+export const CPF_LENGTH = 11;
+
 export default function formatCpf(cpf) {
   if (!cpf) return '';
 
@@ -12,7 +14,7 @@ export default function formatCpf(cpf) {
         if (i === 2 || i === 5) return `${digit}.`;
         if (i === 8) return `${digit}-`;
       }
-      return digit;
+      return i < CPF_LENGTH ? digit : '';
     })
     .join('');
 }

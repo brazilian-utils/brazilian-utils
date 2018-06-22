@@ -1,4 +1,4 @@
-import formatCnpj from '../';
+import formatCnpj, { CNPJ_LENGTH } from '../';
 
 describe('formatCnpj', () => {
   test('should format cnpj with mask', () => {
@@ -17,5 +17,13 @@ describe('formatCnpj', () => {
     expect(formatCnpj('468434850001')).toBe('46.843.485/0001');
     expect(formatCnpj('4684348500018')).toBe('46.843.485/0001-8');
     expect(formatCnpj('46843485000186')).toBe('46.843.485/0001-86');
+  });
+
+  test(`should NOT add digits after the CNPJ length (${CNPJ_LENGTH})`, () => {
+    expect(formatCnpj('468434850001860000000000')).toBe('46.843.485/0001-86');
+  });
+
+  test('should remove all non numeric characters', () => {
+    expect(formatCnpj('46.?ABC843.485/0001-86abc')).toBe('46.843.485/0001-86');
   });
 });

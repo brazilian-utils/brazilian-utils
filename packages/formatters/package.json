@@ -1,0 +1,38 @@
+{
+  "name": "@brazilian-utils/formatters",
+  "version": "0.1.1",
+  "description": "A collection of useful formatters",
+  "main": "dist/index.js",
+  "umd:main": "dist/index.umd.js",
+  "module": "dist/index.m.js",
+  "source": "src/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "microbundle"
+  },
+  "repository": "https://github.com/hyanmandian/brazilian-utils/tree/master/packages/formatters",
+  "author": "Lucas Veloso <lucas.s.veloso@hotmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "cpf",
+    "cnpj",
+    "formatters",
+    "masks",
+    "brasil",
+    "brazilian",
+    "utils",
+    "format"
+  ],
+  "dependencies": {
+    "@brazilian-utils/format-cnpj": "^0.1.0",
+    "@brazilian-utils/format-cpf": "^0.1.0"
+  },
+  "devDependencies": {
+    "microbundle": "^0.4.4"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

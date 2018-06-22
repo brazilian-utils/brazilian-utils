@@ -1,4 +1,4 @@
-import formatCpf from '../';
+import formatCpf, { CPF_LENGTH } from '../';
 
 describe('formatCpf', () => {
   test('should format cpf with mask', () => {
@@ -14,5 +14,13 @@ describe('formatCpf', () => {
     expect(formatCpf('943895751')).toBe('943.895.751');
     expect(formatCpf('9438957510')).toBe('943.895.751-0');
     expect(formatCpf('94389575104')).toBe('943.895.751-04');
+  });
+
+  test(`should NOT add digits after the CPF length (${CPF_LENGTH})`, () => {
+    expect(formatCpf('94389575104000000')).toBe('943.895.751-04');
+  });
+
+  test('should remove all non numeric characters', () => {
+    expect(formatCpf('943.?ABC895.751-04abc')).toBe('943.895.751-04');
   });
 });

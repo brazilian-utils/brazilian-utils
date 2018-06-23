@@ -1,6 +1,6 @@
 {
   "name": "@brazilian-utils/formatters",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "A collection of useful formatters",
   "main": "dist/index.js",
   "umd:main": "dist/index.umd.js",

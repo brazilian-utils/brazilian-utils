@@ -1,6 +1,6 @@
 {
   "name": "@brazilian-utils/formatters",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A collection of useful formatters",
   "main": "dist/index.js",
   "umd:main": "dist/index.umd.js",
@@ -26,8 +26,8 @@
     "format"
   ],
   "dependencies": {
-    "@brazilian-utils/format-cnpj": "^0.1.0",
-    "@brazilian-utils/format-cpf": "^0.1.0"
+    "@brazilian-utils/format-cnpj": "^0.1.1",
+    "@brazilian-utils/format-cpf": "^0.1.2"
   },
   "devDependencies": {
     "microbundle": "^0.4.4"

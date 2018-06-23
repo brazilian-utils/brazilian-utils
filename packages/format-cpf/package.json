@@ -31,7 +31,8 @@
     "microbundle": "^0.4.4"
   },
   "dependencies": {
-    "@brazilian-utils/helper-only-numbers": "^0.1.1"
+    "@brazilian-utils/helper-only-numbers": "^0.1.1",
+    "@brazilian-utils/helper-is-last-char": "^0.1.0"
   },
   "publishConfig": {
     "access": "public"

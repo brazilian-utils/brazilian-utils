@@ -1,6 +1,6 @@
 # @brazilian-utils/helper-is-last-char
 
-Return if the index is the same as last index of the string
+Return if the index is the same as last index of the string.
 
 ## Installation
 

@@ -1,30 +1,22 @@
 import { CPF_LENGTH, STATES_CODE } from './constants';
 
-const replaceAt = (string, index, replace) => string.substring(0, index) + replace + string.substring(index + 1);
+const createCheckSum = (cpfStart, base) =>
+  cpfStart.split('').reduce((agg, value, index) => agg + parseInt(value, 10) * (base - index), 0);
+
+const randomNumber = lenght =>
+  Math.random()
+    .toString()
+    .substr(2, lenght);
 
 export default function generateCpf({ state } = {}) {
-  const stateCode = Object.keys(STATES_CODE).includes(state)
-    ? STATES_CODE[state]
-    : Math.random()
-        .toString()
-        .substr(2, 1);
+  const stateCode = Object.keys(STATES_CODE).includes(state) ? STATES_CODE[state] : randomNumber(1);
+  const baseCpf = randomNumber(CPF_LENGTH - 3) + stateCode;
 
-  const CPF_LENGHT_WITHOUT_VALIDATE_CODE = CPF_LENGTH - 2;
-  const cpfStart = replaceAt(
-    Math.random()
-      .toString()
-      .substr(2, CPF_LENGHT_WITHOUT_VALIDATE_CODE),
-    CPF_LENGHT_WITHOUT_VALIDATE_CODE,
-    stateCode
-  );
+  const mod1 = createCheckSum(baseCpf, 10) % 11;
+  const check1 = (mod1 < 2 ? 0 : 11 - mod1).toString();
 
-  let check1 = cpfStart.split('').reduce((agg, value, index) => agg + parseInt(value, 10) * (10 - index), 0);
+  const mod2 = createCheckSum(baseCpf + check1, 11) % 11;
+  const check2 = (mod2 < 2 ? 0 : 11 - mod2).toString();
 
-  check1 = (check1 * 10) % 11;
-
-  let check2 = cpfStart.split('').reduce((agg, value, index) => agg + parseInt(value, 10) * (11 - index), 0);
-
-  check2 = (check2 * 10) % 11;
-
-  return `${cpfStart}${check1.toString()}${check2.toString()}`;
+  return `${baseCpf}${check1.toString()}${check2.toString()}`;
 }

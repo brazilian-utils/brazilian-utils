@@ -18,7 +18,7 @@ npm install @brazilian-utils/generate-cpf --save
 ## Usage
 
 ```js
-import isValidCpf from '@brazilian-utils/generate-cpf';
+import generateCpf from '@brazilian-utils/generate-cpf';
 
 generateCpf(); // return a valid CPF
 generateCpf({ state: 'BA' }); // return a valid CPF from Bahia state

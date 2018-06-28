@@ -3,10 +3,10 @@ import { CPF_LENGTH, STATES_CODE } from './constants';
 const createCheckSum = (cpfStart, base) =>
   cpfStart.split('').reduce((agg, value, index) => agg + parseInt(value, 10) * (base - index), 0);
 
-const randomNumber = lenght =>
+const randomNumber = length =>
   Math.random()
     .toString()
-    .substr(2, lenght);
+    .substr(2, length);
 
 export default function generateCpf({ state } = {}) {
   const stateCode = Object.keys(STATES_CODE).includes(state) ? STATES_CODE[state] : randomNumber(1);

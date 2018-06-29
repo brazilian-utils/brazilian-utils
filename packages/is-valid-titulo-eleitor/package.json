@@ -1,0 +1,40 @@
+{
+  "name": "@brazilian-utils/is-valid-titulo-eleitor",
+  "description": "Check if Título de Eleitor is valid.",
+  "version": "0.1.6",
+  "main": "dist/index.js",
+  "umd:main": "dist/index.umd.js",
+  "module": "dist/index.m.js",
+  "source": "src/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "microbundle"
+  },
+  "author": "Guilherme Bueno <oguibueno@gmail.com",
+  "repository": "https://github.com/hyanmandian/brazilian-utils/tree/master/packages/is-valid-titulo-eleitor",
+  "bugs": {
+    "url": "https://github.com/hyanmandian/brazilian-utils/issues"
+  },
+  "keywords": [
+    "titulo",
+    "eleitor",
+    "eleitoral",
+    "brasil",
+    "brazilian",
+    "utils",
+    "validador",
+    "validator"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "microbundle": "^0.4.4"
+  },
+  "dependencies": {
+    "@brazilian-utils/helper-only-numbers": "^0.1.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

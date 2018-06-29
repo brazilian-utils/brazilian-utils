@@ -1,12 +1,13 @@
 {
   "lerna": "2.11.0",
   "npmClient": "yarn",
-  "npmClientArgs": [
-    "--no-lockfile"
-  ],
-  "packages": [
-    "packages/*"
-  ],
+  "npmClientArgs": ["--no-lockfile"],
+  "packages": ["packages/*"],
+  "commands": {
+    "publish": {
+      "ignoreChanges": ["**/*.md", "**/example/**", "**/tests/**"]
+    }
+  },
   "useWorkspaces": true,
   "version": "independent"
 }

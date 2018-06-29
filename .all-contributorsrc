@@ -42,6 +42,18 @@
         "ideas",
         "tool"
       ]
+    },
+    {
+      "login": "matAlmeida",
+      "name": "Matheus Almeida",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/12724212?v=4",
+      "profile": "http://matalmeida.me",
+      "contributions": [
+        "code",
+        "doc",
+        "test"
+      ]
     }
-  ]
+  ],
+  "repoType": "github"
 }

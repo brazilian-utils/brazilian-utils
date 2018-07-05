@@ -1,5 +1,6 @@
 import isValidCpf from '@brazilian-utils/is-valid-cpf';
-import cpfGenerator from '../';
+
+import cpfGenerator from '..';
 import { CPF_LENGTH, STATES_CODE } from '../constants';
 
 describe('cpfGenerator', () => {

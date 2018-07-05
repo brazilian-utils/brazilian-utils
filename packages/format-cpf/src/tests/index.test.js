@@ -1,4 +1,4 @@
-import formatCpf from '../';
+import formatCpf from '..';
 import { CPF_LENGTH } from '../constants';
 
 describe('formatCpf', () => {

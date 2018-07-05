@@ -1,4 +1,4 @@
-import formatCnpj from '../';
+import formatCnpj from '..';
 import { CNPJ_LENGTH } from '../constants';
 
 describe('formatCnpj', () => {

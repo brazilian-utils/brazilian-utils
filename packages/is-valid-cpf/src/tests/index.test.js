@@ -1,4 +1,4 @@
-import isValidCpf from '../';
+import isValidCpf from '..';
 import { BLACKLIST, CPF_LENGTH } from '../constants';
 
 describe('isValidCpf', () => {

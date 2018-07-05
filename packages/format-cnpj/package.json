@@ -1,7 +1,7 @@
 {
   "name": "@brazilian-utils/format-cnpj",
   "description": "Return CNPJ formatted with mask.",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "main": "dist/index.js",
   "umd:main": "dist/index.umd.js",
   "module": "dist/index.m.js",
@@ -28,11 +28,11 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "microbundle": "^0.4.4"
+    "microbundle": "^0.5.1"
   },
   "dependencies": {
-    "@brazilian-utils/helper-is-last-char": "^0.1.3",
-    "@brazilian-utils/helper-only-numbers": "^0.1.1"
+    "@brazilian-utils/helper-is-last-char": "^0.1.4",
+    "@brazilian-utils/helper-only-numbers": "^0.1.2"
   },
   "publishConfig": {
     "access": "public"

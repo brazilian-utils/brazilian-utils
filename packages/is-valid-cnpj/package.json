@@ -1,7 +1,7 @@
 {
   "name": "@brazilian-utils/is-valid-cnpj",
   "description": "Check if CNPJ is valid.",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "main": "dist/index.js",
   "umd:main": "dist/index.umd.js",
   "module": "dist/index.m.js",
@@ -27,10 +27,10 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "microbundle": "^0.4.4"
+    "microbundle": "^0.5.1"
   },
   "dependencies": {
-    "@brazilian-utils/helper-only-numbers": "^0.1.1"
+    "@brazilian-utils/helper-only-numbers": "^0.1.2"
   },
   "publishConfig": {
     "access": "public"

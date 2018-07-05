@@ -1,7 +1,7 @@
 {
   "name": "@brazilian-utils/helper-only-numbers",
   "description": "Strips all non numeric characters.",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "author": "Hyan Mandian <hyanmandian@hotmail.com>",
   "repository": "https://github.com/hyanmandian/brazilian-utils/tree/master/packages/helper-only-numbers",
   "main": "dist/index.js",

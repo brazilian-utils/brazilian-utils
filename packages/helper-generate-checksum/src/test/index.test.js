@@ -1,4 +1,4 @@
-import generateCheckSum from '../';
+import generateCheckSum from '..';
 
 describe('generate', () => {
   test('should generate the right checksum', () => {

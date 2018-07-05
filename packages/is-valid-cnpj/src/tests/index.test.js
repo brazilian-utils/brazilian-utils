@@ -1,4 +1,4 @@
-import isValidCnpj from '../';
+import isValidCnpj from '..';
 import { BLACKLIST, CNPJ_LENGTH } from '../constants';
 
 describe('isValidCnpj', () => {

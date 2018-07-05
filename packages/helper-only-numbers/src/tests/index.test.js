@@ -1,4 +1,4 @@
-import onlyNumbers from '../';
+import onlyNumbers from '..';
 
 describe('onlyNumbers', () => {
   test('should remove all non numeric characters', () => {

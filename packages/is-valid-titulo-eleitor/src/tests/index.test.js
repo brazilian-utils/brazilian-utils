@@ -41,17 +41,17 @@ describe('isValidTituloEleitor', () => {
     });
 
     test('when is a Título de Eleitor invalid', () => {
-      expect(isValidTituloEleitor('11257245286')).toBe(false);
+      expect(isValidTituloEleitor('999999999999')).toBe(false);
     });
   });
 
   describe('should return true', () => {
     test('when is a Título de Eleitor valid without mask', () => {
-      expect(isValidTituloEleitor('40364478829')).toBe(true);
+      expect(isValidTituloEleitor('999999999999')).toBe(true);
     });
 
     test('when is a Título de Eleitor valid with mask', () => {
-      expect(isValidTituloEleitor('962.718.458-60')).toBe(true);
+      expect(isValidTituloEleitor('999 999 999 999')).toBe(true);
     });
   });
 });

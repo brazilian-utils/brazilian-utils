@@ -28,7 +28,7 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "microbundle": "^0.5.1"
+    "microbundle": "^0.6.0"
   },
   "dependencies": {
     "@brazilian-utils/helper-is-last-char": "^0.1.5",

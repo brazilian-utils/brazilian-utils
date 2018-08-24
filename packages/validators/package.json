@@ -30,7 +30,7 @@
     "@brazilian-utils/is-valid-cpf": "^0.1.8"
   },
   "devDependencies": {
-    "microbundle": "^0.5.1"
+    "microbundle": "^0.6.0"
   },
   "publishConfig": {
     "access": "public"

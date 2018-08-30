@@ -12,7 +12,7 @@ describe('isValidCep', () => {
     test('when is undefined', () => {
       expect(isValidCep(undefined)).toBe(false);
     });
-    test(`when is length more ${CEP_LENGTH}`, () => {
+    test(`when length is greater than ${CEP_LENGTH}`, () => {
       expect(isValidCep('123456789')).toBe(false);
     });
     test('when is array', () => {

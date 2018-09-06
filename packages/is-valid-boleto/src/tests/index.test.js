@@ -18,7 +18,7 @@ describe('isValidBoleto', () => {
     test('when is array', () => {
       expect(isValidBoleto([])).toBe(false);
     });
-    test('when is array', () => {
+    test('when is object', () => {
       expect(isValidBoleto({})).toBe(false);
     });
     test('when is boolean', () => {

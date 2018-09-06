@@ -6,6 +6,7 @@ import {
   MOD_10_WEIGHTS,
   MOD_11_WEIGHTS,
   PARTIALS_TO_VERIFY_MOD_10,
+  DIGITABLE_LINE_TO_BOLETO_CONVERT_POSITIONS,
 } from './constants';
 
 const isValidLength = digitableLine => digitableLine.length === DIGITABLE_LINE_LENGTH;
@@ -46,24 +47,19 @@ const mod11 = value => {
 };
 
 const validateDigitableLinePartials = digitableLine => {
-  const results = PARTIALS_TO_VERIFY_MOD_10.map(partial => {
+  const isValid = PARTIALS_TO_VERIFY_MOD_10.every(partial => {
     const mod = mod10(digitableLine.substring(partial.start, partial.end));
     return +digitableLine[partial.digitIndex] === mod;
   });
 
-  return !results.includes(false);
+  return isValid;
 };
 
-const ParseDigitableLine = digitableLine => {
-  let parsedValue = '';
-  parsedValue += digitableLine.substring(0, 4);
-  parsedValue += digitableLine.substring(32, 47);
-  parsedValue += digitableLine.substring(4, 9);
-  parsedValue += digitableLine.substring(10, 20);
-  parsedValue += digitableLine.substring(21, 31);
-
-  return parsedValue;
-};
+const parseDigitableLine = digitableLine =>
+  DIGITABLE_LINE_TO_BOLETO_CONVERT_POSITIONS.reduce(
+    (acc, pos) => acc + digitableLine.substring(pos.start, pos.end),
+    ''
+  );
 
 const validateMod11CheckDigit = parsedLine => {
   const mod = mod11(
@@ -79,7 +75,7 @@ export default function isValidBoleto(digitableLine) {
 
   if (!validateDigitableLinePartials(clearValue)) return false;
 
-  const parsedValue = ParseDigitableLine(clearValue);
+  const parsedValue = parseDigitableLine(clearValue);
 
   return validateMod11CheckDigit(parsedValue);
 }

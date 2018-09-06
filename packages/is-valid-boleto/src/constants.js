@@ -29,3 +29,11 @@ export const MOD_11_WEIGHTS = {
 };
 
 export const MOD_10_WEIGHTS = [2, 1];
+
+export const DIGITABLE_LINE_TO_BOLETO_CONVERT_POSITIONS = [
+  { start: 0, end: 4 },
+  { start: 32, end: 47 },
+  { start: 4, end: 9 },
+  { start: 10, end: 20 },
+  { start: 21, end: 31 },
+];

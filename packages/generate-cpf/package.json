@@ -1,7 +1,7 @@
 {
   "name": "@brazilian-utils/generate-cpf",
   "description": "Generates a valid CPF",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "main": "dist/index.js",
   "umd:main": "dist/index.umd.js",
   "module": "dist/index.m.js",
@@ -26,7 +26,7 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@brazilian-utils/is-valid-cpf": "^0.1.10",
+    "@brazilian-utils/is-valid-cpf": "^0.1.11",
     "microbundle": "^0.6.0"
   },
   "dependencies": {

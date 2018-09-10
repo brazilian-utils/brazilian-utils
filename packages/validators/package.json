@@ -1,6 +1,6 @@
 {
   "name": "@brazilian-utils/validators",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "A collection of useful validators",
   "main": "dist/index.js",
   "umd:main": "dist/index.umd.js",
@@ -18,6 +18,8 @@
   "keywords": [
     "cpf",
     "cnpj",
+    "cep",
+    "boleto",
     "validators",
     "brasil",
     "brazilian",

@@ -20,6 +20,7 @@
     "cnpj",
     "cep",
     "boleto",
+    "phone",
     "validators",
     "brasil",
     "brazilian",

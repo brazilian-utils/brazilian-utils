@@ -1,4 +1,4 @@
-import { isValidCpf, isValidCnpj, isValidBoleto, isValidCep } from '../index';
+import { isValidCpf, isValidCnpj, isValidBoleto, isValidCep, isValidPhone } from '../index';
 
 describe('isValidCpf', () => {
   test('should have been imported correctly', () => {
@@ -21,5 +21,11 @@ describe('isValidCep', () => {
 describe('isValidBoleto', () => {
   test('should have been imported correctly', () => {
     expect(isValidBoleto).not.toBeUndefined();
+  });
+});
+
+describe('isValidPhone', () => {
+  test('should have been imported correctly', () => {
+    expect(isValidPhone).not.toBeUndefined();
   });
 });

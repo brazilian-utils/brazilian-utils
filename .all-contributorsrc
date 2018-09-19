@@ -84,8 +84,7 @@
       "contributions": [
         "code",
         "doc",
-        "test",
-        "tool"
+        "test"
       ]
     }
   ],

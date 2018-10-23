@@ -1,6 +1,6 @@
 import isValidCnpj from '@brazilian-utils/is-valid-cnpj';
 
-import { generateRandomNumbers, multiplyWeights, sumNumbers, calculateNthDigit, concatDigits } from '../cnpj';
+import { generateRandomNumbers, sumOfDigitsMultipliedByWeights, calculateNthDigit, concatDigits } from '../cnpj';
 import { CNPJ_LENGTH, FIRST_DIGIT_WEIGHTS, SECOND_DIGIT_WEIGHTS } from '../constants';
 
 describe('cnpj', () => {
@@ -11,15 +11,9 @@ describe('cnpj', () => {
     expect(generateRandomNumbers(12).length).toBe(12);
   });
 
-  test('Multiply numbers to weights', () => {
-    expect([5, 4, 12, 8, 36, 56, 49, 42, 0, 0, 0, 2]).toEqual(multiplyWeights(block1, FIRST_DIGIT_WEIGHTS));
-    expect([6, 5, 16, 12, 8, 63, 56, 49, 0, 0, 0, 3, 12]).toEqual(multiplyWeights(block2, SECOND_DIGIT_WEIGHTS));
-  });
-
   test('Sum all numbers multiplied', () => {
-    expect(sumNumbers([1, 2, 2, 5])).toBe(10);
-    expect(sumNumbers(multiplyWeights(block1, FIRST_DIGIT_WEIGHTS))).toBe(214);
-    expect(sumNumbers(multiplyWeights(block2, SECOND_DIGIT_WEIGHTS))).toBe(230);
+    expect(sumOfDigitsMultipliedByWeights(block1, FIRST_DIGIT_WEIGHTS)).toBe(214);
+    expect(sumOfDigitsMultipliedByWeights(block2, SECOND_DIGIT_WEIGHTS)).toBe(230);
   });
 
   test('Nth digit with quocient smaller than 2', () => {
@@ -38,11 +32,11 @@ describe('cnpj', () => {
   test('Manual CNPJ validation', () => {
     const firstBlock = [1, 1, 4, 4, 4, 7, 7, 7, 0, 0, 0, 1];
 
-    const firstDigit = calculateNthDigit(sumNumbers(multiplyWeights(firstBlock, FIRST_DIGIT_WEIGHTS)));
+    const firstDigit = calculateNthDigit(sumOfDigitsMultipliedByWeights(firstBlock, FIRST_DIGIT_WEIGHTS));
     expect(firstDigit).toBe(6);
 
     const secondDigit = calculateNthDigit(
-      sumNumbers(multiplyWeights([...firstBlock, firstDigit], SECOND_DIGIT_WEIGHTS))
+      sumOfDigitsMultipliedByWeights([...firstBlock, firstDigit], SECOND_DIGIT_WEIGHTS)
     );
     expect(secondDigit).toBe(1);
 

@@ -1,3 +1,5 @@
+import generateChecksum from '@brazilian-utils/helper-generate-checksum';
+
 export const generateRandomNumbers = n =>
   Array(n)
     .fill(0)
@@ -7,9 +9,7 @@ export const generateRandomNumbers = n =>
         .substr(2, 1)
     );
 
-export const multiplyWeights = (numbers, weights) => numbers.map((number, index) => number * weights[index]);
-
-export const sumNumbers = numbers => numbers.reduce((sum, number) => sum + number);
+export const sumOfDigitsMultipliedByWeights = (numbers, weights) => generateChecksum(numbers, weights);
 
 export const calculateNthDigit = sum => {
   const mod = sum % 11;

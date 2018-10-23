@@ -1,15 +1,7 @@
 import isValidCnpj from '@brazilian-utils/is-valid-cnpj';
 
-import {
-  CNPJ_LENGTH,
-  FIRST_DIGIT_WEIGHTS,
-  SECOND_DIGIT_WEIGHTS,
-  generateRandomNumbers,
-  multiplyWeights,
-  sumNumbers,
-  calculateNthDigit,
-  concatDigits,
-} from '../cnpj';
+import { generateRandomNumbers, multiplyWeights, sumNumbers, calculateNthDigit, concatDigits } from '../cnpj';
+import { CNPJ_LENGTH, FIRST_DIGIT_WEIGHTS, SECOND_DIGIT_WEIGHTS } from '../constants';
 
 describe('cnpj', () => {
   const block1 = [1, 1, 4, 4, 4, 7, 7, 7, 0, 0, 0, 1];

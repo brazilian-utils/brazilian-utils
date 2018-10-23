@@ -7,7 +7,8 @@ export const generateRandomNumbers = n =>
       Math.random()
         .toString()
         .substr(2, 1)
-    );
+    )
+    .map(number => parseInt(number, 10));
 
 export const sumOfDigitsMultipliedByWeights = (numbers, weights) => generateChecksum(numbers, weights);
 

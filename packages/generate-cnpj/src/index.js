@@ -1,13 +1,5 @@
-import {
-  CNPJ_LENGTH,
-  FIRST_DIGIT_WEIGHTS,
-  SECOND_DIGIT_WEIGHTS,
-  generateRandomNumbers,
-  multiplyWeights,
-  sumNumbers,
-  calculateNthDigit,
-  concatDigits,
-} from './cnpj';
+import { generateRandomNumbers, multiplyWeights, sumNumbers, calculateNthDigit, concatDigits } from './cnpj';
+import { CNPJ_LENGTH, FIRST_DIGIT_WEIGHTS, SECOND_DIGIT_WEIGHTS } from './constants';
 
 export default function generateCnpj() {
   const twelveNumbers = generateRandomNumbers(CNPJ_LENGTH - 2);

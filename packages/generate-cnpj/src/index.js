@@ -5,7 +5,7 @@ export default function generateCnpj() {
   const twelveNumbers = generateRandomNumbers(CNPJ_LENGTH - 2);
   const thirteenth = calculateNthDigit(sumOfDigitsMultipliedByWeights(twelveNumbers, FIRST_DIGIT_WEIGHTS));
   const fourteenth = calculateNthDigit(
-    sumOfDigitsMultipliedByWeights([...twelveNumbers, thirteenth].join(''), SECOND_DIGIT_WEIGHTS)
+    sumOfDigitsMultipliedByWeights([...twelveNumbers, thirteenth], SECOND_DIGIT_WEIGHTS)
   );
 
   return concatDigits([...twelveNumbers, thirteenth, fourteenth]);

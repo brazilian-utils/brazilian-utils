@@ -15,7 +15,7 @@ describe('isValidEmail', () => {
     });
 
     test('when the email is invalid because contains special characters', () => {
-      expect(isValidPhone('john&doe@yahoo.com.br')).toBe(false);
+      expect(isValidEmail('john&doe@yahoo.com.br')).toBe(false);
     });
   });
 

@@ -28,10 +28,6 @@
     "devDependencies": {
       "microbundle": "^0.6.0"
     },
-    "dependencies": {
-      "@brazilian-utils/helper-generate-checksum": "^0.1.4",
-      "@brazilian-utils/helper-only-numbers": "^0.1.5"
-    },
     "publishConfig": {
       "access": "public"
     }

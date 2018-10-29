@@ -86,6 +86,17 @@
         "doc",
         "test"
       ]
+    },
+        {
+      "login": "Leonardo18",
+      "name": "Leonardo Dutra",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/14338574?v=4",
+      "profile": "https://github.com/Leonardo18",
+      "contributions": [
+        "code",
+        "doc",
+        "test"
+      ]
     }
   ],
   "repoType": "github"

@@ -1,0 +1,37 @@
+{
+  "name": "@brazilian-utils/generate-cnpj",
+  "description": "Generates a valid CNPJ",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "umd:main": "dist/index.umd.js",
+  "module": "dist/index.m.js",
+  "source": "src/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "microbundle"
+  },
+  "repository": "https://github.com/hyanmandian/brazilian-utils/tree/master/packages/generate-cnpj",
+  "bugs": {
+    "url": "https://github.com/hyanmandian/brazilian-utils/issues"
+  },
+  "keywords": [
+    "cnpj",
+    "brasil",
+    "brazilian",
+    "utils",
+    "generator"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@brazilian-utils/is-valid-cnpj": "^0.1.11",
+    "microbundle": "^0.6.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@brazilian-utils/helper-generate-checksum": "^0.1.4"
+  }
+}

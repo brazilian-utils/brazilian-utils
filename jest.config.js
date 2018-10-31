@@ -5,6 +5,6 @@ module.exports = {
   preset: 'ts-jest/presets/js-with-babel',
   coveragePathIgnorePatterns: ['.*.d.ts'],
   moduleNameMapper: {
-    '@taxi/(.+)$': '<rootDir>packages/$1/src',
+    '@brazilian-utils/(.+)$': '<rootDir>packages/$1/src',
   },
 };

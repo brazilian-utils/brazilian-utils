@@ -3,17 +3,17 @@ import generateChecksum from '@brazilian-utils/helper-generate-checksum';
 
 import { BLACKLIST, CPF_LENGTH, CHECK_DIGITS } from './constants';
 
-const isValidLength = cpf => cpf.length === CPF_LENGTH;
+const isValidLength = (cpf: string) => cpf.length === CPF_LENGTH;
 
-const belongsToBlacklist = cpf => BLACKLIST.includes(cpf);
+const belongsToBlacklist = (cpf: string) => BLACKLIST.includes(cpf);
 
-const isValidChecksum = cpf =>
+const isValidChecksum = (cpf: string) =>
   CHECK_DIGITS.every(verifierPos => {
-    const mod = generateChecksum(cpf.slice(0, verifierPos).split(''), verifierPos + 1) % 11;
+    const mod = generateChecksum(cpf.slice(0, verifierPos).split('').reduce((a, b) => a + b, ''), verifierPos + 1) % 11;
     return cpf[verifierPos] === String(mod < 2 ? 0 : 11 - mod);
   });
 
-export default function isValidCpf(cpf) {
+export default function isValidCpf(cpf: string) {
   if (!cpf) return false;
 
   const numericCPF = onlyNumbers(cpf);

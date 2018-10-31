@@ -1,6 +1,6 @@
 import onlyNumbers from '@brazilian-utils/helper-only-numbers';
 
-const numberToWeightArray = (weight, length) => {
+const numberToWeightArray = (weight: number, length: number) => {
   const array = [];
   for (let i = 0; i < length; i++) {
     array.push(weight - i);
@@ -9,18 +9,18 @@ const numberToWeightArray = (weight, length) => {
   return array;
 };
 
-const createChecksum = (cpfStart, weights) =>
+const createChecksum = (cpfStart: string, weights: number[]) =>
   cpfStart.split('').reduce((agg, value, index) => agg + parseInt(value, 10) * weights[index], 0);
 
-export default function generateChecksum(base, weights) {
+export default function generateChecksum(base: string | number, weights: number | number[]) {
   const numericBase = onlyNumbers(base);
 
-  if (weights.constructor === Number) {
+  if (typeof weights === 'number') {
     const weightsArray = numberToWeightArray(weights, numericBase.length);
     return createChecksum(numericBase, weightsArray);
   }
 
-  if (weights.constructor === Array) {
+  if (Array.isArray(weights)) {
     return createChecksum(numericBase, weights);
   }
 

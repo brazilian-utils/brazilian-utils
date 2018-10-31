@@ -1,5 +1,7 @@
 export const CPF_LENGTH = 11;
 
+export type State = keyof typeof STATES_CODE;
+
 export const STATES_CODE = {
   RS: '0',
   DF: '1',

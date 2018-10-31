@@ -20,7 +20,7 @@ export const calculateNthDigit = (sum: number) => {
   return Math.abs(mod < 2 ? 0 : mod - 11);
 };
 
-export const concatDigits = (digits: number[]) => digits.reduce((string, digit) => string + digit, '');
+export const concatDigits = (digits: (string | number)[]) => digits.reduce((string: string, digit) => string + digit, '');
 
 export default function generateCnpj() {
   const twelveNumbers = generateRandomNumbers(CNPJ_LENGTH - 2);

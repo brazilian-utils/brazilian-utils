@@ -87,7 +87,7 @@
         "test"
       ]
     },
-        {
+    {
       "login": "Leonardo18",
       "name": "Leonardo Dutra",
       "avatar_url": "https://avatars2.githubusercontent.com/u/14338574?v=4",
@@ -96,6 +96,16 @@
         "code",
         "doc",
         "test"
+      ]
+    },
+    {
+      "login": "vhfmag",
+      "name": "Victor Magalhães",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/357835?v=4",
+      "profile": "https://victormagalhaes.codes",
+      "contributions": [
+        "code",
+        "tool"
       ]
     }
   ],

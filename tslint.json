@@ -1,0 +1,17 @@
+{
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint-config-airbnb",
+        "tslint-config-prettier",
+        "tslint-plugin-prettier"
+    ],
+    "jsRules": {},
+    "rules": {
+      "no-increment-decrement": false,
+      "import-name": false
+    },
+    "linterOptions": {
+      "exclude": ["**/*.d.ts", "**/*.test.ts"]
+    },
+    "rulesDirectory": []
+}

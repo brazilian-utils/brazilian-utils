@@ -5,3 +5,4 @@ yarn-error.log
 /.vscode
 /.idea
 lerna-debug.log
+.rpt2_cache

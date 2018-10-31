@@ -31,3 +31,5 @@ export const STATES_CODE = {
   PR: '9',
   SC: '9',
 };
+
+export const STATES = Object.keys(STATES_CODE) as State[];

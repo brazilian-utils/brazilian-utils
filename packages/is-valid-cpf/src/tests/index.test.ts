@@ -12,24 +12,24 @@ describe('isValidCpf', () => {
     });
 
     test('when is null', () => {
-      expect(isValidCpf(null)).toBe(false);
+      expect(isValidCpf(null as any)).toBe(false);
     });
 
     test('when is undefined', () => {
-      expect(isValidCpf(undefined)).toBe(false);
+      expect(isValidCpf(undefined as any)).toBe(false);
     });
 
     test('when is a boolean', () => {
-      expect(isValidCpf(true)).toBe(false);
-      expect(isValidCpf(false)).toBe(false);
+      expect(isValidCpf(true as any)).toBe(false);
+      expect(isValidCpf(false as any)).toBe(false);
     });
 
     test('when is a object', () => {
-      expect(isValidCpf({})).toBe(false);
+      expect(isValidCpf({} as any)).toBe(false);
     });
 
     test('when is a array', () => {
-      expect(isValidCpf([])).toBe(false);
+      expect(isValidCpf([] as any)).toBe(false);
     });
 
     test(`when dont match with CPF length (${CPF_LENGTH})`, () => {

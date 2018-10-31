@@ -7,23 +7,23 @@ describe('isValidCep', () => {
       expect(isValidCep('')).toBe(false);
     });
     test('when is null', () => {
-      expect(isValidCep(null)).toBe(false);
+      expect(isValidCep(null as any)).toBe(false);
     });
     test('when is undefined', () => {
-      expect(isValidCep(undefined)).toBe(false);
+      expect(isValidCep(undefined as any)).toBe(false);
     });
     test(`when length is greater than ${CEP_LENGTH}`, () => {
       expect(isValidCep('123456789')).toBe(false);
     });
     test('when is array', () => {
-      expect(isValidCep([])).toBe(false);
+      expect(isValidCep([] as any)).toBe(false);
     });
     test('when is array', () => {
-      expect(isValidCep({})).toBe(false);
+      expect(isValidCep({} as any)).toBe(false);
     });
     test('when is boolean', () => {
-      expect(isValidCep(true)).toBe(false);
-      expect(isValidCep(false)).toBe(false);
+      expect(isValidCep(true as any)).toBe(false);
+      expect(isValidCep(false as any)).toBe(false);
     });
   });
   describe('should return true', () => {

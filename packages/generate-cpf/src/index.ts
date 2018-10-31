@@ -1,13 +1,13 @@
 import generateChecksum from '@brazilian-utils/helper-generate-checksum';
-import { CPF_LENGTH, STATES_CODE } from './constants';
+import { CPF_LENGTH, STATES_CODE, State } from './constants';
 
-const randomNumber = length =>
+const randomNumber = (length: number) =>
   Math.random()
     .toString()
     .substr(2, length);
 
-export default function generateCpf({ state } = {}) {
-  const stateCode = Object.keys(STATES_CODE).includes(state) ? STATES_CODE[state] : randomNumber(1);
+export default function generateCpf({ state }: { state?: State } = {}) {
+  const stateCode = state && Object.keys(STATES_CODE).includes(state) ? STATES_CODE[state] : randomNumber(1);
   const baseCpf = randomNumber(CPF_LENGTH - 3) + stateCode;
 
   const mod1 = generateChecksum(baseCpf, 10) % 11;

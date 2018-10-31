@@ -2,7 +2,7 @@ import generateChecksum from '@brazilian-utils/helper-generate-checksum';
 
 import { CNPJ_LENGTH, FIRST_DIGIT_WEIGHTS, SECOND_DIGIT_WEIGHTS } from './constants';
 
-export const generateRandomNumbers = n =>
+export const generateRandomNumbers = (n: number) =>
   Array(n)
     .fill(0)
     .map(() =>
@@ -12,15 +12,15 @@ export const generateRandomNumbers = n =>
     )
     .map(number => parseInt(number, 10));
 
-export const sumOfDigitsMultipliedByWeights = (numbers, weights) => generateChecksum(numbers, weights);
+export const sumOfDigitsMultipliedByWeights = (numbers: number[], weights: number[]) => generateChecksum(numbers.reduce((a, b) => a + b, ''), weights);
 
-export const calculateNthDigit = sum => {
+export const calculateNthDigit = (sum: number) => {
   const mod = sum % 11;
 
   return Math.abs(mod < 2 ? 0 : mod - 11);
 };
 
-export const concatDigits = digits => digits.reduce((string, digit) => string + digit, '');
+export const concatDigits = (digits: number[]) => digits.reduce((string, digit) => string + digit, '');
 
 export default function generateCnpj() {
   const twelveNumbers = generateRandomNumbers(CNPJ_LENGTH - 2);

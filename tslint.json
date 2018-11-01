@@ -11,7 +11,7 @@
       "import-name": false
     },
     "linterOptions": {
-      "exclude": ["**/*.d.ts", "**/*.test.ts"]
+      "exclude": ["**/*.d.ts"]
     },
     "rulesDirectory": []
 }

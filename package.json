@@ -14,9 +14,11 @@
   "scripts": {
     "build": "lerna run build",
     "prebuild": "lerna bootstrap",
-    "lint": "eslint .",
+    "lint": "tslint 'packages/**/*.ts'",
     "test": "jest",
     "pretest": "npm run lint",
+    "build:declarations": "lerna exec --no-bail --parallel 'tsc -p tsconfig.build.json'",
+    "postbuild": "yarn build:declarations",
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate"
   },
@@ -24,16 +26,21 @@
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.50",
     "@babel/preset-env": "^7.0.0-rc.2",
+    "@babel/preset-typescript": "^7.1.0",
+    "@types/jest": "^23.3.9",
     "all-contributors-cli": "^5.4.0",
     "babel-core": "^7.0.0-0",
     "babel-jest": "^23.4.2",
-    "eslint": "^5.4.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-config-prettier": "^3.0.1",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-prettier": "^2.6.2",
     "jest": "^23.5.0",
     "lerna": "^3.1.4",
-    "prettier": "^1.14.2"
-  }
+    "prettier": "^1.14.2",
+    "ts-jest": "^23.10.4",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "tslint-config-airbnb": "^5.11.0",
+    "tslint-config-prettier": "^1.15.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "typescript": "^3.1.4"
+  },
+  "dependencies": {}
 }

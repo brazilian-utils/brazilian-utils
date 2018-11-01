@@ -45,7 +45,7 @@ describe('cnpj calculation logic', () => {
     );
     expect(secondDigit).toBe(1);
 
-    const cnpj = concatDigits([firstBlock.join(''), firstDigit, secondDigit]);
+    const cnpj = concatDigits([parseInt(firstBlock.join(''), 10), firstDigit, secondDigit]);
     expect(cnpj.length).toBe(CNPJ_LENGTH);
     expect(cnpj).toBe('11444777000161');
     expect(isValidCnpj(cnpj)).toBe(true);

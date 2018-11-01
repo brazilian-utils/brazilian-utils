@@ -1,7 +1,7 @@
 import isValidCpf from '@brazilian-utils/is-valid-cpf';
 
 import cpfGenerator from '..';
-import { CPF_LENGTH, STATES_CODE } from '../constants';
+import { CPF_LENGTH, STATES_CODE, STATES } from '../constants';
 
 describe('cpfGenerator', () => {
   describe('should have the right length', () => {
@@ -16,7 +16,7 @@ describe('cpfGenerator', () => {
 
   describe('should return a valid CPF for each bazilian state', () => {
     describe('with Initials', () => {
-      Object.keys(STATES_CODE).map(state =>
+      STATES.map(state =>
         test(state, () => {
           expect(cpfGenerator({ state }).substr(8, 1) === STATES_CODE[state]).toBe(true);
         })

@@ -8,6 +8,7 @@
   "umd:main": "dist/index.umd.js",
   "module": "dist/index.m.js",
   "source": "src/index.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],

@@ -1,5 +1,7 @@
 export const CPF_LENGTH = 11;
 
+export type State = keyof typeof STATES_CODE;
+
 export const STATES_CODE = {
   RS: '0',
   DF: '1',
@@ -29,3 +31,5 @@ export const STATES_CODE = {
   PR: '9',
   SC: '9',
 };
+
+export const STATES = Object.keys(STATES_CODE) as State[];

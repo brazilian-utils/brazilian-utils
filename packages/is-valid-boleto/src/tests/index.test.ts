@@ -7,23 +7,23 @@ describe('isValidBoleto', () => {
       expect(isValidBoleto('')).toBe(false);
     });
     test('when is null', () => {
-      expect(isValidBoleto(null)).toBe(false);
+      expect(isValidBoleto(null as any)).toBe(false);
     });
     test('when is undefined', () => {
-      expect(isValidBoleto(undefined)).toBe(false);
+      expect(isValidBoleto(undefined as any)).toBe(false);
     });
     test(`when length is less than ${DIGITABLE_LINE_LENGTH}`, () => {
       expect(isValidBoleto('123456789')).toBe(false);
     });
     test('when is array', () => {
-      expect(isValidBoleto([])).toBe(false);
+      expect(isValidBoleto([] as any)).toBe(false);
     });
     test('when is object', () => {
-      expect(isValidBoleto({})).toBe(false);
+      expect(isValidBoleto({} as any)).toBe(false);
     });
     test('when is boolean', () => {
-      expect(isValidBoleto(true)).toBe(false);
-      expect(isValidBoleto(false)).toBe(false);
+      expect(isValidBoleto(true as any)).toBe(false);
+      expect(isValidBoleto(false as any)).toBe(false);
     });
   });
   describe('should return true', () => {

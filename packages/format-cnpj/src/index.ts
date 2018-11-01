@@ -1,20 +1,21 @@
 import onlyNumbers from '@brazilian-utils/helper-only-numbers';
 import isLastChar from '@brazilian-utils/helper-is-last-char';
 
-import { CPF_LENGTH, DOT_INDEXES, HYPHEN_INDEXES } from './constants';
+import { CNPJ_LENGTH, DOT_INDEXES, SLASH_INDEXES, HYPHEN_INDEXES } from './constants';
 
-export default function formatCpf(cpf) {
-  if (!cpf) return '';
+export default function formatCnpj(cnpj: string) {
+  if (!cnpj) return '';
 
-  const numericCPF = onlyNumbers(cpf);
+  const numericCNPJ = onlyNumbers(cnpj);
 
-  return numericCPF
-    .slice(0, CPF_LENGTH)
+  return numericCNPJ
+    .slice(0, CNPJ_LENGTH)
     .split('')
     .reduce((acc, digit, index) => {
       const result = `${acc}${digit}`;
-      if (!isLastChar(index, numericCPF)) {
+      if (!isLastChar(index, numericCNPJ)) {
         if (DOT_INDEXES.includes(index)) return `${result}.`;
+        if (SLASH_INDEXES.includes(index)) return `${result}/`;
         if (HYPHEN_INDEXES.includes(index)) return `${result}-`;
       }
       return result;

@@ -19,6 +19,6 @@ describe('generate', () => {
     const baseNumber = 12;
     const weight = 'teste';
 
-    expect(() => generateCheckSum(baseNumber, weight)).toThrow();
+    expect(() => generateCheckSum(baseNumber, weight as any)).toThrow();
   });
 });

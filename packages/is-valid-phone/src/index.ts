@@ -7,7 +7,7 @@ import { PHONE_MIN_LENGTH, PHONE_MAX_LENGTH, MOBILE_NUMBERS, LANDLINE_NUMBERS, W
  *
  * @param {*} phone
  */
-const isValidLength = phone => phone.length >= PHONE_MIN_LENGTH && phone.length <= PHONE_MAX_LENGTH;
+const isValidLength = (phone: string) => phone.length >= PHONE_MIN_LENGTH && phone.length <= PHONE_MAX_LENGTH;
 
 /**
  * Check if the phone is a landline or mobile valid
@@ -18,7 +18,7 @@ const isValidLength = phone => phone.length >= PHONE_MIN_LENGTH && phone.length 
  * @param {*} phone
  * @returns
  */
-const isValidNumberStart = phone => {
+const isValidNumberStart = (phone: string) => {
   if (phone.length === PHONE_MIN_LENGTH) {
     return LANDLINE_NUMBERS.includes(Number(phone.charAt(2)));
   }
@@ -26,14 +26,14 @@ const isValidNumberStart = phone => {
   return MOBILE_NUMBERS.includes(Number(phone.charAt(2)));
 };
 
-const isValidCode = phone => WHITELIST_STATES.includes(Number(phone.substr(0, 2)));
+const isValidCode = (phone: string) => WHITELIST_STATES.includes(Number(phone.substr(0, 2)));
 
 /**
  * Check if the phone number is valid.
  *
  * @param {*} phone
  */
-export default function isValidPhone(phone) {
+export default function isValidPhone(phone: string) {
   if (!phone) return false;
 
   const numericPhone = onlyNumbers(phone);

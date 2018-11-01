@@ -1,0 +1,20 @@
+{
+  "exclude": [
+    "**/*.test.*"
+  ],
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "es6",
+    "declaration": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "paths": {
+      "@brazilian-utils/*": ["packages/*/src"],
+      "*": ["node_modules", "packages"]
+    },
+    "esModuleInterop": true
+  }
+}

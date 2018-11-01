@@ -12,24 +12,24 @@ describe('isValidCnpj', () => {
     });
 
     test('when is null', () => {
-      expect(isValidCnpj(null)).toBe(false);
+      expect(isValidCnpj(null as any)).toBe(false);
     });
 
     test('when is undefined', () => {
-      expect(isValidCnpj(undefined)).toBe(false);
+      expect(isValidCnpj(undefined as any)).toBe(false);
     });
 
     test('when is a boolean', () => {
-      expect(isValidCnpj(true)).toBe(false);
-      expect(isValidCnpj(false)).toBe(false);
+      expect(isValidCnpj(true as any)).toBe(false);
+      expect(isValidCnpj(false as any)).toBe(false);
     });
 
     test('when is a object', () => {
-      expect(isValidCnpj({})).toBe(false);
+      expect(isValidCnpj({} as any)).toBe(false);
     });
 
     test('when is a array', () => {
-      expect(isValidCnpj([])).toBe(false);
+      expect(isValidCnpj([] as any)).toBe(false);
     });
 
     test(`when dont match with CNPJ length (${CNPJ_LENGTH})`, () => {

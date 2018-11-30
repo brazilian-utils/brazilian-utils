@@ -1,5 +1,9 @@
 import isValidPhone from '..';
-import { WHITELIST_STATES, PHONE_MIN_LENGTH, PHONE_MAX_LENGTH } from '../constants';
+import {
+  PHONE_MAX_LENGTH,
+  PHONE_MIN_LENGTH,
+  WHITELIST_STATES
+} from '../constants';
 
 describe('isValidPhone', () => {
   describe('should return false', () => {
@@ -30,7 +34,9 @@ describe('isValidPhone', () => {
 
   describe('should return true', () => {
     test('when the code is on the WHITELIST of states', () => {
-      WHITELIST_STATES.forEach(code => expect(isValidPhone(`(${code}) 9 0000-0000`)).toBe(true));
+      WHITELIST_STATES.forEach(code =>
+        expect(isValidPhone(`(${code}) 9 0000-0000`)).toBe(true)
+      );
     });
 
     test('when is a mobile phone valid with mask', () => {

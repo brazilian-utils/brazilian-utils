@@ -19,6 +19,9 @@
     "url": "https://github.com/hyanmandian/brazilian-utils/issues"
   },
   "license": "MIT",
+  "devDependencies": {
+    "microbundle": "^0.6.0"
+  },
   "publishConfig": {
     "access": "public"
   }

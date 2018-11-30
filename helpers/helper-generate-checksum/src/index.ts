@@ -1,27 +1,30 @@
 import onlyNumbers from '@brazilian-utils/helper-only-numbers';
 
-const numberToWeightArray = (weight: number, length: number) => {
-  const array: ReadonlyArray<any> = [];
+export interface Checksum {
+  readonly base: string | number;
+  readonly weights: number | ReadonlyArray<number>;
+}
 
-  for (const i = 0; i < length; i++) {
-    array.push(weight - i);
-  }
-
-  return array;
+const numberToWeightArray = (
+  weight: number,
+  length: number
+): ReadonlyArray<number> => {
+  return Array.from(Array<number>(length).keys()).map((_, i) => weight - i);
 };
 
-const createChecksum = (cpfStart: string, weights: ReadonlyArray<number>) =>
-  cpfStart
+const createChecksum = (cpfStart: string, weights: ReadonlyArray<number>) => {
+  return cpfStart
     .split('')
     .reduce(
       (agg, value, index) => agg + parseInt(value, 10) * weights[index],
       0
     );
+};
 
 export default function generateChecksum(
   base: string | number,
   weights: number | ReadonlyArray<number>
-): string {
+): number {
   const numericBase = onlyNumbers(base);
 
   if (typeof weights === 'number') {

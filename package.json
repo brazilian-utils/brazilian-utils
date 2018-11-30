@@ -6,15 +6,13 @@
   "repository": "https://github.com/andreoav/brazilian-utils-ts",
   "license": "MIT",
   "keywords": [],
-  "workspaces": [
-    "packages/*",
-    "helpers/*"
-  ],
+  "workspaces": ["packages/*", "helpers/*"],
   "scripts": {
     "describe": "npm-scripts-info",
     "build": "run-s clean && run-p build:*",
     "build:main": "lerna run build:main",
     "build:module": "lerna run build:module",
+    "lerna:bootstrap":  "lerna bootstrap",
     "fix": "run-s fix:*",
     "fix:prettier": "prettier \"{packages,helpers}/**/*.ts\" --write",
     "fix:tslint": "tslint --fix --project .",

@@ -3,13 +3,14 @@ import onlyNumbers from '@brazilian-utils/helper-only-numbers';
 import {
   CHECK_DIGIT_MOD_11_POSITION,
   DIGITABLE_LINE_LENGTH,
+  DIGITABLE_LINE_TO_BOLETO_CONVERT_POSITIONS,
   MOD_10_WEIGHTS,
   MOD_11_WEIGHTS,
-  PARTIALS_TO_VERIFY_MOD_10,
-  DIGITABLE_LINE_TO_BOLETO_CONVERT_POSITIONS,
+  PARTIALS_TO_VERIFY_MOD_10
 } from './constants';
 
-const isValidLength = (digitableLine: string) => digitableLine.length === DIGITABLE_LINE_LENGTH;
+const isValidLength = (digitableLine: string) =>
+  digitableLine.length === DIGITABLE_LINE_LENGTH;
 
 const mod10 = (partial: string) => {
   const weights = MOD_10_WEIGHTS;
@@ -36,7 +37,8 @@ const mod11 = (value: string) => {
     .reduce((acc, digit) => {
       const mult = parseInt(digit, 10) * weight;
 
-      weight = weight < MOD_11_WEIGHTS.end ? weight + 1 : MOD_11_WEIGHTS.initial;
+      weight =
+        weight < MOD_11_WEIGHTS.end ? weight + 1 : MOD_11_WEIGHTS.initial;
 
       return acc + mult;
     }, 0);
@@ -63,7 +65,8 @@ const parseDigitableLine = (digitableLine: string) =>
 
 const validateMod11CheckDigit = (parsedLine: string) => {
   const mod = mod11(
-    parsedLine.slice(0, CHECK_DIGIT_MOD_11_POSITION) + parsedLine.slice(CHECK_DIGIT_MOD_11_POSITION + 1)
+    parsedLine.slice(0, CHECK_DIGIT_MOD_11_POSITION) +
+      parsedLine.slice(CHECK_DIGIT_MOD_11_POSITION + 1)
   );
   return +parsedLine[CHECK_DIGIT_MOD_11_POSITION] === mod;
 };
@@ -71,9 +74,13 @@ const validateMod11CheckDigit = (parsedLine: string) => {
 export default function isValidBoleto(digitableLine: string) {
   const clearValue = onlyNumbers(digitableLine);
 
-  if (!isValidLength(clearValue)) return false;
+  if (!isValidLength(clearValue)) {
+    return false;
+  }
 
-  if (!validateDigitableLinePartials(clearValue)) return false;
+  if (!validateDigitableLinePartials(clearValue)) {
+    return false;
+  }
 
   const parsedValue = parseDigitableLine(clearValue);
 

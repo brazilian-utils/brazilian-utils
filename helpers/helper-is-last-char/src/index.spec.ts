@@ -1,4 +1,4 @@
-import isLastChar from '..';
+import isLastChar from '.';
 
 describe('isLastChar', () => {
   test('should return true when index is the same as last index of the string', () => {

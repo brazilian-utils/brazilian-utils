@@ -1,7 +1,6 @@
 {
   "npmClient": "yarn",
   "npmClientArgs": ["--no-lockfile"],
-  "packages": ["packages/*", "helpers/*"],
   "command": {
     "publish": {
       "ignoreChanges": ["**/*.md", "**/example/**", "**/tests/**"]

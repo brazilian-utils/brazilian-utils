@@ -5,7 +5,9 @@ import { CEP_LENGTH } from './constants';
 const isValidLength = (cep: string) => cep.length === CEP_LENGTH;
 
 export default function isValidCep(cep: string) {
-  if (!cep) return false;
+  if (!cep) {
+    return false;
+  }
 
   const numericCEP = onlyNumbers(cep);
 

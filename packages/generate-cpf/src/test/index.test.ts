@@ -1,7 +1,7 @@
 import isValidCpf from '@brazilian-utils/is-valid-cpf';
 
 import cpfGenerator from '..';
-import { CPF_LENGTH, STATES_CODE, STATES } from '../constants';
+import { CPF_LENGTH, STATES, STATES_CODE } from '../constants';
 
 describe('cpfGenerator', () => {
   describe('should have the right length', () => {
@@ -18,7 +18,9 @@ describe('cpfGenerator', () => {
     describe('with Initials', () => {
       STATES.map(state =>
         test(state, () => {
-          expect(cpfGenerator({ state }).substr(8, 1) === STATES_CODE[state]).toBe(true);
+          expect(
+            cpfGenerator({ state }).substr(8, 1) === STATES_CODE[state]
+          ).toBe(true);
         })
       );
     });

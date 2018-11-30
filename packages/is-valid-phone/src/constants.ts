@@ -65,7 +65,7 @@ export const WHITELIST_STATES = [
   96,
   97,
   98,
-  99,
+  99
 ];
 export const PHONE_MIN_LENGTH = 10;
 export const PHONE_MAX_LENGTH = 11;

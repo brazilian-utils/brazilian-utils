@@ -1,4 +1,10 @@
-import { isValidCpf, isValidCnpj, isValidBoleto, isValidCep, isValidPhone } from '../index';
+import {
+  isValidBoleto,
+  isValidCep,
+  isValidCnpj,
+  isValidCpf,
+  isValidPhone
+} from '../index';
 
 describe('isValidCpf', () => {
   test('should have been imported correctly', () => {

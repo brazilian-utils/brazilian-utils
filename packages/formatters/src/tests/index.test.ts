@@ -1,4 +1,4 @@
-import { formatCpf, formatCnpj } from '../index';
+import { formatCnpj, formatCpf } from '../index';
 
 describe('formatCpf', () => {
   test('should have been imported correctly', () => {

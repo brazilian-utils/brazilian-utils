@@ -1,13 +1,20 @@
 import onlyNumbers from '@brazilian-utils/helper-only-numbers';
 
-import { PHONE_MIN_LENGTH, PHONE_MAX_LENGTH, MOBILE_NUMBERS, LANDLINE_NUMBERS, WHITELIST_STATES } from './constants';
+import {
+  LANDLINE_NUMBERS,
+  MOBILE_NUMBERS,
+  PHONE_MAX_LENGTH,
+  PHONE_MIN_LENGTH,
+  WHITELIST_STATES
+} from './constants';
 
 /**
  * Check if the length of phone number is valid.
  *
  * @param {*} phone
  */
-const isValidLength = (phone: string) => phone.length >= PHONE_MIN_LENGTH && phone.length <= PHONE_MAX_LENGTH;
+const isValidLength = (phone: string) =>
+  phone.length >= PHONE_MIN_LENGTH && phone.length <= PHONE_MAX_LENGTH;
 
 /**
  * Check if the phone is a landline or mobile valid
@@ -26,7 +33,8 @@ const isValidNumberStart = (phone: string) => {
   return MOBILE_NUMBERS.includes(Number(phone.charAt(2)));
 };
 
-const isValidCode = (phone: string) => WHITELIST_STATES.includes(Number(phone.substr(0, 2)));
+const isValidCode = (phone: string) =>
+  WHITELIST_STATES.includes(Number(phone.substr(0, 2)));
 
 /**
  * Check if the phone number is valid.
@@ -34,9 +42,15 @@ const isValidCode = (phone: string) => WHITELIST_STATES.includes(Number(phone.su
  * @param {*} phone
  */
 export default function isValidPhone(phone: string) {
-  if (!phone) return false;
+  if (!phone) {
+    return false;
+  }
 
   const numericPhone = onlyNumbers(phone);
 
-  return isValidLength(numericPhone) && isValidCode(numericPhone) && isValidNumberStart(numericPhone);
+  return (
+    isValidLength(numericPhone) &&
+    isValidCode(numericPhone) &&
+    isValidNumberStart(numericPhone)
+  );
 }

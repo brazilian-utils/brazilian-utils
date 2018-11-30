@@ -1,4 +1,5 @@
-import generateCheckSum from '..';
+// tslint:disable:no-expression-statement
+import generateCheckSum from '.';
 
 describe('generate', () => {
   test('should generate the right checksum', () => {
@@ -10,7 +11,7 @@ describe('generate', () => {
 
   test('should generate the right checksum', () => {
     const baseNumber = 12;
-    const weight = [10, 9];
+    const weight: ReadonlyArray<any> = [10, 9];
 
     expect(generateCheckSum(baseNumber, weight)).toBe(28);
   });

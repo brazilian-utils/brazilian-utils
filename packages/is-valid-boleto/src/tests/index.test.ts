@@ -28,18 +28,26 @@ describe('isValidBoleto', () => {
   });
   describe('should return true', () => {
     test('when is a boleto valid without mask', () => {
-      expect(isValidBoleto('00190000090114971860168524522114675860000102656')).toBe(true);
+      expect(
+        isValidBoleto('00190000090114971860168524522114675860000102656')
+      ).toBe(true);
     });
     test('when is a boleto valid with mask', () => {
-      expect(isValidBoleto('0019000009 01149.718601 68524.522114 6 75860000102656')).toBe(true);
+      expect(
+        isValidBoleto('0019000009 01149.718601 68524.522114 6 75860000102656')
+      ).toBe(true);
     });
   });
   describe('should return false', () => {
     test('when check digit mod10 is invalid', () => {
-      expect(isValidBoleto('00190000020114971860168524522114675860000102656')).toBe(false);
+      expect(
+        isValidBoleto('00190000020114971860168524522114675860000102656')
+      ).toBe(false);
     });
     test('check digit mod11 is invalid', () => {
-      expect(isValidBoleto('00190000090114971860168524522114975860000102656')).toBe(false);
+      expect(
+        isValidBoleto('00190000090114971860168524522114975860000102656')
+      ).toBe(false);
     });
   });
 });

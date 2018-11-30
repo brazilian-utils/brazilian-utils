@@ -1,12 +1,16 @@
 import isValidCnpj from '@brazilian-utils/is-valid-cnpj';
 
+import {
+  CNPJ_LENGTH,
+  FIRST_DIGIT_WEIGHTS,
+  SECOND_DIGIT_WEIGHTS
+} from '../constants';
 import generateCnpj, {
-  generateRandomNumbers,
-  sumOfDigitsMultipliedByWeights,
   calculateNthDigit,
   concatDigits,
+  generateRandomNumbers,
+  sumOfDigitsMultipliedByWeights
 } from '../index';
-import { CNPJ_LENGTH, FIRST_DIGIT_WEIGHTS, SECOND_DIGIT_WEIGHTS } from '../constants';
 
 describe('cnpj calculation logic', () => {
   const block1 = [1, 1, 4, 4, 4, 7, 7, 7, 0, 0, 0, 1];
@@ -17,8 +21,12 @@ describe('cnpj calculation logic', () => {
   });
 
   test('Sum all numbers multiplied', () => {
-    expect(sumOfDigitsMultipliedByWeights(block1, FIRST_DIGIT_WEIGHTS)).toBe(214);
-    expect(sumOfDigitsMultipliedByWeights(block2, SECOND_DIGIT_WEIGHTS)).toBe(230);
+    expect(sumOfDigitsMultipliedByWeights(block1, FIRST_DIGIT_WEIGHTS)).toBe(
+      214
+    );
+    expect(sumOfDigitsMultipliedByWeights(block2, SECOND_DIGIT_WEIGHTS)).toBe(
+      230
+    );
   });
 
   test('Nth digit with quocient smaller than 2', () => {
@@ -37,15 +45,24 @@ describe('cnpj calculation logic', () => {
   test('Manual CNPJ validation', () => {
     const firstBlock = [1, 1, 4, 4, 4, 7, 7, 7, 0, 0, 0, 1];
 
-    const firstDigit = calculateNthDigit(sumOfDigitsMultipliedByWeights(firstBlock, FIRST_DIGIT_WEIGHTS));
+    const firstDigit = calculateNthDigit(
+      sumOfDigitsMultipliedByWeights(firstBlock, FIRST_DIGIT_WEIGHTS)
+    );
     expect(firstDigit).toBe(6);
 
     const secondDigit = calculateNthDigit(
-      sumOfDigitsMultipliedByWeights([...firstBlock, firstDigit], SECOND_DIGIT_WEIGHTS)
+      sumOfDigitsMultipliedByWeights(
+        [...firstBlock, firstDigit],
+        SECOND_DIGIT_WEIGHTS
+      )
     );
     expect(secondDigit).toBe(1);
 
-    const cnpj = concatDigits([parseInt(firstBlock.join(''), 10), firstDigit, secondDigit]);
+    const cnpj = concatDigits([
+      parseInt(firstBlock.join(''), 10),
+      firstDigit,
+      secondDigit
+    ]);
     expect(cnpj.length).toBe(CNPJ_LENGTH);
     expect(cnpj).toBe('11444777000161');
     expect(isValidCnpj(cnpj)).toBe(true);

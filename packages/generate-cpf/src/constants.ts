@@ -29,7 +29,7 @@ export const STATES_CODE = {
   ES: '7',
   SP: '8',
   PR: '9',
-  SC: '9',
+  SC: '9'
 };
 
 export const STATES = Object.keys(STATES_CODE) as State[];

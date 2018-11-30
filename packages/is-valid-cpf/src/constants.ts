@@ -8,7 +8,7 @@ export const BLACKLIST = [
   '66666666666',
   '77777777777',
   '88888888888',
-  '99999999999',
+  '99999999999'
 ];
 
 export const CPF_LENGTH = 11;

@@ -2,16 +2,16 @@
   "name": "@brazilian-utils/validators",
   "version": "0.1.9",
   "description": "A collection of useful validators",
-  "main": "dist/index.js",
-  "umd:main": "dist/index.umd.js",
-  "module": "dist/index.m.js",
-  "source": "src/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/main/index.js",
+  "module": "dist/module/index.js",
+  "typings": "dist/main/index.d.js",
+  "source": "src/index.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "microbundle"
+    "build:main": "tsc -p tsconfig.json",
+    "build:module": "tsc -p tsconfig.module.json"
   },
   "repository": "https://github.com/hyanmandian/brazilian-utils/tree/master/packages/validators",
   "author": "Andreo Vieira <contato@andreovieira.com.br>",
@@ -35,9 +35,6 @@
     "@brazilian-utils/is-valid-cnpj": "^0.1.11",
     "@brazilian-utils/is-valid-cpf": "^0.1.11",
     "@brazilian-utils/is-valid-phone": "^0.1.1"
-  },
-  "devDependencies": {
-    "microbundle": "^0.6.0"
   },
   "publishConfig": {
     "access": "public"

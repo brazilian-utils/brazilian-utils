@@ -5,21 +5,23 @@ export interface Checksum {
   readonly weights: number | ReadonlyArray<number>;
 }
 
-const numberToWeightArray = (
+function numberToWeightArray(
   weight: number,
   length: number
-): ReadonlyArray<number> => {
-  return Array.from(Array<number>(length).keys()).map((_, i) => weight - i);
-};
+): ReadonlyArray<number> {
+  return Array.from(Array<number>(length).keys()).map(
+    (_, index) => weight - index
+  );
+}
 
-const createChecksum = (cpfStart: string, weights: ReadonlyArray<number>) => {
-  return cpfStart
+function createChecksum(input: string, weights: ReadonlyArray<number>) {
+  return input
     .split('')
     .reduce(
       (agg, value, index) => agg + parseInt(value, 10) * weights[index],
       0
     );
-};
+}
 
 export default function generateChecksum(
   base: string | number,
@@ -28,8 +30,10 @@ export default function generateChecksum(
   const numericBase = onlyNumbers(base);
 
   if (typeof weights === 'number') {
-    const weightsArray = numberToWeightArray(weights, numericBase.length);
-    return createChecksum(numericBase, weightsArray);
+    return createChecksum(
+      numericBase,
+      numberToWeightArray(weights, numericBase.length)
+    );
   }
 
   if (Array.isArray(weights)) {

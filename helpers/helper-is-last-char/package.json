@@ -3,7 +3,7 @@
   "description": "Check if the index is the same as last index of the string",
   "version": "0.1.7",
   "author": "Lucas Veloso <lucas.s.veloso@hotmail.com>",
-  "repository": "https://github.com/hyanmandian/brazilian-utils/tree/master/packages/helper-is-last-char",
+  "repository": "https://github.com/hyanmandian/brazilian-utils/tree/master/helpers/helper-is-last-char",
   "main": "dist/main/index.js",
   "module": "dist/module/index.js",
   "typings": "dist/main/index.d.js",
@@ -19,9 +19,6 @@
     "url": "https://github.com/hyanmandian/brazilian-utils/issues"
   },
   "license": "MIT",
-  "devDependencies": {
-    "microbundle": "^0.6.0"
-  },
   "publishConfig": {
     "access": "public"
   }

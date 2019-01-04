@@ -1,5 +1,6 @@
-import formatCnpj from '..';
-import { CNPJ_LENGTH } from '../constants';
+import formatCnpj from '.';
+
+import { CNPJ_LENGTH } from './constants';
 
 describe('formatCnpj', () => {
   test('should format cnpj with mask', () => {

@@ -8,7 +8,7 @@ export default function formatBoleto(boleto: string) {
 
   const numericBoleto = onlyNumbers(boleto);
 
-  const isConvenio = numericBoleto.indexOf('8') === 0;
+  const isConvenio = numericBoleto[0] === '8';
 
   return isConvenio
     ? numericBoleto
@@ -17,7 +17,7 @@ export default function formatBoleto(boleto: string) {
         .reduce((acc, digit, index) => {
           const result = `${acc}${digit}`;
           if (!isLastChar(index, numericBoleto)) {
-            if (DOT_BOLETO_CONVENIO.includes(index)) return `${result}.`;
+            if (DOT_BOLETO_CONVENIO.indexOf(index) >= 0) return `${result}.`;
           }
           return result;
         }, '')
@@ -27,8 +27,8 @@ export default function formatBoleto(boleto: string) {
         .reduce((acc, digit, index) => {
           const result = `${acc}${digit}`;
           if (!isLastChar(index, numericBoleto)) {
-            if (DOT_BOLETO.includes(index)) return `${result}.`;
-            if (SPACE_BOLETO.includes(index)) return `${result} `;
+            if (DOT_BOLETO.indexOf(index) >= 0) return `${result}.`;
+            if (SPACE_BOLETO.indexOf(index) >= 0) return `${result} `;
           }
           return result;
         }, '');

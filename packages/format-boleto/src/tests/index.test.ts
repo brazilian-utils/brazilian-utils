@@ -73,7 +73,7 @@ describe('formatBoleto', () => {
     );
   });
 
-  test('should format boleto convenio with mask', () => {
+  test('should format boleto convênio with mask', () => {
     expect(formatBoleto('')).toBe('');
     expect(formatBoleto('8')).toBe('8');
     expect(formatBoleto('83')).toBe('83');

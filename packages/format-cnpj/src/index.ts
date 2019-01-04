@@ -9,10 +9,6 @@ import {
 } from './constants';
 
 export default function formatCnpj(cnpj: string) {
-  if (!cnpj) {
-    return '';
-  }
-
   const numericCNPJ = onlyNumbers(cnpj);
 
   return numericCNPJ
@@ -20,17 +16,21 @@ export default function formatCnpj(cnpj: string) {
     .split('')
     .reduce((acc, digit, index) => {
       const result = `${acc}${digit}`;
+
       if (!isLastChar(index, numericCNPJ)) {
         if (DOT_INDEXES.includes(index)) {
           return `${result}.`;
         }
+
         if (SLASH_INDEXES.includes(index)) {
           return `${result}/`;
         }
+
         if (HYPHEN_INDEXES.includes(index)) {
           return `${result}-`;
         }
       }
+
       return result;
     }, '');
 }

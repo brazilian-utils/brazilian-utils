@@ -6,3 +6,5 @@ yarn-error.log
 /.idea
 lerna-debug.log
 .rpt2_cache
+
+.DS_Store

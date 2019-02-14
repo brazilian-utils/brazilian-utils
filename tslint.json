@@ -1,17 +1,7 @@
 {
-    "defaultSeverity": "error",
-    "extends": [
-        "tslint-config-airbnb",
-        "tslint-config-prettier",
-        "tslint-plugin-prettier"
-    ],
-    "jsRules": {},
-    "rules": {
-      "no-increment-decrement": false,
-      "import-name": false
-    },
-    "linterOptions": {
-      "exclude": ["**/*.d.ts"]
-    },
-    "rulesDirectory": []
+  "extends": ["tslint:latest", "tslint-config-prettier"],
+  "rules": {
+    "interface-name": [true, "never-prefix"],
+    "no-implicit-dependencies": [true, "dev"]
+  }
 }

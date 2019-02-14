@@ -1,20 +1,22 @@
 {
-  "exclude": [
-    "**/*.test.*"
-  ],
   "compilerOptions": {
-    "target": "esnext",
-    "module": "es6",
-    "declaration": true,
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
     "moduleResolution": "node",
-    "baseUrl": "./",
-    "paths": {
-      "@brazilian-utils/*": ["packages/*/src"],
-      "*": ["node_modules", "packages"]
-    },
-    "esModuleInterop": true
-  }
+    "target": "es5",
+    "module":"es2015",
+    "lib": ["es2015", "es2016", "es2017", "dom"],
+    "strict": true,
+    "sourceMap": true,
+    "declaration": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "declarationDir": "dist/types",
+    "outDir": "dist/lib",
+    "typeRoots": [
+      "node_modules/@types"
+    ]
+  },
+  "include": [
+    "src"
+  ]
 }

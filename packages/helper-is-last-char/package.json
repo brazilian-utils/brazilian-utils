@@ -13,7 +13,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "microbundle"
+    "build": "microbundle && npm run generate-types",
+    "generate-types": "tsc --outFile dist/index.js --emitDeclarationOnly"
   },
   "bugs": {
     "url": "https://github.com/hyanmandian/brazilian-utils/issues"

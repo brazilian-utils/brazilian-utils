@@ -11,7 +11,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "microbundle"
+    "build": "microbundle && npm run generate-types",
+    "generate-types": "tsc --outFile dist/index.js --emitDeclarationOnly"
   },
   "repository": "https://github.com/hyanmandian/brazilian-utils/tree/master/packages/formatters",
   "author": "Lucas Veloso <lucas.s.veloso@hotmail.com>",

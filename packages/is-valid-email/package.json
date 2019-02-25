@@ -11,7 +11,7 @@
       "dist"
     ],
     "scripts": {
-      "build": "microbundle && npm run generate-types",
+      "build": "microbundle",
     "generate-types": "tsc --outFile dist/index.js --emitDeclarationOnly"
     },
     "author": "Leonardo Dutra <leo_dutra18@hotmail.com>",

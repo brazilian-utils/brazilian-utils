@@ -11,7 +11,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "microbundle && npm run generate-types",
+    "build": "microbundle",
     "generate-types": "tsc --outFile dist/index.js --emitDeclarationOnly"
   },
   "author": "Fernando Rogelin <nando_rogelin@hotmail.com>",

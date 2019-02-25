@@ -11,7 +11,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "microbundle && npm run generate-types",
+    "build": "microbundle",
     "generate-types": "tsc --outFile dist/index.js --emitDeclarationOnly"
   },
   "repository": "https://github.com/hyanmandian/brazilian-utils/tree/master/packages/generate-cnpj",

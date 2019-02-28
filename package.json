@@ -17,7 +17,7 @@
     "lint": "tslint 'packages/**/*.ts'",
     "test": "jest",
     "pretest": "npm run lint",
-    "build:declarations": "lerna exec --no-bail --parallel 'tsc -p tsconfig.build.json'",
+    "build:declarations": "lerna run generate-types",
     "postbuild": "yarn build:declarations",
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate"

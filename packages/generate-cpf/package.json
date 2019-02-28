@@ -11,7 +11,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "microbundle"
+    "build": "microbundle",
+    "generate-types": "tsc --outFile dist/index.js --emitDeclarationOnly"
   },
   "author": "Matheus Almeida <mat.almeida@live.com>",
   "repository": "https://github.com/hyanmandian/brazilian-utils/tree/master/packages/generate-cpf",

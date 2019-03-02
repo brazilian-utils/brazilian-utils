@@ -1,10 +1,26 @@
 import { isLastChar, onlyNumbers } from '../../helpers';
 
+/**
+ * Length of a valid CPF
+ */
 export const CPF_LENGTH = 11;
+
+/**
+ * Dot positions in a formatted CPF
+ */
 export const DOT_INDEXES = [2, 5];
+
+/**
+ * Hyphen position in a formatted CPF
+ */
 export const HYPHEN_INDEXES = [8];
 
-export default function formatCpf(cpf: string) {
+/**
+ * Formats the given string with a CPF mask
+ *
+ * @param cpf CPF to format
+ */
+export default function format(cpf: string) {
   const numericCPF = onlyNumbers(cpf);
 
   return numericCPF

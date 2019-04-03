@@ -22,7 +22,7 @@ import formatProcesso from '@brazilian-utils/format-processo';
 
 formatProcesso('0002080'); // 0002080
 formatProcesso('0002080'); // 0002080-25
-formatProcesso('00020802012'); // 0002080-25.2012
-formatProcesso('00020802012515'); // 0002080-25.2012.515
-formatProcesso('000208020125150049'); // 0002080-25.2012.515.0049
+formatProcesso('0002080252012'); // 0002080-25.2012
+formatProcesso('0002080252012515'); // 0002080-25.2012.515
+formatProcesso('00020802520125150049'); // 0002080-25.2012.515.0049
 ```

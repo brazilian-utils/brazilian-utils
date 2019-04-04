@@ -5,7 +5,7 @@ import { BLACKLIST, CPF_LENGTH, CHECK_DIGITS } from './constants';
 
 const isValidLength = (cpf: string) => cpf.length === CPF_LENGTH;
 
-const cpfWithDotsAndHyphenIsValid = (cpf: string) => /\d{3}.\d{3}.\d{3}-\d{2}/g.test(cpf)
+const isValidCpfFormat = (cpf: string) => /^\d{3}\.?\d{3}\.?\d{3}-?\d{2}$/.test(cpf);
 
 const belongsToBlacklist = (cpf: string) => BLACKLIST.includes(cpf);
 
@@ -15,31 +15,13 @@ const isValidChecksum = (cpf: string) =>
     return cpf[verifierPos] === String(mod < 2 ? 0 : 11 - mod);
   });
 
-const testOnlyNumbers = (v: string) => /^\d+$/.test(v);
-
-const validateCpfOnlyNumbers = (cpf: string) => {
-
-  if (!testOnlyNumbers(cpf)) return false
+export default function isValidCpf(cpf: string) {
+  if (!cpf) return false;
 
   const numericCPF = onlyNumbers(cpf);
 
-  return isValidLength(numericCPF) && !belongsToBlacklist(numericCPF) && isValidChecksum(numericCPF);
-}
-
-const validateCpfWithDotsAndHyphen = (cpf: string) => {
-
-  const numericCPF = onlyNumbers(cpf);
-
-  return cpfWithDotsAndHyphenIsValid(cpf)
+  return isValidCpfFormat(cpf)
     && isValidLength(numericCPF)
     && !belongsToBlacklist(numericCPF)
     && isValidChecksum(numericCPF);
-}
-
-
-export default function isValidCpf(cpf: string) {
-
-  if (!cpf) return false;
-
-  return cpfWithDotsAndHyphenIsValid(cpf) ? validateCpfWithDotsAndHyphen(cpf) : validateCpfOnlyNumbers(cpf)
 }

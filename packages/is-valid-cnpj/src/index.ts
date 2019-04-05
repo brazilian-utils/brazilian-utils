@@ -5,6 +5,8 @@ import { BLACKLIST, CNPJ_LENGTH, CHECK_DIGITS } from './constants';
 
 const isValidLength = (cnpj: string) => cnpj.length === CNPJ_LENGTH;
 
+const isValidCnpjFormat = (cnpj: string) => /^\d{2}\.?\d{3}\.?\d{3}\/?\d{4}-?\d{2}$/.test(cnpj);
+
 const belongsToBlacklist = (cnpj: string) => BLACKLIST.includes(cnpj);
 
 const isValidChecksum = (cnpj: string) =>
@@ -24,5 +26,8 @@ export default function isValidCnpj(cnpj: string) {
 
   const numericCNPJ = onlyNumbers(cnpj);
 
-  return isValidLength(numericCNPJ) && !belongsToBlacklist(numericCNPJ) && isValidChecksum(numericCNPJ);
+  return isValidCnpjFormat(cnpj)
+    && isValidLength(numericCNPJ)
+    && !belongsToBlacklist(numericCNPJ)
+    && isValidChecksum(numericCNPJ);
 }

@@ -40,6 +40,10 @@ describe('isValidCnpj', () => {
       expect(isValidCnpj('ababcabcabcdab')).toBe(false);
     });
 
+    test('when is a CNPJ invalid test numbers with letters', () => {
+      expect(isValidCnpj('6ad0.t391.9asd47/0ad001-00')).toBe(false);
+    });
+
     test('when is a CNPJ invalid', () => {
       expect(isValidCnpj('11257245286531')).toBe(false);
     });

@@ -1,4 +1,5 @@
-import formatBoleto, { BOLETO_CONVENIO_LENGTH, BOLETO_LENGTH } from '.';
+import { formatBoleto } from '..';
+import { BOLETO_CONVENIO_LENGTH, BOLETO_LENGTH } from '.';
 
 describe('formatBoleto', () => {
   test('should format boleto with mask', () => {

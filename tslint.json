@@ -2,6 +2,8 @@
   "extends": ["tslint:latest", "tslint-config-prettier"],
   "rules": {
     "interface-name": [true, "never-prefix"],
-    "no-implicit-dependencies": [true, "dev"]
+    "no-implicit-dependencies": [true, "dev"],
+    "object-literal-sort-keys": false,
+    "ordered-imports": false
   }
 }

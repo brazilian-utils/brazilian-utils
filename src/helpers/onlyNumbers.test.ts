@@ -1,4 +1,4 @@
-import onlyNumbers from './onlyNumbers';
+import { onlyNumbers } from '.';
 
 describe('onlyNumbers helper', () => {
   test('should remove all non numeric characters', () => {

@@ -18,7 +18,7 @@ describe('isValidCep', () => {
     test('when is array', () => {
       expect(isValidCep([] as any)).toBe(false);
     });
-    test('when is array', () => {
+    test('when is object', () => {
       expect(isValidCep({} as any)).toBe(false);
     });
     test('when is boolean', () => {

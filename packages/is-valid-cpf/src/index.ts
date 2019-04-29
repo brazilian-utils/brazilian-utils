@@ -1,9 +1,7 @@
 import onlyNumbers from '@brazilian-utils/helper-only-numbers';
 import generateChecksum from '@brazilian-utils/helper-generate-checksum';
 
-import { BLACKLIST, CPF_LENGTH, CHECK_DIGITS } from './constants';
-
-const isValidLength = (cpf: string) => cpf.length === CPF_LENGTH;
+import { BLACKLIST, CHECK_DIGITS } from './constants';
 
 const isValidCpfFormat = (cpf: string) => /^\d{3}\.?\d{3}\.?\d{3}-?\d{2}$/.test(cpf);
 
@@ -21,7 +19,6 @@ export default function isValidCpf(cpf: string) {
   const numericCPF = onlyNumbers(cpf);
 
   return isValidCpfFormat(cpf)
-    && isValidLength(numericCPF)
     && !belongsToBlacklist(numericCPF)
     && isValidChecksum(numericCPF);
 }

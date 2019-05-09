@@ -46,6 +46,7 @@ describe('isValidPis', () => {
 
     test('when is an invalid PIS', () => {
       expect(isValidPis('12056412547')).toBe(false);
+      expect(isValidPis('12081636639')).toBe(false);
     });
   });
 

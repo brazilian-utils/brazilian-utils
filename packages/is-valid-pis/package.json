@@ -15,9 +15,9 @@
     "generate-types": "tsc --outFile dist/index.js --emitDeclarationOnly"
   },
   "author": "Alan Raso <alanrraso@gmail.com>",
-  "repository": "https://github.com/hyanmandian/brazilian-utils/tree/master/packages/is-valid-pis",
+  "repository": "https://github.com/brazilian-utils/brazilian-utils/tree/master/packages/is-valid-pis",
   "bugs": {
-    "url": "https://github.com/alanraso/brazilian-utils/issues"
+    "url": "https://github.com/brazilian-utils/brazilian-utils/issues"
   },
   "keywords": [
     "pis",

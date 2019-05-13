@@ -1,9 +1,9 @@
 import onlyNumbers from '@brazilian-utils/helper-only-numbers';
 import generateChecksum from '@brazilian-utils/helper-generate-checksum';
 
-import { BLACKLIST, CNPJ_LENGTH, CHECK_DIGITS } from './constants';
+import { BLACKLIST, CHECK_DIGITS } from './constants';
 
-const isValidLength = (cnpj: string) => cnpj.length === CNPJ_LENGTH;
+const isValidCnpjFormat = (cnpj: string) => /^\d{2}\.?\d{3}\.?\d{3}\/?\d{4}-?\d{2}$/.test(cnpj);
 
 const belongsToBlacklist = (cnpj: string) => BLACKLIST.includes(cnpj);
 
@@ -24,5 +24,7 @@ export default function isValidCnpj(cnpj: string) {
 
   const numericCNPJ = onlyNumbers(cnpj);
 
-  return isValidLength(numericCNPJ) && !belongsToBlacklist(numericCNPJ) && isValidChecksum(numericCNPJ);
+  return isValidCnpjFormat(cnpj)
+    && !belongsToBlacklist(numericCNPJ)
+    && isValidChecksum(numericCNPJ);
 }

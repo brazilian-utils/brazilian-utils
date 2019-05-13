@@ -117,6 +117,16 @@
         "code",
         "tool"
       ]
+    },
+    {
+      "login": "felipediogo",
+      "name": "Felipe F. Diogo",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/26486135?v=4",
+      "profile": "https://github.com/felipediogo",
+      "contributions": [
+        "code",
+        "test"
+      ]
     }
   ],
   "repoType": "github"

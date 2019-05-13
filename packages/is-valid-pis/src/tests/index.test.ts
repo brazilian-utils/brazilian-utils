@@ -4,7 +4,7 @@ import { isValidPis } from '../index';
 describe('isValidPis', () => {
   describe('should return false', () => {
     test('when it is on the BLACKLIST', () => {
-      BLACKLIST.forEach(cpf => expect(isValidPis(cpf)).toBe(false));
+      BLACKLIST.forEach(pis => expect(isValidPis(pis)).toBe(false));
     });
 
     test('when is a empty string', () => {

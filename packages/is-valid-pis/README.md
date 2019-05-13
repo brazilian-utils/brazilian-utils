@@ -20,8 +20,8 @@ npm install @brazilian-utils/is-valid-pis --save
 ```js
 import { isValidPis } from '@brazilian-utils/is-valid-pis';
 
-isValidCpf('12081636699'); // true
-isValidCpf('120.8163.669-9'); // true
-isValidCpf('12081636639'); // false
-isValidCpf('120.8163.663-9'); // false
+isValidPis('12081636699'); // true
+isValidPis('120.8163.669-9'); // true
+isValidPis('12081636639'); // false
+isValidPis('120.8163.663-9'); // false
 ```

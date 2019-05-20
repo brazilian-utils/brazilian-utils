@@ -1,22 +1,22 @@
 import { isLastChar, onlyNumbers } from '../../helpers';
 
 /**
- * Length of a valid CPF
+ * Length of a valid Boleto Bancário
  */
-export const LENGTH = 11;
+export const LENGTH = 47;
 
 /**
- * Dot positions in a formatted CPF
+ * Dots positions in a formatted Boleto Bancário
  */
-export const DOT_INDEXES = [2, 5];
+export const DOT_INDEXES = [4, 14, 25];
 
 /**
- * Hyphen position in a formatted CPF
+ * Spaces positions in a formatted Boleto Bancário
  */
-export const HYPHEN_INDEXES = [8];
+export const SPACE_INDEXES = [9, 20, 31, 32];
 
 /**
- * Formats the given string with a CPF mask
+ * Formats the given string with a Boleto Bancário mask
  *
  * @param {string} str
  * @returns {string}
@@ -33,8 +33,9 @@ export default function format(str: string): string {
       const result = `${acc}${digit}`;
 
       if (!isLastChar(index, numeric)) {
-        if (DOT_INDEXES.includes(index)) return `${result}.`;
-        if (HYPHEN_INDEXES.includes(index)) return `${result}-`;
+        if (DOT_INDEXES.indexOf(index) >= 0) return `${result}.`;
+
+        if (SPACE_INDEXES.indexOf(index) >= 0) return `${result} `;
       }
 
       return result;

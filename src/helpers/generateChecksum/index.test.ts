@@ -1,6 +1,6 @@
-import { generateChecksum } from '.';
+import generateChecksum from '.';
 
-describe('generate', () => {
+describe('Generate Checksum Helper', () => {
   test('should generate the right checksum', () => {
     const baseNumber = 12;
     const weight = 10;

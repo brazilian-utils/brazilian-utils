@@ -1,6 +1,6 @@
-import { isLastChar } from '.';
+import isLastChar from '.';
 
-describe('isLastChar', () => {
+describe('Is Last Char Helper', () => {
   test('should return true when index is the same as last index of the string', () => {
     expect(isLastChar(2, '123')).toBe(true);
   });

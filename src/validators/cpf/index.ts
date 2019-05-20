@@ -18,9 +18,10 @@ export const CPF_LENGTH = 11;
 
 export const CHECK_DIGITS = [9, 10];
 
-const isValidLength = (cpf: string) => cpf.length === CPF_LENGTH;
-
 const belongsToBlacklist = (cpf: string) => BLACKLIST.includes(cpf);
+
+const isValidCpfFormat = (cpf: string) =>
+  /^\d{3}\.?\d{3}\.?\d{3}-?\d{2}$/.test(cpf);
 
 const isValidChecksum = (cpf: string) => {
   return CHECK_DIGITS.every(verifierPos => {
@@ -45,7 +46,7 @@ export default function isValidCpf(cpf: string) {
   const numericCPF = onlyNumbers(cpf);
 
   return (
-    isValidLength(numericCPF) &&
+    isValidCpfFormat(cpf) &&
     !belongsToBlacklist(numericCPF) &&
     isValidChecksum(numericCPF)
   );

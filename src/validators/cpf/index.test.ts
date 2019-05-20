@@ -43,6 +43,10 @@ describe('isValidCPF', () => {
     test('when is a CPF invalid', () => {
       expect(isValidCPF('11257245286')).toBe(false);
     });
+
+    test('when is a CPF invalid test numbers with letters', () => {
+      expect(isValidCPF('foo391.838.38test0-66')).toBe(false);
+    });
   });
 
   describe('should return true', () => {

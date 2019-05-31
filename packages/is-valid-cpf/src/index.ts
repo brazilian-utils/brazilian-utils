@@ -1,24 +1,36 @@
 import onlyNumbers from '@brazilian-utils/helper-only-numbers';
 import generateChecksum from '@brazilian-utils/helper-generate-checksum';
 
-import { BLACKLIST, CHECK_DIGITS } from './constants';
+import { RESERVED_ENTRIES, VERIFICATION_INDEXES } from './constants';
 
-const isValidCpfFormat = (cpf: string) => /^\d{3}\.?\d{3}\.?\d{3}-?\d{2}$/.test(cpf);
+function isFormatValid(taxId: string): boolean {
+  return /^\d{3}\.?\d{3}\.?\d{3}-?\d{2}$/.test(taxId);
+}
 
-const belongsToBlacklist = (cpf: string) => BLACKLIST.includes(cpf);
+function isReserved(taxId: string): boolean {
+  return RESERVED_ENTRIES.indexOf(taxId) >= 0;
+}
 
-const isValidChecksum = (cpf: string) =>
-  CHECK_DIGITS.every(verifierPos => {
-    const mod = generateChecksum(cpf.slice(0, verifierPos).split('').reduce((a, b) => a + b, ''), verifierPos + 1) % 11;
-    return cpf[verifierPos] === String(mod < 2 ? 0 : 11 - mod);
+function isChecksumValid(taxId: string): boolean {
+  return VERIFICATION_INDEXES.every(index => {
+    const mod =
+      generateChecksum(
+        taxId
+          .slice(0, index)
+          .split('')
+          .reduce((a, b) => a + b, ''),
+        index + 1
+      ) % 11;
+    return taxId[index] === String(mod < 2 ? 0 : 11 - mod);
   });
+}
 
 export default function isValidCpf(cpf: string) {
   if (!cpf) return false;
 
   const numericCPF = onlyNumbers(cpf);
 
-  return isValidCpfFormat(cpf)
-    && !belongsToBlacklist(numericCPF)
-    && isValidChecksum(numericCPF);
+  return (
+    isFormatValid(cpf) && !isReserved(numericCPF) && isChecksumValid(numericCPF)
+  );
 }

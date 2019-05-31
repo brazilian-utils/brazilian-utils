@@ -1,15 +1,15 @@
 {
-  "name": "@brazilian-utils/is-valid-cpf",
+  "name": "@brazilian-utils/helper-generate-checksum",
   "version": "1.0.0-alpha.1",
-  "author": "Hyan Mandian <hyanmandian@hotmail.com>",
-  "repository": "https://github.com/brazilian-utils/brazilian-utils/tree/master/packages/is-valid-cpf",
+  "author": "Matheus Almeida <mat.almeida@live.com>",
+  "repository": "https://github.com/brazilian-utils/brazilian-utils/tree/master/packages/helper-generate-checksum",
   "bugs": {
     "url": "https://github.com/brazilian-utils/brazilian-utils/issues"
   },
   "license": "MIT",
   "main": "dist/index.js",
-  "umd:main": "dist/is-valid-cpf.umd.production.js",
-  "module": "dist/is-valid-cpf.es.production.js",
+  "umd:main": "dist/helper-generate-checksum.umd.production.js",
+  "module": "dist/helper-generate-checksum.es.production.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist"
@@ -41,7 +41,6 @@
     "typescript": "^3.5.1"
   },
   "dependencies": {
-    "@brazilian-utils/helper-generate-checksum": "^1.0.0-alpha.1",
     "@brazilian-utils/helper-only-numbers": "^1.0.0-alpha.1"
   },
   "publishConfig": {

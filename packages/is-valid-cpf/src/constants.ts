@@ -1,4 +1,4 @@
-export const BLACKLIST = [
+export const RESERVED_ENTRIES = [
   '00000000000',
   '11111111111',
   '22222222222',
@@ -11,6 +11,6 @@ export const BLACKLIST = [
   '99999999999',
 ];
 
-export const CPF_LENGTH = 11;
+export const TAXID_LENGTH = 11;
 
-export const CHECK_DIGITS = [9, 10];
+export const VERIFICATION_INDEXES = [9, 10];

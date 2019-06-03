@@ -1,2 +1,3 @@
 exclude_patterns:
-- "**/tests/"
+  - '**/tests/'
+  - 'scripts/'

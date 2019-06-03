@@ -16,6 +16,7 @@
   "scripts": {
     "test": "lerna run test",
     "build": "lerna run build",
+    "generate:package": "node scripts/generators/package.js",
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate"
   },
@@ -33,10 +34,12 @@
   "devDependencies": {
     "@types/jest": "^24.0.13",
     "all-contributors-cli": "^5.4.0",
+    "camelcase": "^5.3.1",
     "husky": "^2.3.0",
     "lerna": "^3.14.1",
     "prettier": "^1.17.1",
     "pretty-quick": "^1.11.0",
+    "prompts": "^2.1.0",
     "tsdx": "^0.6.0",
     "tslib": "^1.9.3",
     "typescript": "^3.5.1"

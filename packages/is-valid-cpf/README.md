@@ -1,6 +1,6 @@
 # @brazilian-utils/is-valid-cpf
 
-> Check if CPF is valid
+> Check if CPF is valid.
 
 See our website [http://brazilian-utils.github.io](http://brazilian-utils.github.io) for more information or the [issues](https://github.com/brazilian-utils/brazilian-utils/issues?q=is%3Aissue+is-valid-cpf) associated with this package.
 
@@ -23,7 +23,7 @@ or using <script> tag
 ```html
 <script
   type="text/javascript"
-  src="https://unpkg.com/@brazilian-utils/is-valid-cpf/dist/index.umd.js"
+  src="https://unpkg.com/@brazilian-utils/is-valid-cpf/dist/is-valid-cpf.umd.production.js"
 ></script>
 ```
 

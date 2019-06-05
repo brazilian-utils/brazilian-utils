@@ -1,35 +1,36 @@
 import onlyNumbers from '@brazilian-utils/helper-only-numbers';
 
-const numberToWeightArray = (weight: number, length: number) => {
+function numberToWeightArray(weight: number, length: number): number[] {
   const array = [];
+
   for (let i = 0; i < length; i++) {
     array.push(weight - i);
   }
 
   return array;
-};
+}
 
-const createChecksum = (cpfStart: string, weights: number[]) =>
-  cpfStart
+function createChecksum(str: string, weights: number[]): number {
+  return str
     .split('')
     .reduce(
-      (agg, value, index) => agg + parseInt(value, 10) * weights[index],
+      (acc, value, index) => acc + parseInt(value, 10) * weights[index],
       0
     );
+}
 
 export default function generateChecksum(
   base: string | number,
   weights: number | number[]
-) {
-  const numericBase = onlyNumbers(base);
+): number {
+  const number = onlyNumbers(base);
 
   if (typeof weights === 'number') {
-    const weightsArray = numberToWeightArray(weights, numericBase.length);
-    return createChecksum(numericBase, weightsArray);
+    return createChecksum(number, numberToWeightArray(weights, number.length));
   }
 
   if (Array.isArray(weights)) {
-    return createChecksum(numericBase, weights);
+    return createChecksum(number, weights);
   }
 
   throw new Error('Invalid weight type. Should be an Array like or a Number');

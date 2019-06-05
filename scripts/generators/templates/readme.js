@@ -24,7 +24,7 @@ yarn add @brazilian-utils/${name}
 or using <script> tag
 
 \`\`\`html
-<script type="text/javascript" src="https://unpkg.com/@brazilian-utils/${name}/dist/index.umd.js"></script>
+<script type="text/javascript" src="https://unpkg.com/@brazilian-utils/${name}/dist/${name}.umd.production.js"></script>
 \`\`\`
 
 ## Usage

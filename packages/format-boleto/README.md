@@ -1,6 +1,6 @@
 # @brazilian-utils/format-boleto
 
-Return boleto or boleto convênio formatted with mask.
+Return boleto formatted with mask.
 
 ## Installation
 

@@ -1,4 +1,4 @@
-import isValidCnpj, { RESERVED_ENTRIES, LENGTH } from '../src';
+import { isValidCnpj, RESERVED_ENTRIES, LENGTH } from '../src';
 
 describe('isValidCnpj', () => {
   describe('should return false', () => {

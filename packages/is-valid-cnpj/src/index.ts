@@ -1,5 +1,5 @@
-import onlyNumbers from '@brazilian-utils/helper-only-numbers';
-import generateChecksum from '@brazilian-utils/helper-generate-checksum';
+import { onlyNumbers } from '@brazilian-utils/helper-only-numbers';
+import { generateChecksum } from '@brazilian-utils/helper-generate-checksum';
 
 export const LENGTH = 14;
 
@@ -42,7 +42,7 @@ function isCheckSumValid(str: string): boolean {
   });
 }
 
-export default function isValidCnpj(str: string): boolean {
+export function isValidCnpj(str: string): boolean {
   const numbers = onlyNumbers(str);
 
   return isFormatValid(str) && !isReserved(numbers) && isCheckSumValid(numbers);

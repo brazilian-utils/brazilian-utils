@@ -1,4 +1,4 @@
-import isValidCpf from '../src';
+import { isValidCpf } from '../src';
 import { RESERVED_ENTRIES, TAXID_LENGTH } from '../src/constants';
 
 describe('isValidCpf', () => {

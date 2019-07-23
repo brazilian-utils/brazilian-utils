@@ -1,5 +1,5 @@
-import onlyNumbers from '@brazilian-utils/helper-only-numbers';
-import generateChecksum from '@brazilian-utils/helper-generate-checksum';
+import { onlyNumbers } from '@brazilian-utils/helper-only-numbers';
+import { generateChecksum } from '@brazilian-utils/helper-generate-checksum';
 
 import { RESERVED_ENTRIES, VERIFICATION_INDEXES } from './constants';
 
@@ -25,7 +25,7 @@ function isChecksumValid(taxId: string): boolean {
   });
 }
 
-export default function isValidCpf(cpf: string) {
+export function isValidCpf(cpf: string) {
   if (!cpf) return false;
 
   const numericCPF = onlyNumbers(cpf);

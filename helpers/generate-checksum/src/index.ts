@@ -1,4 +1,4 @@
-import onlyNumbers from '@brazilian-utils/helper-only-numbers';
+import { onlyNumbers } from '@brazilian-utils/helper-only-numbers';
 
 function numberToWeightArray(weight: number, length: number): number[] {
   const array = [];
@@ -19,7 +19,7 @@ function createChecksum(str: string, weights: number[]): number {
     );
 }
 
-export default function generateChecksum(
+export function generateChecksum(
   base: string | number,
   weights: number | number[]
 ): number {

@@ -26,8 +26,7 @@ module.exports = ({ name, author }) =>
       },
       jest: {
         moduleNameMapper: {
-          '^@brazilian-utils/helper-(.*)$':
-            '<rootDir>/../../helpers/helper-$1/src',
+          '^@brazilian-utils/helper-(.*)$': '<rootDir>/../../helpers/$1/src',
           '^@brazilian-utils/(.*)$': '<rootDir>/../../packages/$1/src',
         },
       },

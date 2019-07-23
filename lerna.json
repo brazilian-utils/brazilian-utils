@@ -5,6 +5,8 @@
   "packages": ["packages/*", "helpers/*"],
   "command": {
     "publish": {
+      "conventionalCommits": true,
+      "message": "chore(release): publish [skip-ci]",
       "ignoreChanges": ["**/*.md", "**/test/*.test.ts"]
     }
   }

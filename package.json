@@ -19,7 +19,7 @@
     "generate:package": "node scripts/generators/package.js",
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate",
-    "release": "lerna publish prerelease --conventional-commits"
+    "release": "lerna publish prerelease"
   },
   "husky": {
     "hooks": {

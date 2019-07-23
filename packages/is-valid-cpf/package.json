@@ -1,6 +1,6 @@
 {
   "name": "@brazilian-utils/is-valid-cpf",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha",
   "author": "Hyan Mandian <hyanmandian@hotmail.com>",
   "repository": "https://github.com/brazilian-utils/brazilian-utils/tree/master/packages/is-valid-cpf",
   "bugs": {
@@ -8,15 +8,14 @@
   },
   "license": "MIT",
   "main": "dist/index.js",
-  "umd:main": "dist/is-valid-cpf.umd.production.js",
-  "module": "dist/is-valid-cpf.es.production.js",
+  "module": "dist/is-valid-cpf.esm.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
     "start": "tsdx watch",
-    "build": "tsdx build --format cjs,es",
+    "build": "tsdx build",
     "test": "tsdx test"
   },
   "prettier": {
@@ -32,13 +31,13 @@
     }
   },
   "devDependencies": {
-    "@types/jest": "^24.0.13",
-    "husky": "^2.3.0",
-    "prettier": "^1.17.1",
-    "pretty-quick": "^1.11.0",
-    "tsdx": "^0.6.0",
-    "tslib": "^1.9.3",
-    "typescript": "^3.5.1"
+    "@types/jest": "^24.0.15",
+    "husky": "^3.0.1",
+    "prettier": "^1.18.2",
+    "pretty-quick": "^1.11.1",
+    "tsdx": "^0.7.2",
+    "tslib": "^1.10.0",
+    "typescript": "^3.5.3"
   },
   "dependencies": {
     "@brazilian-utils/helper-generate-checksum": "^1.0.0-alpha.1",

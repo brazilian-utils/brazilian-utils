@@ -10,13 +10,12 @@ module.exports = ({ name, author }) =>
       },
       license: 'MIT',
       main: 'dist/index.js',
-      'umd:main': `dist/${name}.umd.production.js`,
-      module: `dist/${name}.es.production.js`,
+      module: `dist/${name}.esm.js`,
       typings: 'dist/index.d.ts',
       files: ['dist'],
       scripts: {
         start: 'tsdx watch',
-        build: 'tsdx build --format cjs,es,umd',
+        build: 'tsdx build',
         test: 'tsdx test',
       },
       prettier: {

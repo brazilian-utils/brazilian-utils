@@ -1,6 +1,6 @@
 {
   "name": "@brazilian-utils/helper-only-numbers",
-  "version": "1.0.0-alpha",
+  "version": "1.0.0-alpha.0",
   "author": "Hyan Mandian <hyanmandian@hotmail.com>",
   "repository": "https://github.com/brazilian-utils/brazilian-utils/tree/master/packages/helper-only-numbers",
   "bugs": {
@@ -18,7 +18,6 @@
     "build": "tsdx build",
     "test": "tsdx test"
   },
-  "peerDependencies": {},
   "prettier": {
     "printWidth": 80,
     "semi": true,

@@ -1,6 +1,6 @@
 {
   "name": "@brazilian-utils/is-valid-cpf",
-  "version": "1.0.0-alpha",
+  "version": "1.0.0-alpha.0",
   "author": "Hyan Mandian <hyanmandian@hotmail.com>",
   "repository": "https://github.com/brazilian-utils/brazilian-utils/tree/master/packages/is-valid-cpf",
   "bugs": {

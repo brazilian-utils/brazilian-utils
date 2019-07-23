@@ -1,6 +1,6 @@
 {
   "name": "@brazilian-utils/helper-generate-checksum",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "author": "Matheus Almeida <mat.almeida@live.com>",
   "repository": "https://github.com/brazilian-utils/brazilian-utils/tree/master/packages/helper-generate-checksum",
   "bugs": {

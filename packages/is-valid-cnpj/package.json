@@ -1,6 +1,6 @@
 {
   "name": "@brazilian-utils/is-valid-cnpj",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0-alpha.1",
   "author": "Hyan Mandian <hyanmandian@hotmail.com>",
   "repository": "https://github.com/brazilian-utils/brazilian-utils/tree/master/packages/is-valid-cnpj",
   "bugs": {
@@ -40,8 +40,8 @@
     "typescript": "^3.5.3"
   },
   "dependencies": {
-    "@brazilian-utils/helper-generate-checksum": "^1.0.0-alpha.1",
-    "@brazilian-utils/helper-only-numbers": "^1.0.0-alpha.1"
+    "@brazilian-utils/helper-generate-checksum": "^1.0.0-alpha.0",
+    "@brazilian-utils/helper-only-numbers": "^1.0.0-alpha.0"
   },
   "publishConfig": {
     "access": "public"

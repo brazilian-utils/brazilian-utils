@@ -1,8 +1,7 @@
-dist
+*.log
+.DS_Store
 node_modules
-yarn-error.log
-/coverage
-/.vscode
-/.idea
-lerna-debug.log
-.rpt2_cache*
+.rts2_cache_cjs
+.rts2_cache_esm
+.rts2_cache_umd
+dist

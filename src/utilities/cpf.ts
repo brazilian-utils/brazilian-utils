@@ -1,4 +1,5 @@
-import { onlyNumbers, isLastChar } from '../helpers';
+import { State, STATES, STATES_CODE } from '../common/states';
+import { onlyNumbers, isLastChar, randomNumber, generateChecksum } from '../helpers';
 
 export const CPF_LENGTH = 11;
 export const DOT_INDEXES = [2, 5];
@@ -20,4 +21,17 @@ export function formatCPF(cpf: string) {
 
       return result;
     }, '');
+}
+
+export function generateCPF(state?: State) {
+  const stateCode = state && STATES.includes(state) ? STATES_CODE[state] : randomNumber(1);
+  const baseCPF = randomNumber(CPF_LENGTH - 3) + stateCode;
+
+  const mod1 = generateChecksum(baseCPF, 10) % 11;
+  const check1 = (mod1 < 2 ? 0 : 11 - mod1).toString();
+
+  const mod2 = generateChecksum(baseCPF + check1, 11) % 11;
+  const check2 = (mod2 < 2 ? 0 : 11 - mod2).toString();
+
+  return `${baseCPF}${check1.toString()}${check2.toString()}`;
 }

@@ -31,9 +31,9 @@ describe('generateCPF', () => {
     expect(generateCPF().length).toBe(CPF_LENGTH);
   });
 
-  //   test('should return valid CPF', () => {
-  //     expect(isValidCPF(generateCPF())).toBe(true);
-  //   });
+  test('should return valid CPF', () => {
+    expect(isValidCPF(generateCPF())).toBe(true);
+  });
 
   describe('should return a valid CPF for each bazilian state with Initials', () => {
     STATES.map(state =>

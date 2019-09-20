@@ -1,46 +1,35 @@
 {
-  "name": "brazilian-utils",
-  "description": "Utils library for specific Brazilian business.",
-  "version": "0.1.0",
-  "private": true,
-  "workspaces": [
-    "packages/*"
+  "name": "@brazilian-utils/brazilian-utils",
+  "version": "1.0.0-development",
+  "main": "dist/index.js",
+  "module": "dist/brutils.esm.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
   ],
-  "author": "Hyan Mandian <hyanmandian@hotmail.com>",
-  "repository": "hyanmandian/brazilian-utils",
-  "bugs": {
-    "url": "https://github.com/hyanmandian/brazilian-utils/issues"
-  },
   "scripts": {
-    "build": "lerna run build",
-    "prebuild": "lerna bootstrap",
-    "lint": "tslint 'packages/**/*.ts'",
-    "test": "jest",
-    "pretest": "npm run lint",
-    "build:declarations": "lerna run generate-types",
-    "postbuild": "yarn build:declarations",
-    "contributors:add": "all-contributors add",
-    "contributors:generate": "all-contributors generate"
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test",
+    "lint": "tsdx lint"
   },
-  "license": "MIT",
+  "peerDependencies": {},
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "semi": true,
+    "printWidth": 100,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.50",
-    "@babel/preset-env": "^7.0.0-rc.2",
-    "@babel/preset-typescript": "^7.1.0",
-    "@types/jest": "^24.0.11",
-    "all-contributors-cli": "^5.4.0",
-    "babel-core": "^7.0.0-0",
-    "babel-jest": "^24.7.1",
-    "jest": "^24.7.1",
-    "lerna": "^3.1.4",
-    "prettier": "^1.14.2",
-    "ts-jest": "^24.0.1",
-    "ts-node": "^7.0.1",
-    "tslint": "^5.11.0",
-    "tslint-config-airbnb": "^5.11.0",
-    "tslint-config-prettier": "^1.15.0",
-    "tslint-plugin-prettier": "^2.0.1",
-    "typescript": "^3.1.4"
-  },
-  "dependencies": {}
+    "@types/jest": "^24.0.18",
+    "husky": "^3.0.5",
+    "tsdx": "^0.9.2",
+    "tslib": "^1.10.0",
+    "typescript": "^3.6.3"
+  }
 }

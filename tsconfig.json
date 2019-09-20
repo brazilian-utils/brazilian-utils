@@ -1,21 +1,30 @@
 {
-  "exclude": [
-    "node_modules",
-    "**/*.test.*"
-  ],
+  "include": ["src", "types"],
   "compilerOptions": {
-    "target": "esnext",
-    "module": "es6",
+    "target": "es5",
+    "module": "esnext",
+    "lib": ["dom", "esnext"],
+    "importHelpers": true,
     "declaration": true,
+    "sourceMap": true,
+    "rootDir": "./",
     "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
     "moduleResolution": "node",
     "baseUrl": "./",
     "paths": {
-      "@brazilian-utils/*": ["packages/*/src"],
-      "*": ["node_modules", "packages"]
+      "*": ["src/*", "node_modules/*"]
     },
+    "jsx": "react",
     "esModuleInterop": true
   }
 }

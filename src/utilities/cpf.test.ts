@@ -1,7 +1,8 @@
-import { formatCPF, CPF_LENGTH } from './cpf';
+import { STATES, STATES_CODE } from '../common/states';
+import { formatCPF, generateCPF, CPF_LENGTH } from './cpf';
 
-describe(' formatCPF', () => {
-  test('should format cpf with mask', () => {
+describe('formatCPF', () => {
+  test('should format CPF with mask', () => {
     expect(formatCPF('')).toBe('');
     expect(formatCPF('9')).toBe('9');
     expect(formatCPF('94')).toBe('94');
@@ -22,5 +23,23 @@ describe(' formatCPF', () => {
 
   test('should remove all non numeric characters', () => {
     expect(formatCPF('943.?ABC895.751-04abc')).toBe('943.895.751-04');
+  });
+});
+
+describe('generateCPF', () => {
+  test(` should have the right length without mask (${CPF_LENGTH})`, () => {
+    expect(generateCPF().length).toBe(CPF_LENGTH);
+  });
+
+  //   test('should return valid CPF', () => {
+  //     expect(isValidCPF(generateCPF())).toBe(true);
+  //   });
+
+  describe('should return a valid CPF for each bazilian state with Initials', () => {
+    STATES.map(state =>
+      test(state, () => {
+        expect(generateCPF(state).substr(8, 1) === STATES_CODE[state]).toBe(true);
+      })
+    );
   });
 });

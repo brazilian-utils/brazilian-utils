@@ -1,6 +1,6 @@
 {
-    "name": "@brazilian-utils/is-valid-email",
-    "description": "Check if email format is valid.",
+    "name": "@brazilian-utils/is-valid-ie",
+    "description": "Check if inscrição estatual is valid.",
     "version": "0.1.0",
     "main": "dist/index.js",
     "umd:main": "dist/index.umd.js",
@@ -14,16 +14,19 @@
       "build": "microbundle",
     "generate-types": "tsc --outFile dist/index.js --emitDeclarationOnly"
     },
-    "author": "Leonardo Dutra <leo_dutra18@hotmail.com>",
-    "repository": "https://github.com/Leonardo18/brazilian-utils/tree/master/packages/is-valid-email",
+    "author": "Rafael Pezzetti <rafael.pezzetti@gmail.com>",
+    "repository": "https://github.com/pezzetti/brazilian-utils/tree/master/packages/is-valid-ie",
     "bugs": {
-      "url": "https://github.com/Leonardo18/brazilian-utils/issues"
+      "url": "https://github.com/pezzetti/brazilian-utils/issues"
     },
     "keywords": [
-      "email",
+      "inscricao",
+      "inscrição",
+      "estadual",
       "brazilian",
       "utils",
       "validador",
+      "ie",
       "validator"
     ],
     "license": "MIT",

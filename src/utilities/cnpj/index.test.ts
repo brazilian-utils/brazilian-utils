@@ -28,6 +28,19 @@ describe('format', () => {
   });
 });
 
+describe('generate', () => {
+  test(`should have the right length without mask (${LENGTH})`, () => {
+    expect(generate().length).toBe(LENGTH);
+  });
+
+  test('should return valid CNPJ', () => {
+    // iterate over 100 to insure that random generated CPNJ is valid
+    for (let i = 0; i < 100; i++) {
+      expect(isValid(generate())).toBe(true);
+    }
+  });
+});
+
 describe('isValid', () => {
   describe('should return false', () => {
     test('when it is on the RESERVED_NUMBERS', () => {
@@ -84,18 +97,5 @@ describe('isValid', () => {
     test('when is a CNPJ valid with mask', () => {
       expect(isValid('60.391.947/0001-00')).toBe(true);
     });
-  });
-});
-
-describe('generate', () => {
-  test(`should have the right length without mask (${LENGTH})`, () => {
-    expect(generate().length).toBe(LENGTH);
-  });
-
-  test('should return valid CNPJ', () => {
-    // iterate over 100 to insure that random generated CPNJ is valid
-    for (let i = 0; i < 100; i++) {
-      expect(isValid(generate())).toBe(true);
-    }
   });
 });

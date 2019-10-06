@@ -6,14 +6,17 @@ describe('Public API', () => {
     'isLastChar',
     'isValidCPF',
     'formatCNPJ',
+    'isValidCNPJ',
     'onlyNumbers',
     'generateCPF',
+    'generateCNPJ',
+    'generateChecksum',
     'generateRandomNumber',
   ];
 
-  methods.forEach(method => {
+  Object.keys(API).forEach(method => {
     test(`${method} is available in the Public API`, () => {
-      expect(API).toHaveProperty(method);
+      expect(methods).toContain(method);
     });
   });
 });

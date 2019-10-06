@@ -28,7 +28,7 @@ export function isValidDDD(phone: string): boolean {
   return VALID_DDDS.includes(Number(phone.substr(0, 2)));
 }
 
-export function isValid(phone: string) {
+export function isValid(phone: string): boolean {
   const digits = onlyNumbers(phone);
 
   return isValidLength(digits) && isValidFirstNumber(digits) && isValidDDD(digits);

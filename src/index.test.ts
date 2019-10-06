@@ -2,13 +2,13 @@ import * as API from '.';
 
 describe('Public API', () => {
   const methods = [
-    'onlyNumbers',
-    'isLastChar',
-    'randomNumber',
     'formatCPF',
-    'generateCPF',
+    'isLastChar',
     'isValidCPF',
     'formatCNPJ',
+    'onlyNumbers',
+    'generateCPF',
+    'generateRandomNumber',
   ];
 
   methods.forEach(method => {

@@ -1,8 +1,8 @@
 import { STATES_DATA } from '../../common/states';
 import { onlyNumbers } from '../../helpers';
 
-export const VALID_DDDS = Object.keys(STATES_DATA).reduce(
-  (acc, state) => acc.concat((STATES_DATA as any)[state].ddds),
+export const VALID_AREA_CODES = Object.keys(STATES_DATA).reduce(
+  (acc, state) => acc.concat((STATES_DATA as any)[state].areaCode),
   []
 ) as number[];
 
@@ -25,7 +25,7 @@ export function isValidFirstNumber(phone: string): boolean {
 }
 
 export function isValidDDD(phone: string): boolean {
-  return VALID_DDDS.includes(Number(phone.substr(0, 2)));
+  return VALID_AREA_CODES.includes(Number(phone.substr(0, 2)));
 }
 
 export function isValid(phone: string): boolean {

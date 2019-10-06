@@ -1,4 +1,4 @@
-import { isValid, VALID_DDDS, PHONE_MIN_LENGTH, PHONE_MAX_LENGTH } from '.';
+import { isValid, VALID_AREA_CODES, PHONE_MIN_LENGTH, PHONE_MAX_LENGTH } from '.';
 
 describe('isValid', () => {
   describe('should return false', () => {
@@ -29,7 +29,7 @@ describe('isValid', () => {
 
   describe('should return true', () => {
     test('when the ddd is valid', () => {
-      VALID_DDDS.forEach(code => expect(isValid(`(${code}) 9 0000-0000`)).toBe(true));
+      VALID_AREA_CODES.forEach(code => expect(isValid(`(${code}) 9 0000-0000`)).toBe(true));
     });
 
     test('when is a mobile phone valid with mask', () => {

@@ -10,7 +10,7 @@
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
-    "test": "tsdx test",
+    "test": "tsdx test --coverage",
     "lint": "tsdx lint ./src --fix"
   },
   "peerDependencies": {},
@@ -32,9 +32,12 @@
       "plugin:prettier/recommended"
     ],
     "rules": {
-      "@typescript-eslint/explicit-function-return-type": ["error", {
-        "allowExpressions": true
-      }],
+      "@typescript-eslint/explicit-function-return-type": [
+        "error",
+        {
+          "allowExpressions": true
+        }
+      ],
       "@typescript-eslint/no-explicit-any": 0
     }
   },

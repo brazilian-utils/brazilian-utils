@@ -71,21 +71,21 @@ export function isReservedNumber(cpf: string): boolean {
 export function isValidChecksum(cnpj: string): boolean {
   const weights = [...FIRST_CHECK_DIGIT_WEIGHTS];
 
-  return CHECK_DIGITS_INDEXES.every(idx => {
-    if (idx === CHECK_DIGITS_INDEXES[CHECK_DIGITS_INDEXES.length - 1]) {
+  return CHECK_DIGITS_INDEXES.every(i => {
+    if (i === CHECK_DIGITS_INDEXES[CHECK_DIGITS_INDEXES.length - 1]) {
       weights.unshift(6);
     }
 
     const mod =
       generateChecksum(
         cnpj
-          .slice(0, idx)
+          .slice(0, i)
           .split('')
-          .reduce((a, b) => a + b, ''),
+          .reduce((acc, digit) => acc + digit, ''),
         weights
       ) % 11;
 
-    return cnpj[idx] === String(mod < 2 ? 0 : 11 - mod);
+    return cnpj[i] === String(mod < 2 ? 0 : 11 - mod);
   });
 }
 

@@ -1,4 +1,4 @@
-export * from './isLastChar';
-export * from './onlyNumbers';
-export * from './generateChecksum';
-export * from './generateRandomNumber';
+export { isLastChar } from './isLastChar';
+export { onlyNumbers } from './onlyNumbers';
+export { generateChecksum } from './generateChecksum';
+export { generateRandomNumber } from './generateRandomNumber';

@@ -29,4 +29,5 @@ export const STATES_CODE = {
 };
 
 export type State = keyof typeof STATES_CODE;
+
 export const STATES = Object.keys(STATES_CODE) as State[];

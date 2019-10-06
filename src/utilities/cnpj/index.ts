@@ -1,4 +1,4 @@
-import { onlyNumbers, isLastChar, generateChecksum, generateRandomNumber } from '../../helpers';
+import { isLastChar, onlyNumbers, generateChecksum, generateRandomNumber } from '../../helpers';
 
 export const LENGTH = 14;
 
@@ -52,8 +52,7 @@ export function generate(): string {
   const firstCheckDigitMod = generateChecksum(baseCNPJ, FIRST_CHECK_DIGIT_WEIGHTS) % 11;
   const firstCheckDigit = (firstCheckDigitMod < 2 ? 0 : 11 - firstCheckDigitMod).toString();
 
-  const secondCheckDigitMod =
-    generateChecksum(baseCNPJ + firstCheckDigit, SECOND_CHECK_DIGIT_WEIGHTS) % 11;
+  const secondCheckDigitMod = generateChecksum(baseCNPJ + firstCheckDigit, SECOND_CHECK_DIGIT_WEIGHTS) % 11;
   const secondCheckDigit = (secondCheckDigitMod < 2 ? 0 : 11 - secondCheckDigitMod).toString();
 
   return `${baseCNPJ}${firstCheckDigit}${secondCheckDigit}`;

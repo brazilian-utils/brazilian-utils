@@ -29,12 +29,12 @@ export function format(cpf: string): string {
   return digits
     .slice(0, LENGTH)
     .split('')
-    .reduce((prev, curr, idx) => {
-      const result = `${prev}${curr}`;
+    .reduce((acc, digit, i) => {
+      const result = `${acc}${digit}`;
 
-      if (!isLastChar(idx, digits)) {
-        if (DOT_INDEXES.indexOf(idx) >= 0) return `${result}.`;
-        if (HYPHEN_INDEXES.indexOf(idx) >= 0) return `${result}-`;
+      if (!isLastChar(i, digits)) {
+        if (DOT_INDEXES.indexOf(i) >= 0) return `${result}.`;
+        if (HYPHEN_INDEXES.indexOf(i) >= 0) return `${result}-`;
       }
 
       return result;
@@ -64,17 +64,17 @@ export function isReservedNumber(cpf: string): boolean {
 
 // TODO: move to checksum helper
 export function isValidChecksum(cpf: string): boolean {
-  return CHECK_DIGITS_INDEXES.every(idx => {
+  return CHECK_DIGITS_INDEXES.every(i => {
     const mod =
       generateChecksum(
         cpf
-          .slice(0, idx)
+          .slice(0, i)
           .split('')
-          .reduce((a, b) => a + b, ''),
-        idx + 1
+          .reduce((acc, digit) => acc + digit, ''),
+        i + 1
       ) % 11;
 
-    return cpf[idx] === String(mod < 2 ? 0 : 11 - mod);
+    return cpf[i] === String(mod < 2 ? 0 : 11 - mod);
   });
 }
 

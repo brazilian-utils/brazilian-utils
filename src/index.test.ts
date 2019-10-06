@@ -9,6 +9,7 @@ describe('Public API', () => {
     'isValidCNPJ',
     'onlyNumbers',
     'generateCPF',
+    'isValidPhone',
     'generateCNPJ',
     'generateChecksum',
     'generateRandomNumber',

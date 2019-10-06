@@ -1,4 +1,4 @@
-import { State, STATES, STATES_CODE } from '../../common/states';
+import { State, STATES, STATES_DATA } from '../../common/states';
 
 import { isLastChar, onlyNumbers, generateChecksum, generateRandomNumber } from '../../helpers';
 
@@ -42,7 +42,7 @@ export function format(cpf: string): string {
 }
 
 export function generate(state?: State): string {
-  const stateCode = state && STATES.includes(state) ? STATES_CODE[state] : generateRandomNumber(1);
+  const stateCode = state && STATES.includes(state) ? STATES_DATA[state].code : generateRandomNumber(1);
   const baseCPF = generateRandomNumber(LENGTH - 3) + stateCode;
 
   const firstCheckDigitMod = generateChecksum(baseCPF, 10) % 11;

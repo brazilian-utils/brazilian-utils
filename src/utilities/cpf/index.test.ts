@@ -1,4 +1,4 @@
-import { STATES, STATES_CODE } from '../../common/states';
+import { STATES, STATES_DATA } from '../../common/states';
 import { format, LENGTH, isValid, generate, RESERVED_NUMBERS } from '.';
 
 describe('format', () => {
@@ -41,7 +41,7 @@ describe('generate', () => {
   describe('should return a valid CPF for each brazilian state with initials', () => {
     STATES.map(state =>
       test(state, () => {
-        expect(generate(state).substr(8, 1) === STATES_CODE[state]).toBe(true);
+        expect(generate(state).substr(8, 1) === STATES_DATA[state].code).toBe(true);
       })
     );
   });

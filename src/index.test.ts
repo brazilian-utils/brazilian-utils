@@ -2,18 +2,22 @@ import * as API from '.';
 
 describe('Public API', () => {
   const methods = [
-    'onlyNumbers',
-    'isLastChar',
-    'randomNumber',
     'formatCPF',
-    'generateCPF',
+    'isLastChar',
     'isValidCPF',
     'formatCNPJ',
+    'isValidCNPJ',
+    'onlyNumbers',
+    'generateCPF',
+    'isValidPhone',
+    'generateCNPJ',
+    'generateChecksum',
+    'generateRandomNumber',
   ];
 
-  methods.forEach(method => {
+  Object.keys(API).forEach(method => {
     test(`${method} is available in the Public API`, () => {
-      expect(API).toHaveProperty(method);
+      expect(methods).toContain(method);
     });
   });
 });

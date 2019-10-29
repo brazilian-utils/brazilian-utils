@@ -1,8 +1,8 @@
-node_modules
-dist
-
-coverage
-.nyc_output
 *.log
-
-package-lock.json
+.DS_Store
+node_modules
+.rts2_cache_cjs
+.rts2_cache_esm
+.rts2_cache_umd
+dist
+coverage

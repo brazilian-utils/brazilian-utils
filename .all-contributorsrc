@@ -107,6 +107,36 @@
         "code",
         "tool"
       ]
+    },
+    {
+      "login": "fxamauri",
+      "name": "Amauri Dias",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/33326988?v=4",
+      "profile": "https://github.com/fxamauri",
+      "contributions": [
+        "code",
+        "tool"
+      ]
+    },
+    {
+      "login": "felipediogo",
+      "name": "Felipe F. Diogo",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/26486135?v=4",
+      "profile": "https://github.com/felipediogo",
+      "contributions": [
+        "code",
+        "test"
+      ]
+    },
+    {
+      "login": "alanraso",
+      "name": "Alan Raso",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/6992731?v=4",
+      "profile": "https://github.com/alanraso",
+      "contributions": [
+        "code",
+        "test"
+      ]
     }
   ],
   "repoType": "github"

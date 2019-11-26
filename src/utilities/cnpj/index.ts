@@ -89,6 +89,8 @@ export function isValidChecksum(cnpj: string): boolean {
 }
 
 export function isValid(cnpj: string): boolean {
+  if (!cnpj || typeof cnpj !== 'string') return false;
+
   const numbers = onlyNumbers(cnpj);
 
   return isValidFormat(cnpj) && !isReservedNumber(numbers) && isValidChecksum(numbers);

@@ -79,6 +79,8 @@ export function isValidChecksum(cpf: string): boolean {
 }
 
 export function isValid(cpf: string): boolean {
+  if (!cpf || typeof cpf !== 'string') return false;
+
   const digits = onlyNumbers(cpf);
 
   return isValidFormat(cpf) && !isReservedNumber(digits) && isValidChecksum(digits);

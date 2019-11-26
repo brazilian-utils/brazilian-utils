@@ -29,6 +29,8 @@ export function isValidFirstNumber(phone: string): boolean {
 }
 
 export function isValid(phone: string): boolean {
+  if (!phone || typeof phone !== 'string') return false;
+
   const digits = onlyNumbers(phone);
 
   return isValidLength(digits) && isValidFirstNumber(digits) && isValidDDD(digits);

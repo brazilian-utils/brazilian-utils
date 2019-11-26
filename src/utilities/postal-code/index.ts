@@ -1,6 +1,6 @@
 import { onlyNumbers } from '../../helpers';
 
-export const LENGTH = 8
+export const LENGTH = 8;
 
 function isValidLength(postalCode: string) {
   return postalCode.length === LENGTH;

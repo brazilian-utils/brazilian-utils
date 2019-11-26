@@ -53,7 +53,6 @@ describe('isValid', () => {
   });
 });
 
-
 describe('format', () => {
   test('should format boleto with mask', () => {
     expect(format('')).toBe('');

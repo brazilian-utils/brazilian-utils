@@ -97,8 +97,7 @@ function parse(digitableLine: string): string {
 
 function isValidCheckDigit(parsedDigitableLine: string): boolean {
   const mod = mod11(
-    parsedDigitableLine.slice(0, CHECK_DIGIT_POSITION) +
-      parsedDigitableLine.slice(CHECK_DIGIT_POSITION + 1)
+    parsedDigitableLine.slice(0, CHECK_DIGIT_POSITION) + parsedDigitableLine.slice(CHECK_DIGIT_POSITION + 1)
   );
 
   return +parsedDigitableLine[CHECK_DIGIT_POSITION] === mod;

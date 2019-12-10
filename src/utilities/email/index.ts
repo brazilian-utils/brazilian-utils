@@ -13,15 +13,7 @@ export function isValid(email: string): boolean {
 
   if (!matchedEmail) return false;
 
-  const [
-    ,
-    // ignore
-    recipient, // ignore
-    ,
-    domain, // ignore
-    ,
-    topLevelDomain,
-  ] = matchedEmail;
+  const [, recipient, , domain, , topLevelDomain] = matchedEmail;
 
   if (recipient.length > maxRecipientLength) return false;
   if (domain.length + topLevelDomain.length > maxDomainLength) return false;

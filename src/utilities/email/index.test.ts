@@ -1,3 +1,7 @@
+// Tests created using the following links as reference:
+// https://help.returnpath.com/hc/en-us/articles/220560587-What-are-the-rules-for-email-address-syntax-
+// https://stackoverflow.com/questions/2049502/what-characters-are-allowed-in-an-email-address
+
 import { isValid } from '.';
 
 describe('isValid', () => {
@@ -27,20 +31,64 @@ describe('isValid', () => {
       expect(isValid([] as any)).toBe(false);
     });
 
-    test('when the email whithout at ', () => {
-      expect(isValid('john.doe.teste.com.br')).toBe(false);
+    describe('when email', () => {
+      test('without at symbol', () => {
+        expect(isValid('john.doe.teste.com.br')).toBe(false);
+      });
+
+      test('is too long', () => {
+        const tooLongEmail = 'a'.repeat(64) + '@' + 'test.co.uk'.repeat(28);
+
+        expect(isValid(tooLongEmail)).toBe(false);
+      });
     });
 
-    test('when the email is invalid because contains accentuation', () => {
-      expect(isValid('jóhn.doe@yahoo.com.br')).toBe(false);
+    describe('when recipient name', () => {
+      test('has length equal to 0', () => {
+        expect(isValid('@teste.com.br')).toBe(false);
+      });
+
+      test('has more then 64 characters length', () => {
+        const emailWith65CharRecipient = `${'a'.repeat(65)}@teste.com.br`;
+
+        expect(isValid(emailWith65CharRecipient)).toBe(false);
+      });
+
+      test('has invalid character', () => {
+        expect(isValid(`(johndoe)@test.com.br`)).toBe(false);
+      });
+
+      test('has 2 special characters consecutively', () => {
+        expect(isValid('john..doe@teste.com.br')).toBe(false);
+      });
+
+      test('start with unallowed special characters consecutively', () => {
+        expect(isValid('.john.doe@teste.com.br')).toBe(false);
+      });
+
+      test('when contains accentuation', () => {
+        expect(isValid('jóhn.doe@teste.com.br')).toBe(false);
+      });
     });
 
-    test('when the email is invalid because contains space', () => {
-      expect(isValid('john doe@yahoo.com.br')).toBe(false);
-    });
+    describe('when domain name', () => {
+      test('has length equal to 0', () => {
+        expect(isValid('johndoe@')).toBe(false);
+      });
 
-    test('when the email is invalid because contains special characters', () => {
-      expect(isValid('john&doe@yahoo.com.br')).toBe(false);
+      test('has more then 253 characters length', () => {
+        const domainWith254Length = 'ab' + 'teste.com.br'.repeat(21);
+
+        expect(isValid(`johndoe@${domainWith254Length}`)).toBe(false);
+      });
+
+      test('when contains accentuation', () => {
+        expect(isValid('johndoe@téste.com.br')).toBe(false);
+      });
+
+      test('hasnt top level domain', () => {
+        expect(isValid('johndoe@test.com.')).toBe(false);
+      });
     });
   });
 

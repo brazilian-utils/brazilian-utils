@@ -3,6 +3,7 @@ import * as API from '.';
 describe('Public API', () => {
   const methods = [
     'formatCPF',
+    'isValidCep',
     'isValidPIS',
     'isLastChar',
     'isValidCPF',
@@ -13,10 +14,9 @@ describe('Public API', () => {
     'isValidEmail',
     'isValidPhone',
     'generateCNPJ',
-    'formatBankSlip',
-    'isValidBankSlip',
+    'formatBoleto',
+    'isValidBoleto',
     'generateChecksum',
-    'isValidPostalCode',
     'generateRandomNumber',
     'formatJudicialProcess',
   ];

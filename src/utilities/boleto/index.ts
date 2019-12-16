@@ -33,7 +33,7 @@ export const MOD_11_WEIGHTS = {
 
 export const MOD_10_WEIGHTS = [2, 1];
 
-export const DIGITABLE_LINE_TO_BANK_SLIP_CONVERT_POSITIONS = [
+export const DIGITABLE_LINE_TO_BOLETO_CONVERT_POSITIONS = [
   { end: 4, start: 0 },
   { end: 47, start: 32 },
   { end: 9, start: 4 },
@@ -89,7 +89,7 @@ function isValidPartials(digitableLine: string): boolean {
 }
 
 function parse(digitableLine: string): string {
-  return DIGITABLE_LINE_TO_BANK_SLIP_CONVERT_POSITIONS.reduce(
+  return DIGITABLE_LINE_TO_BOLETO_CONVERT_POSITIONS.reduce(
     (acc, pos) => acc + digitableLine.substring(pos.start, pos.end),
     ''
   );
@@ -117,8 +117,8 @@ export function isValid(digitableLine: string): boolean {
   return isValidCheckDigit(parsedDigits);
 }
 
-export function format(bankSlip: string) {
-  const digits = onlyNumbers(bankSlip);
+export function format(boleto: string) {
+  const digits = onlyNumbers(boleto);
 
   return digits
     .slice(0, LENGTH)

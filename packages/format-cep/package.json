@@ -1,0 +1,42 @@
+{
+  "name": "@brazilian-utils/format-cep",
+  "description": "Return CEP formatted with mask.",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "umd:main": "dist/index.umd.js",
+  "module": "dist/index.m.js",
+  "source": "src/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "microbundle",
+    "generate-types": "tsc --outFile dist/index.js --emitDeclarationOnly"
+  },
+  "author": "Rafael Franco <rafaelfr@outlook.com>",
+  "repository": "https://github.com/brazilian-utils/brazilian-utils/tree/master/packages/format-cep",
+  "bugs": {
+    "url": "https://github.com/brazilian-utils/brazilian-utils/issues"
+  },
+  "keywords": [
+    "cep",
+    "brasil",
+    "brazilian",
+    "utils",
+    "mask",
+    "format",
+    "formatter"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "microbundle": "^0.6.0"
+  },
+  "dependencies": {
+    "@brazilian-utils/helper-is-last-char": "^0.1.7",
+    "@brazilian-utils/helper-only-numbers": "^0.1.5"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

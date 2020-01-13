@@ -1,4 +1,4 @@
-import { onlyNumbers } from '..';
+import { onlyNumbers } from '../only-numbers';
 
 export function generateChecksum(base: string | number, weight: number | number[]): number {
   const digits = onlyNumbers(base);

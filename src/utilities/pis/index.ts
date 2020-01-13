@@ -30,7 +30,7 @@ function hasOnlyNumbers(pis: string): boolean {
 }
 
 function removeSeparators(pis: string): string {
-  return pis.replace(/[ \(\).,*-]/g, '');
+  return pis.replace(/[ ().,*-]/g, '');
 }
 
 export function isValid(pis: string): boolean {

@@ -4,20 +4,41 @@
   "main": "dist/index.js",
   "module": "dist/brazilianUtils.esm.js",
   "typings": "dist/index.d.ts",
+  "sideEffects": false,
   "files": [
     "dist"
   ],
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
+    "prepublish": "npm run build",
     "test": "tsdx test --coverage",
-    "lint": "tsdx lint ./src --fix"
+    "lint": "tsdx lint ./src/**/**/*.ts --fix",
+    "prettify": "prettier --write ./src/**/**/*.ts",
+    "commit": "npx git-cz"
   },
-  "peerDependencies": {},
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint"
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "tsdx lint --fix",
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   },
   "prettier": {
     "semi": true,
@@ -25,10 +46,18 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
-    "@types/jest": "^24.0.18",
-    "husky": "^3.0.8",
-    "tsdx": "^0.11.0",
-    "typescript": "^3.6.3"
+    "@commitlint/cli": "^8.3.4",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@types/jest": "^24.0.25",
+    "cz-conventional-changelog": "^3.0.2",
+    "husky": "^4.0.7",
+    "lint-staged": "^9.5.0",
+    "prettier": "^1.19.1",
+    "tsdx": "^0.12.3",
+    "typescript": "^3.7.4"
   }
 }

@@ -7,10 +7,10 @@ directories:
   - node_modules
 
 node_js:
-- '11'
-- '10'
-- '8'
-- '6'
+  - '13'
+  - '12'
+  - '11'
+  - '10'
 
 env:
 global:

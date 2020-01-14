@@ -1,4 +1,4 @@
-# :brazil: Brazilian Utils
+# 🇧🇷 Brazilian Utils
 
 [![Build Status](https://travis-ci.org/brazilian-utils/brazilian-utils.svg?branch=master)](https://travis-ci.org/brazilian-utils/brazilian-utils) [![Coverage Status](https://codecov.io/gh/brazilian-utils/brazilian-utils/branch/master/graph/badge.svg)](https://codecov.io/gh/brazilian-utils/brazilian-utils) [![Known Vulnerabilities](https://snyk.io/test/github/brazilian-utils/brazilian-utils/badge.svg?targetFile=package.json)](https://snyk.io/test/github/brazilian-utils/brazilian-utils?targetFile=package.json) [![Maintainability](https://api.codeclimate.com/v1/badges/05d3cd8492ed438bf51d/maintainability)](https://codeclimate.com/github/hyanmandian/brazilian-utils/maintainability) [![All Contributors](https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square)](#contributors) [![License: MIT](https://img.shields.io/github/license/hyanmandian/brazilian-utils.svg)](LICENSE)
 
@@ -7,7 +7,6 @@ Utils library for specific Brazilian businesses.
 ---
 
 >## We are changing
-
 >After one year of Brazilian Utils and a lot of feedbacks, we decide to refactoring our library to fix issues, create a website and make easier for other developers to contribute. If you use **v0 version**, please, check [v0](https://github.com/brazilian-utils/brazilian-utils/tree/v0) branch.
 
 ## Contributors

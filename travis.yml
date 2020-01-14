@@ -1,0 +1,24 @@
+sudo: false
+language: node_js
+
+cache:
+yarn: true
+directories:
+  - node_modules
+
+node_js:
+- '11'
+- '10'
+- '8'
+- '6'
+
+env:
+global:
+  - PATH=$HOME/.yarn/bin:$PATH
+
+
+install:
+- npm install -g codecov
+- npm run build
+
+script: npm run test && codecov

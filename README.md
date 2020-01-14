@@ -4,6 +4,10 @@
 
 Utils library for specific Brazilian businesses.
 
+>## We are changing
+
+>After one year of Brazilian Utils and a lot of feedbacks, we decide to refactoring our library to fix issues, create a website and make easier for other developers to contribute. If you use **v0 version**, please, check (v0)[https://github.com/brazilian-utils/brazilian-utils/tree/v0] branch.
+
 ## Contributors
 
 Thanks go to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):

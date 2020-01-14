@@ -1,4 +1,4 @@
-# Brazilian Utils
+# 🇧🇷 Brazilian Utils
 
 > Biblioteca de utílitarios brasileiros.
 

@@ -17,12 +17,22 @@
       window.$docsify = {
         ga: 'UA-156179602-1',
         name: '🇧🇷 Brazilian Utils',
+        nameLink: {
+          '/pt-br/': '/#/pt-br/',
+          '/': '/#/',
+        },
+        alias: {
+          '/': 'https://raw.githubusercontent.com/brazilian-utils/brazilian-utils/master/README.md',
+          '/pt-br/': 'https://raw.githubusercontent.com/brazilian-utils/brazilian-utils/master/README.md',
+        },
         repo: 'brazilian-utils/brazilian-utils',
         loadNavbar: true,
-        routerMode: 'history',
+        loadSidebar: true,
+        auto2top: true,
+        subMaxLevel: 2,
         coverpage: {
-          '/': 'cover.md',
-          '/pt-br/': 'cover.md',
+          '/': '_coverpage.md',
+          '/pt-br/': '_coverpage.md',
         },
         copyCode: {
           buttonText: {

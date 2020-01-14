@@ -1,5 +1,5 @@
 export { isValid as isValidPIS } from './pis';
-export { isValid as isValidCep } from './cep';
+export { isValid as isValidCEP } from './cep';
 export { isValid as isValidPhone } from './phone';
 export { isValid as isValidEmail } from './email';
 export { format as formatJudicialProcess } from './judicial-process';

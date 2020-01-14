@@ -27,3 +27,5 @@ import { isValidCPF } from '@brazilian-utils/brazilian-utils';
 
 isValidCPF('1232454233345'); // false
 ```
+
+You can check a list of utilities [by clicking here](utilities.md).

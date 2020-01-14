@@ -1,21 +1,11 @@
 sudo: false
 language: node_js
 
-cache:
-yarn: true
-directories:
-  - node_modules
-
 node_js:
   - '13'
   - '12'
   - '11'
   - '10'
-
-env:
-global:
-  - PATH=$HOME/.yarn/bin:$PATH
-
 
 install:
 - npm install -g codecov

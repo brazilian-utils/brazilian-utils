@@ -2,5 +2,5 @@
 
 > Biblioteca de utílitarios brasileiros.
 
-[Introdução](getting-started)
+[Introdução](pt-br/?id=introdução)
 [GitHub](https://github.com/brazilian-utils/brazilian-utils)

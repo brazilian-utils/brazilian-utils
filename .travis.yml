@@ -9,6 +9,7 @@ node_js:
 
 install:
 - npm install -g codecov
+- npm install
 - npm run build
 
 script: npm run test && codecov

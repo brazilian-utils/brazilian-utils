@@ -1,46 +1,65 @@
 {
-  "name": "brazilian-utils",
-  "description": "Utils library for specific Brazilian business.",
-  "version": "0.1.0",
-  "private": true,
-  "workspaces": [
-    "packages/*"
+  "name": "@brazilian-utils/brazilian-utils",
+  "version": "1.0.0-rc.1",
+  "main": "dist/index.js",
+  "module": "dist/brazilianUtils.esm.js",
+  "typings": "dist/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "dist"
   ],
-  "author": "Hyan Mandian <hyanmandian@hotmail.com>",
-  "repository": "hyanmandian/brazilian-utils",
-  "bugs": {
-    "url": "https://github.com/hyanmandian/brazilian-utils/issues"
-  },
   "scripts": {
-    "build": "lerna run build",
-    "prebuild": "lerna bootstrap",
-    "lint": "tslint 'packages/**/*.ts'",
-    "test": "jest",
-    "pretest": "npm run lint",
-    "build:declarations": "lerna run generate-types",
-    "postbuild": "yarn build:declarations",
-    "contributors:add": "all-contributors add",
-    "contributors:generate": "all-contributors generate"
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "prepublish": "npm run build",
+    "test": "tsdx test --coverage",
+    "lint": "tsdx lint ./src/**/**/*.ts --fix",
+    "prettify": "prettier --write ./src/**/**/*.ts",
+    "commit": "npx git-cz",
+    "docs": "docsify serve docs"
   },
-  "license": "MIT",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "tsdx lint --fix",
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "prettier": {
+    "semi": true,
+    "printWidth": 120,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.50",
-    "@babel/preset-env": "^7.0.0-rc.2",
-    "@babel/preset-typescript": "^7.1.0",
-    "@types/jest": "^24.0.11",
-    "all-contributors-cli": "^5.4.0",
-    "babel-core": "^7.0.0-0",
-    "babel-jest": "^24.7.1",
-    "jest": "^24.7.1",
-    "lerna": "^3.1.4",
-    "prettier": "^1.14.2",
-    "ts-jest": "^24.0.1",
-    "ts-node": "^7.0.1",
-    "tslint": "^5.11.0",
-    "tslint-config-airbnb": "^5.11.0",
-    "tslint-config-prettier": "^1.15.0",
-    "tslint-plugin-prettier": "^2.0.1",
-    "typescript": "^3.1.4"
-  },
-  "dependencies": {}
+    "@commitlint/cli": "^8.3.4",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@types/jest": "^24.0.25",
+    "cz-conventional-changelog": "^3.0.2",
+    "docsify-cli": "^4.4.0",
+    "husky": "^4.0.7",
+    "lint-staged": "^9.5.0",
+    "prettier": "^1.19.1",
+    "tsdx": "^0.12.3",
+    "typescript": "^3.7.4"
+  }
 }

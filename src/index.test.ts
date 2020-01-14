@@ -3,7 +3,7 @@ import * as API from '.';
 describe('Public API', () => {
   const methods = [
     'formatCPF',
-    'isValidCep',
+    'isValidCEP',
     'isValidPIS',
     'isLastChar',
     'isValidCPF',

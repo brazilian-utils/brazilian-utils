@@ -2,5 +2,5 @@
 
 > Utils library for specific Brazilian businesses.
 
-[Get Started](?id=getting-started)
+[Get Started](getting-started.md)
 [GitHub](https://github.com/brazilian-utils/brazilian-utils)

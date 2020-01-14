@@ -27,3 +27,5 @@ import { isValidCPF } from '@brazilian-utils/brazilian-utils';
 
 isValidCPF('1232454233345'); // false
 ```
+
+Você pode conferir a lista de útilitários [clicando aqui](pt-br/utilities.md).

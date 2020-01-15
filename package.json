@@ -1,6 +1,6 @@
 {
   "name": "@brazilian-utils/brazilian-utils",
-  "version": "1.0.0-rc.2",
+  "version": "1.0.0-rc.3",
   "main": "dist/index.js",
   "module": "dist/brazilianUtils.esm.js",
   "typings": "dist/index.d.ts",
@@ -16,7 +16,6 @@
     "lint": "tsdx lint ./src/**/**/*.ts --fix",
     "prettify": "prettier --write ./src/**/**/*.ts",
     "commit": "npx git-cz",
-    "release": "np",
     "docs": "docsify serve docs"
   },
   "husky": {
@@ -59,7 +58,6 @@
     "docsify-cli": "^4.4.0",
     "husky": "^4.0.7",
     "lint-staged": "^9.5.0",
-    "np": "^5.2.1",
     "prettier": "^1.19.1",
     "tsdx": "^0.12.3",
     "typescript": "^3.7.4"

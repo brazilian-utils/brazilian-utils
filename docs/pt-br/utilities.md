@@ -71,3 +71,13 @@ import { isValidPIS } from '@brazilian-utils/brazilian-utils';
 
 isValidPIS('12056412547'); // false
 ```
+
+## isValidIE
+
+Valida se a inscrição estadual de um estado é valida.
+
+```javascript
+import { isValidIE } from '@brazilian-utils/brazilian-utils';
+
+isValidIE('AC', '0187634580933'); // false
+```

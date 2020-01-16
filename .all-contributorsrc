@@ -137,6 +137,16 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "pezzetti",
+      "name": "Rafael Pezzetti",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/6005103?s=460&v=4",
+      "profile": "https://github.com/pezzetti",
+      "contributions": [
+        "code",
+        "test"
+      ]
     }
   ],
   "repoType": "github"

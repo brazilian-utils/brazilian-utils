@@ -1,6 +1,6 @@
 {
   "projectName": "brazilian-utils",
-  "projectOwner": "hyanmandian",
+  "projectOwner": "brazilian-utils",
   "files": [
     "README.md"
   ],
@@ -137,7 +137,19 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "ftfetter",
+      "name": "Felipe Fetter",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/18450242?v=4",
+      "profile": "https://ftfetter.wordpress.com/",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
-  "repoType": "github"
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true,
+  "contributorsPerLine": 7
 }

@@ -4,6 +4,7 @@ describe('Public API', () => {
   const methods = [
     'formatCPF',
     'isValidCEP',
+    'formatCEP',
     'isValidPIS',
     'isLastChar',
     'isValidCPF',

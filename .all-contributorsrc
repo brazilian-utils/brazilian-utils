@@ -146,6 +146,16 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "rfoel",
+      "name": "Rafael Franco",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/19496473?v=4",
+      "profile": "https://rfoel.com",
+      "contributions": [
+        "code",
+        "doc"
+      ]
     }
   ],
   "repoType": "github",

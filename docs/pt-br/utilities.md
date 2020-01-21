@@ -71,3 +71,13 @@ import { isValidPIS } from '@brazilian-utils/brazilian-utils';
 
 isValidPIS('12056412547'); // false
 ```
+
+## formatCEP
+
+Formata o CEP.
+
+```javascript
+import { formatCEP } from '@brazilian-utils/brazilian-utils';
+
+formatCEP('92500000'); // 92500-000
+```

@@ -4,7 +4,7 @@ Brazilian Utils é uma biblioteca com foco na resolução de problemas que enfre
 
 ## Instalação
 
-Utilizar o **Brazilian Utils** é bem simples e você pode utiliza-lo de duas formas:
+Utilizar o **Brazilian Utils** é bem simples e você pode utilizá-lo de duas formas:
 
 como um pacote npm:
 
@@ -28,4 +28,4 @@ import { isValidCPF } from '@brazilian-utils/brazilian-utils';
 isValidCPF('1232454233345'); // false
 ```
 
-Você pode conferir a lista de útilitários [clicando aqui](pt-br/utilities.md).
+Você pode conferir a lista de utilitários [clicando aqui](pt-br/utilities.md).

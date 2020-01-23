@@ -1,6 +1,6 @@
 {
   "projectName": "brazilian-utils",
-  "projectOwner": "hyanmandian",
+  "projectOwner": "brazilian-utils",
   "files": [
     "README.md"
   ],
@@ -139,6 +139,25 @@
       ]
     },
     {
+      "login": "ftfetter",
+      "name": "Felipe Fetter",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/18450242?v=4",
+      "profile": "https://ftfetter.wordpress.com/",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "rfoel",
+      "name": "Rafael Franco",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/19496473?v=4",
+      "profile": "https://rfoel.com",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    },
+    {
       "login": "pezzetti",
       "name": "Rafael Pezzetti",
       "avatar_url": "https://avatars1.githubusercontent.com/u/6005103?s=460&v=4",
@@ -146,8 +165,10 @@
       "contributions": [
         "code",
         "test"
-      ]
     }
   ],
-  "repoType": "github"
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true,
+  "contributorsPerLine": 7
 }

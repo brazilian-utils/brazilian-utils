@@ -53,7 +53,7 @@
   "devDependencies": {
     "@commitlint/cli": "^8.3.4",
     "@commitlint/config-conventional": "^8.3.4",
-    "@types/jest": "^24.0.25",
+    "@types/jest": "^25.1.0",
     "cz-conventional-changelog": "^3.0.2",
     "docsify-cli": "^4.4.0",
     "husky": "^4.0.7",

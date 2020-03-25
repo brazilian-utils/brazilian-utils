@@ -8,6 +8,7 @@ describe('Public API', () => {
     'isValidPIS',
     'isLastChar',
     'isValidCPF',
+    'isValidIE',
     'formatCNPJ',
     'isValidCNPJ',
     'onlyNumbers',

@@ -81,3 +81,13 @@ import { formatCEP } from '@brazilian-utils/brazilian-utils';
 
 formatCEP('92500000'); // 92500-000
 ```
+
+## isValidIE
+
+Valida se a inscrição estadual de um estado é valida.
+
+```javascript
+import { isValidIE } from '@brazilian-utils/brazilian-utils';
+
+isValidIE('AC', '0187634580933'); // false
+```

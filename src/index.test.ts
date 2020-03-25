@@ -20,10 +20,10 @@ describe('Public API', () => {
     'isValidBoleto',
     'generateChecksum',
     'generateRandomNumber',
-    'formatJudicialProcess',
+    'formatPJ',
   ];
 
-  Object.keys(API).forEach(method => {
+  Object.keys(API).forEach((method) => {
     test(`${method} is available in the Public API`, () => {
       expect(methods).toContain(method);
     });

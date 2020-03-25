@@ -71,7 +71,6 @@ import { isValidPIS } from '@brazilian-utils/brazilian-utils';
 
 isValidPIS('12056412547'); // false
 ```
-
 ## formatCEP
 
 Format CEP ([brazilian postal code](https://en.wikipedia.org/wiki/C%C3%B3digo_de_Endere%C3%A7amento_Postal)).
@@ -80,4 +79,14 @@ Format CEP ([brazilian postal code](https://en.wikipedia.org/wiki/C%C3%B3digo_de
 import { formatCEP } from '@brazilian-utils/brazilian-utils';
 
 formatCEP('92500000'); // 92500-000
+```
+
+## isValidIE
+
+Check if inscrição estadual (state registration) is valid.
+
+```javascript
+import { isValidIE } from '@brazilian-utils/brazilian-utils';
+
+isValidIE('AC', '0187634580933'); // false
 ```

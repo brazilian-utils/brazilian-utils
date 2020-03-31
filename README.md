@@ -35,6 +35,9 @@ Thanks go to these wonderful people ([emoji key](https://github.com/kentcdodds/a
     <td align="center"><a href="https://ftfetter.wordpress.com/"><img src="https://avatars0.githubusercontent.com/u/18450242?v=4" width="100px;" alt=""/><br /><sub><b>Felipe Fetter</b></sub></a><br /><a href="https://github.com/brazilian-utils/brazilian-utils/commits?author=ftfetter" title="Documentation">📖</a></td>
     <td align="center"><a href="https://rfoel.com"><img src="https://avatars3.githubusercontent.com/u/19496473?v=4" width="100px;" alt=""/><br /><sub><b>Rafael Franco</b></sub></a><br /><a href="https://github.com/brazilian-utils/brazilian-utils/commits?author=rfoel" title="Code">💻</a> <a href="https://github.com/brazilian-utils/brazilian-utils/commits?author=rfoel" title="Documentation">📖</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/pezzetti"><img src="https://avatars1.githubusercontent.com/u/6005103?s=460&v=4" width="100px;" alt=""/><br /><sub><b>Rafael Pezzetti</b></sub></a><br /><a href="https://github.com/brazilian-utils/brazilian-utils/commits?author=pezzetti" title="Code">💻</a> <a href="https://github.com/brazilian-utils/brazilian-utils/commits?author=pezzetti" title="Tests">⚠️</a> <a href="https://github.com/brazilian-utils/brazilian-utils/commits?author=pezzetti" title="Documentation">📖</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-enable -->

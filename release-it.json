@@ -1,0 +1,5 @@
+{
+  "git": {
+    "commitMessage": "chore(release): publish v${version}"
+  }
+}

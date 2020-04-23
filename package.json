@@ -16,6 +16,7 @@
     "lint": "tsdx lint ./src/**/**/*.ts --fix",
     "prettify": "prettier --write ./src/**/**/*.ts",
     "commit": "npx git-cz",
+    "release": "release-it",
     "docs": "docsify serve docs"
   },
   "husky": {
@@ -59,6 +60,7 @@
     "husky": "^4.2.5",
     "lint-staged": "^10.1.7",
     "prettier": "^2.0.5",
+    "release-it": "^13.5.5",
     "tsdx": "^0.13.2",
     "typescript": "^3.8.3"
   }

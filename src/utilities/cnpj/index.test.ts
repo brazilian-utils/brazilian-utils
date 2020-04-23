@@ -44,7 +44,7 @@ describe('generate', () => {
 describe('isValid', () => {
   describe('should return false', () => {
     test('when it is on the RESERVED_NUMBERS', () => {
-      RESERVED_NUMBERS.forEach(cnpj => expect(isValid(cnpj)).toBe(false));
+      RESERVED_NUMBERS.forEach((cnpj) => expect(isValid(cnpj)).toBe(false));
     });
 
     test('when is a empty string', () => {

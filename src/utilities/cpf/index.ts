@@ -64,7 +64,7 @@ export function isReservedNumber(cpf: string): boolean {
 
 // TODO: move to checksum helper
 export function isValidChecksum(cpf: string): boolean {
-  return CHECK_DIGITS_INDEXES.every(i => {
+  return CHECK_DIGITS_INDEXES.every((i) => {
     const mod =
       generateChecksum(
         cpf

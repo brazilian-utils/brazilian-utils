@@ -70,7 +70,7 @@ export function isReservedNumber(cpf: string): boolean {
 export function isValidChecksum(cnpj: string): boolean {
   const weights = [...FIRST_CHECK_DIGIT_WEIGHTS];
 
-  return CHECK_DIGITS_INDEXES.every(i => {
+  return CHECK_DIGITS_INDEXES.every((i) => {
     if (i === CHECK_DIGITS_INDEXES[CHECK_DIGITS_INDEXES.length - 1]) {
       weights.unshift(6);
     }

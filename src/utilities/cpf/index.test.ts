@@ -39,7 +39,7 @@ describe('generate', () => {
   });
 
   describe('should return a valid CPF for each brazilian state with initials', () => {
-    STATES.map(state =>
+    STATES.map((state) =>
       test(state, () => {
         expect(generate(state).substr(8, 1) === STATES_DATA[state].code).toBe(true);
       })
@@ -50,7 +50,7 @@ describe('generate', () => {
 describe('isValid', () => {
   describe('should return false', () => {
     test('when it is on the RESERVED_WORDS', () => {
-      RESERVED_NUMBERS.forEach(cpf => expect(isValid(cpf)).toBe(false));
+      RESERVED_NUMBERS.forEach((cpf) => expect(isValid(cpf)).toBe(false));
     });
 
     test('when is a empty string', () => {

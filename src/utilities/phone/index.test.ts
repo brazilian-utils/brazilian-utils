@@ -54,7 +54,7 @@ describe('isValid', () => {
 
   describe('should return true', () => {
     test('when the ddd is valid', () => {
-      VALID_AREA_CODES.forEach(code => expect(isValid(`(${code}) 9 0000-0000`)).toBe(true));
+      VALID_AREA_CODES.forEach((code) => expect(isValid(`(${code}) 9 0000-0000`)).toBe(true));
     });
 
     test('when is a mobile phone valid with mask', () => {

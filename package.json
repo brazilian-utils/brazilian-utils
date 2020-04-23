@@ -28,8 +28,7 @@
   "lint-staged": {
     "*.ts": [
       "tsdx lint --fix",
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
   },
   "config": {

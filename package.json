@@ -51,15 +51,15 @@
     "access": "public"
   },
   "devDependencies": {
-    "@commitlint/cli": "^8.3.4",
+    "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
-    "@types/jest": "^25.1.0",
-    "cz-conventional-changelog": "^3.0.2",
+    "@types/jest": "^25.2.1",
+    "cz-conventional-changelog": "^3.1.0",
     "docsify-cli": "^4.4.0",
-    "husky": "^4.0.7",
-    "lint-staged": "^10.0.0",
-    "prettier": "^2.0.0",
-    "tsdx": "^0.13.0",
-    "typescript": "^3.7.4"
+    "husky": "^4.2.5",
+    "lint-staged": "^10.1.7",
+    "prettier": "^2.0.5",
+    "tsdx": "^0.13.2",
+    "typescript": "^3.8.3"
   }
 }

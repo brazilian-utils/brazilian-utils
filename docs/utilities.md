@@ -12,6 +12,17 @@ import { isValidCPF } from '@brazilian-utils/brazilian-utils';
 isValidCPF('155151475'); // false
 ```
 
+## formatCPF
+
+Format CPF.
+
+```javascript
+import { formatCPF } from '@brazilian-utils/brazilian-utils';
+
+formatCPF('746506880') // 746.506.880
+formatCPF('746506880', { pad: true }) // 007.465.068-80
+```
+
 ## isValidCNPJ
 
 Check if CNPJ is valid.
@@ -20,6 +31,17 @@ Check if CNPJ is valid.
 import { isValidCNPJ } from '@brazilian-utils/brazilian-utils';
 
 isValidCNPJ('15515147234255'); // false
+```
+
+## formatCNPJ
+
+Format CNPJ.
+
+```javascript
+import { formatCNPJ } from '@brazilian-utils/brazilian-utils';
+
+formatCNPJ('245222000174') // 24.522.200/0174
+formatCNPJ('245222000174', { pad: true }) // 00.245.222/0001-74
 ```
 
 ## isValidCEP

@@ -167,6 +167,17 @@
         "test",
         "doc"
       ]
+    },
+    {
+      "login": "arfurlaneto",
+      "name": "Antonio Roberto Furlaneto",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/3330854?v=4",
+      "profile": "https://github.com/arfurlaneto",
+      "contributions": [
+        "code",
+        "doc",
+        "test"
+      ]
     }
   ],
   "repoType": "github",

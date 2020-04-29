@@ -27,8 +27,12 @@ export const FIRST_CHECK_DIGIT_WEIGHTS = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
 
 export const SECOND_CHECK_DIGIT_WEIGHTS = [6, ...FIRST_CHECK_DIGIT_WEIGHTS];
 
-export function format(cnpj: string): string {
-  const digits = onlyNumbers(cnpj);
+export function format(cnpj: string | number, fillZeroes: boolean = false): string {
+  let digits = onlyNumbers(cnpj);
+
+  if (fillZeroes) {
+    digits = digits.padStart(LENGTH, '0');
+  }
 
   return digits
     .slice(0, LENGTH)

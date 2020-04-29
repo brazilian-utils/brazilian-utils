@@ -23,8 +23,12 @@ export const RESERVED_NUMBERS = [
 
 export const CHECK_DIGITS_INDEXES = [9, 10];
 
-export function format(cpf: string): string {
-  const digits = onlyNumbers(cpf);
+export function format(cpf: string | number, fillZeroes: boolean = false): string {
+  let digits = onlyNumbers(cpf);
+
+  if (fillZeroes) {
+    digits = digits.padStart(LENGTH, '0');
+  }
 
   return digits
     .slice(0, LENGTH)

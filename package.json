@@ -1,6 +1,6 @@
 {
   "name": "@brazilian-utils/brazilian-utils",
-  "version": "1.0.0-rc.5",
+  "version": "1.0.0-rc.6",
   "main": "dist/index.js",
   "module": "dist/brazilianUtils.esm.js",
   "typings": "dist/index.d.ts",

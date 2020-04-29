@@ -1,5 +1,15 @@
 {
   "git": {
+    "requireBranch": "master",
     "commitMessage": "chore(release): publish v${version}"
+  },
+  "github": {
+    "release": true
+  },
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "preset": "angular",
+      "infile": "CHANGELOG.md"
+    }
   }
 }

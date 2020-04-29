@@ -27,10 +27,14 @@ export const FIRST_CHECK_DIGIT_WEIGHTS = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
 
 export const SECOND_CHECK_DIGIT_WEIGHTS = [6, ...FIRST_CHECK_DIGIT_WEIGHTS];
 
-export function format(cnpj: string | number, fillZeroes: boolean = false): string {
+export interface FormatCnpjOptions {
+  pad?: boolean;
+}
+
+export function format(cnpj: string | number, options: FormatCnpjOptions = {}): string {
   let digits = onlyNumbers(cnpj);
 
-  if (fillZeroes) {
+  if (options.pad) {
     digits = digits.padStart(LENGTH, '0');
   }
 

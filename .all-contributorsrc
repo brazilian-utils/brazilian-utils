@@ -178,6 +178,17 @@
         "doc",
         "test"
       ]
+    },
+    {
+      "login": "nolleto",
+      "name": "Felipe Nolleto Nascimento",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/2437673?v=4",
+      "profile": "https://www.linkedin.com/in/felipe-nolleto-nascimento-a2a23788/",
+      "contributions": [
+        "code",
+        "doc",
+        "test"
+      ]
     }
   ],
   "repoType": "github",

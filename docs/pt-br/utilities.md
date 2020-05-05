@@ -19,8 +19,8 @@ Formata o CPF.
 ```javascript
 import { formatCPF } from '@brazilian-utils/brazilian-utils';
 
-formatCPF('746506880') // 746.506.880
-formatCPF('746506880', { pad: true }) // 007.465.068-80
+formatCPF('746506880'); // 746.506.880
+formatCPF('746506880', { pad: true }); // 007.465.068-80
 ```
 
 ## isValidCNPJ
@@ -40,8 +40,9 @@ Formata o CNPJ.
 ```javascript
 import { formatCNPJ } from '@brazilian-utils/brazilian-utils';
 
-formatCNPJ('245222000174') // 24.522.200/0174
-formatCNPJ('245222000174', { pad: true }) // 00.245.222/0001-74
+formatCNPJ('245222000174'); // 24.522.200/0174
+formatCNPJ('245222000174', { pad: true }); // 00.245.222/0001-74
+```
 
 ## isValidCEP
 
@@ -111,4 +112,43 @@ Valida se a inscrição estadual de um estado é valida.
 import { isValidIE } from '@brazilian-utils/brazilian-utils';
 
 isValidIE('AC', '0187634580933'); // false
+```
+
+## getStates
+
+Retorna todos os estados brasileiros.
+
+```javascript
+import { getStates } from '@brazilian-utils/brazilian-utils';
+
+getStates();
+// [
+//   { code: 'AC', name: 'Acre' },
+//   { code: 'AL', name: 'Alagoas' },
+//   { code: 'AP', name: 'Amapá' },
+//   { code: 'AM', name: 'Amazonas' },
+//   { code: 'BA', name: 'Bahia' },
+//   { code: 'CE', name: 'Ceará' },
+//   { code: 'DF', name: 'Distrito Federal' },
+//   { code: 'ES', name: 'Espírito Santo' },
+//   { code: 'GO', name: 'Goiás' },
+//   { code: 'MA', name: 'Maranhão' },
+//   { code: 'MT', name: 'Mato Grosso' },
+//   { code: 'MS', name: 'Mato Grosso do Sul' },
+//   { code: 'MG', name: 'Minas Gerais' },
+//   { code: 'PA', name: 'Pará' },
+//   { code: 'PB', name: 'Paraíba' },
+//   { code: 'PR', name: 'Paraná' },
+//   { code: 'PE', name: 'Pernambuco' },
+//   { code: 'PI', name: 'Piauí' },
+//   { code: 'RJ', name: 'Rio de Janeiro' },
+//   { code: 'RN', name: 'Rio Grande do Norte' },
+//   { code: 'RS', name: 'Rio Grande do Sul' },
+//   { code: 'RO', name: 'Rondônia' },
+//   { code: 'RR', name: 'Roraima' },
+//   { code: 'SC', name: 'Santa Catarina' },
+//   { code: 'SP', name: 'São Paulo' },
+//   { code: 'SE', name: 'Sergipe' },
+//   { code: 'TO', name: 'Tocantins' },
+// ]
 ```

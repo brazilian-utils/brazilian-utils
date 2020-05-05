@@ -2,6 +2,8 @@ import * as API from '.';
 
 describe('Public API', () => {
   const methods = [
+    'formatPJ',
+    'getStates',
     'formatCPF',
     'isValidCEP',
     'formatCEP',
@@ -20,7 +22,6 @@ describe('Public API', () => {
     'isValidBoleto',
     'generateChecksum',
     'generateRandomNumber',
-    'formatPJ',
   ];
 
   Object.keys(API).forEach((method) => {

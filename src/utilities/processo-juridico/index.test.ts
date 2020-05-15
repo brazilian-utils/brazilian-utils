@@ -54,6 +54,6 @@ describe('format', () => {
   });
 
   test('should not be a valid Processo Juridico', () => {
-    expect(isValid('abcd123qweasd')).toBe(false);
+    expect(isValid('abcd123qweasdsdasdds')).toBe(false);
   });
 });

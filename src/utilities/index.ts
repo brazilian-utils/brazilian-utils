@@ -3,7 +3,7 @@ export { isValid as isValidPIS } from './pis';
 export { isValid as isValidPhone, isValidMobilePhone, isValidLandlinePhone } from './phone';
 export { isValid as isValidEmail } from './email';
 export { isValid as isValidLicensePlate } from './licensePlate';
-export { format as formatPJ } from './processo-juridico';
+export { format as formatPJ, isValid as isValidPJ } from './processo-juridico';
 export { format as formatCEP, isValid as isValidCEP } from './cep';
 export { format as formatBoleto, isValid as isValidBoleto } from './boleto';
 export { format as formatCurrency, parse as parseCurrency } from './currency';

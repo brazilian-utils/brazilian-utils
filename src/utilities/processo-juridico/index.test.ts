@@ -1,4 +1,4 @@
-import { format, LENGTH } from '.';
+import { format, isValid, LENGTH } from '.';
 
 describe('format', () => {
   test('should format processo juridico with mask', () => {
@@ -31,5 +31,29 @@ describe('format', () => {
 
   test('should remove all non numeric characters', () => {
     expect(format('0002080@$25201%!@2515.%0049123123')).toBe('0002080-25.2012.515.0049');
+  });
+
+  test('should be a valid Processo Juridico', () => {
+    expect(isValid('00020802520125150049')).toBe(true);
+  });
+
+  test('should be a valid Processo Juridico', () => {
+    expect(isValid('00020854720125150049')).toBe(true);
+  });
+
+  test('should not be a valid Processo Juridico', () => {
+    expect(isValid('00020854220125150049')).toBe(false);
+  });
+
+  test('should not be a valid Processo Juridico', () => {
+    expect(isValid('00020854220125150049123123')).toBe(false);
+  });
+
+  test('should not be a valid Processo Juridico', () => {
+    expect(isValid('123123')).toBe(false);
+  });
+
+  test('should not be a valid Processo Juridico', () => {
+    expect(isValid('abcd123qweasd')).toBe(false);
   });
 });

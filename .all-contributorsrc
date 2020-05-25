@@ -189,6 +189,15 @@
         "doc",
         "test"
       ]
+    },
+    {
+      "login": "saulojoab",
+      "name": "Saulo Joab",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/37988252?v=4",
+      "profile": "http://linkedin.com/in/saulojoab",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "repoType": "github",

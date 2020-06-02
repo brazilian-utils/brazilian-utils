@@ -6,7 +6,7 @@ Utils library for Brazilian-specific businesses.
 
 ---
 >## Vidas Negras Importam | Black Lives Matter. ✊🏽✊🏾✊🏿
->You can know how ways to help accessing [Vidas Negras Importam](https://vidasnegrasimportam.carrd.co/) or [Black Lives Matter](https://blacklivesmatters.carrd.co/).
+>You can know ways to help accessing [Vidas Negras Importam](https://vidasnegrasimportam.carrd.co/) or [Black Lives Matter](https://blacklivesmatters.carrd.co/).
 ---
 >## We are changing
 >After one year of Brazilian Utils and lots of feedback, we decided to refactor our library to fix issues, create a website and make it easier for other developers to contribute. If you use **v0 version**, please, check [v0](https://github.com/brazilian-utils/brazilian-utils/tree/v0) branch.

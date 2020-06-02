@@ -1,29 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>Brazilian Utils</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="description" content="Utils library for specific Brazilian businesses." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="description" content="Utils library for specific Brazilian businesses."/>
     <meta
       name="viewport"
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-    />
-    <link rel="stylesheet" href="//unpkg.com/docsify-themeable/dist/css/theme-simple-dark.css" />
+/>
+    <link rel="stylesheet" href="//unpkg.com/docsify-themeable/dist/css/theme-simple-dark.css"/>
+    <style>
+      body.-banner .app-nav {
+        margin-top: 32px;
+      }
+
+      body.-banner .github-corner {
+        margin-top: 40px;
+      }
+
+      body.sticky .banner {
+        padding-left: var(--sidebar-width);
+      }
+
+      .banner {
+        width: 100%;
+        background: #000;
+        text-align: center;
+        padding: 6.5px;
+      }
+
+      .banner a {
+        color: #fff;
+        padding: 0 5px;
+        display: inline-block;
+        position: relative;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+
+      .banner a:first-child {
+        margin-right: 40px;
+      }
+
+      .banner a:first-child:before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: -23.5px;
+        width: 2px;
+        background: #fff;
+        height: 50%;
+      }
+    </style>
   </head>
   <body>
     <div id="app"></div>
     <script>
+      function banner(html) {
+        const body = document.querySelector('body');
+        body
+          .classList
+          .add('-banner');
+
+        const el = document.createElement('div');
+        el
+          .classList
+          .add("banner");
+        el.innerHTML = html;
+
+        return(hook, vm) => {
+          hook.mounted(() => {
+            body.prepend(el);
+          });
+        }
+      }
+
       window.$docsify = {
         ga: 'UA-156179602-1',
         name: '🇧🇷 Brazilian Utils',
         nameLink: {
           '/pt-br/': '/#/pt-br/',
-          '/': '/#/',
+          '/': '/#/'
         },
         alias: {
           '/': 'https://raw.githubusercontent.com/brazilian-utils/brazilian-utils/master/README.md',
-          '/pt-br/': 'https://raw.githubusercontent.com/brazilian-utils/brazilian-utils/master/README.md',
+          '/pt-br/': 'https://raw.githubusercontent.com/brazilian-utils/brazilian-utils/master/README.md'
         },
         repo: 'brazilian-utils/brazilian-utils',
         loadNavbar: true,
@@ -32,22 +95,26 @@
         subMaxLevel: 2,
         coverpage: {
           '/': '_coverpage.md',
-          '/pt-br/': '_coverpage.md',
+          '/pt-br/': '_coverpage.md'
         },
         copyCode: {
           buttonText: {
             '/pt-br/': 'Clique para copiar',
-            '/': 'Copy to clipboard',
+            '/': 'Copy to clipboard'
           },
           errorText: {
             '/pt-br/': 'Erro',
-            '/': 'Error',
+            '/': 'Error'
           },
           successText: {
             '/pt-br/': 'Copiado',
-            '/': 'Copied',
-          },
+            '/': 'Copied'
+          }
         },
+        plugins: [banner(`
+          <a target="_blank" rel="noopener noreferrer" href="https://vidasnegrasimportam.carrd.co/">Vidas Negras Importam</a>
+          <a target="_blank" rel="noopener noreferrer" href="https://blacklivesmatters.carrd.co/">Black Lives Matters</a>
+        `)]
       };
     </script>
     <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>

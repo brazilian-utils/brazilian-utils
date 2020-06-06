@@ -165,4 +165,35 @@ export const STATES_DATA = {
 
 export type State = keyof typeof STATES_DATA;
 
+export type StateCode = State;
+
+export type StateName =
+  | 'Acre'
+  | 'Alagoas'
+  | 'Amapá'
+  | 'Amazonas'
+  | 'Bahia'
+  | 'Ceará'
+  | 'Distrito Federal'
+  | 'Espírito Santo'
+  | 'Goiás'
+  | 'Maranhão'
+  | 'Minas Gerais'
+  | 'Mato Grosso'
+  | 'Mato Grosso do Sul'
+  | 'Pará'
+  | 'Paraíba'
+  | 'Pernambuco'
+  | 'Piauí'
+  | 'Paraná'
+  | 'Rio de Janeiro'
+  | 'Rio Grande do Norte'
+  | 'Rondônia'
+  | 'Rio Grande do Sul'
+  | 'Roraima'
+  | 'Santa Catarina'
+  | 'Sergipe'
+  | 'São Paulo'
+  | 'Tocantins';
+
 export const STATES = Object.keys(STATES_DATA) as State[];

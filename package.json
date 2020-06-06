@@ -17,7 +17,8 @@
     "prettify": "prettier --write ./src/**/**/*.ts",
     "commit": "npx git-cz",
     "release": "release-it",
-    "docs": "docsify serve docs"
+    "docs": "docsify serve docs",
+    "updateCities": "node scripts/getCitiesFromIBGE.js"
   },
   "husky": {
     "hooks": {
@@ -59,6 +60,7 @@
     "docsify-cli": "^4.4.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.1.7",
+    "node-fetch": "^2.6.0",
     "prettier": "^2.0.5",
     "release-it": "^13.5.5",
     "tsdx": "^0.13.2",

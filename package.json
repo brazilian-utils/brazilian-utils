@@ -18,7 +18,7 @@
     "commit": "npx git-cz",
     "release": "release-it",
     "docs": "docsify serve docs",
-    "updateCities": "node scripts/getCitiesFromIBGE.js"
+    "update-cities": "node scripts/getCitiesFromIBGE.js"
   },
   "husky": {
     "hooks": {

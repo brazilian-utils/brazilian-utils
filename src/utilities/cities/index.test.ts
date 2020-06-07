@@ -14,14 +14,18 @@ describe('getCities', () => {
     expect(getCities().length).toEqual(NUMBER_OF_BRAZILIAN_CITIES);
   });
 
+  it('should return empty array if state does not exist', () => {
+    expect(getCities('ACC' as any)).toEqual([]);
+  });
+
   describe('return cities from states', () => {
     const states = getStates();
 
     states.forEach(({ code, name }) => {
       it(`should return cities from code ${code}/${name}`, () => {
         const stateCities = CITIES_DATA[code];
-        expect(getCities({ state: { code } })).toMatchObject(stateCities);
-        expect(getCities({ state: { name } })).toMatchObject(stateCities);
+        expect(getCities(code)).toMatchObject(stateCities);
+        expect(getCities(name)).toMatchObject(stateCities);
       });
     });
   });

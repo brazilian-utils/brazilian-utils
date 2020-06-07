@@ -5,6 +5,8 @@ export interface State {
   name: StateName;
 }
 
+export { StateCode, StateName };
+
 const stateNameComparer = ({ name: nameA }: State, { name: nameB }: State) => nameA.localeCompare(nameB);
 
 const sortByStateName = (states: State[]): State[] => states.sort(stateNameComparer);

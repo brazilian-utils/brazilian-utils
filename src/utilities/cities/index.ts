@@ -1,23 +1,20 @@
 import { CITIES_DATA } from '../../common/cities';
 
-import { State, getStates } from '../states';
+import { StateCode, StateName, getStates } from '../states';
 
 const sortAlphabetically = (cityA: string, cityB: string) => cityA.localeCompare(cityB);
 
-export function getCities({ state: stateFilter }: { state?: Partial<State> } = {}): string[] {
-  if (stateFilter) {
+export function getCities(state?: StateName | StateCode): string[] {
+  if (state) {
     const states = getStates();
 
-    const state = (() => {
-      if (stateFilter.code) {
-        return states.find(({ code }) => code === stateFilter.code);
-      }
-      return states.find(({ name }) => name === stateFilter.name);
-    })();
+    const foundState = states.find(({ name, code }) => name === state || code === state);
 
-    if (state) {
-      return CITIES_DATA[state.code].sort(sortAlphabetically);
+    if (!foundState) {
+      return [];
     }
+
+    return CITIES_DATA[foundState.code].sort(sortAlphabetically);
   }
 
   return Object.values(CITIES_DATA).flat().sort(sortAlphabetically);

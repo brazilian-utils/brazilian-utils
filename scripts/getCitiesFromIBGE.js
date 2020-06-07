@@ -1,5 +1,6 @@
-const fs = require('fs');
 const fetch = require('node-fetch');
+const fs = require('fs');
+const path = require('path');
 
 // type City = {
 //   id: number,
@@ -25,7 +26,10 @@ const fetch = require('node-fetch');
 // };
 
 const writeFile = (cities) =>
-  fs.writeFileSync('./src/common/cities.ts', `export const CITIES_DATA = ${JSON.stringify(cities, null, 2)}`);
+  fs.writeFileSync(
+    path.resolve(__dirname, '..', 'src/common/cities.ts'),
+    `export const CITIES_DATA = ${JSON.stringify(cities, null, 2)}`
+  );
 
 /**
  * https://servicodados.ibge.gov.br/api/docs/localidades?versao=1

@@ -152,3 +152,44 @@ getStates();
 //   { code: 'TO', name: 'Tocantins' },
 // ]
 ```
+
+## getCities
+
+Retorna as cidades brasileiras.
+
+```javascript
+import { getCities } from '@brazilian-utils/brazilian-utils';
+
+// Retorna todas as cidades brasileiras.
+getCities();
+// [
+//   'Abadia de Goiás',
+//   'Abadia dos Dourados',
+//   'Abadiânia',
+//   'Abaeté',
+//   'Abaetetuba',
+//   'Abaiara',
+//   'Abaíra',
+//   'Abaré',
+//   'Abatiá',
+//   'Abdon Batista',
+//   ... 5460 more items
+// ]
+
+// Retornas todas as cidades brasileiras do estado de São Paulo.
+getCities('São Paulo');
+getCities('SP');
+// [
+//   "Adamantina",
+//   "Adolfo",
+//   "Aguaí",
+//   "Águas da Prata",
+//   "Águas de Lindóia",
+//   "Águas de Santa Bárbara",
+//   "Águas de São Pedro",
+//   "Agudos",
+//   "Alambari",
+//   "Alfredo Marcondes",
+//   ... 635 more items
+// ]
+```

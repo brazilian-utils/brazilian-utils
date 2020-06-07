@@ -198,6 +198,17 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "arantespp",
+      "name": "Pedro Arantes",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/16626980?v=4",
+      "profile": "http://fb.com/arantespp",
+      "contributions": [
+        "code",
+        "doc",
+        "test"
+      ]
     }
   ],
   "repoType": "github",

@@ -22,6 +22,7 @@ describe('Public API', () => {
     'isValidBoleto',
     'generateChecksum',
     'generateRandomNumber',
+    'getCities',
   ];
 
   Object.keys(API).forEach((method) => {

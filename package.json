@@ -19,7 +19,7 @@
     "commit": "npx git-cz",
     "release": "release-it",
     "docs": "docsify serve docs",
-    "update-cities": "node scripts/getCitiesFromIBGE.js"
+    "update-cities": "node scripts/getCitiesFromIBGE.js && prettier --write ./src/common/cities.ts"
   },
   "husky": {
     "hooks": {

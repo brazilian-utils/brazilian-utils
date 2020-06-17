@@ -10,6 +10,7 @@
   ],
   "scripts": {
     "start": "tsdx watch",
+    "prebuild": "npm run update-cities",
     "build": "tsdx build",
     "prepublish": "npm run build",
     "test": "tsdx test --coverage",

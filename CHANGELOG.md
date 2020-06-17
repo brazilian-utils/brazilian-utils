@@ -1,3 +1,22 @@
+<a name="1.0.0-rc.8"></a>
+# [1.0.0-rc.8](https://github.com/brazilian-utils/brazilian-utils/compare/1.0.0-rc.7...1.0.0-rc.8) (2020-06-17)
+
+
+### Bug Fixes
+
+* add getCities to api public testes ([3f8c4be](https://github.com/brazilian-utils/brazilian-utils/commit/3f8c4be))
+* adjust docs typo ([89cf335](https://github.com/brazilian-utils/brazilian-utils/commit/89cf335))
+* adjust responsive docs ([bafcdc0](https://github.com/brazilian-utils/brazilian-utils/commit/bafcdc0))
+* export getCities ([0472144](https://github.com/brazilian-utils/brazilian-utils/commit/0472144))
+* update-cities script command ([bce5628](https://github.com/brazilian-utils/brazilian-utils/commit/bce5628))
+
+
+### Features
+
+* add utility getCities ([ebb949d](https://github.com/brazilian-utils/brazilian-utils/commit/ebb949d))
+* black lives matters ([cce58d8](https://github.com/brazilian-utils/brazilian-utils/commit/cce58d8))
+* change the way the cities are filtered. Add docs ([7f4ca6d](https://github.com/brazilian-utils/brazilian-utils/commit/7f4ca6d))
+
 <a name="1.0.0-rc.7"></a>
 # [1.0.0-rc.7](https://github.com/brazilian-utils/brazilian-utils/compare/1.0.0-rc.6...1.0.0-rc.7) (2020-05-05)
 

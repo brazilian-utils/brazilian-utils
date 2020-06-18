@@ -1,15 +1,21 @@
 # 🇧🇷 Brazilian Utils
 
-[![Build Status](https://travis-ci.org/brazilian-utils/brazilian-utils.svg?branch=master)](https://travis-ci.org/brazilian-utils/brazilian-utils) [![Coverage Status](https://codecov.io/gh/brazilian-utils/brazilian-utils/branch/master/graph/badge.svg)](https://codecov.io/gh/brazilian-utils/brazilian-utils) [![Known Vulnerabilities](https://snyk.io/test/github/brazilian-utils/brazilian-utils/badge.svg?targetFile=package.json)](https://snyk.io/test/github/brazilian-utils/brazilian-utils?targetFile=package.json) [![Maintainability](https://api.codeclimate.com/v1/badges/05d3cd8492ed438bf51d/maintainability)](https://codeclimate.com/github/hyanmandian/brazilian-utils/maintainability) [![License: MIT](https://img.shields.io/github/license/hyanmandian/brazilian-utils.svg)](LICENSE) [![Greenkeeper badge](https://badges.greenkeeper.io/brazilian-utils/brazilian-utils.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.org/brazilian-utils/brazilian-utils.svg?branch=master)](https://travis-ci.org/brazilian-utils/brazilian-utils) [![Coverage Status](https://codecov.io/gh/brazilian-utils/brazilian-utils/branch/master/graph/badge.svg)](https://codecov.io/gh/brazilian-utils/brazilian-utils) [![Known Vulnerabilities](https://snyk.io/test/github/brazilian-utils/brazilian-utils/badge.svg?targetFile=package.json)](https://snyk.io/test/github/brazilian-utils/brazilian-utils?targetFile=package.json) [![Maintainability](https://api.codeclimate.com/v1/badges/05d3cd8492ed438bf51d/maintainability)](https://codeclimate.com/github/hyanmandian/brazilian-utils/maintainability) [![License: MIT](https://img.shields.io/github/license/hyanmandian/brazilian-utils.svg)](LICENSE)
 
 Utils library for Brazilian-specific businesses.
 
 ---
->## Vidas Negras Importam | Black Lives Matter. ✊🏽✊🏾✊🏿
->To know how to help, just go to [Vidas Negras Importam](https://vidasnegrasimportam.carrd.co/) or [Black Lives Matter](https://blacklivesmatters.carrd.co/).
+
+> ## Vidas Negras Importam | Black Lives Matter. ✊🏽✊🏾✊🏿
+>
+> To know how to help, just go to [Vidas Negras Importam](https://vidasnegrasimportam.carrd.co/) or [Black Lives Matter](https://blacklivesmatters.carrd.co/).
+
 ---
->## We are changing
->After one year of Brazilian Utils and lots of feedback, we decided to refactor our library to fix issues, create a website and make it easier for other developers to contribute. If you use **v0 version**, please, check [v0](https://github.com/brazilian-utils/brazilian-utils/tree/v0) branch.
+
+> ## We are changing
+>
+> After one year of Brazilian Utils and lots of feedback, we decided to refactor our library to fix issues, create a website and make it easier for other developers to contribute. If you use **v0 version**, please, check [v0](https://github.com/brazilian-utils/brazilian-utils/tree/v0) branch.
+
 ---
 
 ## Contributors
@@ -49,6 +55,7 @@ Our "thank you" goes to these wonderful people ([emoji key](https://github.com/k
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind are welcome!

@@ -8,6 +8,10 @@
   "files": [
     "dist"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brazilian-utils/brazilian-utils"
+  },
   "scripts": {
     "start": "tsdx watch",
     "prebuild": "npm run update-cities",

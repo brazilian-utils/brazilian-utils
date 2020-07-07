@@ -84,6 +84,26 @@ import { isValidPhone } from '@brazilian-utils/brazilian-utils';
 isValidPhone('11900000000'); // true
 ```
 
+## isValidMobilePhone
+
+Check if mobile phone number is valid.
+
+```javascript
+import { isValidMobilePhone } from '@brazilian-utils/brazilian-utils';
+
+isValidMobilePhone('11900000000'); // true
+```
+
+## isValidLandlinePhone
+
+Check if landline phone number is valid.
+
+```javascript
+import { isValidLandlinePhone } from '@brazilian-utils/brazilian-utils';
+
+isValidLandlinePhone('1130000000'); // true
+```
+
 ## isValidPIS
 
 Check if PIS is valid.

@@ -44,12 +44,12 @@ export function isValidFirstNumber(phone: string): boolean {
     : isValidMobilePhoneFirstNumber(phone);
 }
 
-function tryPhoneDigits(phone: string): { isValidDigits: boolean; digits: string } {
+function parsePhoneDigits(phone: string): { isValidDigits: boolean; digits: string } {
   return { isValidDigits: !!phone && typeof phone === 'string', digits: onlyNumbers(phone) };
 }
 
 export function isValidMobilePhone(phone: string): boolean {
-  const { isValidDigits, digits } = tryPhoneDigits(phone);
+  const { isValidDigits, digits } = parsePhoneDigits(phone);
 
   if (!isValidDigits) return false;
 
@@ -57,7 +57,7 @@ export function isValidMobilePhone(phone: string): boolean {
 }
 
 export function isValidLandlinePhone(phone: string): boolean {
-  const { isValidDigits, digits } = tryPhoneDigits(phone);
+  const { isValidDigits, digits } = parsePhoneDigits(phone);
 
   if (!isValidDigits) return false;
 
@@ -65,9 +65,5 @@ export function isValidLandlinePhone(phone: string): boolean {
 }
 
 export function isValid(phone: string): boolean {
-  const { isValidDigits, digits } = tryPhoneDigits(phone);
-
-  if (!isValidDigits) return false;
-
-  return isValidLength(digits) && isValidFirstNumber(digits) && isValidDDD(digits);
+  return isValidMobilePhone(phone) || isValidLandlinePhone(phone);
 }

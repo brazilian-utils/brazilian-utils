@@ -65,5 +65,9 @@ export function isValidLandlinePhone(phone: string): boolean {
 }
 
 export function isValid(phone: string): boolean {
-  return isValidMobilePhone(phone) || isValidLandlinePhone(phone);
+  const { isValidDigits, digits } = parsePhoneDigits(phone);
+
+  if (!isValidDigits) return false;
+
+  return isValidLength(digits) && isValidFirstNumber(digits) && isValidDDD(digits);
 }

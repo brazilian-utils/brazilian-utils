@@ -76,12 +76,32 @@ isValidEmail('john.doe@hotmail.com'); // true
 
 ## isValidPhone
 
-Valida se o numero de telefone (celular ou residencial) é valido.
+Valida se o número de telefone (celular ou residencial) é valido.
 
 ```javascript
 import { isValidPhone } from '@brazilian-utils/brazilian-utils';
 
 isValidPhone('11900000000'); // true
+```
+
+## isValidMobilePhone
+
+Valida se o número de telefone celular é valido.
+
+```javascript
+import { isValidMobilePhone } from '@brazilian-utils/brazilian-utils';
+
+isValidMobilePhone('11900000000'); // true
+```
+
+## isValidLandlinePhone
+
+Valida se o número de telefone residencial é valido.
+
+```javascript
+import { isValidLandlinePhone } from '@brazilian-utils/brazilian-utils';
+
+isValidLandlinePhone('1130000000'); // true
 ```
 
 ## isValidPIS

@@ -17,6 +17,8 @@ describe('Public API', () => {
     'generateCPF',
     'isValidEmail',
     'isValidPhone',
+    'isValidMobilePhone',
+    'isValidLandlinePhone',
     'generateCNPJ',
     'formatBoleto',
     'isValidBoleto',

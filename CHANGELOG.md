@@ -1,3 +1,17 @@
+<a name="1.0.0-rc.9"></a>
+# [1.0.0-rc.9](https://github.com/brazilian-utils/brazilian-utils/compare/1.0.0-rc.8...1.0.0-rc.9) (2020-07-09)
+
+
+### Bug Fixes
+
+* applied code review ([48a81f1](https://github.com/brazilian-utils/brazilian-utils/commit/48a81f1))
+* solve all Codecov issues ([3394479](https://github.com/brazilian-utils/brazilian-utils/commit/3394479))
+
+
+### Features
+
+* add functions isValidLandlinePhone() and isValidMobilePhone() ([e8fe8bd](https://github.com/brazilian-utils/brazilian-utils/commit/e8fe8bd))
+
 <a name="1.0.0-rc.8"></a>
 # [1.0.0-rc.8](https://github.com/brazilian-utils/brazilian-utils/compare/1.0.0-rc.7...1.0.0-rc.8) (2020-06-17)
 

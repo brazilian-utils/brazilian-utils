@@ -7,5 +7,6 @@ export { format as formatCEP, isValid as isValidCEP } from './cep';
 export { format as formatBoleto, isValid as isValidBoleto } from './boleto';
 export { format as formatCPF, generate as generateCPF, isValid as isValidCPF } from './cpf';
 export { format as formatCNPJ, generate as generateCNPJ, isValid as isValidCNPJ } from './cnpj';
+export { capitalize } from './capitalize';
 export * from './states';
 export { getCities } from './cities';

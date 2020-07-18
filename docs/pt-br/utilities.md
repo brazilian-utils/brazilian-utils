@@ -1,6 +1,6 @@
 # Utilitários
 
-Aqui você encontrará todos os utilitários disponiveis para uso.
+Aqui você encontrará todos os utilitários disponíveis para uso.
 
 ## isValidCPF
 
@@ -132,6 +132,17 @@ Valida se a inscrição estadual de um estado é valida.
 import { isValidIE } from '@brazilian-utils/brazilian-utils';
 
 isValidIE('AC', '0187634580933'); // false
+```
+
+## capitalize
+
+Transforma primeira letra de cada palavra em maiúscula ignorando preposições.
+
+```javascript
+import { capitalize } from '@brazilian-utils/brazilian-utils';
+
+capitalize('josé e maria'); // José e Maria
+capitalize('josé De MARIA', ['De']); // José De Maria
 ```
 
 ## getStates

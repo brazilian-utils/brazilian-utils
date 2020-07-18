@@ -134,6 +134,17 @@ import { isValidIE } from '@brazilian-utils/brazilian-utils';
 isValidIE('AC', '0187634580933'); // false
 ```
 
+## capitalize
+
+Transforms the first letter into a capital one of each word ignoring prepositions.
+
+```javascript
+import { capitalize } from '@brazilian-utils/brazilian-utils';
+
+capitalize('josé e maria'); // José e Maria
+capitalize('josé De MARIA', ['De']); // José De Maria
+```
+
 ## getStates
 
 Get all Brazilian states.

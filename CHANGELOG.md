@@ -1,3 +1,17 @@
+<a name="1.0.0-rc.10"></a>
+# [1.0.0-rc.10](https://github.com/brazilian-utils/brazilian-utils/compare/1.0.0-rc.9...1.0.0-rc.10) (2020-07-27)
+
+
+### Bug Fixes
+
+* exported the function "capitalize()" to the public API ([a16d603](https://github.com/brazilian-utils/brazilian-utils/commit/a16d603))
+
+
+### Features
+
+* add function capitalize() ([6d915fd](https://github.com/brazilian-utils/brazilian-utils/commit/6d915fd))
+* atualiza cidades novas ([348ab84](https://github.com/brazilian-utils/brazilian-utils/commit/348ab84))
+
 <a name="1.0.0-rc.9"></a>
 # [1.0.0-rc.9](https://github.com/brazilian-utils/brazilian-utils/compare/1.0.0-rc.8...1.0.0-rc.9) (2020-07-09)
 

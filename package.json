@@ -57,8 +57,8 @@
     "access": "public"
   },
   "devDependencies": {
-    "@commitlint/cli": "^8.3.5",
-    "@commitlint/config-conventional": "^8.3.4",
+    "@commitlint/cli": "^9.1.1",
+    "@commitlint/config-conventional": "^9.1.1",
     "@release-it/conventional-changelog": "^1.1.4",
     "@types/jest": "^26.0.7",
     "cz-conventional-changelog": "^3.2.0",
@@ -69,6 +69,6 @@
     "prettier": "^2.0.5",
     "release-it": "^13.6.6",
     "tsdx": "^0.13.2",
-    "typescript": "^3.8.3"
+    "typescript": "^3.9.7"
   }
 }

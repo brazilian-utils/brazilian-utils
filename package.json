@@ -67,7 +67,7 @@
     "lint-staged": "^10.1.7",
     "node-fetch": "^2.6.0",
     "prettier": "^2.0.5",
-    "release-it": "^13.5.5",
+    "release-it": "^13.6.6",
     "tsdx": "^0.13.2",
     "typescript": "^3.8.3"
   }

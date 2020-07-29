@@ -16,7 +16,7 @@
     "start": "tsdx watch",
     "prebuild": "npm run update-cities",
     "build": "tsdx build",
-    "prepublish": "npm run build",
+    "prepublishOnly": "npm run build",
     "test": "tsdx test --coverage",
     "lint": "tsdx lint ./src/**/**/*.ts --fix",
     "prettify": "prettier --write ./src/**/**/*.ts",

@@ -17,5 +17,7 @@ export function getCities(state?: StateName | StateCode): string[] {
     return CITIES_DATA[foundState.code].sort(sortAlphabetically);
   }
 
-  return Object.values(CITIES_DATA).flat().sort(sortAlphabetically);
+  return Object.values(CITIES_DATA)
+    .reduce((acc, city) => acc.concat(city), [])
+    .sort(sortAlphabetically);
 }

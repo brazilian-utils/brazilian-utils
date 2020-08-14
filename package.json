@@ -2,7 +2,7 @@
   "name": "@brazilian-utils/brazilian-utils",
   "version": "1.0.0-rc.10",
   "main": "dist/index.js",
-  "module": "dist/brazilianUtils.esm.js",
+  "module": "dist/brazilian-utils.esm.js",
   "typings": "dist/index.d.ts",
   "sideEffects": false,
   "files": [

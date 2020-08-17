@@ -58,7 +58,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^9.1.1",
-    "@commitlint/config-conventional": "^9.1.1",
+    "@commitlint/config-conventional": "^9.1.2",
     "@release-it/conventional-changelog": "^1.1.4",
     "@types/jest": "^26.0.9",
     "cz-conventional-changelog": "^3.2.0",

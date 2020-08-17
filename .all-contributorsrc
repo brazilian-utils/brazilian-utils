@@ -220,6 +220,15 @@
         "doc",
         "test"
       ]
+    },
+    {
+      "login": "saculbr",
+      "name": "Lucas Nascimento",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/4311885?v=4",
+      "profile": "https://github.com/saculbr",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "repoType": "github",

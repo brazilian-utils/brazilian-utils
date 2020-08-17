@@ -50,13 +50,13 @@ Our "thank you" goes to these wonderful people ([emoji key](https://github.com/k
     <td align="center"><a href="https://www.linkedin.com/in/felipe-nolleto-nascimento-a2a23788/"><img src="https://avatars2.githubusercontent.com/u/2437673?v=4" width="100px;" alt=""/><br /><sub><b>Felipe Nolleto Nascimento</b></sub></a><br /><a href="https://github.com/brazilian-utils/brazilian-utils/commits?author=nolleto" title="Code">💻</a> <a href="https://github.com/brazilian-utils/brazilian-utils/commits?author=nolleto" title="Documentation">📖</a> <a href="https://github.com/brazilian-utils/brazilian-utils/commits?author=nolleto" title="Tests">⚠️</a></td>
     <td align="center"><a href="http://linkedin.com/in/saulojoab"><img src="https://avatars2.githubusercontent.com/u/37988252?v=4" width="100px;" alt=""/><br /><sub><b>Saulo Joab</b></sub></a><br /><a href="https://github.com/brazilian-utils/brazilian-utils/commits?author=saulojoab" title="Documentation">📖</a></td>
     <td align="center"><a href="http://fb.com/arantespp"><img src="https://avatars0.githubusercontent.com/u/16626980?v=4" width="100px;" alt=""/><br /><sub><b>Pedro Arantes</b></sub></a><br /><a href="https://github.com/brazilian-utils/brazilian-utils/commits?author=arantespp" title="Code">💻</a> <a href="https://github.com/brazilian-utils/brazilian-utils/commits?author=arantespp" title="Documentation">📖</a> <a href="https://github.com/brazilian-utils/brazilian-utils/commits?author=arantespp" title="Tests">⚠️</a></td>
-    <td align="center"><a href="http://fb.com/silvioprog"><img src="https://avatars0.githubusercontent.com/u/1456829?v=4" width="100px;" alt=""/><br /><sub><b>Silvio Clécio</b></sub></a><br /><a href="https://github.com/brazilian-utils/brazilian-utils/commits?author=silvioprog" title="Code">💻</a> <a href="https://github.com/brazilian-utils/brazilian-utils/commits?author=silvioprog" title="Documentation">📖</a> <a href="https://github.com/brazilian-utils/brazilian-utils/commits?author=silvioprog" title="Tests">⚠️</a></td>
+    <td align="center"><a href="http://fb.com/silvioclecio"><img src="https://avatars0.githubusercontent.com/u/1456829?v=4" width="100px;" alt=""/><br /><sub><b>Silvio Clécio</b></sub></a><br /><a href="https://github.com/brazilian-utils/brazilian-utils/commits?author=silvioprog" title="Code">💻</a> <a href="https://github.com/brazilian-utils/brazilian-utils/commits?author=silvioprog" title="Documentation">📖</a> <a href="https://github.com/brazilian-utils/brazilian-utils/commits?author=silvioprog" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/saculbr"><img src="https://avatars1.githubusercontent.com/u/4311885?v=4" width="100px;" alt=""/><br /><sub><b>Lucas Nascimento</b></sub></a><br /><a href="https://github.com/brazilian-utils/brazilian-utils/commits?author=saculbr" title="Code">💻</a></td>
   </tr>
 </table>
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
-
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind are welcome!

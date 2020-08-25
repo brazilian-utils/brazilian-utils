@@ -146,6 +146,29 @@ capitalize('josé Ama MARIA', { lowerCaseWords: ['ama'] }); // José ama Maria
 capitalize('doc inválido', { upperCaseWords: ['DOC'] }); // DOC Inválido
 ```
 
+## formatCurrency
+
+Formata um número inteiro ou float para uma string no padrão BRL
+
+```javascript
+import { formatCurrency } from '@brazilian-utils/brazilian-utils';
+
+formatCurrency(10); // 10,00
+formatCurrency(10756.11); // 10.756,11
+formatCurrency(10756.123, { precision: 3 }); // 10.756,123
+```
+
+## parseCurrency
+
+Transforma uma string para o formato de inteiro ou float
+
+```javascript
+import { parseCurrency } from '@brazilian-utils/brazilian-utils';
+
+parseCurrency('10.756,11'); // 10756.11
+parseCurrency('R$ 10.59'); // 10.59
+```
+
 ## getStates
 
 Retorna todos os estados brasileiros.

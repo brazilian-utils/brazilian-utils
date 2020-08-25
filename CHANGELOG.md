@@ -1,3 +1,19 @@
+# [1.0.0-rc.11](https://github.com/brazilian-utils/brazilian-utils/compare/1.0.0-rc.10...1.0.0-rc.11) (2020-08-25)
+
+
+### Bug Fixes
+
+* esm filename in package.json ([32cd815](https://github.com/brazilian-utils/brazilian-utils/commit/32cd815905af8ff850f6b4f56824288223722200))
+* let formatCurrency() more flexible and remove default param from parseCurrency() ([8a9a437](https://github.com/brazilian-utils/brazilian-utils/commit/8a9a4374d2b1e6bd33f2ccb26e6496c5f12dcd22))
+* **deps:** upgrade devDependency to fix security warning ([af7c353](https://github.com/brazilian-utils/brazilian-utils/commit/af7c353e97d1f9140a251a84fc13168aa2789956))
+* replace array.flat with reduce to support node 10 ([a47a51a](https://github.com/brazilian-utils/brazilian-utils/commit/a47a51a1b881aaf045d9e69af4fd0b20c50dcbfe))
+* **workflow:** update workflow config ([fb449c0](https://github.com/brazilian-utils/brazilian-utils/commit/fb449c09ed0b19277f946af26e4465efe10c68be))
+
+
+### Features
+
+* add formatCurrency() and parseCurrency() ([b0e6994](https://github.com/brazilian-utils/brazilian-utils/commit/b0e6994ebd7613030c648bbc9150640f305bf4ca))
+
 <a name="1.0.0-rc.10"></a>
 # [1.0.0-rc.10](https://github.com/brazilian-utils/brazilian-utils/compare/1.0.0-rc.9...1.0.0-rc.10) (2020-07-27)
 

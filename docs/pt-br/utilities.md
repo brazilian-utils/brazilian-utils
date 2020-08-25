@@ -155,6 +155,7 @@ import { formatCurrency } from '@brazilian-utils/brazilian-utils';
 
 formatCurrency(10); // 10,00
 formatCurrency(10756.11); // 10.756,11
+formatCurrency(10756.123, { precision: 3 }); // 10.756,123
 ```
 
 ## parseCurrency

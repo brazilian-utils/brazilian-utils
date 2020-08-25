@@ -5346,7 +5346,7 @@ export const CITIES_DATA = {
     'Vitória do Jari',
   ],
   SE: [
-    'Amparo de São Francisco',
+    'Amparo do São Francisco',
     'Aquidabã',
     'Aracaju',
     'Arauá',

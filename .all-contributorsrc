@@ -229,6 +229,17 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "linconkusunoki",
+      "name": "Lincon Kusunoki",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/5117676?v=4",
+      "profile": "https://lincon.dev/",
+      "contributions": [
+        "code",
+        "doc",
+        "test"
+      ]
     }
   ],
   "repoType": "github",

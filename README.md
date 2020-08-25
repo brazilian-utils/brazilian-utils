@@ -53,6 +53,9 @@ Our "thank you" goes to these wonderful people ([emoji key](https://github.com/k
     <td align="center"><a href="http://fb.com/silvioclecio"><img src="https://avatars0.githubusercontent.com/u/1456829?v=4" width="100px;" alt=""/><br /><sub><b>Silvio Clécio</b></sub></a><br /><a href="https://github.com/brazilian-utils/brazilian-utils/commits?author=silvioprog" title="Code">💻</a> <a href="https://github.com/brazilian-utils/brazilian-utils/commits?author=silvioprog" title="Documentation">📖</a> <a href="https://github.com/brazilian-utils/brazilian-utils/commits?author=silvioprog" title="Tests">⚠️</a></td>
     <td align="center"><a href="https://github.com/saculbr"><img src="https://avatars1.githubusercontent.com/u/4311885?v=4" width="100px;" alt=""/><br /><sub><b>Lucas Nascimento</b></sub></a><br /><a href="https://github.com/brazilian-utils/brazilian-utils/commits?author=saculbr" title="Code">💻</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://lincon.dev/"><img src="https://avatars3.githubusercontent.com/u/5117676?v=4" width="100px;" alt=""/><br /><sub><b>Lincon Kusunoki</b></sub></a><br /><a href="https://github.com/brazilian-utils/brazilian-utils/commits?author=linconkusunoki" title="Code">💻</a> <a href="https://github.com/brazilian-utils/brazilian-utils/commits?author=linconkusunoki" title="Documentation">📖</a> <a href="https://github.com/brazilian-utils/brazilian-utils/commits?author=linconkusunoki" title="Tests">⚠️</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-enable -->

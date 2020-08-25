@@ -146,6 +146,28 @@ capitalize('josé Ama MARIA', { lowerCaseWords: ['ama'] }); // José ama Maria
 capitalize('doc inválido', { upperCaseWords: ['DOC'] }); // DOC Inválido
 ```
 
+## formatCurrency
+
+Formats an integer or float to a string in the BRL pattern
+
+```javascript
+import { formatCurrency } from '@brazilian-utils/brazilian-utils';
+
+formatCurrency(10); // 10,00
+formatCurrency(10756.11); // 10.756,11
+```
+
+## parseCurrency
+
+Transforms a string to an integer or float format
+
+```javascript
+import { parseCurrency } from '@brazilian-utils/brazilian-utils';
+
+parseCurrency('10.756,11'); // 10756.11
+parseCurrency('R$ 10.59'); // 10.59
+```
+
 ## getStates
 
 Get all Brazilian states.

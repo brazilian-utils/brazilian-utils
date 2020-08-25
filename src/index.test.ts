@@ -26,6 +26,8 @@ describe('Public API', () => {
     'generateRandomNumber',
     'getCities',
     'capitalize',
+    'formatCurrency',
+    'parseCurrency',
   ];
 
   Object.keys(API).forEach((method) => {

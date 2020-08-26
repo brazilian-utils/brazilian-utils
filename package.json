@@ -66,7 +66,7 @@
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
     "node-fetch": "^2.6.0",
-    "prettier": "^2.1.0",
+    "prettier": "^2.1.1",
     "prismjs": "^1.21.0",
     "release-it": "^13.6.9",
     "tsdx": "^0.13.3",

@@ -1,4 +1,5 @@
 export { isValid as isValidIE } from './inscricao-estadual';
+export { isValid as isValidPlate } from './placa';
 export { isValid as isValidRenavam } from './renavam';
 export { isValid as isValidPIS } from './pis';
 export { isValid as isValidPhone, isValidMobilePhone, isValidLandlinePhone } from './phone';

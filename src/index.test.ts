@@ -29,6 +29,7 @@ describe('Public API', () => {
     'formatCurrency',
     'parseCurrency',
     'isValidRenavam',
+    'isValidPlate',
   ];
 
   Object.keys(API).forEach((method) => {

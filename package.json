@@ -61,7 +61,7 @@
     "@commitlint/config-conventional": "^9.1.2",
     "@release-it/conventional-changelog": "^1.1.4",
     "@types/jest": "^26.0.10",
-    "cz-conventional-changelog": "^3.2.1",
+    "cz-conventional-changelog": "^3.3.0",
     "docsify-cli": "^4.4.1",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.13",

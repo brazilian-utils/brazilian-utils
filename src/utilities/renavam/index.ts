@@ -5,7 +5,7 @@ export const MIN_LENGTH = 9;
 export const LENGTH = 11;
 export const SUM = 284;
 
-export const isValid = (input: string) => {
+export function isValid(input: string) {
   if (!input || typeof input !== 'string' || input.length < MIN_LENGTH) return false;
 
   const numeric = onlyNumbers(input.padStart(11, '0'));
@@ -17,9 +17,9 @@ export const isValid = (input: string) => {
   const realDigit = parseInt(input.substring(input.length - 1, input.length));
 
   return sum === realDigit;
-};
+}
 
-const sumCalculationRest = (input: string) => {
+function sumCalculationRest(input: string) {
   let sum = 0;
   let multiple = 2;
 
@@ -36,4 +36,4 @@ const sumCalculationRest = (input: string) => {
   sum = LENGTH - (sum % LENGTH);
 
   return sum;
-};
+}

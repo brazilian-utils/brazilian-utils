@@ -3,7 +3,7 @@ export type Options = {
   motorcycle?: boolean;
 };
 
-export const isValid = (input: string, options?: Options) => {
+export function isValid(input: string, options?: Options) {
   if (!input || typeof input !== 'string') return false;
 
   const plate = input.replace('-', '');
@@ -15,4 +15,4 @@ export const isValid = (input: string, options?: Options) => {
   } else {
     return /^[a-zA-Z]{3}[0-9]{4}$/.test(plate);
   }
-};
+}

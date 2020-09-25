@@ -104,6 +104,18 @@ import { isValidLandlinePhone } from '@brazilian-utils/brazilian-utils';
 isValidLandlinePhone('1130000000'); // true
 ```
 
+## formatPhone
+
+Formata no padrão mais comum no Brasil
+
+```javascript
+import { formatPhone } from '@brazilian-utils/brazilian-utils';
+
+formatPhone('1133334444'); // (11) 3333-4444
+formatPhone('11933334444'); // (11) 93333-4444
+formatPhone('11933334444', { withCountryCode: true }) // +55 (11) 93333-4444
+```
+
 ## isValidPIS
 
 Valida se o PIS é válido.

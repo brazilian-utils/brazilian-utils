@@ -19,6 +19,7 @@ describe('Public API', () => {
     'isValidPhone',
     'isValidMobilePhone',
     'isValidLandlinePhone',
+    'formatPhone',
     'generateCNPJ',
     'formatBoleto',
     'isValidBoleto',

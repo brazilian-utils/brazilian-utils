@@ -2,6 +2,7 @@ import {
   isValid,
   isValidMobilePhone,
   isValidLandlinePhone,
+  format,
   VALID_AREA_CODES,
   PHONE_MIN_LENGTH,
   PHONE_MAX_LENGTH,
@@ -105,5 +106,27 @@ describe('isValid', () => {
       expect(isValid('1130000000')).toBe(true);
       expect(isValidLandlinePhone('1130000000')).toBe(true);
     });
+  });
+});
+
+describe('format', () => {
+  test('should format phone', () => {
+    expect(format('')).toBe('');
+    expect(format('1')).toBe('(1');
+    expect(format('11')).toBe('(11) ');
+    expect(format('119')).toBe('(11) 9');
+    expect(format('1198')).toBe('(11) 98');
+    expect(format('11988')).toBe('(11) 988');
+    expect(format('119888')).toBe('(11) 9888-');
+    expect(format('1198888')).toBe('(11) 9888-8');
+    expect(format('11988887')).toBe('(11) 9888-87');
+    expect(format('119888877')).toBe('(11) 9888-877');
+    expect(format('1198888777')).toBe('(11) 9888-8777');
+    expect(format('11988887777')).toBe('(11) 98888-7777');
+    expect(format('119888877777')).toBe('(11) 9888-877777');
+  });
+
+  test('should format with country code', () => {
+    expect(format('1188887777', { withCountryCode: true })).toBe('+55 (11) 8888-7777');
   });
 });

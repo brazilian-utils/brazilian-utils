@@ -56,4 +56,12 @@ describe('format', () => {
   test('should not be a valid Processo Juridico', () => {
     expect(isValid('abcd123qweasdsdasdds')).toBe(false);
   });
+
+  test('should not be a valid Processo Juridico', () => {
+    expect(isValid('')).toBe(false);
+  });
+
+  test('should remove all non numeric characters and be valid', () => {
+    expect(isValid('0002080-25.2012.515.0049')).toBe(true);
+  });
 });

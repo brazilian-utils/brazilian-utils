@@ -134,6 +134,22 @@ import { formatCEP } from '@brazilian-utils/brazilian-utils';
 formatCEP('92500000'); // 92500-000
 ```
 
+## isValidProcessoJuridico
+
+```javascript
+import { isValidProcessoJuridico } from '@brazilian-utils/brazilian-utils';
+
+isValidProcessoJuridico('00020802520125150049'); // true
+```
+
+## formatProcessoJuridico
+
+```javascript
+import { formatProcessoJuridico } from '@brazilian-utils/brazilian-utils';
+
+formatProcessoJuridico('00020802520125150049'); // 0002080-25.2012.515.0049
+```
+
 ## isValidIE
 
 Valida se a inscrição estadual de um estado é valida.

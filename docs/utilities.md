@@ -104,6 +104,16 @@ import { isValidLandlinePhone } from '@brazilian-utils/brazilian-utils';
 isValidLandlinePhone('1130000000'); // true
 ```
 
+## isValidLicensePlate
+
+Check if license plate is valid.
+
+```javascript
+import { isValidLicensePlate } from '@brazilian-utils/brazilian-utils';
+
+isValidLicensePlate('ABC1234'); // true
+```
+
 ## isValidPIS
 
 Check if PIS is valid.

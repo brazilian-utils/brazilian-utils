@@ -1,7 +1,3 @@
-// Tests created using the following links as reference:
-// https://help.returnpath.com/hc/en-us/articles/220560587-What-are-the-rules-for-email-address-syntax-
-// https://stackoverflow.com/questions/2049502/what-characters-are-allowed-in-an-email-address
-
 import { isValid } from '.';
 
 describe('isValid', () => {

@@ -6,6 +6,11 @@ export const DOT_INDEXES = [8, 12, 15];
 
 export const HYPHEN_INDEXES = [6];
 
+// MOD97_10 formula = mod(98 - mod(data * 100, 97), 97)
+export const MOD_97_10_QUOCIENT = 97;
+
+export const MOD_97_10_SUM = 98;
+
 export function format(processoJuridico: string) {
   const digits = onlyNumbers(processoJuridico);
 
@@ -30,15 +35,15 @@ export function verifyDigit(processo: string): boolean {
     return acc + +digit * Math.pow(10, 10 - index);
   }, 0);
 
-  const firstRemainder = digits1to11 % 97;
+  const firstRemainder = digits1to11 % MOD_97_10_QUOCIENT;
 
   const digits12to18 = digits.slice(11).reduce((acc, digit, index) => {
     return acc + +digit * Math.pow(10, 6 - index);
   }, 0);
 
-  const secondRemainder = (firstRemainder * 1_000_000_000 + digits12to18 * 100) % 97;
+  const secondRemainder = (firstRemainder * 1_000_000_000 + digits12to18 * 100) % MOD_97_10_QUOCIENT;
 
-  let verifier = 98 - secondRemainder;
+  const verifier = MOD_97_10_SUM - secondRemainder;
   return verifier === +verificationDigits;
 }
 

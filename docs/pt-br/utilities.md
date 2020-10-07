@@ -136,6 +136,8 @@ formatCEP('92500000'); // 92500-000
 
 ## isValidProcessoJuridico
 
+Valida o número do processo jurídico de acordo com definição do [CNJ](https://www.conjur.com.br/dl/resolucao-65-cnj.pdf).
+
 ```javascript
 import { isValidProcessoJuridico } from '@brazilian-utils/brazilian-utils';
 
@@ -143,6 +145,8 @@ isValidProcessoJuridico('00020802520125150049'); // true
 ```
 
 ## formatProcessoJuridico
+
+Formata um número no formato definido pelo [CNJ](https://www.conjur.com.br/dl/resolucao-65-cnj.pdf).
 
 ```javascript
 import { formatProcessoJuridico } from '@brazilian-utils/brazilian-utils';

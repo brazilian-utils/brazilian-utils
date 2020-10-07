@@ -104,6 +104,16 @@ import { isValidLandlinePhone } from '@brazilian-utils/brazilian-utils';
 isValidLandlinePhone('1130000000'); // true
 ```
 
+## isValidLicensePlate
+
+Valida se a placa de carro é válida.
+
+```javascript
+import { isValidLicensePlate } from '@brazilian-utils/brazilian-utils';
+
+isValidLicensePlate('ABC1234'); // true
+```
+
 ## isValidPIS
 
 Valida se o PIS é válido.

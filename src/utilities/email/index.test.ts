@@ -6,28 +6,28 @@ import { isValid } from '.';
 
 describe('isValid', () => {
   describe('should return false', () => {
-    test('when is a empty string', () => {
+    test('when it is an empty string', () => {
       expect(isValid('')).toBe(false);
     });
 
-    test('when is null', () => {
+    test('when it is null', () => {
       expect(isValid(null as any)).toBe(false);
     });
 
-    test('when is undefined', () => {
+    test('when it is undefined', () => {
       expect(isValid(undefined as any)).toBe(false);
     });
 
-    test('when is a boolean', () => {
+    test('when it is a boolean', () => {
       expect(isValid(true as any)).toBe(false);
       expect(isValid(false as any)).toBe(false);
     });
 
-    test('when is a object', () => {
+    test('when it is an object', () => {
       expect(isValid({} as any)).toBe(false);
     });
 
-    test('when is a array', () => {
+    test('when it is an array', () => {
       expect(isValid([] as any)).toBe(false);
     });
 

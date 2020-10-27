@@ -10,6 +10,7 @@ describe('Public API', () => {
     'isValidPIS',
     'isLastChar',
     'isValidCPF',
+    'isValidLicensePlate',
     'isValidIE',
     'formatCNPJ',
     'isValidCNPJ',

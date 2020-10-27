@@ -2,7 +2,7 @@ type FormatOptions = {
   precision?: number;
 };
 
-export function format(value: number, options: FormatOptions = { precistion: 2 }): string {
+export function format(value: number, options: FormatOptions = { precision: 2 }): string {
   return value
     .toFixed(options.precision)
     .replace('.', ',')

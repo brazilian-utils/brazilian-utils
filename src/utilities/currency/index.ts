@@ -1,10 +1,10 @@
 type FormatOptions = {
-  precistion?: number;
+  precision?: number;
 };
 
 export function format(value: number, options: FormatOptions = { precistion: 2 }): string {
   return value
-    .toFixed(options.precistion)
+    .toFixed(options.precision)
     .replace('.', ',')
     .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
 }

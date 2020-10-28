@@ -2,12 +2,7 @@ export { isValid as isValidIE } from './inscricao-estadual';
 export { isValid as isValidPIS } from './pis';
 export { isValid as isValidPhone, isValidMobilePhone, isValidLandlinePhone } from './phone';
 export { isValid as isValidEmail } from './email';
-<<<<<<< HEAD
-export { isValid as isValidLicensePlate } from './licensePlate';
 export { format as formatProcessoJuridico, isValid as isValidProcessoJuridico } from './processo-juridico';
-=======
-export { format as formatProcessoJuridico, isValid as isValidProcessoJuridico } from './processo-juridico';
->>>>>>> refactor: change processo juridico method names
 export { format as formatCEP, isValid as isValidCEP } from './cep';
 export { format as formatBoleto, isValid as isValidBoleto } from './boleto';
 export { format as formatCurrency, parse as parseCurrency } from './currency';

@@ -56,6 +56,7 @@ Our "thank you" goes to these wonderful people ([emoji key](https://github.com/k
   </tr>
   <tr>
     <td align="center"><a href="https://lincon.dev/"><img src="https://avatars3.githubusercontent.com/u/5117676?v=4" width="100px;" alt=""/><br /><sub><b>Lincon Kusunoki</b></sub></a><br /><a href="https://github.com/brazilian-utils/brazilian-utils/commits?author=linconkusunoki" title="Code">💻</a> <a href="https://github.com/brazilian-utils/brazilian-utils/commits?author=linconkusunoki" title="Documentation">📖</a> <a href="https://github.com/brazilian-utils/brazilian-utils/commits?author=linconkusunoki" title="Tests">⚠️</a></td>
+    <td align="center"><a href="http://www.engenhandosoftware.com.br/"><img src="https://avatars3.githubusercontent.com/u/11621153?v=4" width="100px;" alt=""/><br /><sub><b>Marcelo Cristiano</b></sub></a><br /><a href="https://github.com/brazilian-utils/brazilian-utils/commits?author=marceloabk" title="Code">💻</a> <a href="https://github.com/brazilian-utils/brazilian-utils/commits?author=marceloabk" title="Documentation">📖</a> <a href="https://github.com/brazilian-utils/brazilian-utils/commits?author=marceloabk" title="Tests">⚠️</a></td>
   </tr>
 </table>
 

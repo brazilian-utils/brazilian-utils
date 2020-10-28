@@ -240,6 +240,17 @@
         "doc",
         "test"
       ]
+    },
+    {
+      "login": "marceloabk",
+      "name": "Marcelo Cristiano",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/11621153?v=4",
+      "profile": "http://www.engenhandosoftware.com.br/",
+      "contributions": [
+        "code",
+        "doc",
+        "test"
+      ]
     }
   ],
   "repoType": "github",

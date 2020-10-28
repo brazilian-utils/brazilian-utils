@@ -1,3 +1,10 @@
+# [1.0.0-rc.12](https://github.com/brazilian-utils/brazilian-utils/compare/1.0.0-rc.11...1.0.0-rc.12) (2020-10-27)
+
+
+### Features
+
+* **licenseplate:** add a validador for brazilian and mercosul license plates ([580d961](https://github.com/brazilian-utils/brazilian-utils/commit/580d9613ed97d636f3ca717072522d05620081b3)), closes [#112](https://github.com/brazilian-utils/brazilian-utils/issues/112)
+
 # [1.0.0-rc.11](https://github.com/brazilian-utils/brazilian-utils/compare/1.0.0-rc.10...1.0.0-rc.11) (2020-08-25)
 
 

@@ -104,6 +104,7 @@ import { isValidLandlinePhone } from '@brazilian-utils/brazilian-utils';
 isValidLandlinePhone('1130000000'); // true
 ```
 
+
 ## formatPhone
 
 Formats in the most common pattern in Brazil

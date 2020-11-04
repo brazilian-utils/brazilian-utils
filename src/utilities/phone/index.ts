@@ -72,13 +72,14 @@ export function isValid(phone: string): boolean {
   return isValidLength(digits) && isValidFirstNumber(digits) && isValidDDD(digits);
 }
 
-type FormatOptions = {
-  withCountryCode?: boolean;
-};
-
-export function format(phone: string, options?: FormatOptions): string {
+export function format(phone: string): string {
   const { digits } = parsePhoneDigits(phone);
-  const HYPHEN_INDEXES = digits.length === PHONE_MAX_LENGTH ? [6] : [5];
+  const hasCountry = digits.length > PHONE_MAX_LENGTH;
+
+  const getHiphenIndex = () => {
+    if (hasCountry) return digits.length === 12 ? [7] : [8];
+    return digits.length === PHONE_MAX_LENGTH ? [6] : [5];
+  };
 
   const result = digits
     .slice(0, digits.length)
@@ -86,13 +87,19 @@ export function format(phone: string, options?: FormatOptions): string {
     .reduce((acc, digit, i) => {
       const result = `${acc}${digit}`;
 
-      if ([0].indexOf(i) >= 0) return `(${result}`;
-      if ([1].indexOf(i) >= 0) return `${result}) `;
-      if (HYPHEN_INDEXES.indexOf(i) >= 0) return `${result}-`;
+      if (hasCountry) {
+        if ([0].indexOf(i) >= 0) return `+${result}`;
+        if ([1].indexOf(i) >= 0) return `${result} (`;
+        if ([3].indexOf(i) >= 0) return `${result}) `;
+      } else {
+        if ([0].indexOf(i) >= 0) return `(${result}`;
+        if ([1].indexOf(i) >= 0) return `${result}) `;
+      }
+
+      if (getHiphenIndex().indexOf(i) >= 0) return `${result}-`;
 
       return result;
     }, '');
 
-  if (options?.withCountryCode) return '+55 ' + result;
   return result;
 }

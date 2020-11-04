@@ -121,12 +121,13 @@ describe('format', () => {
     expect(format('1198888')).toBe('(11) 9888-8');
     expect(format('11988887')).toBe('(11) 9888-87');
     expect(format('119888877')).toBe('(11) 9888-877');
-    expect(format('1198888777')).toBe('(11) 9888-8777');
+    expect(format('1188887777')).toBe('(11) 8888-7777');
     expect(format('11988887777')).toBe('(11) 98888-7777');
-    expect(format('119888877777')).toBe('(11) 9888-877777');
-  });
-
-  test('should format with country code', () => {
-    expect(format('1188887777', { withCountryCode: true })).toBe('+55 (11) 8888-7777');
+    expect(format('51188887777')).toBe('(51) 18888-7777');
+    expect(format('551188887777')).toBe('+55 (11) 8888-7777');
+    expect(format('5511988887777')).toBe('+55 (11) 98888-7777');
+    expect(format('55119888877776666')).toBe('+55 (11) 98888-77776666');
+    expect(format('1188#887AB777')).toBe('(11) 8888-7777');
+    expect(format('11988#887AB777')).toBe('(11) 98888-7777');
   });
 });

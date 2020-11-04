@@ -6,19 +6,19 @@ describe('isValid', () => {
       RESERVED_NUMBERS.forEach((pis) => expect(isValid(pis)).toBe(false));
     });
 
-    test('when is a empty string', () => {
+    test('when it is an empty string', () => {
       expect(isValid('')).toBe(false);
     });
 
-    test('when is null', () => {
+    test('when it is null', () => {
       expect(isValid(null as any)).toBe(false);
     });
 
-    test('when is undefined', () => {
+    test('when it is undefined', () => {
       expect(isValid(undefined as any)).toBe(false);
     });
 
-    test('when is a boolean', () => {
+    test('when it is a boolean', () => {
       expect(isValid(true as any)).toBe(false);
       expect(isValid(false as any)).toBe(false);
     });

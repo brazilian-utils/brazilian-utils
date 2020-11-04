@@ -2,15 +2,15 @@ import { isValid, format, LENGTH } from '.';
 
 describe('isValid', () => {
   describe('should return false', () => {
-    test('when is a empty string', () => {
+    test('when it is an empty string', () => {
       expect(isValid('')).toBe(false);
     });
 
-    test('when is null', () => {
+    test('when it is null', () => {
       expect(isValid(null as any)).toBe(false);
     });
 
-    test('when is undefined', () => {
+    test('when it is undefined', () => {
       expect(isValid(undefined as any)).toBe(false);
     });
 

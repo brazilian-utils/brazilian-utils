@@ -117,6 +117,16 @@ formatPhone('551188887777'); // +55 (11) 8888-7777
 formatPhone('5511988887777'); // +55 (11) 98888-7777
 ```
 
+## isValidLicensePlate
+
+Check if license plate is valid.
+
+```javascript
+import { isValidLicensePlate } from '@brazilian-utils/brazilian-utils';
+
+isValidLicensePlate('ABC1234'); // true
+```
+
 ## isValidPIS
 
 Check if PIS is valid.

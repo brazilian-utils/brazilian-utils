@@ -16,17 +16,17 @@ describe('format', () => {
   });
 
   test('should format with different precision', () => {
-    expect(format(0.01, { precistion: 3 })).toBe('0,010');
-    expect(format(0.1, { precistion: 3 })).toBe('0,100');
-    expect(format(1.1, { precistion: 3 })).toBe('1,100');
-    expect(format(1.01, { precistion: 3 })).toBe('1,010');
-    expect(format(1.001, { precistion: 3 })).toBe('1,001');
-    expect(format(10.001, { precistion: 3 })).toBe('10,001');
-    expect(format(100.001, { precistion: 3 })).toBe('100,001');
-    expect(format(1000.001, { precistion: 3 })).toBe('1.000,001');
-    expect(format(10000.001, { precistion: 3 })).toBe('10.000,001');
-    expect(format(100000.001, { precistion: 3 })).toBe('100.000,001');
-    expect(format(1000000.001, { precistion: 3 })).toBe('1.000.000,001');
+    expect(format(0.01, { precision: 3 })).toBe('0,010');
+    expect(format(0.1, { precision: 3 })).toBe('0,100');
+    expect(format(1.1, { precision: 3 })).toBe('1,100');
+    expect(format(1.01, { precision: 3 })).toBe('1,010');
+    expect(format(1.001, { precision: 3 })).toBe('1,001');
+    expect(format(10.001, { precision: 3 })).toBe('10,001');
+    expect(format(100.001, { precision: 3 })).toBe('100,001');
+    expect(format(1000.001, { precision: 3 })).toBe('1.000,001');
+    expect(format(10000.001, { precision: 3 })).toBe('10.000,001');
+    expect(format(100000.001, { precision: 3 })).toBe('100.000,001');
+    expect(format(1000000.001, { precision: 3 })).toBe('1.000.000,001');
   });
 });
 

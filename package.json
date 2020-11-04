@@ -1,6 +1,6 @@
 {
   "name": "@brazilian-utils/brazilian-utils",
-  "version": "1.0.0-rc.11",
+  "version": "1.0.0-rc.12",
   "main": "dist/index.js",
   "module": "dist/brazilian-utils.esm.js",
   "typings": "dist/index.d.ts",
@@ -57,19 +57,19 @@
     "access": "public"
   },
   "devDependencies": {
-    "@commitlint/cli": "^9.1.1",
-    "@commitlint/config-conventional": "^9.1.2",
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
     "@release-it/conventional-changelog": "^1.1.4",
-    "@types/jest": "^26.0.13",
+    "@types/jest": "^26.0.15",
     "cz-conventional-changelog": "^3.3.0",
     "docsify-cli": "^4.4.1",
     "husky": "^4.3.0",
-    "lint-staged": "^10.3.0",
+    "lint-staged": "^10.5.1",
     "node-fetch": "^2.6.1",
-    "prettier": "^2.1.1",
-    "prismjs": "^1.21.0",
-    "release-it": "^14.0.2",
-    "tsdx": "^0.13.3",
-    "typescript": "^4.0.2"
+    "prettier": "^2.1.2",
+    "prismjs": "^1.22.0",
+    "release-it": "^14.2.1",
+    "tsdx": "^0.14.1",
+    "typescript": "^4.0.5"
   }
 }

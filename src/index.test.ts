@@ -2,7 +2,8 @@ import * as API from '.';
 
 describe('Public API', () => {
   const methods = [
-    'formatPJ',
+    'formatProcessoJuridico',
+    'isValidProcessoJuridico',
     'getStates',
     'formatCPF',
     'isValidCEP',

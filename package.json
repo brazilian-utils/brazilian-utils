@@ -60,7 +60,7 @@
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
     "@release-it/conventional-changelog": "^1.1.4",
-    "@types/jest": "^26.0.16",
+    "@types/jest": "^26.0.18",
     "cz-conventional-changelog": "^3.3.0",
     "docsify-cli": "^4.4.2",
     "husky": "^4.3.5",

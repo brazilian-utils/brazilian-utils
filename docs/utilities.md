@@ -23,6 +23,16 @@ formatCPF('746506880'); // 746.506.880
 formatCPF('746506880', { pad: true }); // 007.465.068-80
 ```
 
+## generateCPF
+
+Generate a valid random CPF.
+
+```javascript
+import { generateCPF } from '@brazilian-utils/brazilian-utils'
+
+generateCPF();
+```
+
 ## isValidCNPJ
 
 Check if CNPJ is valid.
@@ -52,6 +62,16 @@ Check if CEP ([brazilian postal code](https://en.wikipedia.org/wiki/C%C3%B3digo_
 import { isValidCEP } from '@brazilian-utils/brazilian-utils';
 
 isValidCEP('92500000'); // true
+```
+
+## generateCNPJ
+
+Generate a valid random CNPJ.
+
+```javascript
+import { generateCNPJ } from '@brazilian-utils/brazilian-utils'
+
+generateCPF();
 ```
 
 ## isValidBoleto

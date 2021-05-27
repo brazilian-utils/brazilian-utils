@@ -251,7 +251,7 @@
         "doc",
         "test"
       ]
-    },
+    }
   ],
   "repoType": "github",
   "repoHost": "https://github.com",

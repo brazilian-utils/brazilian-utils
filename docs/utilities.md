@@ -71,7 +71,7 @@ Generate a valid random CNPJ.
 ```javascript
 import { generateCNPJ } from '@brazilian-utils/brazilian-utils'
 
-generateCPF();
+generateCNPJ();
 ```
 
 ## isValidBoleto

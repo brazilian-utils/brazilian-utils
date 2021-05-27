@@ -23,6 +23,16 @@ formatCPF('746506880'); // 746.506.880
 formatCPF('746506880', { pad: true }); // 007.465.068-80
 ```
 
+## generateCPF
+
+Gera um CPF válido aleatório.
+
+```javascript
+import { generateCPF } from '@brazilian-utils/brazilian-utils'
+
+generateCPF();
+```
+
 ## isValidCNPJ
 
 Valida se o CNPJ é válido.
@@ -42,6 +52,16 @@ import { formatCNPJ } from '@brazilian-utils/brazilian-utils';
 
 formatCNPJ('245222000174'); // 24.522.200/0174
 formatCNPJ('245222000174', { pad: true }); // 00.245.222/0001-74
+```
+
+## generateCPF
+
+Gera um CNPJ válido aleatório.
+
+```javascript
+import { generateCNPJ } from '@brazilian-utils/brazilian-utils'
+
+generateCNPJ();
 ```
 
 ## isValidCEP

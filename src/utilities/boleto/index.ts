@@ -160,3 +160,9 @@ export function getExpirationDate(digitableLine: string): Date | null {
 
   return new Date(dateSinceFirstDay.getTime() + firstDay.getTime());
 }
+
+export function getBankCode(digitableLine: string): string {
+  if (!digitableLine || !isValid(digitableLine)) return '';
+
+  return digitableLine.substr(0, 3);
+}

@@ -1,4 +1,4 @@
-import { isValid, format, getValueInCents, getExpirationDate, LENGTH } from '.';
+import { isValid, format, getValueInCents, getExpirationDate, getBankCode, LENGTH } from '.';
 
 describe('isValid', () => {
   describe('should return false', () => {
@@ -185,6 +185,28 @@ describe('getExpirationDate', () => {
 
     test('should return the expiration date when boleto is with mask', () => {
       expect(getExpirationDate('0019000009 01149.718601 68524.522114 6 75860000102656')).toEqual(new Date(2018, 6, 15));
+    });
+  });
+});
+
+describe('getBankCode', () => {
+  describe('should return empty string', () => {
+    test('should return empty string when boleto is empty string', () => {
+      expect(getBankCode('')).toBe('');
+    });
+
+    test('should return empty string when boleto is invalid', () => {
+      expect(getBankCode('00190000090114971860168524522114775860000102656')).toBe('');
+    });
+  });
+
+  describe('should return bank code value', () => {
+    test('should return the bank code', () => {
+      expect(getBankCode('00190000090114971860168524522114675860000102656')).toEqual('001');
+    });
+
+    test('should return the bank code when boleto is with mask', () => {
+      expect(getBankCode('0019000009 01149.718601 68524.522114 6 75860000102656')).toEqual('001');
     });
   });
 });

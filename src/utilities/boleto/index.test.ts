@@ -1,4 +1,4 @@
-import { isValid, format, getValueInCents, LENGTH } from '.';
+import { isValid, format, getValueInCents, getExpirationDate, LENGTH } from '.';
 
 describe('isValid', () => {
   describe('should return false', () => {
@@ -148,21 +148,43 @@ describe('format', () => {
 describe('getValueInCents', () => {
   describe('should return zero', () => {
     test('should return zero value when boleto is empty string', () => {
-      expect(getValueInCents("")).toBe(0);
+      expect(getValueInCents('')).toBe(0);
     });
 
     test('should return zero value when boleto is invalid', () => {
-      expect(getValueInCents("00190000090114971860168524522114775860000102656")).toBe(0);
+      expect(getValueInCents('00190000090114971860168524522114775860000102656')).toBe(0);
     });
   });
 
   describe('should return boleto value', () => {
     test('should return the value in cents', () => {
-      expect(getValueInCents("00190000090114971860168524522114675860000102656")).toBe(102656);
+      expect(getValueInCents('00190000090114971860168524522114675860000102656')).toBe(102656);
     });
 
-    test('should return value in cents when boleto is with mask' ,() => {
-      expect(getValueInCents("0019000009 01149.718601 68524.522114 6 75860000102656")).toBe(102656);
+    test('should return value in cents when boleto is with mask', () => {
+      expect(getValueInCents('0019000009 01149.718601 68524.522114 6 75860000102656')).toBe(102656);
     });
-  })
+  });
+});
+
+describe('getExpirationDate', () => {
+  describe('should return zero', () => {
+    test('should return null when boleto is empty string', () => {
+      expect(getExpirationDate('')).toBe(null);
+    });
+
+    test('should return null when boleto is invalid', () => {
+      expect(getExpirationDate('00190000090114971860168524522114775860000102656')).toBe(null);
+    });
+  });
+
+  describe('should return boleto value', () => {
+    test('should return the expiration date', () => {
+      expect(getExpirationDate('00190000090114971860168524522114675860000102656')).toEqual(new Date(2018, 6, 15));
+    });
+
+    test('should return the expiration date when boleto is with mask', () => {
+      expect(getExpirationDate('0019000009 01149.718601 68524.522114 6 75860000102656')).toEqual(new Date(2018, 6, 15));
+    });
+  });
 });

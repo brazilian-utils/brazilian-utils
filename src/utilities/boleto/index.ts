@@ -43,6 +43,7 @@ export const DIGITABLE_LINE_TO_BOLETO_CONVERT_POSITIONS = [
 
 export interface Boleto {
   value: number;
+  expirationDate: Date;
 }
 
 function isValidLength(digitableLine: string): boolean {
@@ -147,4 +148,15 @@ export function getValueInCents(digitableLine: string): number {
   const valueStartIndex = digits.length - 10;
 
   return Number(digits.substr(valueStartIndex));
+}
+
+export function getExpirationDate(digitableLine: string): Date | null {
+  if (!digitableLine || !isValid(digitableLine)) return null;
+
+  const firstDay = new Date(1997, 9, 7);
+
+  const daysSinceFirstDay = digitableLine.substr(digitableLine.length - 14, 4);
+  const dateSinceFirstDay = new Date(Number(daysSinceFirstDay) * 24 * 60 * 60 * 1000);
+
+  return new Date(dateSinceFirstDay.getTime() + firstDay.getTime());
 }

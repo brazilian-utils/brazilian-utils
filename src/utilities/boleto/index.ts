@@ -42,8 +42,9 @@ export const DIGITABLE_LINE_TO_BOLETO_CONVERT_POSITIONS = [
 ];
 
 export interface Boleto {
-  value: number;
-  expirationDate: Date;
+  valueInCents: number;
+  expirationDate: Date | null;
+  bankCode: string;
 }
 
 function isValidLength(digitableLine: string): boolean {
@@ -165,4 +166,14 @@ export function getBankCode(digitableLine: string): string {
   if (!digitableLine || !isValid(digitableLine)) return '';
 
   return digitableLine.substr(0, 3);
+}
+
+export function getInfo(digitableLine: string): Boleto {
+  if (!digitableLine || !isValid(digitableLine)) throw new Error('Invalid boleto');
+
+  return {
+    valueInCents: getValueInCents(digitableLine),
+    expirationDate: getExpirationDate(digitableLine),
+    bankCode: getBankCode(digitableLine),
+  };
 }

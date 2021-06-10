@@ -1,4 +1,4 @@
-import { isValid, format, getValueInCents, getExpirationDate, getBankCode, LENGTH } from '.';
+import { isValid, format, getValueInCents, getExpirationDate, getBankCode, getInfo, LENGTH } from '.';
 
 describe('isValid', () => {
   describe('should return false', () => {
@@ -207,6 +207,36 @@ describe('getBankCode', () => {
 
     test('should return the bank code when boleto is with mask', () => {
       expect(getBankCode('0019000009 01149.718601 68524.522114 6 75860000102656')).toEqual('001');
+    });
+  });
+});
+
+describe('getInfo', () => {
+  describe('should throw error', () => {
+    test('should throw error when boleto is empty string', () => {
+      expect(() => getInfo('')).toThrow('Invalid boleto');
+    });
+
+    test('should throw error when boleto is invalid', () => {
+      expect(() => getInfo('00190000090114971860168524522114775860000102656')).toThrow('Invalid boleto');
+    });
+  });
+
+  describe('should return boleto info', () => {
+    test('should return the bank code', () => {
+      expect(getInfo('00190000090114971860168524522114675860000102656')).toStrictEqual({
+        valueInCents: 102656,
+        expirationDate: new Date(2018, 6, 15),
+        bankCode: '001',
+      });
+    });
+
+    test('should return the bank code when boleto is with mask', () => {
+      expect(getInfo('0019000009 01149.718601 68524.522114 6 75860000102656')).toStrictEqual({
+        valueInCents: 102656,
+        expirationDate: new Date(2018, 6, 15),
+        bankCode: '001',
+      });
     });
   });
 });

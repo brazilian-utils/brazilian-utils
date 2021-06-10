@@ -41,6 +41,10 @@ export const DIGITABLE_LINE_TO_BOLETO_CONVERT_POSITIONS = [
   { end: 31, start: 21 },
 ];
 
+export interface Boleto {
+  value: number;
+}
+
 function isValidLength(digitableLine: string): boolean {
   return digitableLine.length === LENGTH;
 }
@@ -133,4 +137,14 @@ export function format(boleto: string) {
 
       return result;
     }, '');
+}
+
+export function getValueInCents(digitableLine: string): number {
+  if (!digitableLine || !isValid(digitableLine)) return 0;
+
+  const digits = onlyNumbers(digitableLine);
+
+  const valueStartIndex = digits.length - 10;
+
+  return Number(digits.substr(valueStartIndex));
 }

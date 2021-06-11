@@ -160,10 +160,10 @@ export function getExpirationDate(digitableLine: string): Date | null {
   const daysSinceBaseDayEndIndex = -10;
   const daysSinceBaseDay = digitableLine.slice(daysSinceBaseDayStartIndex, daysSinceBaseDayEndIndex);
 
-  const oneDayMiliseconds = 24 * 60 * 60 * 1000;
-  const milisecondsSinceBaseDay = Number(daysSinceBaseDay) * oneDayMiliseconds;
+  const oneDayMilliseconds = 24 * 60 * 60 * 1000;
+  const millisecondsSinceBaseDay = Number(daysSinceBaseDay) * oneDayMilliseconds;
 
-  const dateSinceBaseDay = new Date(milisecondsSinceBaseDay);
+  const dateSinceBaseDay = new Date(millisecondsSinceBaseDay);
 
   return new Date(dateSinceBaseDay.getTime() + BANCO_CENTRAL_BASE_DATE.getTime());
 }

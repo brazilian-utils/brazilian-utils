@@ -41,6 +41,8 @@ export const DIGITABLE_LINE_TO_BOLETO_CONVERT_POSITIONS = [
   { end: 31, start: 21 },
 ];
 
+export const BANCO_CENTRAL_BASE_DATE = new Date(1997, 9, 7);
+
 export interface Boleto {
   valueInCents: number;
   expirationDate: Date | null;
@@ -146,20 +148,24 @@ export function getValueInCents(digitableLine: string): number {
 
   const digits = onlyNumbers(digitableLine);
 
-  const valueStartIndex = digits.length - 10;
+  const valueStartIndex = -10;
 
-  return Number(digits.substr(valueStartIndex));
+  return Number(digits.slice(valueStartIndex));
 }
 
 export function getExpirationDate(digitableLine: string): Date | null {
   if (!digitableLine || !isValid(digitableLine)) return null;
 
-  const firstDay = new Date(1997, 9, 7);
+  const daysSinceBaseDayStartIndex = -14;
+  const daysSinceBaseDayEndIndex = -10;
+  const daysSinceBaseDay = digitableLine.slice(daysSinceBaseDayStartIndex, daysSinceBaseDayEndIndex);
 
-  const daysSinceFirstDay = digitableLine.substr(digitableLine.length - 14, 4);
-  const dateSinceFirstDay = new Date(Number(daysSinceFirstDay) * 24 * 60 * 60 * 1000);
+  const oneDayMiliseconds = 24 * 60 * 60 * 1000;
+  const milisecondsSinceBaseDay = Number(daysSinceBaseDay) * oneDayMiliseconds;
 
-  return new Date(dateSinceFirstDay.getTime() + firstDay.getTime());
+  const dateSinceBaseDay = new Date(milisecondsSinceBaseDay);
+
+  return new Date(dateSinceBaseDay.getTime() + BANCO_CENTRAL_BASE_DATE.getTime());
 }
 
 export function getBankCode(digitableLine: string): string {

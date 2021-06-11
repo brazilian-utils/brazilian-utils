@@ -2,9 +2,9 @@ sudo: false
 language: node_js
 
 node_js:
-  - '13'
+  - '14'
   - '12'
-  - '11'
+  - '10'
 
 install:
 - npm install -g codecov

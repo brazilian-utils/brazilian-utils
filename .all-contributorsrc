@@ -260,6 +260,17 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "LucasCarrias",
+      "name": "Lucas Carrias",
+      "avatar_url": "https://avatars.githubusercontent.com/u/24925816?v=4",
+      "profile": "https://www.linkedin.com/in/lucas-carrias-474081195/",
+      "contributions": [
+        "doc",
+        "test",
+        "code"
+      ]
     }
   ],
   "repoType": "github",

@@ -4,12 +4,18 @@ Brazilian Utils is a library focused on solving problems that we face daily in t
 
 ## Installation
 
-Using **Brazilian Utils** is quite simple and you can use it in two ways:
+Using **Brazilian Utils** is quite simple and you can use it in some ways:
 
 as npm package:
 
 ```bash
 npm install --save @brazilian-utils/brazilian-utils
+```
+
+with yarn package manager:
+
+```bash
+yarn add @brazilian-utils/brazilian-utils
 ```
 
 or `<script>` tag (global `brazilianUtils`):

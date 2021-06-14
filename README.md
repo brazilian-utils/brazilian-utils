@@ -1,9 +1,15 @@
-# 🇧🇷 Brazilian Utils
+
+<div align="center">
+<h1>🇧🇷 Brazilian Utils</h1>
+
+<p>Utils library for Brazilian-specific businesses.</p>
+
+[📖 Documentation](https://brazilian-utils.com.br/#/getting-started)
+</div>
 
 [![Build Status](https://github.com/brazilian-utils/brazilian-utils/workflows/build/badge.svg?branch=main)](https://github.com/brazilian-utils/brazilian-utils/actions?query=workflow%3Abuild) [![Coverage Status](https://codecov.io/gh/brazilian-utils/brazilian-utils/branch/main/graph/badge.svg)](https://codecov.io/gh/brazilian-utils/brazilian-utils) [![Known Vulnerabilities](https://snyk.io/test/github/brazilian-utils/brazilian-utils/badge.svg?targetFile=package.json)](https://snyk.io/test/github/brazilian-utils/brazilian-utils?targetFile=package.json) [![Maintainability](https://api.codeclimate.com/v1/badges/05d3cd8492ed438bf51d/maintainability)](https://codeclimate.com/github/hyanmandian/brazilian-utils/maintainability)
 [![Downloads per month](https://img.shields.io/npm/dm/@brazilian-utils/brazilian-utils.svg)](https://www.npmjs.com/package/@brazilian-utils/brazilian-utils) [![License: MIT](https://img.shields.io/github/license/hyanmandian/brazilian-utils.svg)](LICENSE)
 
-Utils library for Brazilian-specific businesses.
 
 ---
 
@@ -18,6 +24,56 @@ Utils library for Brazilian-specific businesses.
 > After one year of Brazilian Utils and lots of feedback, we decided to refactor our library to fix issues, create a website and make it easier for other developers to contribute. If you use **v0 version**, please, check [v0](https://github.com/brazilian-utils/brazilian-utils/tree/v0) branch.
 
 ---
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [Getting Started](#getting-started)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Contributors](#contributors)
+  - [License](#license)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+# Getting Started
+
+Brazilian Utils is a library focused on solving problems that we face daily in the development of applications for the Brazilian business.
+
+## Installation
+
+Using **Brazilian Utils** is quite simple and you can use it in some ways:
+
+as npm package:
+
+```bash
+npm install --save @brazilian-utils/brazilian-utils
+```
+
+with yarn package manager:
+
+```bash
+yarn add @brazilian-utils/brazilian-utils
+```
+
+or `<script>` tag (global `brazilianUtils`):
+
+```html
+<script src="https://unpkg.com/@brazilian-utils/brazilian-utils/dist/brazilian-utils.cjs.production.min.js"></script>
+```
+
+## Usage
+
+To use one of our utilities you just need to import the required function as in the example below:
+
+```javascript
+import { isValidCPF } from '@brazilian-utils/brazilian-utils';
+
+isValidCPF('1232454233345'); // false
+```
+
+You can check a list of utilities [by clicking here](https://brazilian-utils.com.br/#/utilities).
 
 ## Contributors
 

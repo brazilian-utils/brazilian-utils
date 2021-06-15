@@ -2,17 +2,9 @@
 
 Aqui você encontrará todos os utilitários disponíveis para uso.
 
-## isValidCPF
+## CPF
 
-Valida se o CPF é válido.
-
-```javascript
-import { isValidCPF } from '@brazilian-utils/brazilian-utils';
-
-isValidCPF('155151475'); // false
-```
-
-## formatCPF
+### Formatar
 
 Formata o CPF.
 
@@ -23,27 +15,29 @@ formatCPF('746506880'); // 746.506.880
 formatCPF('746506880', { pad: true }); // 007.465.068-80
 ```
 
-## generateCPF
+### Validar
+
+Valida se o CPF é válido.
+
+```javascript
+import { isValidCPF } from '@brazilian-utils/brazilian-utils';
+
+isValidCPF('155151475'); // false
+```
+
+### Gerar
 
 Gera um CPF válido aleatório.
 
 ```javascript
-import { generateCPF } from '@brazilian-utils/brazilian-utils'
+import { generateCPF } from '@brazilian-utils/brazilian-utils';
 
 generateCPF();
 ```
 
-## isValidCNPJ
+## CNPJ
 
-Valida se o CNPJ é válido.
-
-```javascript
-import { isValidCNPJ } from '@brazilian-utils/brazilian-utils';
-
-isValidCNPJ('15515147234255'); // false
-```
-
-## formatCNPJ
+### Formatar
 
 Formata o CNPJ.
 
@@ -54,97 +48,29 @@ formatCNPJ('245222000174'); // 24.522.200/0174
 formatCNPJ('245222000174', { pad: true }); // 00.245.222/0001-74
 ```
 
-## generateCPF
+### Validar
+
+Valida se o CNPJ é válido.
+
+```javascript
+import { isValidCNPJ } from '@brazilian-utils/brazilian-utils';
+
+isValidCNPJ('15515147234255'); // false
+```
+
+### Gerar
 
 Gera um CNPJ válido aleatório.
 
 ```javascript
-import { generateCNPJ } from '@brazilian-utils/brazilian-utils'
+import { generateCNPJ } from '@brazilian-utils/brazilian-utils';
 
 generateCNPJ();
 ```
 
-## isValidCEP
+## CEP
 
-Valida se o CEP é válido.
-
-```javascript
-import { isValidCEP } from '@brazilian-utils/brazilian-utils';
-
-isValidCEP('92500000'); // true
-```
-
-## isValidBoleto
-
-Valida se o boleto é válido.
-
-```javascript
-import { isValidBoleto } from '@brazilian-utils/brazilian-utils';
-
-isValidBoleto('00190000090114971860168524522114675860000102656'); // true
-```
-
-## isValidEmail
-
-Valida se email é valido.
-
-```javascript
-import { isValidEmail } from '@brazilian-utils/brazilian-utils';
-
-isValidEmail('john.doe@hotmail.com'); // true
-```
-
-## isValidPhone
-
-Valida se o número de telefone (celular ou residencial) é valido.
-
-```javascript
-import { isValidPhone } from '@brazilian-utils/brazilian-utils';
-
-isValidPhone('11900000000'); // true
-```
-
-## isValidMobilePhone
-
-Valida se o número de telefone celular é valido.
-
-```javascript
-import { isValidMobilePhone } from '@brazilian-utils/brazilian-utils';
-
-isValidMobilePhone('11900000000'); // true
-```
-
-## isValidLandlinePhone
-
-Valida se o número de telefone residencial é valido.
-
-```javascript
-import { isValidLandlinePhone } from '@brazilian-utils/brazilian-utils';
-
-isValidLandlinePhone('1130000000'); // true
-```
-
-## isValidLicensePlate
-
-Valida se a placa de carro é válida.
-
-```javascript
-import { isValidLicensePlate } from '@brazilian-utils/brazilian-utils';
-
-isValidLicensePlate('ABC1234'); // true
-```
-
-## isValidPIS
-
-Valida se o PIS é válido.
-
-```javascript
-import { isValidPIS } from '@brazilian-utils/brazilian-utils';
-
-isValidPIS('12056412547'); // false
-```
-
-## formatCEP
+### Formatar
 
 Formata o CEP.
 
@@ -154,17 +80,99 @@ import { formatCEP } from '@brazilian-utils/brazilian-utils';
 formatCEP('92500000'); // 92500-000
 ```
 
-## isValidProcessoJuridico
+### Validar
 
-Valida o número do processo jurídico de acordo com definição do [CNJ](https://www.conjur.com.br/dl/resolucao-65-cnj.pdf).
+Valida se o CEP é válido.
 
 ```javascript
-import { isValidProcessoJuridico } from '@brazilian-utils/brazilian-utils';
+import { isValidCEP } from '@brazilian-utils/brazilian-utils';
 
-isValidProcessoJuridico('00020802520125150049'); // true
+isValidCEP('92500000'); // true
 ```
 
-## formatProcessoJuridico
+## Boleto
+
+### Validar
+
+Valida se o boleto é válido.
+
+```javascript
+import { isValidBoleto } from '@brazilian-utils/brazilian-utils';
+
+isValidBoleto('00190000090114971860168524522114675860000102656'); // true
+```
+
+## E-mail
+
+### Validar
+
+Valida se email é valido.
+
+```javascript
+import { isValidEmail } from '@brazilian-utils/brazilian-utils';
+
+isValidEmail('john.doe@hotmail.com'); // true
+```
+
+## Telefone
+
+### Validar
+
+Valida se o número de telefone (celular ou residencial) é valido.
+
+```javascript
+import { isValidPhone } from '@brazilian-utils/brazilian-utils';
+
+isValidPhone('11900000000'); // true
+```
+
+### Validar Telefone Celular
+
+Valida se o número de telefone celular é valido.
+
+```javascript
+import { isValidMobilePhone } from '@brazilian-utils/brazilian-utils';
+
+isValidMobilePhone('11900000000'); // true
+```
+
+### Validar Telefone Residencial
+
+Valida se o número de telefone residencial é valido.
+
+```javascript
+import { isValidLandlinePhone } from '@brazilian-utils/brazilian-utils';
+
+isValidLandlinePhone('1130000000'); // true
+```
+
+## Placa de Identificação de Veículos
+
+### Validar
+
+Valida se a placa do veículo é válida.
+
+```javascript
+import { isValidLicensePlate } from '@brazilian-utils/brazilian-utils';
+
+isValidLicensePlate('ABC1234'); // true
+```
+
+## PIS
+
+### Validar
+
+Valida se o PIS é válido.
+
+```javascript
+import { isValidPIS } from '@brazilian-utils/brazilian-utils';
+
+isValidPIS('12056412547'); // false
+```
+
+## Processo Jurídico
+
+### Formata
 
 Formata um número no formato definido pelo [CNJ](https://www.conjur.com.br/dl/resolucao-65-cnj.pdf).
 
@@ -174,7 +182,19 @@ import { formatProcessoJuridico } from '@brazilian-utils/brazilian-utils';
 formatProcessoJuridico('00020802520125150049'); // 0002080-25.2012.515.0049
 ```
 
-## isValidIE
+### Validar
+
+Valida o número do processo jurídico de acordo com definição do [CNJ](https://www.conjur.com.br/dl/resolucao-65-cnj.pdf).
+
+```javascript
+import { isValidProcessoJuridico } from '@brazilian-utils/brazilian-utils';
+
+isValidProcessoJuridico('00020802520125150049'); // true
+```
+
+## Inscrição Estadual
+
+### Validar
 
 Valida se a inscrição estadual de um estado é valida.
 
@@ -184,21 +204,11 @@ import { isValidIE } from '@brazilian-utils/brazilian-utils';
 isValidIE('AC', '0187634580933'); // false
 ```
 
-## capitalize
+## Moeda
 
-Transforma primeira letra de cada palavra em maiúscula ignorando preposições.
+### Formatar
 
-```javascript
-import { capitalize } from '@brazilian-utils/brazilian-utils';
-
-capitalize('josé e maria'); // José e Maria
-capitalize('josé Ama MARIA', { lowerCaseWords: ['ama'] }); // José ama Maria
-capitalize('doc inválido', { upperCaseWords: ['DOC'] }); // DOC Inválido
-```
-
-## formatCurrency
-
-Formata um número inteiro ou float para uma string no padrão BRL
+Formata um número inteiro ou float para uma string no padrão BRL.
 
 ```javascript
 import { formatCurrency } from '@brazilian-utils/brazilian-utils';
@@ -208,9 +218,9 @@ formatCurrency(10756.11); // 10.756,11
 formatCurrency(10756.123, { precision: 3 }); // 10.756,123
 ```
 
-## parseCurrency
+### Transformar
 
-Transforma uma string para o formato de inteiro ou float
+Transformar uma string de valor monetário para o formato de inteiro ou float.
 
 ```javascript
 import { parseCurrency } from '@brazilian-utils/brazilian-utils';
@@ -219,7 +229,9 @@ parseCurrency('10.756,11'); // 10756.11
 parseCurrency('R$ 10.59'); // 10.59
 ```
 
-## getStates
+## Localização
+
+### Buscar Estados
 
 Retorna todos os estados brasileiros.
 
@@ -258,7 +270,7 @@ getStates();
 // ]
 ```
 
-## getCities
+### Buscar Cidades
 
 Retorna as cidades brasileiras.
 
@@ -297,4 +309,16 @@ getCities('SP');
 //   "Alfredo Marcondes",
 //   ... 635 more items
 // ]
+```
+
+## Letras em Maiúsculo
+
+Transforma primeira letra de cada palavra em maiúscula ignorando preposições.
+
+```javascript
+import { capitalize } from '@brazilian-utils/brazilian-utils';
+
+capitalize('josé e maria'); // José e Maria
+capitalize('josé Ama MARIA', { lowerCaseWords: ['ama'] }); // José ama Maria
+capitalize('doc inválido', { upperCaseWords: ['DOC'] }); // DOC Inválido
 ```

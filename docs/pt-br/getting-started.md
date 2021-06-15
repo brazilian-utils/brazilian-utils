@@ -4,12 +4,18 @@ Brazilian Utils é uma biblioteca com foco na resolução de problemas que enfre
 
 ## Instalação
 
-Utilizar o **Brazilian Utils** é bem simples e você pode utilizá-lo de duas formas:
+Utilizar o **Brazilian Utils** é bem simples e você pode utilizá-lo de algumas formas:
 
 como um pacote npm:
 
 ```bash
 npm install --save @brazilian-utils/brazilian-utils
+```
+
+com gerenciador de pacotes yarn:
+
+```bash
+yarn add @brazilian-utils/brazilian-utils
 ```
 
 ou `<script>` tag (global `brazilianUtils`):

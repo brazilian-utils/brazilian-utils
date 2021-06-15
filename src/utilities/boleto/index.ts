@@ -41,6 +41,14 @@ export const DIGITABLE_LINE_TO_BOLETO_CONVERT_POSITIONS = [
   { end: 31, start: 21 },
 ];
 
+export const BANCO_CENTRAL_BASE_DATE = new Date(1997, 9, 7);
+
+export interface Boleto {
+  valueInCents: number;
+  expirationDate: Date | null;
+  bankCode: string;
+}
+
 function isValidLength(digitableLine: string): boolean {
   return digitableLine.length === LENGTH;
 }
@@ -133,4 +141,45 @@ export function format(boleto: string) {
 
       return result;
     }, '');
+}
+
+export function getValueInCents(digitableLine: string): number {
+  if (!digitableLine || !isValid(digitableLine)) return 0;
+
+  const digits = onlyNumbers(digitableLine);
+
+  const valueStartIndex = -10;
+
+  return Number(digits.slice(valueStartIndex));
+}
+
+export function getExpirationDate(digitableLine: string): Date | null {
+  if (!digitableLine || !isValid(digitableLine)) return null;
+
+  const daysSinceBaseDayStartIndex = -14;
+  const daysSinceBaseDayEndIndex = -10;
+  const daysSinceBaseDay = digitableLine.slice(daysSinceBaseDayStartIndex, daysSinceBaseDayEndIndex);
+
+  const oneDayMilliseconds = 24 * 60 * 60 * 1000;
+  const millisecondsSinceBaseDay = Number(daysSinceBaseDay) * oneDayMilliseconds;
+
+  const dateSinceBaseDay = new Date(millisecondsSinceBaseDay);
+
+  return new Date(dateSinceBaseDay.getTime() + BANCO_CENTRAL_BASE_DATE.getTime());
+}
+
+export function getBankCode(digitableLine: string): string {
+  if (!digitableLine || !isValid(digitableLine)) return '';
+
+  return digitableLine.substr(0, 3);
+}
+
+export function getInfo(digitableLine: string): Boleto {
+  if (!digitableLine || !isValid(digitableLine)) throw new Error('Invalid boleto');
+
+  return {
+    valueInCents: getValueInCents(digitableLine),
+    expirationDate: getExpirationDate(digitableLine),
+    bankCode: getBankCode(digitableLine),
+  };
 }

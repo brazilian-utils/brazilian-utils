@@ -84,6 +84,21 @@ import { isValidBoleto } from '@brazilian-utils/brazilian-utils';
 isValidBoleto('00190000090114971860168524522114675860000102656'); // true
 ```
 
+## getBoletoInfo
+
+Retorna informações sobre um boleto válido.
+
+```javascript
+import { getBoletoInfo } from '@brazilian-utils/brazilian-utils';
+
+getBoletoInfo('00190000090114971860168524522114675860000102656');
+// {
+//   valueInCents: 102656,
+//   expirationDate: 2018-07-15T03:00:00.000Z,
+//   bankCode: '001'
+// }
+```
+
 ## isValidEmail
 
 Valida se email é valido.

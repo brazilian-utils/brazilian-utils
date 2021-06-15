@@ -28,7 +28,7 @@ formatCPF('746506880', { pad: true }); // 007.465.068-80
 Generate a valid random CPF.
 
 ```javascript
-import { generateCPF } from '@brazilian-utils/brazilian-utils'
+import { generateCPF } from '@brazilian-utils/brazilian-utils';
 
 generateCPF();
 ```
@@ -69,7 +69,7 @@ isValidCEP('92500000'); // true
 Generate a valid random CNPJ.
 
 ```javascript
-import { generateCNPJ } from '@brazilian-utils/brazilian-utils'
+import { generateCNPJ } from '@brazilian-utils/brazilian-utils';
 
 generateCNPJ();
 ```
@@ -82,6 +82,21 @@ Check if boleto ([brazilian payment method](https://en.wikipedia.org/wiki/Boleto
 import { isValidBoleto } from '@brazilian-utils/brazilian-utils';
 
 isValidBoleto('00190000090114971860168524522114675860000102656'); // true
+```
+
+## getBoletoInfo
+
+Get information about a valid boleto ([brazilian payment method](https://en.wikipedia.org/wiki/Boleto)).
+
+```javascript
+import { getBoletoInfo } from '@brazilian-utils/brazilian-utils';
+
+getBoletoInfo('00190000090114971860168524522114675860000102656');
+// {
+//   valueInCents: 102656,
+//   expirationDate: 2018-07-15T03:00:00.000Z,
+//   bankCode: '001'
+// }
 ```
 
 ## isValidEmail

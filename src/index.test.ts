@@ -24,6 +24,7 @@ describe('Public API', () => {
     'generateCNPJ',
     'formatBoleto',
     'isValidBoleto',
+    'getBoletoInfo',
     'generateChecksum',
     'generateRandomNumber',
     'getCities',

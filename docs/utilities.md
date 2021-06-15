@@ -2,17 +2,9 @@
 
 Here you will find all the utilities available for use.
 
-## isValidCPF
+## CPF
 
-Check if CPF is valid.
-
-```javascript
-import { isValidCPF } from '@brazilian-utils/brazilian-utils';
-
-isValidCPF('155151475'); // false
-```
-
-## formatCPF
+### Format
 
 Format CPF.
 
@@ -23,27 +15,29 @@ formatCPF('746506880'); // 746.506.880
 formatCPF('746506880', { pad: true }); // 007.465.068-80
 ```
 
-## generateCPF
+### Validate
+
+Check if CPF is valid.
+
+```javascript
+import { isValidCPF } from '@brazilian-utils/brazilian-utils';
+
+isValidCPF('155151475'); // false
+```
+
+### Generate
 
 Generate a valid random CPF.
 
 ```javascript
-import { generateCPF } from '@brazilian-utils/brazilian-utils'
+import { generateCPF } from '@brazilian-utils/brazilian-utils';
 
 generateCPF();
 ```
 
-## isValidCNPJ
+## CNPJ
 
-Check if CNPJ is valid.
-
-```javascript
-import { isValidCNPJ } from '@brazilian-utils/brazilian-utils';
-
-isValidCNPJ('15515147234255'); // false
-```
-
-## formatCNPJ
+### Format
 
 Format CNPJ.
 
@@ -54,97 +48,29 @@ formatCNPJ('245222000174'); // 24.522.200/0174
 formatCNPJ('245222000174', { pad: true }); // 00.245.222/0001-74
 ```
 
-## isValidCEP
+### Validate
 
-Check if CEP ([brazilian postal code](https://en.wikipedia.org/wiki/C%C3%B3digo_de_Endere%C3%A7amento_Postal)) is valid.
+Check if CNPJ is valid.
 
 ```javascript
-import { isValidCEP } from '@brazilian-utils/brazilian-utils';
+import { isValidCNPJ } from '@brazilian-utils/brazilian-utils';
 
-isValidCEP('92500000'); // true
+isValidCNPJ('15515147234255'); // false
 ```
 
-## generateCNPJ
+### Generate
 
 Generate a valid random CNPJ.
 
 ```javascript
-import { generateCNPJ } from '@brazilian-utils/brazilian-utils'
+import { generateCNPJ } from '@brazilian-utils/brazilian-utils';
 
 generateCNPJ();
 ```
 
-## isValidBoleto
+## CEP
 
-Check if boleto ([brazilian payment method](https://en.wikipedia.org/wiki/Boleto)) is valid.
-
-```javascript
-import { isValidBoleto } from '@brazilian-utils/brazilian-utils';
-
-isValidBoleto('00190000090114971860168524522114675860000102656'); // true
-```
-
-## isValidEmail
-
-Check if email is valid.
-
-```javascript
-import { isValidEmail } from '@brazilian-utils/brazilian-utils';
-
-isValidEmail('john.doe@hotmail.com'); // true
-```
-
-## isValidPhone
-
-Check if phone number (mobile or landline) is valid.
-
-```javascript
-import { isValidPhone } from '@brazilian-utils/brazilian-utils';
-
-isValidPhone('11900000000'); // true
-```
-
-## isValidMobilePhone
-
-Check if mobile phone number is valid.
-
-```javascript
-import { isValidMobilePhone } from '@brazilian-utils/brazilian-utils';
-
-isValidMobilePhone('11900000000'); // true
-```
-
-## isValidLandlinePhone
-
-Check if landline phone number is valid.
-
-```javascript
-import { isValidLandlinePhone } from '@brazilian-utils/brazilian-utils';
-
-isValidLandlinePhone('1130000000'); // true
-```
-
-## isValidLicensePlate
-
-Check if license plate is valid.
-
-```javascript
-import { isValidLicensePlate } from '@brazilian-utils/brazilian-utils';
-
-isValidLicensePlate('ABC1234'); // true
-```
-
-## isValidPIS
-
-Check if PIS is valid.
-
-```javascript
-import { isValidPIS } from '@brazilian-utils/brazilian-utils';
-
-isValidPIS('12056412547'); // false
-```
-
-## formatCEP
+### Format
 
 Format CEP ([brazilian postal code](https://en.wikipedia.org/wiki/C%C3%B3digo_de_Endere%C3%A7amento_Postal)).
 
@@ -154,17 +80,99 @@ import { formatCEP } from '@brazilian-utils/brazilian-utils';
 formatCEP('92500000'); // 92500-000
 ```
 
-## isValidProcessoJuridico
+### Validate
 
-Validate the processo jurídico number accordin to [CNJ's defintion](https://www.conjur.com.br/dl/resolucao-65-cnj.pdf).
+Check if CEP ([brazilian postal code](https://en.wikipedia.org/wiki/C%C3%B3digo_de_Endere%C3%A7amento_Postal)) is valid.
 
 ```javascript
-import { isValidProcessoJuridico } from '@brazilian-utils/brazilian-utils';
+import { isValidCEP } from '@brazilian-utils/brazilian-utils';
 
-isValidProcessoJuridico('00020802520125150049'); // true
+isValidCEP('92500000'); // true
 ```
 
-## formatProcessoJuridico
+## Boleto
+
+### Validate
+
+Check if boleto ([brazilian payment method](https://en.wikipedia.org/wiki/Boleto)) is valid.
+
+```javascript
+import { isValidBoleto } from '@brazilian-utils/brazilian-utils';
+
+isValidBoleto('00190000090114971860168524522114675860000102656'); // true
+```
+
+## E-mail
+
+### Validate
+
+Check if email is valid.
+
+```javascript
+import { isValidEmail } from '@brazilian-utils/brazilian-utils';
+
+isValidEmail('john.doe@hotmail.com'); // true
+```
+
+## Phone
+
+### Validate
+
+Check if phone number (mobile or landline) is valid.
+
+```javascript
+import { isValidPhone } from '@brazilian-utils/brazilian-utils';
+
+isValidPhone('11900000000'); // true
+```
+
+### Validate Mobile Phone
+
+Check if mobile phone number is valid.
+
+```javascript
+import { isValidMobilePhone } from '@brazilian-utils/brazilian-utils';
+
+isValidMobilePhone('11900000000'); // true
+```
+
+### Validate Landline Phone
+
+Check if landline phone number is valid.
+
+```javascript
+import { isValidLandlinePhone } from '@brazilian-utils/brazilian-utils';
+
+isValidLandlinePhone('1130000000'); // true
+```
+
+## License Plate
+
+### Validate
+
+Check if license plate is valid.
+
+```javascript
+import { isValidLicensePlate } from '@brazilian-utils/brazilian-utils';
+
+isValidLicensePlate('ABC1234'); // true
+```
+
+## PIS
+
+### Validate
+
+Check if PIS is valid.
+
+```javascript
+import { isValidPIS } from '@brazilian-utils/brazilian-utils';
+
+isValidPIS('12056412547'); // false
+```
+
+## Processo Jurídico
+
+### Format
 
 Format the processo jurídico number according to [CNJ's definition](https://www.conjur.com.br/dl/resolucao-65-cnj.pdf).
 
@@ -174,7 +182,19 @@ import { formatProcessoJuridico } from '@brazilian-utils/brazilian-utils';
 formatProcessoJuridico('00020802520125150049'); // 0002080-25.2012.515.0049
 ```
 
-## isValidIE
+### Validate
+
+Validate the processo jurídico number accordin to [CNJ's defintion](https://www.conjur.com.br/dl/resolucao-65-cnj.pdf).
+
+```javascript
+import { isValidProcessoJuridico } from '@brazilian-utils/brazilian-utils';
+
+isValidProcessoJuridico('00020802520125150049'); // true
+```
+
+## Inscrição Estadual
+
+### Validate
 
 Check if inscrição estadual (state registration) is valid.
 
@@ -184,21 +204,11 @@ import { isValidIE } from '@brazilian-utils/brazilian-utils';
 isValidIE('AC', '0187634580933'); // false
 ```
 
-## capitalize
+## Currency
 
-Transforms the first letter into a capital one of each word ignoring prepositions.
+### Format
 
-```javascript
-import { capitalize } from '@brazilian-utils/brazilian-utils';
-
-capitalize('josé e maria'); // José e Maria
-capitalize('josé Ama MARIA', { lowerCaseWords: ['ama'] }); // José ama Maria
-capitalize('doc inválido', { upperCaseWords: ['DOC'] }); // DOC Inválido
-```
-
-## formatCurrency
-
-Formats an integer or float to a string in the BRL pattern
+Formats an integer or float to a string in the BRL pattern.
 
 ```javascript
 import { formatCurrency } from '@brazilian-utils/brazilian-utils';
@@ -208,9 +218,9 @@ formatCurrency(10756.11); // 10.756,11
 formatCurrency(10756.123, { precision: 3 }); // 10.756,123
 ```
 
-## parseCurrency
+### Parse
 
-Transforms a string to an integer or float format
+Transforms a string to an integer or float format.
 
 ```javascript
 import { parseCurrency } from '@brazilian-utils/brazilian-utils';
@@ -219,7 +229,9 @@ parseCurrency('10.756,11'); // 10756.11
 parseCurrency('R$ 10.59'); // 10.59
 ```
 
-## getStates
+## Location
+
+### Get States
 
 Get all Brazilian states.
 
@@ -258,7 +270,7 @@ getStates();
 // ]
 ```
 
-## getCities
+### Get Cities
 
 Get Brazilian cities.
 
@@ -297,4 +309,16 @@ getCities('SP');
 //   "Alfredo Marcondes",
 //   ... 635 more items
 // ]
+```
+
+## Capitalize
+
+Transforms the first letter into a capital one of each word ignoring prepositions.
+
+```javascript
+import { capitalize } from '@brazilian-utils/brazilian-utils';
+
+capitalize('josé e maria'); // José e Maria
+capitalize('josé Ama MARIA', { lowerCaseWords: ['ama'] }); // José ama Maria
+capitalize('doc inválido', { upperCaseWords: ['DOC'] }); // DOC Inválido
 ```

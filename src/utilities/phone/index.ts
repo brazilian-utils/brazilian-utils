@@ -71,3 +71,35 @@ export function isValid(phone: string): boolean {
 
   return isValidLength(digits) && isValidFirstNumber(digits) && isValidDDD(digits);
 }
+
+export function format(phone: string): string {
+  const { digits } = parsePhoneDigits(phone);
+  const hasCountry = digits.length > PHONE_MAX_LENGTH;
+
+  const getHiphenIndex = () => {
+    if (hasCountry) return digits.length === 12 ? [7] : [8];
+    return digits.length === PHONE_MAX_LENGTH ? [6] : [5];
+  };
+
+  const result = digits
+    .slice(0, digits.length)
+    .split('')
+    .reduce((acc, digit, i) => {
+      const result = `${acc}${digit}`;
+
+      if (hasCountry) {
+        if ([0].indexOf(i) >= 0) return `+${result}`;
+        if ([1].indexOf(i) >= 0) return `${result} (`;
+        if ([3].indexOf(i) >= 0) return `${result}) `;
+      } else {
+        if ([0].indexOf(i) >= 0) return `(${result}`;
+        if ([1].indexOf(i) >= 0) return `${result}) `;
+      }
+
+      if (getHiphenIndex().indexOf(i) >= 0) return `${result}-`;
+
+      return result;
+    }, '');
+
+  return result;
+}

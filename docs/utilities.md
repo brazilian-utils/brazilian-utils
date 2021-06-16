@@ -124,6 +124,20 @@ import { isValidLandlinePhone } from '@brazilian-utils/brazilian-utils';
 isValidLandlinePhone('1130000000'); // true
 ```
 
+
+## formatPhone
+
+Formats in the most common pattern in Brazil
+
+```javascript
+import { formatPhone } from '@brazilian-utils/brazilian-utils';
+
+formatPhone('1188887777'); // (11) 8888-7777
+formatPhone('11988887777'); // (11) 98888-7777
+formatPhone('551188887777'); // +55 (11) 8888-7777
+formatPhone('5511988887777'); // +55 (11) 98888-7777
+```
+
 ## isValidLicensePlate
 
 Check if license plate is valid.

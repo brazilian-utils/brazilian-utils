@@ -1,4 +1,4 @@
-import { generateChecksum } from '../../helpers';
+import { generateChecksum, isLastChar, onlyNumbers } from '../../helpers';
 
 export const LENGTH = 11;
 
@@ -49,4 +49,24 @@ export function isValid(pis: string): boolean {
     (calculatedDigit === 10 && verifyingDigit === 0) ||
     (calculatedDigit === 11 && verifyingDigit === 0)
   );
+}
+
+export function format(pis: string | number): string {
+  const DOT_INDEXES = [2, 7];
+  const HYPHEN_INDEXES = [9];
+
+  const digits = onlyNumbers(pis);
+  return digits
+    .slice(0, LENGTH)
+    .split('')
+    .reduce((acc, digit, i) => {
+      const result = `${acc}${digit}`;
+
+      if (!isLastChar(i, digits)) {
+        if (DOT_INDEXES.includes(i)) return `${result}.`;
+        if (HYPHEN_INDEXES.includes(i)) return `${result}-`;
+      }
+
+      return result;
+    }, '');
 }

@@ -136,12 +136,22 @@ isValidLicensePlate('ABC1234'); // true
 
 ## isValidPIS
 
-Check if PIS is valid.
+Check if PIS/PASEP is valid.
 
 ```javascript
 import { isValidPIS } from '@brazilian-utils/brazilian-utils';
 
 isValidPIS('12056412547'); // false
+```
+
+## formatPIS
+
+Format PIS/PASEP
+
+```javascript
+import { formatPIS } from '@brazilian-utils/brazilian-utils';
+
+formatPIS('12312345120'); // 123.12345.12-0
 ```
 
 ## formatCEP

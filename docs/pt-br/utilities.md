@@ -144,6 +144,16 @@ import { isValidPIS } from '@brazilian-utils/brazilian-utils';
 isValidPIS('12056412547'); // false
 ```
 
+## formatPIS
+
+Formata o PIS/PASEP
+
+```javascript
+import { formatPIS } from '@brazilian-utils/brazilian-utils';
+
+formatPIS('12312345120'); // 123.12345.12-0
+```
+
 ## formatCEP
 
 Formata o CEP.

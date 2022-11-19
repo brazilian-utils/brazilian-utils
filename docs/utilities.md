@@ -219,6 +219,21 @@ parseCurrency('10.756,11'); // 10756.11
 parseCurrency('R$ 10.59'); // 10.59
 ```
 
+## describeCurrency
+
+Transforms a string or number to an described string
+
+```javascript
+import { describeCurrency } from '@brazilian-utils/brazilian-utils';
+
+describeCurrency(10); // dez reais e zero centavos
+describeCurrency(10.75); // dez reais e setenta e cinco centavos
+describeCurrency('10.75'); // dez reais e setenta e cinco centavos
+describeCurrency('R$ 10,75'); // dez reais e setenta e cinco centavos
+describeCurrency('R$ 10.756', false); // dez mil setecentos e cinquenta e seis
+describeCurrency('R$ 10.756,11', false); // dez mil setecentos e cinquenta e seis
+```
+
 ## getStates
 
 Get all Brazilian states.

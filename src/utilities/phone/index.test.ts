@@ -2,6 +2,7 @@ import {
   isValid,
   isValidMobilePhone,
   isValidLandlinePhone,
+  format,
   VALID_AREA_CODES,
   PHONE_MIN_LENGTH,
   PHONE_MAX_LENGTH,
@@ -107,3 +108,20 @@ describe('isValid', () => {
     });
   });
 });
+
+describe('format', () => {
+  test('should format phone with mask', () => {
+    expect(format('')).toBe('');
+    expect(format('1')).toBe('(1');
+    expect(format('11')).toBe('(11');
+    expect(format('119')).toBe('(11) 9');
+    expect(format('1190')).toBe('(11) 90');
+    expect(format('11900')).toBe('(11) 900');
+    expect(format('119000')).toBe('(11) 9000');
+    expect(format('1190000')).toBe('(11) 9000-0');
+    expect(format('11900000')).toBe('(11) 9000-00');
+    expect(format('119000000')).toBe('(11) 9000-000');
+    expect(format('1190000000')).toBe('(11) 9000-0000');
+    expect(format('11900000000')).toBe('(11) 9 0000-0000');
+  })
+})

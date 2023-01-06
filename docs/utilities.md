@@ -124,6 +124,17 @@ import { isValidLandlinePhone } from '@brazilian-utils/brazilian-utils';
 isValidLandlinePhone('1130000000'); // true
 ```
 
+## formatPhone
+
+Formats landline and mobile phone numbers.
+
+```javascript
+import { formatPhone } from '@brazilian-utils/brazilian-utils';
+
+formatPhone('1130000000'); // (11) 3000-0000
+formatPhone('11900000000'); // (11) 9 0000-0000
+```
+
 ## isValidLicensePlate
 
 Check if license plate is valid.

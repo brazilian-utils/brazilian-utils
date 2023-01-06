@@ -124,6 +124,17 @@ import { isValidLandlinePhone } from '@brazilian-utils/brazilian-utils';
 isValidLandlinePhone('1130000000'); // true
 ```
 
+## formatPhone
+
+Formata números de telefone residencial e celular.
+
+```javascript
+import { formatPhone } from '@brazilian-utils/brazilian-utils';
+
+formatPhone('1130000000'); // (11) 3000-0000
+formatPhone('11900000000'); // (11) 9 0000-0000
+```
+
 ## isValidLicensePlate
 
 Valida se a placa de carro é válida.

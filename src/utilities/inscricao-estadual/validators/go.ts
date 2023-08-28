@@ -8,7 +8,7 @@ export class GO extends Validator {
   }
 
   protected itStartsWith(ie: string): boolean {
-    const beginWith = ['10', '11', '12'];
+    const beginWith = ['10', '11', '12', '20'];
     const begin = ie.substr(0, 2);
     return beginWith.indexOf(begin) >= 0;
   }

@@ -27,7 +27,7 @@ export const FIRST_CHECK_DIGIT_WEIGHTS = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
 
 export const SECOND_CHECK_DIGIT_WEIGHTS = [6, ...FIRST_CHECK_DIGIT_WEIGHTS];
 
-const VALID_CHARS_CNPJ = '0123456789ABCDFGHIJKLMNPQRSVWXYZ'
+const VALID_CHARS_CNPJ = '0123456789ABCDFGHIJKLMNPQRSVWXYZ';
 
 export interface FormatCnpjOptions {
   pad?: boolean;
@@ -64,7 +64,7 @@ function charToAsciiValue(char: string): number {
 function onlyValidCNPJAlphanumeric(input: string): string {
   return input
     .split('')
-    .filter(char => VALID_CHARS_CNPJ.includes(char))
+    .filter((char) => VALID_CHARS_CNPJ.includes(char))
     .join('');
 }
 
@@ -85,10 +85,9 @@ function generateCNPJAlphanumericChars(length: number): string {
     .join('');
 }
 
-
 export function generate(): string {
   const baseCNPJ = generateCNPJAlphanumericChars(LENGTH - 2);
-  
+
   const firstCheckDigitMod = generateChecksumCNPJ(baseCNPJ, FIRST_CHECK_DIGIT_WEIGHTS) % 11;
   const firstCheckDigit = (firstCheckDigitMod < 2 ? 0 : 11 - firstCheckDigitMod).toString();
 
@@ -99,7 +98,9 @@ export function generate(): string {
 }
 
 function isValidFormat(cnpj: string): boolean {
-  return /^[0-9ABCDFGHIJKLMNPQRSVWXYZ]{2}\.?[0-9ABCDFGHIJKLMNPQRSVWXYZ]{3}\.?[0-9ABCDFGHIJKLMNPQRSVWXYZ]{3}\/?[0-9ABCDFGHIJKLMNPQRSVWXYZ]{4}-?\d{2}$/.test(cnpj);
+  return /^[0-9ABCDFGHIJKLMNPQRSVWXYZ]{2}\.?[0-9ABCDFGHIJKLMNPQRSVWXYZ]{3}\.?[0-9ABCDFGHIJKLMNPQRSVWXYZ]{3}\/?[0-9ABCDFGHIJKLMNPQRSVWXYZ]{4}-?\d{2}$/.test(
+    cnpj
+  );
 }
 
 export function isReservedNumber(cpf: string): boolean {
@@ -132,7 +133,6 @@ export function isValid(cnpj: string): boolean {
   if (!cnpj || typeof cnpj !== 'string') return false;
 
   const validValue = onlyValidCNPJAlphanumeric(cnpj);
-
 
   return isValidFormat(cnpj) && !isReservedNumber(validValue) && isValidChecksum(validValue);
 }

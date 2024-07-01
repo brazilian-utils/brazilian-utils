@@ -19,7 +19,6 @@ describe('format', () => {
     expect(format('46843485000186')).toBe('46.843.485/0001-86');
   });
 
-  
   test('should format cnpj alphanumeric with mask', () => {
     expect(format('')).toBe('');
     expect(format('Q')).toBe('Q');

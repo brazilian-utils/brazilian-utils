@@ -19,6 +19,25 @@ describe('format', () => {
     expect(format('46843485000186')).toBe('46.843.485/0001-86');
   });
 
+  
+  test('should format cnpj alphanumeric with mask', () => {
+    expect(format('')).toBe('');
+    expect(format('Q')).toBe('Q');
+    expect(format('Q0')).toBe('Q0');
+    expect(format('Q0S')).toBe('Q0.S');
+    expect(format('Q0SL')).toBe('Q0.SL');
+    expect(format('Q0SLF')).toBe('Q0.SLF');
+    expect(format('Q0SLFM')).toBe('Q0.SLF.M');
+    expect(format('Q0SLFMB')).toBe('Q0.SLF.MB');
+    expect(format('Q0SLFMBD')).toBe('Q0.SLF.MBD');
+    expect(format('Q0SLFMBD7')).toBe('Q0.SLF.MBD/7');
+    expect(format('Q0SLFMBD7V')).toBe('Q0.SLF.MBD/7V');
+    expect(format('Q0SLFMBD7VX')).toBe('Q0.SLF.MBD/7VX');
+    expect(format('Q0SLFMBD7VX4')).toBe('Q0.SLF.MBD/7VX4');
+    expect(format('Q0SLFMBD7VX43')).toBe('Q0.SLF.MBD/7VX4-3');
+    expect(format('q0SLFMBD7VX439')).toBe('Q0.SLF.MBD/7VX4-39');
+  });
+
   test('should format number cnpj with mask', () => {
     expect(format(4)).toBe('4');
     expect(format(46)).toBe('46');
@@ -76,7 +95,7 @@ describe('format', () => {
   });
 
   test('should remove all non numeric characters', () => {
-    expect(format('46.?ABC843.485/0001-86abc')).toBe('46.843.485/0001-86');
+    expect(format('46.?ABC843.485/0001-86abc')).toBe('46.ABC.843/4850-00');
   });
 });
 

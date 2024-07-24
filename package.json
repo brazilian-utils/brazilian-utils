@@ -62,7 +62,7 @@
     "@release-it/conventional-changelog": "^1.1.4",
     "@types/jest": "^26.0.23",
     "cz-conventional-changelog": "^3.3.0",
-    "docsify-cli": "^4.4.2",
+    "docsify-cli": "^4.4.4",
     "husky": "^6.0.0",
     "lint-staged": "^11.0.0",
     "node-fetch": "^2.6.1",

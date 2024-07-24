@@ -1,6 +1,6 @@
 import { onlyNumbers } from '../../helpers';
 
-export const pt = {
+export const STRINGS = {
   irregular: [
     'zero',
     'um',
@@ -38,15 +38,13 @@ export const pt = {
   ],
 };
 
-type CondicionalValue = string | boolean | number | null | undefined;
-
-function conditionalValue<R extends string>(isTruthy: CondicionalValue, result: R): R | undefined {
+function conditionalValue<TResult>(isTruthy: unknown, result: TResult): TResult | undefined {
   return isTruthy ? result : undefined;
 }
 
 function describeIrregular(digits: string): string {
   const index = Number(digits);
-  return pt.irregular[index];
+  return STRINGS.irregular[index];
 }
 
 function describeTen(digits: string): string {
@@ -55,7 +53,7 @@ function describeTen(digits: string): string {
 
   const isRounded = /^\d0$/i.test(digits);
   const [tenValue, unitValue] = digits.split('');
-  const ten = pt.ten[Number(tenValue)];
+  const ten = STRINGS.ten[Number(tenValue)];
   if (isRounded) return ten;
 
   const unit = describeIrregular(unitValue);
@@ -65,7 +63,7 @@ function describeTen(digits: string): string {
 function describeHundred(digits: string): string {
   const isRounded = /^\d00$/i.test(digits);
   const hundredValue = digits.slice(0, 1);
-  const hundred = pt.hundred[Number(hundredValue)];
+  const hundred = STRINGS.hundred[Number(hundredValue)];
   if (isRounded) return hundred.replace(/nto$/i, 'm');
 
   const tenValue = digits.slice(1);
@@ -97,9 +95,12 @@ function describeMillion(digits: string): string {
   const thousand = switchNumber(Number(thousandValue));
   const goesThousand = Number(thousandValue) > 0;
   const goesAnd = goesThousand && Number(thousandValue) <= 100;
-  return [million, ` ${assignment}`, conditionalValue(goesAnd, ' e'), conditionalValue(goesThousand, ` ${thousand}`)].join(
-    ''
-  );
+  return [
+    million,
+    ` ${assignment}`,
+    conditionalValue(goesAnd, ' e'),
+    conditionalValue(goesThousand, ` ${thousand}`),
+  ].join('');
 }
 
 function switchNumber(value: string | number): string {
@@ -136,8 +137,8 @@ export function describe(value: string | number, isCash: boolean = true): string
   }
 
   const reaisValue = value.replace(centavosExpression, '');
-  const reaisString = switchNumber(reaisValue)
-  const goesOf = /milh.{2,3}$/i.test(reaisString)
+  const reaisString = switchNumber(reaisValue);
+  const goesOf = /milh.{2,3}$/i.test(reaisString);
   const reais = [reaisString, conditionalValue(goesOf && isCash, ' de'), conditionalValue(isCash, ' reais')].join('');
 
   return [reais, conditionalValue(centavos, ` e ${centavos}`)].join('');

@@ -41,6 +41,14 @@ Valida se o CNPJ é válido.
 import { isValidCNPJ } from '@brazilian-utils/brazilian-utils';
 
 isValidCNPJ('15515147234255'); // false
+
+/*
+ * valida um CNPJ versão 2, alfanumérico.
+ * Conforme a Nota Técnica COCAD/SUARA/RFB nº 49/2024, 
+ * o CNPJ passará a combinar números e letras. 
+ * A versão 2 segue essa norma técnica.
+*/
+isValidCNPJ('1D4N1A9K2ZQQ30', { version: '2' }); // false
 ```
 
 ## formatCNPJ
@@ -52,9 +60,17 @@ import { formatCNPJ } from '@brazilian-utils/brazilian-utils';
 
 formatCNPJ('245222000174'); // 24.522.200/0174
 formatCNPJ('245222000174', { pad: true }); // 00.245.222/0001-74
+
+/*
+ * Format CNPJ versão 2, alfanumérico.
+ * Conforme a Nota Técnica COCAD/SUARA/RFB nº 49/2024, 
+ * o CNPJ passará a combinar números e letras. 
+ * A versão 2 dessa função segue essa norma técnica.
+*/
+formatCNPJ('PD4N1A9K1ZQQ39', { version: '2' }); // PD.4N1.A9K.1ZQQ/39
 ```
 
-## generateCPF
+## generateCNPJ
 
 Gera um CNPJ válido aleatório.
 
@@ -62,6 +78,14 @@ Gera um CNPJ válido aleatório.
 import { generateCNPJ } from '@brazilian-utils/brazilian-utils'
 
 generateCNPJ();
+
+/*
+ * Gera um CNPJ válido versão 2, alfanumérico.
+ * Conforme a Nota Técnica COCAD/SUARA/RFB nº 49/2024, 
+ * o CNPJ passará a combinar números e letras. 
+ * A versão 2 segue essa norma técnica.
+*/
+generateCNPJ({ version: '2' });
 ```
 
 ## isValidCEP

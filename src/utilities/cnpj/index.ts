@@ -29,14 +29,14 @@ export const SECOND_CHECK_DIGIT_WEIGHTS = [6, ...FIRST_CHECK_DIGIT_WEIGHTS];
 
 const VALID_CHARS = '0123456789ABCDFGHIJKLMNPQRSVWXYZ';
 
-export type CnpjVersions = '1' | '2';
+export type CnpjVersions = '1' | '2' | 1 | 2;
 export interface FormatCnpjOptions {
   pad?: boolean;
   version?: CnpjVersions;
 }
 
 export function format(cnpj: string | number, options: FormatCnpjOptions = {}): string {
-  let digits = options.version === '2' ? onlyValidCNPJAlphanumeric(String(cnpj).toUpperCase()) : onlyNumbers(cnpj);
+  let digits = options.version == 2 ? onlyValidCNPJAlphanumeric(String(cnpj).toUpperCase()) : onlyNumbers(cnpj);
 
   if (options.pad) {
     digits = digits.padStart(LENGTH, '0');
@@ -83,13 +83,11 @@ function generateCNPJAlphanumericChars(length: number): string {
 }
 
 export interface GenerateCnpjOptions {
-  // botar um type Vesions
   version?: CnpjVersions;
 }
 
 export function generate(options: GenerateCnpjOptions = {}): string {
-  const baseCNPJ =
-    options.version === '2' ? generateCNPJAlphanumericChars(LENGTH - 2) : generateRandomNumber(LENGTH - 2);
+  const baseCNPJ = options.version == 2 ? generateCNPJAlphanumericChars(LENGTH - 2) : generateRandomNumber(LENGTH - 2);
 
   const firstCheckDigitMod = generateChecksum(baseCNPJ, FIRST_CHECK_DIGIT_WEIGHTS) % 11;
   const firstCheckDigit = (firstCheckDigitMod < 2 ? 0 : 11 - firstCheckDigitMod).toString();
@@ -133,14 +131,13 @@ export function isValidChecksum(cnpj: string): boolean {
 }
 
 export interface isValidCnpjOptions {
-  // botar um type Vesions
   version?: CnpjVersions;
 }
 
 export function isValid(cnpj: string, options: isValidCnpjOptions = {}): boolean {
   if (!cnpj || typeof cnpj !== 'string') return false;
 
-  const validValue = options.version === '2' ? onlyValidCNPJAlphanumeric(cnpj) : onlyNumbers(cnpj);
+  const validValue = options.version == 2 ? onlyValidCNPJAlphanumeric(cnpj) : onlyNumbers(cnpj);
 
   return isValidFormat(cnpj) && !isReservedNumber(validValue) && isValidChecksum(validValue);
 }

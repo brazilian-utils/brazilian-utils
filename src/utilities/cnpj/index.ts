@@ -1,4 +1,4 @@
-import { isLastChar, onlyNumbers, generateChecksum, generateRandomNumber } from '../../helpers';
+import { isLastChar, onlyNumbers, generateRandomNumber } from '../../helpers';
 
 export const LENGTH = 14;
 
@@ -27,12 +27,16 @@ export const FIRST_CHECK_DIGIT_WEIGHTS = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
 
 export const SECOND_CHECK_DIGIT_WEIGHTS = [6, ...FIRST_CHECK_DIGIT_WEIGHTS];
 
+const VALID_CHARS = '0123456789ABCDFGHIJKLMNPQRSVWXYZ';
+
+export type CnpjVersions = '1' | '2' | 1 | 2;
 export interface FormatCnpjOptions {
   pad?: boolean;
+  version?: CnpjVersions;
 }
 
 export function format(cnpj: string | number, options: FormatCnpjOptions = {}): string {
-  let digits = onlyNumbers(cnpj);
+  let digits = options.version == 2 ? onlyValidCNPJAlphanumeric(String(cnpj).toUpperCase()) : onlyNumbers(cnpj);
 
   if (options.pad) {
     digits = digits.padStart(LENGTH, '0');
@@ -54,8 +58,36 @@ export function format(cnpj: string | number, options: FormatCnpjOptions = {}): 
     }, '');
 }
 
-export function generate(): string {
-  const baseCNPJ = generateRandomNumber(LENGTH - 2);
+function onlyValidCNPJAlphanumeric(input: string): string {
+  return input
+    .split('')
+    .filter((char) => VALID_CHARS.includes(char))
+    .join('');
+}
+
+function generateChecksum(base: string, weight: number[]): number {
+  const digits = onlyValidCNPJAlphanumeric(base);
+
+  return digits.split('').reduce((acc, char, i) => {
+    const value = char.charCodeAt(0) - 48;
+    return acc + value * weight[i];
+  }, 0);
+}
+
+function generateCNPJAlphanumericChars(length: number): string {
+  const charset = VALID_CHARS;
+  return Array(length)
+    .fill('')
+    .map(() => charset[Math.floor(Math.random() * charset.length)])
+    .join('');
+}
+
+export interface GenerateCnpjOptions {
+  version?: CnpjVersions;
+}
+
+export function generate(options: GenerateCnpjOptions = {}): string {
+  const baseCNPJ = options.version == 2 ? generateCNPJAlphanumericChars(LENGTH - 2) : generateRandomNumber(LENGTH - 2);
 
   const firstCheckDigitMod = generateChecksum(baseCNPJ, FIRST_CHECK_DIGIT_WEIGHTS) % 11;
   const firstCheckDigit = (firstCheckDigitMod < 2 ? 0 : 11 - firstCheckDigitMod).toString();
@@ -66,8 +98,10 @@ export function generate(): string {
   return `${baseCNPJ}${firstCheckDigit}${secondCheckDigit}`;
 }
 
-export function isValidFormat(cnpj: string): boolean {
-  return /^\d{2}\.?\d{3}\.?\d{3}\/?\d{4}-?\d{2}$/.test(cnpj);
+function isValidFormat(cnpj: string): boolean {
+  return /^[0-9ABCDFGHIJKLMNPQRSVWXYZ]{2}\.?[0-9ABCDFGHIJKLMNPQRSVWXYZ]{3}\.?[0-9ABCDFGHIJKLMNPQRSVWXYZ]{3}\/?[0-9ABCDFGHIJKLMNPQRSVWXYZ]{4}-?\d{2}$/.test(
+    cnpj
+  );
 }
 
 export function isReservedNumber(cpf: string): boolean {
@@ -96,10 +130,14 @@ export function isValidChecksum(cnpj: string): boolean {
   });
 }
 
-export function isValid(cnpj: string): boolean {
+export interface isValidCnpjOptions {
+  version?: CnpjVersions;
+}
+
+export function isValid(cnpj: string, options: isValidCnpjOptions = {}): boolean {
   if (!cnpj || typeof cnpj !== 'string') return false;
 
-  const numbers = onlyNumbers(cnpj);
+  const validValue = options.version == 2 ? onlyValidCNPJAlphanumeric(cnpj) : onlyNumbers(cnpj);
 
-  return isValidFormat(cnpj) && !isReservedNumber(numbers) && isValidChecksum(numbers);
+  return isValidFormat(cnpj) && !isReservedNumber(validValue) && isValidChecksum(validValue);
 }

@@ -1,4 +1,8 @@
-import { format, LENGTH, isValid, generate, RESERVED_NUMBERS } from '.';
+import { format, LENGTH, isValid, generate, RESERVED_NUMBERS, CnpjVersions } from '.';
+
+function randomCnpjOptionVersion2StringOrNumber(): '2' | 2 {
+  return Math.random() < 0.5 ? '2' : 2;
+}
 
 describe('format', () => {
   test('should format cnpj with mask', () => {
@@ -17,6 +21,24 @@ describe('format', () => {
     expect(format('468434850001')).toBe('46.843.485/0001');
     expect(format('4684348500018')).toBe('46.843.485/0001-8');
     expect(format('46843485000186')).toBe('46.843.485/0001-86');
+  });
+
+  test('should format cnpj alphanumeric with mask for version 2', () => {
+    expect(format('', { version: randomCnpjOptionVersion2StringOrNumber() })).toBe('');
+    expect(format('Q', { version: randomCnpjOptionVersion2StringOrNumber() })).toBe('Q');
+    expect(format('Q0', { version: randomCnpjOptionVersion2StringOrNumber() })).toBe('Q0');
+    expect(format('Q0S', { version: randomCnpjOptionVersion2StringOrNumber() })).toBe('Q0.S');
+    expect(format('Q0SL', { version: randomCnpjOptionVersion2StringOrNumber() })).toBe('Q0.SL');
+    expect(format('Q0SLF', { version: randomCnpjOptionVersion2StringOrNumber() })).toBe('Q0.SLF');
+    expect(format('Q0SLFM', { version: randomCnpjOptionVersion2StringOrNumber() })).toBe('Q0.SLF.M');
+    expect(format('Q0SLFMB', { version: randomCnpjOptionVersion2StringOrNumber() })).toBe('Q0.SLF.MB');
+    expect(format('Q0SLFMBD', { version: randomCnpjOptionVersion2StringOrNumber() })).toBe('Q0.SLF.MBD');
+    expect(format('Q0SLFMBD7', { version: randomCnpjOptionVersion2StringOrNumber() })).toBe('Q0.SLF.MBD/7');
+    expect(format('Q0SLFMBD7V', { version: randomCnpjOptionVersion2StringOrNumber() })).toBe('Q0.SLF.MBD/7V');
+    expect(format('Q0SLFMBD7VX', { version: randomCnpjOptionVersion2StringOrNumber() })).toBe('Q0.SLF.MBD/7VX');
+    expect(format('Q0SLFMBD7VX4', { version: randomCnpjOptionVersion2StringOrNumber() })).toBe('Q0.SLF.MBD/7VX4');
+    expect(format('Q0SLFMBD7VX43', { version: randomCnpjOptionVersion2StringOrNumber() })).toBe('Q0.SLF.MBD/7VX4-3');
+    expect(format('q0SLFMBD7VX439', { version: randomCnpjOptionVersion2StringOrNumber() })).toBe('Q0.SLF.MBD/7VX4-39');
   });
 
   test('should format number cnpj with mask', () => {
@@ -78,6 +100,12 @@ describe('format', () => {
   test('should remove all non numeric characters', () => {
     expect(format('46.?ABC843.485/0001-86abc')).toBe('46.843.485/0001-86');
   });
+
+  test('should remove non-alphanumeric characters for version 2', () => {
+    expect(format('46.?ABC843.485/0001-86abc', { version: randomCnpjOptionVersion2StringOrNumber() })).toBe(
+      '46.ABC.843/4850-00'
+    );
+  });
 });
 
 describe('generate', () => {
@@ -89,6 +117,14 @@ describe('generate', () => {
     // iterate over 100 to insure that random generated CPNJ is valid
     for (let i = 0; i < 100; i++) {
       expect(isValid(generate())).toBe(true);
+    }
+  });
+
+  test('should return valid CNPJ version 2', () => {
+    // iterate over 100 to insure that random generated CPNJ is valid
+    for (let i = 0; i < 100; i++) {
+      const options: { version?: CnpjVersions } = { version: randomCnpjOptionVersion2StringOrNumber() };
+      expect(isValid(generate(options), options)).toBe(true);
     }
   });
 });

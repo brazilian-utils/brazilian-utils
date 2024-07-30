@@ -41,6 +41,14 @@ Check if CNPJ is valid.
 import { isValidCNPJ } from '@brazilian-utils/brazilian-utils';
 
 isValidCNPJ('15515147234255'); // false
+
+/*
+ * validate CNPJ version 2, alphanumeric.
+ * According to Technical Note COCAD/SUARA/RFB No. 49/2024, 
+ * the CNPJ will combine numbers and letters. 
+ * Version 2 follows this technical.
+*/
+isValidCNPJ('1D4N1A9K2ZQQ30', { version: '2' }); // false
 ```
 
 ## formatCNPJ
@@ -52,6 +60,14 @@ import { formatCNPJ } from '@brazilian-utils/brazilian-utils';
 
 formatCNPJ('245222000174'); // 24.522.200/0174
 formatCNPJ('245222000174', { pad: true }); // 00.245.222/0001-74
+
+/*
+ * Format CNPJ version 2, alphanumeric.
+ * According to Technical Note COCAD/SUARA/RFB No. 49/2024, 
+ * the CNPJ will combine numbers and letters. 
+ * Version 2 follows this technical.
+*/
+formatCNPJ('PD4N1A9K1ZQQ39', { version: '2' }); // PD.4N1.A9K.1ZQQ/39
 ```
 
 ## isValidCEP
@@ -72,6 +88,14 @@ Generate a valid random CNPJ.
 import { generateCNPJ } from '@brazilian-utils/brazilian-utils'
 
 generateCNPJ();
+
+/*
+ * Generates a valid random CNPJ version 2, alphanumeric.
+ * According to Technical Note COCAD/SUARA/RFB No. 49/2024,
+ * the CNPJ will combine numbers and letters. 
+ * Version 2 follows this technical standard.
+*/
+generateCNPJ({ version: '2' });
 ```
 
 ## isValidBoleto

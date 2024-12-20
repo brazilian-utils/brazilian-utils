@@ -1,4 +1,4 @@
----
+```
 Depois de um longo iato, queremos primeiramente pedir desculpas por nao termos dado devida atencao a biblioteca e dizer que em 2025 voltaremos com tudo!
 
 Nosso plano é o seguinte:
@@ -8,7 +8,7 @@ Nosso plano é o seguinte:
 - Resolvimento de todas as issues abertas
 
 Espero que curtam essa ideia e por favor, sintam-se a vontade para abrir issues our discussions para melhorarmos isso juntos!
----
+```
 
 
 <div align="center">

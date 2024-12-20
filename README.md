@@ -1,15 +1,14 @@
-```
-Depois de um longo iato, queremos primeiramente pedir desculpas por nao termos dado devida atencao a biblioteca e dizer que em 2025 voltaremos com tudo!
+Após um longo hiato, queremos começar pedindo desculpas por não termos dado a devida atenção à biblioteca. Mas temos ótimas notícias: em 2025, voltaremos com tudo! 🎉
 
-Nosso plano é o seguinte:
-- Refatorar o codigo pra seguir uma padronizacao mais simples e facil para facilitar a contribuicao no projeto
-- Uma doc nova agrupando nao so a library em javascript mas tambem em outras linguagens
-- Publicacao da V1 com migration guide
-- Resolvimento de todas as issues abertas
+Aqui está o que estamos planejando:
+	•	Refatoração do código: Vamos simplificar e padronizar a estrutura do projeto para facilitar contribuições e torná-lo mais acessível a todos.
+	•	Nova documentação: Teremos uma documentação renovada, abrangendo não apenas a biblioteca em JavaScript, mas também versões em outras linguagens.
+	•	Publicação da versão 1.0: Finalmente, lançaremos a V1 oficial, acompanhada de um guia de migração completo para facilitar a atualização.
+	•	Resolução de issues abertas: Nos comprometemos a revisar e resolver todas as issues pendentes da comunidade.
 
-Espero que curtam essa ideia e por favor, sintam-se a vontade para abrir issues our discussions para melhorarmos isso juntos!
-```
+Estamos super empolgados com o futuro do projeto e esperamos que vocês também estejam! 🎊
 
+Por favor, fiquem à vontade para abrir issues ou iniciar discussions. Vamos construir algo incrível juntos! ❤️
 
 <div align="center">
 <h1>🇧🇷 Brazilian Utils</h1>
@@ -22,14 +21,6 @@ Espero que curtam essa ideia e por favor, sintam-se a vontade para abrir issues 
 [![Downloads per month](https://img.shields.io/npm/dm/@brazilian-utils/brazilian-utils.svg)](https://www.npmjs.com/package/@brazilian-utils/brazilian-utils) [![License: MIT](https://img.shields.io/github/license/hyanmandian/brazilian-utils.svg)](LICENSE)
 </div>
 
-
----
-
-> ## Vidas Negras Importam | Black Lives Matter. ✊🏽✊🏾✊🏿
->
-> To know how to help, just go to [Vidas Negras Importam](https://vidasnegrasimportam.carrd.co/) or [Black Lives Matter](https://blacklivesmatters.carrd.co/).
-
----
 
 > ## We are changing
 >

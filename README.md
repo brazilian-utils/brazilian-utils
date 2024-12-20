@@ -1,3 +1,17 @@
+---
+
+Depois de um longo iato, queremos primeiramente pedir desculpas por nao termos dado devida atencao a biblioteca e dizer que em 2025 voltaremos com tudo!
+
+Nosso plano é o seguinte:
+- Refatorar o codigo pra seguir uma padronizacao mais simples e facil para facilitar a contribuicao no projeto
+- Uma doc nova agrupando nao so a library em javascript mas tambem em outras linguagens
+- Publicacao da V1 com migration guide
+- Resolvimento de todas as issues abertas
+
+Espero que curtam essa ideia e por favor, sintam-se a vontade para abrir issues our discussions para melhorarmos isso juntos!
+
+---
+
 
 <div align="center">
 <h1>🇧🇷 Brazilian Utils</h1>

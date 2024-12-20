@@ -10,6 +10,8 @@ Estamos super empolgados com o futuro do projeto e esperamos que vocês também 
 
 Por favor, fiquem à vontade para abrir issues ou iniciar discussions. Vamos construir algo incrível juntos! ❤️
 
+---
+
 <div align="center">
 <h1>🇧🇷 Brazilian Utils</h1>
 
@@ -20,13 +22,6 @@ Por favor, fiquem à vontade para abrir issues ou iniciar discussions. Vamos con
 [![Build Status](https://github.com/brazilian-utils/brazilian-utils/workflows/build/badge.svg?branch=main)](https://github.com/brazilian-utils/brazilian-utils/actions?query=workflow%3Abuild) [![Coverage Status](https://codecov.io/gh/brazilian-utils/brazilian-utils/branch/main/graph/badge.svg)](https://codecov.io/gh/brazilian-utils/brazilian-utils) [![Known Vulnerabilities](https://snyk.io/test/github/brazilian-utils/brazilian-utils/badge.svg?targetFile=package.json)](https://snyk.io/test/github/brazilian-utils/brazilian-utils?targetFile=package.json) [![Maintainability](https://api.codeclimate.com/v1/badges/05d3cd8492ed438bf51d/maintainability)](https://codeclimate.com/github/hyanmandian/brazilian-utils/maintainability)
 [![Downloads per month](https://img.shields.io/npm/dm/@brazilian-utils/brazilian-utils.svg)](https://www.npmjs.com/package/@brazilian-utils/brazilian-utils) [![License: MIT](https://img.shields.io/github/license/hyanmandian/brazilian-utils.svg)](LICENSE)
 </div>
-
-
-> ## We are changing
->
-> After one year of Brazilian Utils and lots of feedback, we decided to refactor our library to fix issues, create a website and make it easier for other developers to contribute. If you use **v0 version**, please, check [v0](https://github.com/brazilian-utils/brazilian-utils/tree/v0) branch.
-
----
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->

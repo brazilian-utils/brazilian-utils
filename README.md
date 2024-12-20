@@ -1,10 +1,10 @@
 Após um longo hiato, queremos começar pedindo desculpas por não termos dado a devida atenção à biblioteca. Mas temos ótimas notícias: em 2025, voltaremos com tudo! 🎉
 
 Aqui está o que estamos planejando:
-	•	Refatoração do código: Vamos simplificar e padronizar a estrutura do projeto para facilitar contribuições e torná-lo mais acessível a todos.
-	•	Nova documentação: Teremos uma documentação renovada, abrangendo não apenas a biblioteca em JavaScript, mas também versões em outras linguagens.
-	•	Publicação da versão 1.0: Finalmente, lançaremos a V1 oficial, acompanhada de um guia de migração completo para facilitar a atualização.
-	•	Resolução de issues abertas: Nos comprometemos a revisar e resolver todas as issues pendentes da comunidade.
+- Refatoração do código: Vamos simplificar e padronizar a estrutura do projeto para facilitar contribuições e torná-lo mais acessível a todos.
+- Nova documentação: Teremos uma documentação renovada, abrangendo não apenas a biblioteca em JavaScript, mas também versões em outras linguagens.
+- Publicação da versão 1.0: Finalmente, lançaremos a V1 oficial, acompanhada de um guia de migração completo para facilitar a atualização.
+- Resolução de issues abertas: Nos comprometemos a revisar e resolver todas as issues pendentes da comunidade.
 
 Estamos super empolgados com o futuro do projeto e esperamos que vocês também estejam! 🎊
 

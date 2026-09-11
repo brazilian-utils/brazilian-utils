@@ -1,6 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "../_internals/test/runtime";
 import {
 	GetCepInfoByAddressError,
+	GetCepInfoByAddressNotFoundError,
 	GetCepInfoByAddressValidationError,
 	getCepInfoByAddress,
 } from "./get-cep-info-by-address";
@@ -10,7 +11,7 @@ describe("getCepInfoByAddress", () => {
 	const originalFetch = globalThis.fetch;
 
 	beforeEach(() => {
-		globalThis.fetch = fetchMock as unknown as typeof fetch;
+		globalThis.fetch = fetchMock as typeof fetch;
 		fetchMock.mockClear();
 	});
 
@@ -27,6 +28,59 @@ describe("getCepInfoByAddress", () => {
 				street: "Avenida Paulista",
 			}),
 		).rejects.toThrow(GetCepInfoByAddressValidationError);
+	});
+
+	it("should throw GetCepInfoByAddressValidationError for an empty city", async () => {
+		await expect(
+			getCepInfoByAddress({
+				federalUnit: "SP",
+				city: "",
+				street: "Avenida Paulista",
+			}),
+		).rejects.toThrow(GetCepInfoByAddressValidationError);
+		expect(fetchMock).not.toHaveBeenCalled();
+	});
+
+	it("should throw GetCepInfoByAddressValidationError for an empty street", async () => {
+		await expect(
+			getCepInfoByAddress({
+				federalUnit: "SP",
+				city: "São Paulo",
+				street: "",
+			}),
+		).rejects.toThrow(GetCepInfoByAddressValidationError);
+		expect(fetchMock).not.toHaveBeenCalled();
+	});
+
+	it("should throw GetCepInfoByAddressError when the response is not ok", async () => {
+		fetchMock.mockResolvedValueOnce({
+			json: async () => ({}),
+			ok: false,
+			status: 500,
+		});
+
+		await expect(
+			getCepInfoByAddress({
+				federalUnit: "SP",
+				city: "São Paulo",
+				street: "Avenida Paulista",
+			}),
+		).rejects.toThrow(GetCepInfoByAddressError);
+	});
+
+	it("should throw GetCepInfoByAddressNotFoundError when ViaCEP returns an empty array", async () => {
+		fetchMock.mockResolvedValueOnce({
+			json: async () => [],
+			ok: true,
+		});
+
+		await expect(
+			getCepInfoByAddress({
+				federalUnit: "SP",
+				city: "Cidade Inexistente",
+				street: "Rua Inexistente",
+			}),
+		).rejects.toThrow(GetCepInfoByAddressNotFoundError);
 	});
 
 	it("should return addresses from ViaCEP", async () => {
@@ -60,7 +114,7 @@ describe("getCepInfoByAddress", () => {
 		]);
 	});
 
-	it("should wrap transport failures with GetCepInfoByAddressError", async () => {
+	it("should retry and then propagate transport failures unwrapped", async () => {
 		fetchMock.mockRejectedValueOnce(
 			Object.assign(new TypeError("fetch failed"), {
 				cause: { code: "UND_ERR_SOCKET" },
@@ -83,7 +137,7 @@ describe("getCepInfoByAddress", () => {
 				city: "São Paulo",
 				street: "Avenida Paulista",
 			}),
-		).rejects.toThrow(GetCepInfoByAddressError);
+		).rejects.toThrow(TypeError);
 		expect(fetchMock).toHaveBeenCalledTimes(3);
 	});
 });

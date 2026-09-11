@@ -1,7 +1,4 @@
 import { fetchWithRetry } from "../_internals/fetch-with-retry/fetch-with-retry";
-/**
- * based on https://github.com/BrasilAPI/cep-promise
- */
 import { sanitizeToDigits } from "../_internals/sanitize-to-digits/sanitize-to-digits";
 import { isValidCep } from "../is-valid-cep/is-valid-cep";
 
@@ -34,16 +31,22 @@ export class GetAddressInfoByCepServiceError extends GetAddressInfoByCepError {
 }
 
 export type AddressInfo = {
+	/** The 8 digit CEP, no mask. */
 	cep: string;
+	/** Two letter state code, e.g. "SP". */
 	state: string;
+	/** City name. */
 	city: string;
+	/** Neighborhood name, empty when the CEP covers a whole city. */
 	neighborhood: string;
+	/** Street name, empty when the CEP covers a whole city. */
 	street: string;
 };
 
 export type CepProvider = "viacep" | "widenet" | "brasilapi";
 
 export type GetAddressInfoByCepOptions = {
+	/** Which CEP services to race, in the order given (default: all of them). */
 	providers?: CepProvider[];
 };
 
@@ -84,7 +87,7 @@ const fetchViaCep = async (cep: string): Promise<AddressInfo> => {
 		throw new Error(`ViaCEP request failed with status ${response.status}`);
 	}
 
-	const data = (await response.json()) as ViaCepResponse;
+	const data: ViaCepResponse = await response.json();
 
 	if (data.erro || !data.cep) {
 		throw new GetAddressInfoByCepNotFoundError("CEP não encontrado");
@@ -108,7 +111,7 @@ const fetchWidenet = async (cep: string): Promise<AddressInfo> => {
 		throw new Error(`Widenet request failed with status ${response.status}`);
 	}
 
-	const data = (await response.json()) as WidenetResponse;
+	const data: WidenetResponse = await response.json();
 
 	if (data.status !== 200 || !data.ok || !data.code) {
 		throw new GetAddressInfoByCepNotFoundError("CEP não encontrado");
@@ -130,7 +133,7 @@ const fetchBrasilApi = async (cep: string): Promise<AddressInfo> => {
 		throw new Error(`BrasilAPI request failed with status ${response.status}`);
 	}
 
-	const data = (await response.json()) as BrasilApiResponse;
+	const data: BrasilApiResponse = await response.json();
 
 	if (data.errors || !data.cep) {
 		throw new GetAddressInfoByCepNotFoundError("CEP não encontrado");
@@ -157,7 +160,9 @@ const providerMap: Record<CepProvider, (cep: string) => Promise<AddressInfo>> = 
  *
  * @param {string|number} cep - The CEP (Brazilian postal code) to search for. Can be a string or number.
  * @param {GetAddressInfoByCepOptions} options - Optional configuration for the function.
- * @param {CepProvider[]} options.providers - List of providers to use. Defaults to all providers if not specified.
+ * @param {CepProvider[]} options.providers - List of providers to use. Defaults to `["viacep", "brasilapi"]`
+ * if not specified (the deprecated `"widenet"` provider is excluded from the default list, but can still
+ * be requested explicitly).
  * @returns {Promise<AddressInfo>} A promise that resolves to the address information.
  * @throws {GetAddressInfoByCepValidationError} If the CEP format is invalid.
  * @throws {GetAddressInfoByCepNotFoundError} If the CEP is not found in any of the services.
@@ -176,6 +181,10 @@ const providerMap: Record<CepProvider, (cep: string) => Promise<AddressInfo>> = 
  * // Using number input
  * const address = await getAddressInfoByCep(1310100);
  * ```
+ *
+ * @see Official: https://www.correios.com.br/enviar/precisa-de-ajuda/tudo-sobre-cep
+ * @see Based on: https://viacep.com.br/ Default `"viacep"` provider.
+ * @see Based on: https://brasilapi.com.br/docs#tag/CEP Default `"brasilapi"` provider.
  */
 export const getAddressInfoByCep = async (
 	cep: string | number,
@@ -196,12 +205,12 @@ export const getAddressInfoByCep = async (
 		if (options.providers.length === 0) {
 			throw new GetAddressInfoByCepValidationError("Nenhum provedor válido especificado");
 		}
-		providersToUse = options.providers.filter((p) => p in providerMap);
+		providersToUse = options.providers.filter((p) => Object.hasOwn(providerMap, p));
 		if (providersToUse.length === 0) {
 			throw new GetAddressInfoByCepValidationError("Nenhum provedor válido especificado");
 		}
 	} else {
-		providersToUse = ["viacep", "widenet", "brasilapi"] as CepProvider[];
+		providersToUse = ["viacep", "brasilapi"] as CepProvider[];
 	}
 
 	const providerPromises = providersToUse.map((provider) =>
@@ -217,15 +226,13 @@ export const getAddressInfoByCep = async (
 
 		const rejections = results.filter((result) => result.status === "rejected");
 
-		const notFoundErrors = rejections.filter((rejection) => {
-			const error = rejection.reason?.error || rejection.reason;
-			return error instanceof GetAddressInfoByCepNotFoundError;
-		});
+		const notFoundErrors = rejections.filter(
+			(rejection) => rejection.reason?.error instanceof GetAddressInfoByCepNotFoundError,
+		);
 
-		const networkErrors = rejections.filter((rejection) => {
-			const error = rejection.reason?.error || rejection.reason;
-			return !(error instanceof GetAddressInfoByCepNotFoundError);
-		});
+		const networkErrors = rejections.filter(
+			(rejection) => !(rejection.reason?.error instanceof GetAddressInfoByCepNotFoundError),
+		);
 
 		if (notFoundErrors.length === rejections.length) {
 			throw new GetAddressInfoByCepNotFoundError("CEP não encontrado em nenhum serviço");
@@ -237,10 +244,6 @@ export const getAddressInfoByCep = async (
 			);
 		}
 
-		if (notFoundErrors.length > 0) {
-			throw new GetAddressInfoByCepNotFoundError("CEP não encontrado em nenhum serviço");
-		}
-
-		throw new GetAddressInfoByCepServiceError("Erro ao consultar os serviços de CEP");
+		throw new GetAddressInfoByCepNotFoundError("CEP não encontrado em nenhum serviço");
 	}
 };

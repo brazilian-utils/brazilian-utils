@@ -16,19 +16,35 @@ const run = (command: string, args: string[]): Promise<number | null> =>
 		child.on("error", () => resolveExit(1));
 	});
 
-const [citiesResult, statesResult] = await Promise.all([
-	run("node", [resolve(scriptsDir, "cities.ts")]),
-	run("node", [resolve(scriptsDir, "states.ts")]),
-]);
-
-if (citiesResult !== 0 || statesResult !== 0) {
-	process.exit(1);
-}
+const generators = [
+	"banks.ts",
+	"cbo.ts",
+	"cfop.ts",
+	"cities.ts",
+	"cnae.ts",
+	"legal-natures.ts",
+	"ncm.ts",
+	"states.ts",
+];
 
 const generatedFiles = [
+	"./src/_internals/constants/banks.ts",
+	"./src/_internals/constants/cbo.ts",
+	"./src/_internals/constants/cfop.ts",
 	"./src/_internals/constants/cities.ts",
+	"./src/_internals/constants/cnae.ts",
 	"./src/_internals/constants/states.ts",
+	"./src/is-valid-legal-nature/constants.ts",
+	"./src/is-valid-ncm/constants.ts",
 ];
+
+const results = await Promise.all(
+	generators.map((generator) => run("node", [resolve(scriptsDir, generator)])),
+);
+
+if (results.some((result) => result !== 0)) {
+	process.exit(1);
+}
 
 const formatResult = await run("vp", ["fmt", "--write", ...generatedFiles]);
 

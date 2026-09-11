@@ -2,12 +2,59 @@ import { DATA } from "../_internals/constants/states";
 import { describe, expect, it } from "../_internals/test/runtime";
 import { getStates } from "./get-states";
 
+const NUMBER_OF_BRAZILIAN_STATES = 27;
+
 describe("getStates", () => {
 	it(`should return an array with ${DATA.length} states`, () => {
 		expect(getStates().length).toBe(DATA.length);
 	});
 
-	it("should return an array sort by name", () => {
-		expect(getStates()).toEqual(DATA);
+	it(`should return exactly ${NUMBER_OF_BRAZILIAN_STATES} states`, () => {
+		expect(getStates().length).toBe(NUMBER_OF_BRAZILIAN_STATES);
+	});
+
+	it("should return an array sorted by name with the pt-BR comparator", () => {
+		const names = getStates().map((state) => state.name);
+		const sortedNames = [...names].sort((a, b) => a.localeCompare(b, "pt-BR"));
+
+		expect(names).toEqual(sortedNames);
+	});
+
+	it("should sort Pará, Paraíba and Paraná the way a Brazilian reader expects", () => {
+		const names = getStates().map((state) => state.name);
+
+		const paraIndex = names.indexOf("Pará");
+		const paraibaIndex = names.indexOf("Paraíba");
+		const paranaIndex = names.indexOf("Paraná");
+
+		expect(paraIndex).toBeLessThan(paraibaIndex);
+		expect(paraibaIndex).toBeLessThan(paranaIndex);
+	});
+
+	it("should sort Rio de Janeiro, Rio Grande do Norte and Rio Grande do Sul the way a Brazilian reader expects", () => {
+		const names = getStates().map((state) => state.name);
+
+		const rioDeJaneiroIndex = names.indexOf("Rio de Janeiro");
+		const rioGrandeDoNorteIndex = names.indexOf("Rio Grande do Norte");
+		const rioGrandeDoSulIndex = names.indexOf("Rio Grande do Sul");
+
+		expect(rioDeJaneiroIndex).toBeLessThan(rioGrandeDoNorteIndex);
+		expect(rioGrandeDoNorteIndex).toBeLessThan(rioGrandeDoSulIndex);
+	});
+
+	it("should sort São Paulo before Sergipe", () => {
+		const names = getStates().map((state) => state.name);
+
+		expect(names.indexOf("São Paulo")).toBeLessThan(names.indexOf("Sergipe"));
+	});
+
+	it("should return unique deep copies so mutating the result does not leak between calls", () => {
+		const first = getStates();
+
+		Object.assign(first[0], { name: "X" });
+
+		const second = getStates();
+		expect(second[0].name).not.toBe("X");
+		expect(second).toEqual(DATA.map((state) => ({ ...state })));
 	});
 });

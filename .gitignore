@@ -6,6 +6,3 @@ node_modules
 .rts2_cache_umd
 dist
 coverage
-tree-shaking-test/node_modules
-tree-shaking-test/dist
-tree-shaking-test/bun.lockb

@@ -3,7 +3,7 @@
 	"projectOwner": "brazilian-utils",
 	"files": ["README.md"],
 	"imageSize": 100,
-	"commit": true,
+	"commit": false,
 	"contributors": [
 		{
 			"login": "hyanmandian",
@@ -206,6 +206,20 @@
 			"name": "Vicente Vendramin",
 			"avatar_url": "https://github.com/vicentevendramin.png",
 			"profile": "https://github.com/vicentevendramin",
+			"contributions": ["code"]
+		},
+		{
+			"login": "joaopedroassad",
+			"name": "Joao Assad",
+			"avatar_url": "https://github.com/joaopedroassad.png",
+			"profile": "https://github.com/joaopedroassad",
+			"contributions": ["code", "test"]
+		},
+		{
+			"login": "JanderSilv",
+			"name": "Jander Silva",
+			"avatar_url": "https://github.com/JanderSilv.png",
+			"profile": "https://github.com/JanderSilv",
 			"contributions": ["code"]
 		}
 	],

@@ -71,4 +71,47 @@ describe("formatCurrency", () => {
 		expect(formatCurrency(100000.001, { precision: 3 })).toBe("100.000,001");
 		expect(formatCurrency(1000000.001, { precision: 3 })).toBe("1.000.000,001");
 	});
+
+	it("should read the separators of string inputs", () => {
+		expect(formatCurrency("1234.56")).toBe("1.234,56");
+		expect(formatCurrency("1234,56")).toBe("1.234,56");
+		expect(formatCurrency("1.234,56")).toBe("1.234,56");
+		expect(formatCurrency("R$ 1.234,56")).toBe("1.234,56");
+		expect(formatCurrency("1234.56", { precision: 3 })).toBe("1.234,560");
+		expect(formatCurrency("1.234,5")).toBe("1.234,50");
+		expect(formatCurrency("R$ 1.234")).toBe("1.234,00");
+	});
+
+	it("should preserve the sign of string inputs", () => {
+		expect(formatCurrency("-10.5")).toBe("-10,50");
+		expect(formatCurrency("-1.234,56")).toBe("-1.234,56");
+		expect(formatCurrency("-R$ 1,00", { symbol: true })).toBe("-R$ 1,00");
+	});
+
+	it("should read plain digit strings as whole units", () => {
+		expect(formatCurrency("")).toBe("0,00");
+		expect(formatCurrency("0")).toBe("0,00");
+		expect(formatCurrency("123456")).toBe("123.456,00");
+		expect(formatCurrency("-1234")).toBe("-1.234,00");
+	});
+
+	it("should clamp the precision to the range accepted by Intl", () => {
+		expect(formatCurrency(1.5, { precision: -1 })).toBe("2");
+		expect(formatCurrency(1.5, { precision: 21 })).toBe(`1,5${"0".repeat(19)}`);
+		expect(formatCurrency(1.5, { precision: Number.NaN })).toBe("1,50");
+	});
+
+	it("should return an empty string for non finite numbers", () => {
+		expect(formatCurrency(Number.NaN)).toBe("");
+		expect(formatCurrency(Number.POSITIVE_INFINITY)).toBe("");
+		expect(formatCurrency(Number.NEGATIVE_INFINITY)).toBe("");
+		expect(formatCurrency(Number.NaN, { symbol: true })).toBe("");
+		// @ts-expect-error
+		expect(formatCurrency(undefined)).toBe("");
+	});
+
+	it("should replace the non-breaking space", () => {
+		expect(formatCurrency(1234.56, { symbol: true })).toBe("R$ 1.234,56");
+		expect(formatCurrency(1234.56, { symbol: true })).not.toContain("\u00a0");
+	});
 });

@@ -1,3 +1,2 @@
-export const PHONE_MAX_LENGTH = 11;
 export const MOBILE_VALID_FIRST_NUMBERS_V1 = [6, 7, 8, 9];
 export const MOBILE_VALID_FIRST_NUMBERS_V2 = [9];

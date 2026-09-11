@@ -14,6 +14,20 @@ describe("isValidMobilePhone", () => {
 		test("when length is invalid", () => {
 			expect(isValidMobilePhone("1198765432")).toBe(false);
 		});
+
+		test("when it is null, undefined or a number", () => {
+			// @ts-expect-error
+			expect(isValidMobilePhone(null)).toBe(false);
+			// @ts-expect-error
+			expect(isValidMobilePhone(undefined)).toBe(false);
+			// @ts-expect-error
+			expect(isValidMobilePhone(11987654321)).toBe(false);
+		});
+
+		test("when the country code leaves an invalid number", () => {
+			expect(isValidMobilePhone("+55 11 3000-0000")).toBe(false);
+			expect(isValidMobilePhone("+1 415 555 2671")).toBe(false);
+		});
 	});
 
 	describe("should return true", () => {
@@ -24,6 +38,20 @@ describe("isValidMobilePhone", () => {
 
 		test("when is a valid mobile phone version 1", () => {
 			expect(isValidMobilePhone("11712345678", { version: 1 })).toBe(true);
+		});
+
+		test("when it carries the country code", () => {
+			expect(isValidMobilePhone("+5511987654321")).toBe(true);
+			expect(isValidMobilePhone("+55 11 98765-4321")).toBe(true);
+			expect(isValidMobilePhone("+55 (11) 98765-4321")).toBe(true);
+			expect(isValidMobilePhone("0055 11 98765-4321")).toBe(true);
+			expect(isValidMobilePhone("5511987654321")).toBe(true);
+			expect(isValidMobilePhone("+55 11 98765-4321", { version: 2 })).toBe(true);
+		});
+
+		test("when the area code is 55", () => {
+			expect(isValidMobilePhone("55987654321")).toBe(true);
+			expect(isValidMobilePhone("+55 55 98765-4321")).toBe(true);
 		});
 	});
 });

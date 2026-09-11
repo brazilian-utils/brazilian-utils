@@ -40,6 +40,15 @@ describe("isValidLicensePlate", () => {
 			expect(isValidLicensePlate("abcd1234")).toBe(false);
 			expect(isValidLicensePlate("abcd234")).toBe(false);
 		});
+
+		it("when it has extra characters beyond the license plate length", () => {
+			expect(isValidLicensePlate("ABC1234EXTRA")).toBe(false);
+		});
+
+		it("when it uses the withdrawn motorcycle sequence", () => {
+			expect(isValidLicensePlate("ABC12D3")).toBe(false);
+			expect(isValidLicensePlate("abc12d3")).toBe(false);
+		});
 	});
 
 	describe("should return true", () => {
@@ -53,9 +62,15 @@ describe("isValidLicensePlate", () => {
 		it("when mercosul license plate format is valid", () => {
 			expect(isValidLicensePlate("abc1d23")).toBe(true);
 			expect(isValidLicensePlate("ABC1D23")).toBe(true);
+		});
 
-			expect(isValidLicensePlate("ABC12D3")).toBe(true);
-			expect(isValidLicensePlate("abc12d3")).toBe(true);
+		it("when it has a whitespace mask", () => {
+			expect(isValidLicensePlate("ABC 1234")).toBe(true);
+			expect(isValidLicensePlate("  abc1234 ")).toBe(true);
+		});
+
+		it("when the mercosul format has a hyphen mask", () => {
+			expect(isValidLicensePlate("ABC-1D23")).toBe(true);
 		});
 	});
 });

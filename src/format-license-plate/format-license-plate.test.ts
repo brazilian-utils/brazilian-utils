@@ -28,4 +28,10 @@ describe("formatLicensePlate", () => {
 		expect(formatLicensePlate("abc-1234")).toBe("ABC-1234");
 		expect(formatLicensePlate("abc1-d23")).toBe("ABC1D23");
 	});
+
+	it("should return an empty string when the tail matches no supported format", () => {
+		expect(formatLicensePlate("abc1da2")).toBe("");
+		expect(formatLicensePlate("abc12d")).toBe("");
+		expect(formatLicensePlate("abc12d3")).toBe("");
+	});
 });

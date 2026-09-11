@@ -19,4 +19,22 @@ describe("parseBoleto", () => {
 			"10491443385511900000200000000141325230000093423",
 		);
 	});
+
+	describe("arrecadação", () => {
+		it("should remove the arrecadação mask characters", () => {
+			expect(parseBoleto("84610000000-5 24610029110-2 00546033900-4 69589506108-0")).toBe(
+				"846100000005246100291102005460339004695895061080",
+			);
+		});
+
+		it("should keep the 48 digits of an arrecadação linha digitável", () => {
+			expect(parseBoleto("846100000005246100291102005460339004695895061080")).toHaveLength(48);
+		});
+
+		it("should ignore digits after the arrecadação length", () => {
+			expect(parseBoleto("846100000005246100291102005460339004695895061080123")).toBe(
+				"846100000005246100291102005460339004695895061080",
+			);
+		});
+	});
 });

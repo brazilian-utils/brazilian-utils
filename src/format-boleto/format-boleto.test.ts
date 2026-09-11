@@ -1,5 +1,6 @@
+import { ARRECADACAO_LINE_LENGTH } from "../_internals/constants/arrecadacao";
+import { BOLETO_LENGTH } from "../_internals/constants/boleto";
 import { describe, expect, test } from "../_internals/test/runtime";
-import { LENGTH } from "./constants";
 import { formatBoleto } from "./format-boleto";
 
 describe("formatBoleto", () => {
@@ -92,7 +93,7 @@ describe("formatBoleto", () => {
 		);
 	});
 
-	test(`shouldn't add digits after the boleto length (${LENGTH})`, () => {
+	test(`shouldn't add digits after the boleto length (${BOLETO_LENGTH})`, () => {
 		expect(formatBoleto("10491443385511900000200000000141325230000093423123123123")).toBe(
 			"10491.44338 55119.000002 00000.000141 3 25230000093423",
 		);
@@ -115,5 +116,41 @@ describe("formatBoleto", () => {
 	test("should return an empty string when receive an empty string", () => {
 		expect(formatBoleto("")).toBe("");
 		expect(formatBoleto("")).toBe("");
+	});
+
+	describe("arrecadação", () => {
+		test("should use the arrecadação mask when it starts with 8", () => {
+			expect(formatBoleto("846100000005246100291102005460339004695895061080")).toBe(
+				"84610000000-5 24610029110-2 00546033900-4 69589506108-0",
+			);
+			expect(formatBoleto("858900004609524601791605607593050865831483000010")).toBe(
+				"85890000460-9 52460179160-5 60759305086-5 83148300001-0",
+			);
+		});
+
+		test("should keep the cobrança bancária mask for partial values", () => {
+			expect(formatBoleto("8")).toBe("8");
+			expect(formatBoleto("84610000000")).toBe("84610.00000 0");
+			expect(formatBoleto("846100000005")).toBe("84610.00000 05");
+			expect(formatBoleto("8461000000052")).toBe("84610.00000 052");
+		});
+
+		test("should keep the cobrança bancária mask for the 44 digit barcode", () => {
+			expect(formatBoleto("84610000000246100291100054603390069589506108")).toBe(
+				"84610.00000 02461.002911 00054.603390 0 69589506108",
+			);
+		});
+
+		test(`shouldn't apply the arrecadação mask past its length (${ARRECADACAO_LINE_LENGTH})`, () => {
+			expect(formatBoleto("846100000005246100291102005460339004695895061080123")).toBe(
+				"84610.00000 05246.100291 10200.546033 9 00469589506108",
+			);
+		});
+
+		test("should remove all non numeric characters", () => {
+			expect(formatBoleto("84610000000-5 24610029110-2 00546033900-4 69589506108-0")).toBe(
+				"84610000000-5 24610029110-2 00546033900-4 69589506108-0",
+			);
+		});
 	});
 });

@@ -46,15 +46,20 @@ describe("isValidRenavam", () => {
 			expect(isValidRenavam("abcdefghij")).toBe(false);
 		});
 
-		test("when it is a RENAVAM with invalid checksum", () => {
-			expect(isValidRenavam("639884963")).toBe(false); // Last digit changed
+		test("when it is a RENAVAM with invalid checksum (639884963 has its last digit changed from the valid 639884962)", () => {
+			expect(isValidRenavam("639884963")).toBe(false);
 			expect(isValidRenavam("12345678901")).toBe(false);
 		});
 
-		test("when it has mixed characters that result in invalid RENAVAM", () => {
-			// Mixed characters that sanitize to an invalid RENAVAM (invalid checksum)
+		test("when it has mixed characters that sanitize to an invalid RENAVAM (invalid checksum)", () => {
 			expect(isValidRenavam("12345678901abc")).toBe(false);
-			expect(isValidRenavam("639884963xyz")).toBe(false); // Invalid checksum
+			expect(isValidRenavam("639884963xyz")).toBe(false);
+		});
+
+		test("when is a RENAVAM with invalid length: 8 digits (too short), 10 digits (invalid), or 12 digits (too long)", () => {
+			expect(isValidRenavam("12345678")).toBe(false);
+			expect(isValidRenavam("1234567890")).toBe(false);
+			expect(isValidRenavam("123456789012")).toBe(false);
 		});
 	});
 
@@ -71,20 +76,7 @@ describe("isValidRenavam", () => {
 			expect(isValidRenavam(639884962)).toBe(true);
 		});
 
-		test("when is a RENAVAM with invalid length", () => {
-			expect(isValidRenavam("12345678")).toBe(false); // 8 digits - too short
-			expect(isValidRenavam("1234567890")).toBe(false); // 10 digits - invalid length
-			expect(isValidRenavam("123456789012")).toBe(false); // 12 digits - too long
-		});
-
-		test("when is a RENAVAM valid with various formats", () => {
-			// Test with known valid RENAVAMs
-			expect(isValidRenavam("639884962")).toBe(true);
-			expect(isValidRenavam("00639884962")).toBe(true);
-		});
-
-		test("when is a RENAVAM valid with mixed characters that sanitize correctly", () => {
-			// Mixed characters that sanitize to a valid RENAVAM
+		test("when is a RENAVAM valid with mixed characters that sanitize to a valid RENAVAM", () => {
 			expect(isValidRenavam("639884962abc")).toBe(true);
 		});
 	});

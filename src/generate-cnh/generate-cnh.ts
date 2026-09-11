@@ -1,51 +1,32 @@
+import { calculateCnhFirstVerifier } from "../_internals/calculate-cnh-first-verifier/calculate-cnh-first-verifier";
+import { calculateCnhSecondVerifier } from "../_internals/calculate-cnh-second-verifier/calculate-cnh-second-verifier";
 import { generateRandomNumber } from "../_internals/generate-random-number/generate-random-number";
+import { isRepeatedDigits } from "../_internals/is-repeated-digits/is-repeated-digits";
 
-const calculateFirstVerifier = (base: string): { firstVerifier: number; decrement: number } => {
-	let sum = 0;
-
-	for (let i = 0; i < 9; i++) {
-		sum += (base.charCodeAt(i) - 48) * (9 - i);
-	}
-
-	const remainder = sum % 11;
-
-	if (remainder >= 10) {
-		return { firstVerifier: 0, decrement: 2 };
-	}
-
-	return { firstVerifier: remainder, decrement: 0 };
-};
-
-const calculateSecondVerifier = ({
-	base,
-	decrement,
-}: {
-	base: string;
-	decrement: number;
-}): number => {
-	let sum = 0;
-
-	for (let i = 0; i < 9; i++) {
-		sum += (base.charCodeAt(i) - 48) * (i + 1);
-	}
-
-	let secondVerifier = (sum % 11) - decrement;
-
-	if (secondVerifier < 0) secondVerifier += 11;
-	if (secondVerifier >= 10) secondVerifier = 0;
-
-	return secondVerifier;
-};
-
+/**
+ * Generates a valid random CNH (Carteira Nacional de Habilitação, the Brazilian driver's license number).
+ *
+ * Uses `Math.random()` internally, so it is not cryptographically secure, do not use for security purposes.
+ *
+ * @returns {string} A valid 11-digit CNH string without formatting.
+ *
+ * @example
+ * ```typescript
+ * generateCnh(); // "00000000119"
+ * ```
+ *
+ * @see Official: https://www.planalto.gov.br/ccivil_03/leis/l9503compilado.htm
+ * @see Based on: https://siga0984.wordpress.com/2019/05/01/algoritmos-validacao-de-cnh/
+ */
 export const generateCnh = (): string => {
 	let base = generateRandomNumber(9);
 
-	while (/^(\d)\1+$/.test(base)) {
+	while (isRepeatedDigits(base)) {
 		base = generateRandomNumber(9);
 	}
 
-	const { firstVerifier, decrement } = calculateFirstVerifier(base);
-	const secondVerifier = calculateSecondVerifier({ base, decrement });
+	const { firstVerifier, decrement } = calculateCnhFirstVerifier(base);
+	const secondVerifier = calculateCnhSecondVerifier({ base, decrement });
 
 	return `${base}${firstVerifier}${secondVerifier}`;
 };

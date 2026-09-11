@@ -1,5 +1,3 @@
-export const ACRONYMS = ["cia", "cnpj", "cpf", "ltda", "me", "rg"];
-
 export const PREPOSITIONS = [
 	"a",
 	"com",
@@ -18,3 +16,7 @@ export const PREPOSITIONS = [
 	"por",
 	"sem",
 ];
+
+export const SEPARATOR_REGEX = /(\s+|[-/])/;
+
+export const WHITESPACE_REGEX = /^\s+$/;

@@ -1,5 +1,5 @@
+import { PROCESSO_JURIDICO_LENGTH } from "../_internals/constants/processo-juridico";
 import { describe, expect, test } from "../_internals/test/runtime";
-import { LENGTH } from "./constants";
 import { isValidProcessoJuridico } from "./is-valid-processo-juridico";
 
 describe("isValidProcessoJuridico", () => {
@@ -18,7 +18,7 @@ describe("isValidProcessoJuridico", () => {
 			expect(isValidProcessoJuridico(undefined)).toBe(false);
 		});
 
-		test(`when length is less than ${LENGTH}`, () => {
+		test(`when length is less than ${PROCESSO_JURIDICO_LENGTH}`, () => {
 			expect(isValidProcessoJuridico("123")).toBe(false);
 		});
 	});
@@ -28,7 +28,11 @@ describe("isValidProcessoJuridico", () => {
 			expect(isValidProcessoJuridico("00020802520125150049")).toBe(true);
 		});
 
-		test("when is a processo juridico valid with mask", () => {
+		test("when is a processo juridico valid with the CNJ mask", () => {
+			expect(isValidProcessoJuridico("0002080-25.2012.5.15.0049")).toBe(true);
+		});
+
+		test("when is a processo juridico valid with the legacy fused mask", () => {
 			expect(isValidProcessoJuridico("0002080-25.2012.515.0049")).toBe(true);
 		});
 	});

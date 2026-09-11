@@ -1,5 +1,5 @@
+import { PROCESSO_JURIDICO_LENGTH } from "../_internals/constants/processo-juridico";
 import { describe, expect, it } from "../_internals/test/runtime";
-import { LENGTH } from "./constants";
 import { formatProcessoJuridico } from "./format-processo-juridico";
 
 describe("formatProcessoJuridico", () => {
@@ -19,21 +19,25 @@ describe("formatProcessoJuridico", () => {
 		expect(formatProcessoJuridico("000208025201")).toBe("0002080-25.201");
 		expect(formatProcessoJuridico("0002080252012")).toBe("0002080-25.2012");
 		expect(formatProcessoJuridico("00020802520125")).toBe("0002080-25.2012.5");
-		expect(formatProcessoJuridico("000208025201251")).toBe("0002080-25.2012.51");
-		expect(formatProcessoJuridico("0002080252012515")).toBe("0002080-25.2012.515");
-		expect(formatProcessoJuridico("00020802520125150")).toBe("0002080-25.2012.515.0");
-		expect(formatProcessoJuridico("000208025201251500")).toBe("0002080-25.2012.515.00");
-		expect(formatProcessoJuridico("0002080252012515004")).toBe("0002080-25.2012.515.004");
-		expect(formatProcessoJuridico("00020802520125150049")).toBe("0002080-25.2012.515.0049");
+		expect(formatProcessoJuridico("000208025201251")).toBe("0002080-25.2012.5.1");
+		expect(formatProcessoJuridico("0002080252012515")).toBe("0002080-25.2012.5.15");
+		expect(formatProcessoJuridico("00020802520125150")).toBe("0002080-25.2012.5.15.0");
+		expect(formatProcessoJuridico("000208025201251500")).toBe("0002080-25.2012.5.15.00");
+		expect(formatProcessoJuridico("0002080252012515004")).toBe("0002080-25.2012.5.15.004");
+		expect(formatProcessoJuridico("00020802520125150049")).toBe("0002080-25.2012.5.15.0049");
 	});
 
-	it(`should NOT add digits after the processo juridico length (${LENGTH})`, () => {
-		expect(formatProcessoJuridico("00020802520125150049123123")).toBe("0002080-25.2012.515.0049");
+	it("should follow the NNNNNNN-DD.AAAA.J.TR.OOOO pattern from Resolução CNJ 65/2008, keeping J (the Judiciary branch) and TR (tribunal) as separate fields", () => {
+		expect(formatProcessoJuridico("00020802520125150049")).toBe("0002080-25.2012.5.15.0049");
+	});
+
+	it(`should NOT add digits after the processo juridico length (${PROCESSO_JURIDICO_LENGTH})`, () => {
+		expect(formatProcessoJuridico("00020802520125150049123123")).toBe("0002080-25.2012.5.15.0049");
 	});
 
 	it("should remove all non numeric characters", () => {
 		expect(formatProcessoJuridico("0002080@$25201%!@2515.%0049123123")).toBe(
-			"0002080-25.2012.515.0049",
+			"0002080-25.2012.5.15.0049",
 		);
 	});
 });

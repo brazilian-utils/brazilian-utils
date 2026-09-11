@@ -1,11 +1,9 @@
+import { CNPJ_FIRST_DIGIT_WEIGHTS, CNPJ_SECOND_DIGIT_WEIGHTS } from "../_internals/constants/cnpj";
 import { generateChecksum } from "../_internals/generate-checksum/generate-checksum";
 import { generateRandomNumber } from "../_internals/generate-random-number/generate-random-number";
+import { isRepeatedDigits } from "../_internals/is-repeated-digits/is-repeated-digits";
 
 const BASE_LENGTH = 12;
-
-const FIRST_CHECK_DIGIT_WEIGHTS = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
-
-const SECOND_CHECK_DIGIT_WEIGHTS = [6, ...FIRST_CHECK_DIGIT_WEIGHTS];
 
 const VALID_CNPJ_CHARS = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -16,6 +14,14 @@ const generateAlphanumericCnpjBase = (): string => {
 	let base = "";
 	for (let i = 0; i < BASE_LENGTH; i++) {
 		base += generateRandomCnpjChar();
+	}
+	return base;
+};
+
+const generateNonRepeatedBase = (generate: () => string): string => {
+	let base = generate();
+	while (isRepeatedDigits(base)) {
+		base = generate();
 	}
 	return base;
 };
@@ -41,24 +47,26 @@ const calculateAlphanumericCheckDigit = (base: string, weights: number[]): strin
 };
 
 const generateNumericCnpj = (): string => {
-	const base = generateRandomNumber(BASE_LENGTH);
-	const firstCheckDigit = calculateCheckDigit(base, FIRST_CHECK_DIGIT_WEIGHTS);
-	const secondCheckDigit = calculateCheckDigit(base + firstCheckDigit, SECOND_CHECK_DIGIT_WEIGHTS);
+	const base = generateNonRepeatedBase(() => generateRandomNumber(BASE_LENGTH));
+	const firstCheckDigit = calculateCheckDigit(base, CNPJ_FIRST_DIGIT_WEIGHTS);
+	const secondCheckDigit = calculateCheckDigit(base + firstCheckDigit, CNPJ_SECOND_DIGIT_WEIGHTS);
 	return base + firstCheckDigit + secondCheckDigit;
 };
 
 const generateAlphanumericCnpj = (): string => {
-	const base = generateAlphanumericCnpjBase();
-	const firstCheckDigit = calculateAlphanumericCheckDigit(base, FIRST_CHECK_DIGIT_WEIGHTS);
+	const base = generateNonRepeatedBase(generateAlphanumericCnpjBase);
+	const firstCheckDigit = calculateAlphanumericCheckDigit(base, CNPJ_FIRST_DIGIT_WEIGHTS);
 	const secondCheckDigit = calculateAlphanumericCheckDigit(
 		base + firstCheckDigit,
-		SECOND_CHECK_DIGIT_WEIGHTS,
+		CNPJ_SECOND_DIGIT_WEIGHTS,
 	);
 	return base + firstCheckDigit + secondCheckDigit;
 };
 
 /**
  * Generates a valid random CNPJ (Cadastro Nacional da Pessoa Jurídica).
+ *
+ * Uses `Math.random()` internally, so it is not cryptographically secure, do not use for security purposes.
  *
  * @param {1 | 2} version - The version of the CNPJ to be generated.
  * @returns {string} A valid 14-digit CNPJ string without formatting.
@@ -68,6 +76,8 @@ const generateAlphanumericCnpj = (): string => {
  * generateCnpj(); // "12345678000195"
  * generateCnpj(2); // "Q0SLFMBD7VX439"
  * ```
+ *
+ * @see Official: https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria/cadastros/cnpj
  */
 export const generateCnpj = (version?: 1 | 2): string => {
 	const versionToUse = version ?? 1;

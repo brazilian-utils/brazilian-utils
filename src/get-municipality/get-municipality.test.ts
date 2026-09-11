@@ -1,40 +1,147 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from "../_internals/test/runtime";
+import { describe, expect, it } from "../_internals/test/runtime";
+import type { GetMunicipalityByNameOptions } from "./get-municipality";
 import { getMunicipality } from "./get-municipality";
 
 describe("getMunicipality", () => {
-	const fetchMock = vi.fn();
-	const originalFetch = globalThis.fetch;
-
-	beforeEach(() => {
-		globalThis.fetch = fetchMock as unknown as typeof fetch;
-		fetchMock.mockClear();
-	});
-
-	afterEach(() => {
-		globalThis.fetch = originalFetch;
-		vi.restoreAllMocks();
-	});
-
 	it("should get municipality code by name", async () => {
-		fetchMock.mockResolvedValueOnce({
-			ok: true,
-			json: async () => [{ id: 3550308, nome: "São Paulo" }],
-		});
-
 		await expect(getMunicipality({ municipalityName: "Sao Paulo", uf: "sp" })).resolves.toBe(
 			"3550308",
 		);
 	});
 
 	it("should get municipality name and UF by code", async () => {
-		fetchMock.mockResolvedValueOnce({
-			ok: true,
-			json: async () => ({
-				microrregiao: { mesorregiao: { UF: { sigla: "SP" } } },
-				nome: "São Paulo",
-			}),
+		await expect(getMunicipality({ code: "3550308" })).resolves.toEqual(["São Paulo", "SP"]);
+	});
+
+	it("should match the municipality name ignoring accents and casing", async () => {
+		await expect(getMunicipality({ municipalityName: "SÃO PAULO", uf: "SP" })).resolves.toBe(
+			"3550308",
+		);
+		await expect(getMunicipality({ municipalityName: "sao PAULO", uf: "SP" })).resolves.toBe(
+			"3550308",
+		);
+	});
+
+	it("should match a municipality whose own name carries accents regardless of query accents", async () => {
+		await expect(getMunicipality({ municipalityName: "Ceara-Mirim", uf: "RN" })).resolves.toBe(
+			"2402600",
+		);
+		await expect(getMunicipality({ code: "2402600" })).resolves.toEqual(["Ceará-Mirim", "RN"]);
+	});
+
+	it("should resolve a known Boa Esperança do Norte/MT lookup", async () => {
+		await expect(getMunicipality({ code: "5101837" })).resolves.toEqual([
+			"Boa Esperança do Norte",
+			"MT",
+		]);
+		await expect(
+			getMunicipality({ municipalityName: "Boa Esperanca do Norte", uf: "MT" }),
+		).resolves.toBe("5101837");
+	});
+
+	describe("code validation", () => {
+		it("should return null for an empty code", async () => {
+			await expect(getMunicipality({ code: "" })).resolves.toBeNull();
 		});
 
-		await expect(getMunicipality({ code: "3550308" })).resolves.toEqual(["São Paulo", "SP"]);
+		it("should return null for a path-traversal code", async () => {
+			await expect(
+				getMunicipality({ code: "../../../v1/localidades/estados" }),
+			).resolves.toBeNull();
+		});
+
+		it("should return null for a code with query-string injection", async () => {
+			await expect(getMunicipality({ code: "3550308?x=1" })).resolves.toBeNull();
+		});
+
+		it("should return null for a non-string code", async () => {
+			// @ts-expect-error
+			await expect(getMunicipality({ code: null })).resolves.toBeNull();
+			// @ts-expect-error
+			await expect(getMunicipality({ code: 3550308 })).resolves.toBeNull();
+		});
+
+		it("should return null for a code with the wrong number of digits", async () => {
+			await expect(getMunicipality({ code: "123" })).resolves.toBeNull();
+			await expect(getMunicipality({ code: "12345678" })).resolves.toBeNull();
+		});
+
+		it("should return null for an unknown 7 digit code", async () => {
+			await expect(getMunicipality({ code: "0000000" })).resolves.toBeNull();
+		});
+	});
+
+	describe("options validation (non-object input)", () => {
+		it("should return null for null", async () => {
+			// @ts-expect-error
+			await expect(getMunicipality(null)).resolves.toBeNull();
+		});
+
+		it("should return null for undefined", async () => {
+			// @ts-expect-error
+			await expect(getMunicipality(undefined)).resolves.toBeNull();
+		});
+
+		it("should return null for a primitive", async () => {
+			// @ts-expect-error
+			await expect(getMunicipality("3550308")).resolves.toBeNull();
+			// @ts-expect-error
+			await expect(getMunicipality(123)).resolves.toBeNull();
+			// @ts-expect-error
+			await expect(getMunicipality(true)).resolves.toBeNull();
+		});
+
+		it("should return null for an array", async () => {
+			// @ts-expect-error
+			await expect(getMunicipality([])).resolves.toBeNull();
+		});
+	});
+
+	describe("municipality name lookup validation", () => {
+		it("should return null for an empty municipality name", async () => {
+			await expect(getMunicipality({ municipalityName: "", uf: "SP" })).resolves.toBeNull();
+		});
+
+		it("should return null for a non-string municipality name", async () => {
+			// @ts-expect-error
+			await expect(getMunicipality({ municipalityName: null, uf: "SP" })).resolves.toBeNull();
+		});
+
+		it("should return null for a non-string uf", async () => {
+			// @ts-expect-error
+			const options: GetMunicipalityByNameOptions = { municipalityName: "São Paulo", uf: null };
+
+			await expect(getMunicipality(options)).resolves.toBeNull();
+		});
+
+		it("should return null for a malformed UF (digits)", async () => {
+			await expect(
+				getMunicipality({ municipalityName: "São Paulo", uf: "123" }),
+			).resolves.toBeNull();
+		});
+
+		it("should return null for a malformed UF (wrong length)", async () => {
+			await expect(
+				getMunicipality({ municipalityName: "São Paulo", uf: "XXX" }),
+			).resolves.toBeNull();
+		});
+
+		it("should return null for an unknown UF", async () => {
+			await expect(
+				getMunicipality({ municipalityName: "São Paulo", uf: "ZZ" }),
+			).resolves.toBeNull();
+		});
+
+		it("should return null when the municipality is not found in the given state", async () => {
+			await expect(
+				getMunicipality({ municipalityName: "Cidade Inexistente", uf: "SP" }),
+			).resolves.toBeNull();
+		});
+
+		it("should return null when the municipality exists but in a different state", async () => {
+			await expect(
+				getMunicipality({ municipalityName: "São Paulo", uf: "RJ" }),
+			).resolves.toBeNull();
+		});
 	});
 });

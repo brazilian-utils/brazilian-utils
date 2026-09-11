@@ -3,6 +3,10 @@ import { parseProcessoJuridico } from "./parse-processo-juridico";
 
 describe("parseProcessoJuridico", () => {
 	it("should remove processo juridico mask characters", () => {
+		expect(parseProcessoJuridico("0002080-25.2012.5.15.0049")).toBe("00020802520125150049");
+	});
+
+	it("should also accept the legacy fused mask", () => {
 		expect(parseProcessoJuridico("0002080-25.2012.515.0049")).toBe("00020802520125150049");
 	});
 

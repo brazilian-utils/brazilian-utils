@@ -1,5 +1,5 @@
+import { PIS_LENGTH } from "../_internals/constants/pis";
 import { describe, expect, it } from "../_internals/test/runtime";
-import { LENGTH } from "./constants";
 import { formatPis } from "./format-pis";
 
 describe("formatPis", () => {
@@ -70,7 +70,7 @@ describe("formatPis", () => {
 		expect(formatPis(100.100000001)).toBe("100.10000.00-0");
 	});
 
-	it(`should NOT add digits after the PIS length (${LENGTH})`, () => {
+	it(`should NOT add digits after the PIS length (${PIS_LENGTH})`, () => {
 		expect(formatPis("0000000000000")).toBe("000.00000.00-0");
 		expect(formatPis("00000000000000")).toBe("000.00000.00-0");
 		expect(formatPis("000000000000000")).toBe("000.00000.00-0");

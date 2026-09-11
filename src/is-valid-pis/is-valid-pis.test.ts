@@ -1,5 +1,6 @@
+import { PIS_LENGTH } from "../_internals/constants/pis";
 import { describe, expect, test } from "../_internals/test/runtime";
-import { LENGTH, RESERVED_NUMBERS } from "./constants";
+import { RESERVED_NUMBERS } from "./constants";
 import { isValidPis } from "./is-valid-pis";
 
 describe("isValidPis", () => {
@@ -41,7 +42,7 @@ describe("isValidPis", () => {
 			expect(isValidPis([])).toBe(false);
 		});
 
-		test(`when dont match with PIS length (${LENGTH})`, () => {
+		test(`when dont match with PIS length (${PIS_LENGTH})`, () => {
 			expect(isValidPis("123456")).toBe(false);
 		});
 
@@ -66,6 +67,14 @@ describe("isValidPis", () => {
 
 		test("when is valid PIS with mask", () => {
 			expect(isValidPis("120.5641.284-7")).toBe(true);
+		});
+
+		test("when is valid PIS with a slash mask", () => {
+			expect(isValidPis("120/56874/10-7")).toBe(true);
+		});
+
+		test("when is valid PIS with a whitespace mask", () => {
+			expect(isValidPis("120 56874 10 7")).toBe(true);
 		});
 
 		test("when is a valid PIS with last digit 0", () => {

@@ -5,6 +5,7 @@ declare const Deno: {
 	readonly test: (options: {
 		name: string;
 		fn: () => void | Promise<void>;
+		ignore?: boolean;
 		sanitizeOps?: boolean;
 		sanitizeResources?: boolean;
 		sanitizeExit?: boolean;

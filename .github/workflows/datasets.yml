@@ -1,0 +1,49 @@
+name: Update datasets
+
+on:
+  schedule:
+    # Every Monday at 09:00 America/Sao_Paulo (12:00 UTC), same day as Dependabot.
+    - cron: "0 12 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-datasets:
+    name: Update IBGE/CONCLA datasets
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Setup
+        uses: ./.github/actions/setup
+
+      - name: Rebuild datasets
+        run: npm run build:data
+
+      - name: Check for changes
+        id: diff
+        run: |
+          if git diff --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Open pull request
+        if: steps.diff.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: "chore(data): update IBGE/CONCLA datasets"
+          branch: chore/update-datasets
+          title: "chore(data): update IBGE/CONCLA datasets"
+          body: |
+            Automated weekly refresh of the cities, states and legal-natures
+            datasets sourced from IBGE/CONCLA.

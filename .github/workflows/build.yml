@@ -2,7 +2,7 @@ name: Build
 
 on:
   pull_request:
-    types: [opened, synchronize, reopened, ready_for_review]
+    types: [opened, synchronize, reopened, ready_for_review, labeled, unlabeled]
   push:
     branches: [main]
 
@@ -21,18 +21,130 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
-
-      - name: Setup Vite+
-        uses: voidzero-dev/setup-vp@v1
+        uses: actions/checkout@v7
         with:
-          cache: true
+          persist-credentials: false
+
+      - name: Setup
+        uses: ./.github/actions/setup
 
       - name: Run build
         run: vp run build
 
       - name: Upload build artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: dist
           path: dist
+
+  tree-shaking:
+    name: Tree-shaking report
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Checkout head
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Setup
+        uses: ./.github/actions/setup
+
+      - name: Checkout base
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: actions/checkout@v7
+        with:
+          path: base
+          ref: ${{ github.event.pull_request.base.sha }}
+          persist-credentials: false
+
+      - name: Build head
+        run: npm ci && npm run build
+
+      - name: Measure base
+        if: ${{ github.event_name == 'pull_request' }}
+        id: base
+        run: |
+          if [ -f base/scripts/tree-shaking.ts ]; then
+            (cd base && npm ci && npm run build && node scripts/tree-shaking.ts --json ../base.json) || true
+          fi
+          if [ -f base.json ]; then
+            echo "measured=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "measured=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Compare against base
+        if: ${{ github.event_name == 'pull_request' }}
+        id: compare
+        continue-on-error: true
+        run: |
+          if [ "${{ steps.base.outputs.measured }}" = "true" ]; then
+            node scripts/tree-shaking.ts --compare base.json --markdown tree-shaking.md
+          else
+            {
+              echo "## Tree-shaking report"
+              echo
+              echo "No base measurement available (the base branch has no \`scripts/tree-shaking.ts\`, or an incompatible version). Showing head sizes only."
+              echo
+              echo '```'
+              node scripts/tree-shaking.ts
+              echo '```'
+            } > tree-shaking.md
+          fi
+
+      - name: Add report marker
+        if: ${{ github.event_name == 'pull_request' }}
+        run: |
+          if [ ! -f tree-shaking.md ]; then
+            printf '## Tree-shaking report\n\nThe measurement step failed before producing a report. See the job log.\n' > tree-shaking.md
+          fi
+          sed -i '1i<!-- tree-shaking-report -->' tree-shaking.md
+          if [ "${{ steps.compare.outcome }}" = "failure" ]; then
+            if [ "${{ contains(github.event.pull_request.labels.*.name, 'tree-shaking: accepted') }}" = "true" ]; then
+              printf '\n> Regression accepted through the `tree-shaking: accepted` label.\n' >> tree-shaking.md
+            else
+              printf '\n> To accept an intentional size increase, add the `tree-shaking: accepted` label to this pull request.\n' >> tree-shaking.md
+            fi
+          fi
+
+      - name: Find existing comment
+        if: ${{ github.event_name == 'pull_request' && !github.event.pull_request.head.repo.fork }}
+        uses: peter-evans/find-comment@v3
+        id: find-comment
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: "github-actions[bot]"
+          body-includes: "<!-- tree-shaking-report -->"
+
+      - name: Post or update comment
+        if: ${{ github.event_name == 'pull_request' && !github.event.pull_request.head.repo.fork }}
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          comment-id: ${{ steps.find-comment.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          edit-mode: replace
+          body-path: tree-shaking.md
+
+      - name: Summarize tree-shaking for fork pull requests
+        if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.fork }}
+        run: cat tree-shaking.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Fail on regression
+        if: "${{ github.event_name == 'pull_request' && steps.compare.outcome == 'failure' && !contains(github.event.pull_request.labels.*.name, 'tree-shaking: accepted') }}"
+        run: exit 1
+
+      - name: Summarize tree-shaking
+        if: ${{ github.event_name == 'push' }}
+        run: |
+          {
+            echo "## Tree-shaking report"
+            echo
+            echo '```'
+            node scripts/tree-shaking.ts
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"

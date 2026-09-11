@@ -8,32 +8,47 @@ type Suite = {
 	beforeEach: TestCallback[];
 };
 
-type MockImplementation<TArgs extends unknown[] = unknown[], TResult = unknown> = (
-	...args: TArgs
-) => TResult;
+type MockImplementation = (...args: unknown[]) => unknown;
 
-type MockFunction<TArgs extends unknown[] = unknown[], TResult = unknown> = ((
-	...args: TArgs
-) => TResult) & {
+type MockFunction = ((...args: unknown[]) => unknown) & {
+	mock: { calls: unknown[][] };
 	mockClear: () => void;
-	mockRejectedValueOnce: (value: unknown) => MockFunction<TArgs, TResult>;
-	mockResolvedValueOnce: (value: Awaited<TResult>) => MockFunction<TArgs, TResult>;
-	mockImplementation: (
-		implementation: MockImplementation<TArgs, TResult>,
-	) => MockFunction<TArgs, TResult>;
+	mockRejectedValue: (value: unknown) => MockFunction;
+	mockRejectedValueOnce: (value: unknown) => MockFunction;
+	mockResolvedValue: (value: unknown) => MockFunction;
+	mockResolvedValueOnce: (value: unknown) => MockFunction;
+	mockImplementation: (implementation: MockImplementation) => MockFunction;
 };
 
-type AnyMockFunction = MockFunction<any[], any>;
-
-const registeredMocks = new Set<AnyMockFunction>();
+const registeredMocks = new Set<MockFunction>();
 const suiteStack: Suite[] = [];
 
 function isRecord(value: unknown): value is Record<string, unknown> {
 	return typeof value === "object" && value !== null;
 }
 
+function hasLength(value: unknown): value is { length: number } {
+	if (typeof value === "string" || Array.isArray(value)) {
+		return true;
+	}
+
+	return isRecord(value) && typeof value.length === "number";
+}
+
 function createAssertionError(message: string): Error {
 	return new Error(message);
+}
+
+function describeValue(value: unknown): string {
+	if (!isRecord(value)) {
+		return String(value);
+	}
+
+	try {
+		return JSON.stringify(value) ?? Object.prototype.toString.call(value);
+	} catch {
+		return Object.prototype.toString.call(value);
+	}
 }
 
 function deepEqual(a: unknown, b: unknown): boolean {
@@ -81,11 +96,13 @@ function objectMatches(
 	});
 }
 
-function createMock<TArgs extends unknown[] = unknown[], TResult = unknown>(
-	implementation?: MockImplementation<TArgs, TResult>,
-): MockFunction<TArgs, TResult> {
-	const queue: Array<MockImplementation<TArgs, TResult>> = [];
-	const mockFn = ((...args: TArgs) => {
+function createMock(implementation?: MockImplementation): MockFunction {
+	const queue: MockImplementation[] = [];
+	const calls: unknown[][] = [];
+
+	const baseFn = (...args: unknown[]): unknown => {
+		calls.push(args);
+
 		if (queue.length > 0) {
 			const nextImplementation = queue.shift();
 
@@ -96,34 +113,91 @@ function createMock<TArgs extends unknown[] = unknown[], TResult = unknown>(
 			return implementation(...args);
 		}
 
-		return undefined as TResult;
-	}) as MockFunction<TArgs, TResult>;
-
-	mockFn.mockClear = () => {
-		queue.length = 0;
+		return undefined;
 	};
 
-	mockFn.mockResolvedValueOnce = (value: Awaited<TResult>) => {
-		queue.push(() => Promise.resolve(value) as TResult);
+	const mockFn: MockFunction = Object.assign(baseFn, {
+		mock: { calls },
+		mockClear: () => {
+			queue.length = 0;
+			calls.length = 0;
+		},
+		mockResolvedValueOnce: (value: unknown) => {
+			queue.push(() => Promise.resolve(value));
 
-		return mockFn;
-	};
+			return mockFn;
+		},
+		mockRejectedValueOnce: (value: unknown) => {
+			queue.push(() => Promise.reject(value));
 
-	mockFn.mockRejectedValueOnce = (value: unknown) => {
-		queue.push(() => Promise.reject(value) as TResult);
+			return mockFn;
+		},
+		mockResolvedValue: (value: unknown) => {
+			implementation = () => Promise.resolve(value);
 
-		return mockFn;
-	};
+			return mockFn;
+		},
+		mockRejectedValue: (value: unknown) => {
+			implementation = () => Promise.reject(value);
 
-	mockFn.mockImplementation = (nextImplementation: MockImplementation<TArgs, TResult>) => {
-		implementation = nextImplementation;
+			return mockFn;
+		},
+		mockImplementation: (nextImplementation: MockImplementation) => {
+			implementation = nextImplementation;
 
-		return mockFn;
-	};
+			return mockFn;
+		},
+	});
 
-	registeredMocks.add(mockFn as AnyMockFunction);
+	registeredMocks.add(mockFn);
 
 	return mockFn;
+}
+
+type ThrowExpectation = RegExp | string | Error | (new (...args: any[]) => unknown);
+
+function assertThrown(error: unknown, expected?: ThrowExpectation): void {
+	if (expected === undefined) {
+		return;
+	}
+
+	const message = error instanceof Error ? error.message : String(error);
+
+	if (expected instanceof RegExp) {
+		if (!expected.test(message)) {
+			throw createAssertionError(`Expected error message ${message} to match ${String(expected)}`);
+		}
+
+		return;
+	}
+
+	if (expected instanceof Error) {
+		if (error !== expected && message !== expected.message) {
+			throw createAssertionError(`Expected error to be ${expected.message}`);
+		}
+
+		return;
+	}
+
+	if (typeof expected === "function") {
+		if (!(error instanceof expected)) {
+			throw createAssertionError(`Expected error to be instance of ${expected.name}`);
+		}
+
+		return;
+	}
+
+	if (!message.includes(expected)) {
+		throw createAssertionError(`Expected error message ${message} to contain ${expected}`);
+	}
+}
+
+function isMockFunction(value: unknown): value is MockFunction {
+	if (typeof value !== "function" || !("mock" in value)) {
+		return false;
+	}
+
+	return isRecord(value.mock) && Array.isArray(value.mock.calls);
 }
 
 function createMatchers(actual: unknown) {
@@ -188,14 +262,12 @@ function createMatchers(actual: unknown) {
 			}
 		},
 		toHaveLength(expected: number) {
-			if (!isRecord(actual) && typeof actual !== "string" && !Array.isArray(actual)) {
+			if (!hasLength(actual)) {
 				throw createAssertionError("Expected value to have a length");
 			}
 
-			if ((actual as { length: number }).length !== expected) {
-				throw createAssertionError(
-					`Expected length ${(actual as { length: number }).length} to be ${expected}`,
-				);
+			if (actual.length !== expected) {
+				throw createAssertionError(`Expected length ${actual.length} to be ${expected}`);
 			}
 		},
 		toBeDefined() {
@@ -205,7 +277,7 @@ function createMatchers(actual: unknown) {
 		},
 		toBeUndefined() {
 			if (actual !== undefined) {
-				throw createAssertionError(`Expected ${String(actual)} to be undefined`);
+				throw createAssertionError(`Expected ${describeValue(actual)} to be undefined`);
 			}
 		},
 		toBeTruthy() {
@@ -237,6 +309,51 @@ function createMatchers(actual: unknown) {
 				);
 			}
 		},
+		toBeNull() {
+			if (actual !== null) {
+				throw createAssertionError(`Expected ${describeValue(actual)} to be null`);
+			}
+		},
+		toBeLessThan(expected: number) {
+			if (!(typeof actual === "number" && actual < expected)) {
+				throw createAssertionError(`Expected ${String(actual)} to be less than ${expected}`);
+			}
+		},
+		toThrow(expected?: ThrowExpectation) {
+			if (typeof actual !== "function") {
+				throw createAssertionError("Expected value to be a function");
+			}
+
+			try {
+				actual();
+			} catch (error) {
+				assertThrown(error, expected);
+
+				return;
+			}
+
+			throw createAssertionError("Expected function to throw");
+		},
+		toHaveBeenCalled() {
+			if (!isMockFunction(actual)) {
+				throw createAssertionError("Expected value to be a mock function");
+			}
+
+			if (actual.mock.calls.length === 0) {
+				throw createAssertionError("Expected mock function to have been called");
+			}
+		},
+		toHaveBeenCalledTimes(expected: number) {
+			if (!isMockFunction(actual)) {
+				throw createAssertionError("Expected value to be a mock function");
+			}
+
+			if (actual.mock.calls.length !== expected) {
+				throw createAssertionError(
+					`Expected mock function to have been called ${expected} times, but it was called ${actual.mock.calls.length} times`,
+				);
+			}
+		},
 		toMatchObject(expected: Record<string, unknown>) {
 			if (!isRecord(actual) || !objectMatches(actual, expected)) {
 				throw createAssertionError("Expected object to match");
@@ -250,6 +367,24 @@ function createExpect(actual: unknown) {
 
 	return {
 		...matchers,
+		get not() {
+			return Object.fromEntries(
+				Object.entries(matchers).map(([name, matcher]) => [
+					name,
+					(...args: unknown[]) => {
+						const fn: Function = matcher;
+
+						try {
+							fn.apply(undefined, args);
+						} catch {
+							return;
+						}
+
+						throw createAssertionError(`Expected value not to satisfy ${name}`);
+					},
+				]),
+			);
+		},
 		get resolves() {
 			const promise = Promise.resolve(actual);
 
@@ -258,25 +393,24 @@ function createExpect(actual: unknown) {
 					name,
 					async (...args: unknown[]) => {
 						const resolved = await promise;
-						const resolvedMatchers = createMatchers(resolved) as Record<
-							string,
-							(...args: unknown[]) => unknown
-						>;
+						const resolvedMatchers = createMatchers(resolved);
+						const matcherEntry = Object.entries(resolvedMatchers).find(
+							([entryName]) => entryName === name,
+						);
+						const fn: Function | undefined = matcherEntry?.[1];
 
-						return resolvedMatchers[name](...args);
+						return fn?.apply(undefined, args);
 					},
 				]),
 			);
 		},
 		get rejects() {
 			return {
-				async toThrow(expected?: new (...args: any[]) => unknown) {
+				async toThrow(expected?: ThrowExpectation) {
 					try {
-						await (actual as Promise<unknown>);
+						await actual;
 					} catch (error) {
-						if (expected && !(error instanceof expected)) {
-							throw createAssertionError(`Expected error to be instance of ${expected.name}`);
-						}
+						assertThrown(error, expected);
 
 						return;
 					}
@@ -302,7 +436,9 @@ type DescribeFunction = ((name: string, callback: TestCallback) => void) & {
 	skip: (name: string, callback: TestCallback) => void;
 };
 
-const describe: DescribeFunction = (name, callback) => {
+let skipDepth = 0;
+
+const runSuite = (name: string, callback: TestCallback) => {
 	suiteStack.push({
 		afterEach: [],
 		beforeEach: [],
@@ -310,13 +446,25 @@ const describe: DescribeFunction = (name, callback) => {
 	});
 
 	try {
-		callback();
+		void callback();
 	} finally {
 		suiteStack.pop();
 	}
 };
 
-describe.skip = () => {};
+const describe: DescribeFunction = (name, callback) => {
+	runSuite(name, callback);
+};
+
+describe.skip = (name, callback) => {
+	skipDepth += 1;
+
+	try {
+		runSuite(name, callback);
+	} finally {
+		skipDepth -= 1;
+	}
+};
 
 export function beforeEach(callback: TestCallback) {
 	const currentSuite = suiteStack.at(-1);
@@ -343,6 +491,7 @@ export function it(name: string, callback: TestCallback, timeout?: number) {
 	const testName = [...suites.map((suite) => suite.name), name].join(" > ");
 
 	Deno.test({
+		ignore: skipDepth > 0,
 		fn: async () => {
 			await runHooks(suites.flatMap((suite) => suite.beforeEach));
 

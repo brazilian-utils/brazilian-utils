@@ -1,6 +1,5 @@
 import type { StateCode } from "../_internals/constants/states";
 
-export const LENGTH = 11;
 export const BASE_LENGTH = 8;
 
 export const STATE_CODES: Record<StateCode, string> = {

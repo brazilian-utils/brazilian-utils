@@ -1,5 +1,5 @@
+import { CPF_LENGTH } from "../_internals/constants/cpf";
 import { describe, expect, it } from "../_internals/test/runtime";
-import { LENGTH } from "./constants";
 import { formatCpf } from "./format-cpf";
 
 describe("formatCpf", () => {
@@ -61,11 +61,31 @@ describe("formatCpf", () => {
 		expect(formatCpf(94389575104, { pad: true })).toBe("943.895.751-04");
 	});
 
-	it(`should NOT add digits after the CPF length (${LENGTH})`, () => {
+	it(`should NOT add digits after the CPF length (${CPF_LENGTH})`, () => {
 		expect(formatCpf("94389575104000000")).toBe("943.895.751-04");
 	});
 
 	it("should remove all non numeric characters", () => {
 		expect(formatCpf("943.?ABC895.751-04abc")).toBe("943.895.751-04");
+	});
+
+	it("should hide the first 3 digits and the 2 check digits when obfuscate is true", () => {
+		expect(formatCpf("94389575104", { obfuscate: true })).toBe("***.895.751-**");
+		expect(formatCpf(94389575104, { obfuscate: true })).toBe("***.895.751-**");
+	});
+
+	it("should pad before obfuscating", () => {
+		expect(formatCpf("9", { pad: true, obfuscate: true })).toBe("***.000.000-**");
+		expect(formatCpf("943", { pad: true, obfuscate: true })).toBe("***.000.009-**");
+	});
+
+	it("should obfuscate a short, unpadded value as far as it goes", () => {
+		expect(formatCpf("9438", { obfuscate: true })).toBe("***.8");
+	});
+
+	it("should behave exactly as without the option when obfuscate is false or absent", () => {
+		expect(formatCpf("94389575104", { obfuscate: false })).toBe("943.895.751-04");
+		expect(formatCpf("94389575104")).toBe("943.895.751-04");
+		expect(formatCpf("943", { pad: true, obfuscate: false })).toBe("000.000.009-43");
 	});
 });

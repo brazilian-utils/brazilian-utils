@@ -1,6 +1,7 @@
+import { CPF_LENGTH } from "../_internals/constants/cpf";
 import { describe, expect, test } from "../_internals/test/runtime";
 import { generateCpf } from "../generate-cpf/generate-cpf";
-import { LENGTH, RESERVED_NUMBERS } from "./constants";
+import { RESERVED_NUMBERS } from "./constants";
 import { isValidCpf } from "./is-valid-cpf";
 
 describe("isValidCpf", () => {
@@ -42,7 +43,7 @@ describe("isValidCpf", () => {
 			expect(isValidCpf([])).toBe(false);
 		});
 
-		test(`when dont match with CPF length (${LENGTH})`, () => {
+		test(`when dont match with CPF length (${CPF_LENGTH})`, () => {
 			expect(isValidCpf("123456")).toBe(false);
 		});
 
@@ -66,6 +67,15 @@ describe("isValidCpf", () => {
 
 		test("when is a CPF valid with mask", () => {
 			expect(isValidCpf("962.718.458-60")).toBe(true);
+		});
+
+		test("when is a CPF valid with a whitespace mask", () => {
+			expect(isValidCpf("123 456 789 09")).toBe(true);
+		});
+
+		test("when is a CPF valid with leading/trailing whitespace", () => {
+			expect(isValidCpf(" 12345678909")).toBe(true);
+			expect(isValidCpf("12345678909 ")).toBe(true);
 		});
 
 		test("should return true for randomly generated CPFs", () => {

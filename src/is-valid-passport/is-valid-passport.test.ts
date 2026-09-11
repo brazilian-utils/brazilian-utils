@@ -36,5 +36,14 @@ describe("isValidPassport", () => {
 			expect(isValidPassport("AA111111")).toBe(true);
 			expect(isValidPassport("CL125167")).toBe(true);
 		});
+
+		test("when passport is lowercase", () => {
+			expect(isValidPassport("ab123456")).toBe(true);
+		});
+
+		test("when passport contains mask symbols", () => {
+			expect(isValidPassport("AB-123456")).toBe(true);
+			expect(isValidPassport("AB.123.456")).toBe(true);
+		});
 	});
 });

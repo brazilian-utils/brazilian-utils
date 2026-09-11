@@ -12,4 +12,13 @@ describe("generateVoterId", () => {
 	it("should generate voter id for a specific state", () => {
 		expect(generateVoterId("SP").slice(8, 10)).toBe("01");
 	});
+
+	it("should fall back to the default UF instead of throwing for an unknown state", () => {
+		// @ts-expect-error
+		expect(() => generateVoterId("XX")).not.toThrow();
+		// @ts-expect-error
+		const voterId = generateVoterId("XX");
+		expect(voterId.slice(8, 10)).toBe("28");
+		expect(isValidVoterId(voterId)).toBe(true);
+	});
 });

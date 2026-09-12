@@ -48,6 +48,9 @@ jobs:
       - name: Check for unused files, exports and dependencies
         run: npm run check:unused
 
+      - name: Check the public API report is up to date
+        run: npm run build && npx api-extractor run --verbose
+
       - name: Check llms.txt/llms-full.txt are up to date
         run: npm run build:llms && git diff --exit-code -- docs/llms.txt docs/llms-full.txt
 

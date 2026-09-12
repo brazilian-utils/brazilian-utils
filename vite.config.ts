@@ -135,7 +135,7 @@ const sharedPack = {
 
 export default defineConfig({
 	fmt: {
-		ignorePatterns: ["dist", "coverage", "docs", ".claude"],
+		ignorePatterns: ["dist", "coverage", "docs", "api", ".claude"],
 		singleQuote: false,
 		sortImports: true,
 		useTabs: true,

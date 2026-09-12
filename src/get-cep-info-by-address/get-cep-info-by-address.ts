@@ -1,5 +1,6 @@
 import { DATA as STATES, type StateCode } from "../_internals/constants/states";
 import { fetchWithRetry } from "../_internals/fetch-with-retry/fetch-with-retry";
+import { removeAccents } from "../remove-accents/remove-accents";
 
 export class GetCepInfoByAddressError extends Error {
 	constructor(message: string) {
@@ -23,35 +24,64 @@ export class GetCepInfoByAddressNotFoundError extends GetCepInfoByAddressError {
 }
 
 export type CepAddressInfo = {
+	/** The CEP, masked as "00000-000" the way ViaCEP returns it. */
 	cep: string;
+	/** Street name. */
 	logradouro: string;
+	/** Extra address information, e.g. a house number range. */
 	complemento: string;
+	/** Neighborhood name. */
 	bairro: string;
+	/** City name. */
 	localidade: string;
+	/** Two letter state code, e.g. "SP". */
 	uf: string;
+	/** The 7 digit IBGE municipality code. */
 	ibge?: string;
+	/** GIA code, used by the São Paulo state tax authority. */
 	gia?: string;
+	/** Area code (DDD) of the city. */
 	ddd?: string;
+	/** SIAFI code of the municipality. */
 	siafi?: string;
 };
 
 export type GetCepInfoByAddressOptions = {
+	/** Two letter state code, e.g. "SP". */
 	federalUnit: string;
+	/** City name. Must not be empty; ViaCEP itself rejects values shorter than 3 characters. */
 	city: string;
+	/** Street name or part of it. Must not be empty; ViaCEP itself rejects values shorter than 3 characters. */
 	street: string;
 };
 
-const VALID_STATE_CODES = new Set<StateCode>(STATES.map((state) => state.code));
-
 const isStateCode = (value: string): value is StateCode =>
-	VALID_STATE_CODES.has(value as StateCode);
+	STATES.some((state) => state.code === value);
 
-const normalizeAddressPart = (value: string): string =>
-	value
-		.normalize("NFD")
-		.replace(/[\u0300-\u036f]/g, "")
-		.trim();
+const normalizeAddressPart = (value: string): string => removeAccents(value).trim();
 
+/**
+ * Looks every CEP of a Brazilian street up on the ViaCEP API.
+ *
+ * @param {GetCepInfoByAddressOptions} params - The address to look up.
+ * @param {string} params.federalUnit - The two letter state code (e.g. "SP").
+ * @param {string} params.city - The city name.
+ * @param {string} params.street - The street name, or part of it.
+ * @returns {Promise<CepAddressInfo[]>} Every address matching the query.
+ * @throws {GetCepInfoByAddressValidationError} When the UF, city or street is missing or invalid.
+ * @throws {GetCepInfoByAddressNotFoundError} When no address matches the query.
+ * @throws {GetCepInfoByAddressError} When ViaCEP answers with an HTTP error status. A request
+ * that cannot be performed at all rejects with the underlying `fetch` error instead.
+ *
+ * @example
+ * ```typescript
+ * await getCepInfoByAddress({ federalUnit: "SP", city: "São Paulo", street: "Avenida Paulista" });
+ * // [{ cep: "01310-100", logradouro: "Avenida Paulista", ... }]
+ * ```
+ *
+ * @see Official: https://www.correios.com.br/enviar/precisa-de-ajuda/tudo-sobre-cep
+ * @see Based on: https://viacep.com.br/
+ */
 export const getCepInfoByAddress = async ({
 	federalUnit,
 	city,
@@ -67,22 +97,15 @@ export const getCepInfoByAddress = async ({
 		throw new GetCepInfoByAddressValidationError("City and street are required");
 	}
 
-	let response: Response;
-	try {
-		response = await fetchWithRetry(
-			`https://viacep.com.br/ws/${normalizedUf}/${encodeURIComponent(normalizeAddressPart(city))}/${encodeURIComponent(normalizeAddressPart(street))}/json/`,
-		);
-	} catch (error) {
-		throw new GetCepInfoByAddressError(
-			error instanceof Error ? error.message : "ViaCEP request failed",
-		);
-	}
+	const response = await fetchWithRetry(
+		`https://viacep.com.br/ws/${normalizedUf}/${encodeURIComponent(normalizeAddressPart(city))}/${encodeURIComponent(normalizeAddressPart(street))}/json/`,
+	);
 
 	if (!response.ok) {
 		throw new GetCepInfoByAddressError(`ViaCEP request failed with status ${response.status}`);
 	}
 
-	const data = (await response.json()) as CepAddressInfo[];
+	const data: CepAddressInfo[] = await response.json();
 
 	if (!Array.isArray(data) || data.length === 0) {
 		throw new GetCepInfoByAddressNotFoundError(`${normalizedUf} - ${city} - ${street}`);

@@ -1,5 +1,5 @@
+import { CEP_LENGTH } from "../_internals/constants/cep";
 import { describe, expect, it } from "../_internals/test/runtime";
-import { LENGTH } from "./constants";
 import { formatCep } from "./format-cep";
 
 describe("formatCep", () => {
@@ -15,7 +15,7 @@ describe("formatCep", () => {
 		expect(formatCep("01001000")).toBe("01001-000");
 	});
 
-	it(`should NOT add digits after the CEP length (${LENGTH})`, () => {
+	it(`should NOT add digits after the CEP length (${CEP_LENGTH})`, () => {
 		expect(formatCep("01001000000000")).toBe("01001-000");
 	});
 

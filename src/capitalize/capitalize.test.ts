@@ -39,5 +39,27 @@ describe("capitalize", () => {
 				"José não ama Maria",
 			);
 		});
+
+		test("when upper case words are provided in any case", () => {
+			expect(capitalize("empresa ltda")).toBe("Empresa Ltda");
+			expect(capitalize("empresa ltda", { upperCaseWords: ["ltda"] })).toBe("Empresa LTDA");
+			expect(capitalize("meu cpf e rg", { upperCaseWords: ["CPF", "Rg"] })).toBe("Meu CPF e RG");
+		});
+
+		test("when the value contains whitespace other than a space", () => {
+			expect(capitalize("joao\tsilva")).toBe("Joao Silva");
+			expect(capitalize("joao\n\nsilva")).toBe("Joao Silva");
+			expect(capitalize("  joao \t\n silva  ")).toBe("Joao Silva");
+		});
+
+		test("when the value contains hyphens or slashes", () => {
+			expect(capitalize("MOGI-GUAÇU")).toBe("Mogi-Guaçu");
+			expect(capitalize("SANTANA/RS")).toBe("Santana/Rs");
+			expect(capitalize("SANTANA/RS", { upperCaseWords: ["rs"] })).toBe("Santana/RS");
+			expect(capitalize("sÃo josÉ do rio-preto")).toBe("São José do Rio-Preto");
+			expect(capitalize("de-facto")).toBe("De-Facto");
+			expect(capitalize("rio-de-janeiro")).toBe("Rio-de-Janeiro");
+			expect(capitalize("a - b")).toBe("A - B");
+		});
 	});
 });

@@ -1,5 +1,4 @@
 import { describe, expect, test } from "../_internals/test/runtime";
-import { LENGTH } from "./constants";
 import { isValidCep } from "./is-valid-cep";
 
 describe("isValidCep", () => {
@@ -18,12 +17,22 @@ describe("isValidCep", () => {
 			expect(isValidCep(undefined)).toBe(false);
 		});
 
-		test(`when length is less than ${LENGTH}`, () => {
+		test("when it is an object", () => {
+			// @ts-expect-error
+			expect(isValidCep({})).toBe(false);
+		});
+
+		test("when length is less than 8", () => {
 			expect(isValidCep("12345")).toBe(false);
 		});
 
-		test(`when length is greater than ${LENGTH}`, () => {
+		test("when length is greater than 8", () => {
 			expect(isValidCep("123456789")).toBe(false);
+		});
+
+		test("when it contains letters", () => {
+			expect(isValidCep("abc01310100")).toBe(false);
+			expect(isValidCep("0131010a")).toBe(false);
 		});
 	});
 
@@ -34,6 +43,20 @@ describe("isValidCep", () => {
 
 		test("when is a CEP valid with mask", () => {
 			expect(isValidCep("01310-100")).toBe(true);
+		});
+
+		test("when is a CEP valid as a number", () => {
+			expect(isValidCep(20040020)).toBe(true);
+		});
+
+		test("when is a CEP valid with leading/trailing whitespace", () => {
+			expect(isValidCep(" 01310-100 ")).toBe(true);
+		});
+
+		test("when is a CEP valid with any punctuation the published version accepted", () => {
+			expect(isValidCep("92.500-000")).toBe(true);
+			expect(isValidCep("013 10 100")).toBe(true);
+			expect(isValidCep("01310.100")).toBe(true);
 		});
 	});
 });

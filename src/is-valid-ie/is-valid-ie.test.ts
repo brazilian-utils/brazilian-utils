@@ -2,45 +2,53 @@ import { describe, expect, test } from "../_internals/test/runtime";
 import { isValidIe } from "./is-valid-ie";
 
 describe("isValidIe", () => {
-	describe("should return true for AC", () => {
-		test("when IE for AC is correct", () => {
+	describe("AC", () => {
+		test("should return true for a valid IE, including one with formatting characters", () => {
 			expect(isValidIe("AC", "0108368143106")).toBe(true);
 			expect(isValidIe("AC", "01.349.541/474-57")).toBe(true);
 		});
-	});
-	describe("should return false for AC", () => {
-		test("when IE for AC is incorrect", () => {
-			// incorrect second digit
+
+		test("should return false when the second verifier digit is incorrect", () => {
 			expect(isValidIe("AC", "0187634580933")).toBe(false);
-			// incorrect first digit.
+		});
+
+		test("should return false when the first verifier digit is incorrect", () => {
 			expect(isValidIe("AC", "0187634580924")).toBe(false);
-			// it does not starts with 01
+		});
+
+		test("should return false when the IE does not start with 01", () => {
 			expect(isValidIe("AC", "0018763458000")).toBe(false);
-			// length bigger then 13
+		});
+
+		test("should return false when the length is bigger than 13", () => {
 			expect(isValidIe("AC", "01018763458064")).toBe(false);
 		});
 	});
 
-	describe("should return true for AL", () => {
-		test("when IE for AL is correct", () => {
+	describe("AL", () => {
+		test("should return true for a valid IE", () => {
 			expect(isValidIe("AL", "248659758")).toBe(true);
-			// digit 10 converted to 0
+		});
+
+		test("should return true when the check digit 10 is converted to 0", () => {
 			expect(isValidIe("AL", "247424170")).toBe(true);
 		});
-	});
-	describe("should return false for AL", () => {
-		test("when IE for AL is incorrect", () => {
-			// incorrect verified digit
+
+		test("should return false when the verifier digit is incorrect", () => {
 			expect(isValidIe("AL", "248659759")).toBe(false);
-			// it does not starts with 24
+		});
+
+		test("should return false when the IE does not start with 24", () => {
 			expect(isValidIe("AL", "258659750")).toBe(false);
-			// lenght more then 9
+		});
+
+		test("should return false when the length is more than 9", () => {
 			expect(isValidIe("AL", "2486597584")).toBe(false);
 		});
 	});
 
-	describe("should return true for AP", () => {
-		test("when IE for AP is correct", () => {
+	describe("AP", () => {
+		test("should return true for valid IEs", () => {
 			expect(isValidIe("AP", "036029572")).toBe(true);
 			expect(isValidIe("AP", "030123459")).toBe(true);
 			expect(isValidIe("AP", "030000080")).toBe(true);
@@ -49,445 +57,602 @@ describe("isValidIe", () => {
 			expect(isValidIe("AP", "030170020")).toBe(true);
 			expect(isValidIe("AP", "030170071")).toBe(true);
 		});
-	});
-	describe("should return false for AP", () => {
-		test("when IE for AP is incorrect", () => {
-			// verifier digit false
+
+		test("should return false when the verifier digit is incorrect", () => {
 			expect(isValidIe("AP", "036029573")).toBe(false);
-			// more then 9 digits
+		});
+
+		test("should return false when the length is more than 9 digits", () => {
 			expect(isValidIe("AP", "0306029570")).toBe(false);
-			// does not start with 03
+		});
+
+		test("should return false when the IE does not start with 03", () => {
 			expect(isValidIe("AP", "003060292")).toBe(false);
 		});
 	});
 
-	describe("should return true for AM", () => {
-		test("when IE for AM is correct", () => {
+	describe("AM", () => {
+		test("should return true for valid IEs, including one with formatting characters", () => {
 			expect(isValidIe("AM", "48.063.523-4")).toBe(true);
 			expect(isValidIe("AM", "036029572")).toBe(true);
 			expect(isValidIe("AM", "000000019")).toBe(true);
 			expect(isValidIe("AM", "046893830")).toBe(true);
 		});
-	});
-	describe("should return false for AM", () => {
-		test("when IE for AM is incorrect", () => {
-			// verifier digit false
+
+		test("should return false when the verifier digit is incorrect", () => {
 			expect(isValidIe("AM", "036029573")).toBe(false);
-			// more then 9 digits
+		});
+
+		test("should return false when the length is more than 9 digits", () => {
 			expect(isValidIe("AM", "0036029572")).toBe(false);
 		});
 	});
 
-	describe("should return true for BA", () => {
-		test("when IE for BA is correct", () => {
-			// 8 digits
-			// mod 10
+	describe("BA", () => {
+		test("should return true for an 8-digit IE using the mod 10 rule", () => {
 			expect(isValidIe("BA", "12345663")).toBe(true);
-			// mod 11
+		});
+
+		test("should return true for an 8-digit IE using the mod 11 rule", () => {
 			expect(isValidIe("BA", "74219145")).toBe(true);
-			// 9 digits
-			// mod 10
+		});
+
+		test("should return true for a 9-digit IE using the mod 10 rule", () => {
 			expect(isValidIe("BA", "038343081")).toBe(true);
 			expect(isValidIe("BA", "100000306")).toBe(true);
-			// mod 11
+		});
+
+		test("should return true for a 9-digit IE using the mod 11 rule", () => {
 			expect(isValidIe("BA", "778514741")).toBe(true);
-			// 9 digits starting with 0
+		});
+
+		test("should return true for a 9-digit IE starting with 0", () => {
 			expect(isValidIe("BA", "078771760")).toBe(true);
 			expect(isValidIe("BA", "039474751")).toBe(true);
 			expect(isValidIe("BA", "090529323")).toBe(true);
-			// 8 digits starting with 0
+		});
+
+		test("should return true for an 8-digit IE starting with 0", () => {
 			expect(isValidIe("BA", "04772253")).toBe(true);
 		});
-	});
-	describe("should return false for BA", () => {
-		test("when IE for BA is incorrect", () => {
-			// mod 10
-			expect(isValidIe("BA", "12345636")).toBe(false);
-			// mod 11
-			expect(isValidIe("BA", "74219154")).toBe(false);
 
-			// 9 digits
-			// mod 10
+		test("should return false for an 8-digit IE with an incorrect mod 10 digit", () => {
+			expect(isValidIe("BA", "12345636")).toBe(false);
+		});
+
+		test("should return false for an 8-digit IE with an incorrect mod 11 digit", () => {
+			expect(isValidIe("BA", "74219154")).toBe(false);
+		});
+
+		test("should return false for a 9-digit IE with an incorrect mod 10 digit", () => {
 			expect(isValidIe("BA", "038343001")).toBe(false);
-			// mod 11
+		});
+
+		test("should return false for a 9-digit IE with an incorrect mod 11 digit", () => {
 			expect(isValidIe("BA", "778514731")).toBe(false);
-			// more than 9 digits
+		});
+
+		test("should return false when the length is more than 9 digits", () => {
 			expect(isValidIe("BA", "0012345636")).toBe(false);
 		});
 	});
 
-	describe("should return true for CE", () => {
-		test("when IE for CE is correct", () => {
+	describe("CE", () => {
+		test("should return true for a valid IE", () => {
 			expect(isValidIe("CE", "853511942")).toBe(true);
 		});
-	});
-	describe("should return false for CE", () => {
-		test("when IE for CE is incorrect", () => {
+
+		test("should return false when the digit is incorrect", () => {
 			expect(isValidIe("CE", "853511943")).toBe(false);
-			// more than 9 digits
+		});
+
+		test("should return false when the length is more than 9 digits", () => {
 			expect(isValidIe("CE", "0853511942")).toBe(false);
 		});
 	});
 
-	describe("should return true for DF", () => {
-		test("when IE for DF is correct", () => {
+	describe("DF", () => {
+		test("should return true for a valid IE", () => {
 			expect(isValidIe("DF", "0754002000176")).toBe(true);
-			// tenth digit converted to 0
+		});
+
+		test("should return true when the tenth digit is converted to 0", () => {
 			expect(isValidIe("DF", "0754002000508")).toBe(true);
 		});
-	});
-	describe("should return false for DF", () => {
-		test("when IE for DF is incorrect", () => {
-			// does not start with 07
+
+		test("should return false when the IE does not start with 07", () => {
 			expect(isValidIe("DF", "0108368143017")).toBe(false);
-			// does not have 13 digits
+		});
+
+		test("should return false when the length is not 13 digits", () => {
 			expect(isValidIe("DF", "07008368143094")).toBe(false);
-			// digit incorrect
+		});
+
+		test("should return false when the digit is incorrect", () => {
 			expect(isValidIe("DF", "0754002000175")).toBe(false);
 		});
 	});
 
-	describe("should return true for ES", () => {
-		test("when IE for ES is correct", () => {
+	describe("ES", () => {
+		test("should return true for a valid IE", () => {
 			expect(isValidIe("ES", "639191444")).toBe(true);
 		});
-	});
-	describe("should return false for ES", () => {
-		test("when IE for ES is incorrect", () => {
+
+		test("should return false when the digit is incorrect", () => {
 			expect(isValidIe("ES", "639191445")).toBe(false);
-			// more than 9 digits
+		});
+
+		test("should return false when the length is more than 9 digits", () => {
 			expect(isValidIe("ES", "0639191444")).toBe(false);
 		});
 	});
 
-	describe("should return true for GO", () => {
-		test("when IE for GO is correct", () => {
-			// base rule
+	describe("GO", () => {
+		test("should return true for a valid IE using the base rule", () => {
 			expect(isValidIe("GO", "109161793")).toBe(true);
-			// verified digit is 1, internal
-			expect(isValidIe("GO", "101031131")).toBe(true);
-			// verified digit is 1, external
+		});
+
+		test("should return true for an IE with prefix 15", () => {
+			expect(isValidIe("GO", "159876540")).toBe(true);
+		});
+
+		test("should return true when the remainder is 1 and the inscricao falls inside the special range 10103105..10119997", () => {
+			expect(isValidIe("GO", "101031051")).toBe(true);
+		});
+
+		test("should return true when the remainder is 0", () => {
 			expect(isValidIe("GO", "101030940")).toBe(true);
 		});
-	});
-	describe("should return false for GO", () => {
-		test("when IE for GO is incorrect", () => {
-			// verified digit incorrect
+
+		test("should return true for IE 11094402, which accepts both digit 0 and digit 1", () => {
+			expect(isValidIe("GO", "110944020")).toBe(true);
+			expect(isValidIe("GO", "110944021")).toBe(true);
+		});
+
+		test("should return false when the verified digit is incorrect", () => {
 			expect(isValidIe("GO", "109161794")).toBe(false);
-			// does not start with 10,11 or 15
+		});
+
+		test("should return false when the IE does not start with 10, 11 or 15", () => {
 			expect(isValidIe("GO", "121031131")).toBe(false);
-			// length different from 9
+		});
+
+		test("should return false for prefixes 20 to 29, which the current SEFAZ-GO rule does not accept", () => {
+			expect(isValidIe("GO", "209876549")).toBe(false);
+		});
+
+		test("should return false when the length is different from 9", () => {
 			expect(isValidIe("GO", "0101030940")).toBe(false);
+		});
+
+		test("should return false when the remainder is 0, since the special range rule must not apply (10103113 has remainder 0, so the digit is 0, not 1)", () => {
+			expect(isValidIe("GO", "101031131")).toBe(false);
+			expect(isValidIe("GO", "101031130")).toBe(true);
+		});
+
+		test("should return false when the remainder is 1 but the inscricao (10000007) falls outside the special range 10103105..10119997, so the digit is 0", () => {
+			expect(isValidIe("GO", "100000071")).toBe(false);
+			expect(isValidIe("GO", "100000070")).toBe(true);
 		});
 	});
 
-	describe("should return true for MA", () => {
-		test("when IE for MA is correct", () => {
-			// base rule
+	describe("MA", () => {
+		test("should return true for a valid IE using the base rule", () => {
 			expect(isValidIe("MA", "120000008")).toBe(true);
-			// digit 11 converted to zero
+		});
+
+		test("should return true when digit 11 is converted to zero", () => {
 			expect(isValidIe("MA", "120000040")).toBe(true);
-			// digit 10 converted to 1
+		});
+
+		test("should return true when digit 10 is converted to 1", () => {
 			expect(isValidIe("MA", "120000130")).toBe(true);
 		});
-	});
-	describe("should return false for MA", () => {
-		test("when IE for MA is incorrect", () => {
-			// verified digit incorrect
+
+		test("should return false when the verified digit is incorrect", () => {
 			expect(isValidIe("MA", "120000007")).toBe(false);
-			// does not start with 12
+		});
+
+		test("should return false when the IE does not start with 12", () => {
 			expect(isValidIe("MA", "109161793")).toBe(false);
-			// length different from 9
+		});
+
+		test("should return false when the length is different from 9", () => {
 			expect(isValidIe("MA", "0120000008")).toBe(false);
 		});
 	});
 
-	describe("should return true for MG", () => {
-		test("when IE for MG is correct", () => {
-			// base rule
+	describe("MG", () => {
+		test("should return true for a valid IE using the base rule", () => {
 			expect(isValidIe("MG", "4333908330177")).toBe(true);
-			// digit 10 converted to 0
+		});
+
+		test("should return true when the first check digit 10 is converted to 0", () => {
 			expect(isValidIe("MG", "4333908330410")).toBe(true);
 			expect(isValidIe("MG", "7489439278602")).toBe(true);
-			// digit 11 converted to 0
+		});
+
+		test("should return true when the second check digit 11 is converted to 0", () => {
 			expect(isValidIe("MG", "4333908332560")).toBe(true);
 		});
-	});
-	describe("should return false for MG", () => {
-		test("when IE for MG is incorrect", () => {
-			// first verified digit incorrect
+
+		test("should return false when the first verified digit is incorrect", () => {
 			expect(isValidIe("MG", "4333908330167")).toBe(false);
-			// length different from 13
+		});
+
+		test("should return false when the length is different from 13", () => {
 			expect(isValidIe("MG", "04333908330177")).toBe(false);
-			// second verified digit incorrect
+		});
+
+		test("should return false when the second verified digit is incorrect", () => {
 			expect(isValidIe("MG", "4333908330176")).toBe(false);
 		});
 	});
 
-	describe("should return true for MT", () => {
-		test("when IE for MT is correct", () => {
-			// base rule
+	describe("MT", () => {
+		test("should return true for a valid IE using the base rule", () => {
 			expect(isValidIe("MT", "60474120469")).toBe(true);
 		});
-	});
-	describe("should return false for MT", () => {
-		test("when IE for MT is incorrect", () => {
-			// verified digit incorrect
+
+		test("should return false when the verified digit is incorrect", () => {
 			expect(isValidIe("MT", "12345678901")).toBe(false);
-			// length different from 11
+		});
+
+		test("should return false when the length is different from 11", () => {
 			expect(isValidIe("MT", "1234567890112")).toBe(false);
 		});
 	});
 
-	describe("should return true for MS", () => {
-		test("when IE for MS is correct", () => {
-			// base rule
+	describe("MS", () => {
+		test("should return true for a valid IE using the base rule", () => {
 			expect(isValidIe("MS", "280000006")).toBe(true);
-			// digit 10 converted to 0
+		});
+
+		test("should return true when digit 10 is converted to 0", () => {
 			expect(isValidIe("MS", "280000090")).toBe(true);
-			// digit 11 converted to 0
+		});
+
+		test("should return true when digit 11 is converted to 0", () => {
 			expect(isValidIe("MS", "280000030")).toBe(true);
 		});
-	});
-	describe("should return false for MS", () => {
-		test("when IE for MS is incorrect", () => {
-			// verified digit incorrect
+
+		test("should return true for an IE with prefix 50", () => {
+			expect(isValidIe("MS", "500000000")).toBe(true);
+		});
+
+		test("should return false when the verified digit is incorrect", () => {
 			expect(isValidIe("MS", "280000031")).toBe(false);
-			// length different from 9
+		});
+
+		test("should return false when the length is different from 9", () => {
 			expect(isValidIe("MS", "0280000006")).toBe(false);
-			// does not start with 28
+		});
+
+		test("should return false when the IE does not start with 28", () => {
 			expect(isValidIe("MS", "853511942")).toBe(false);
 		});
 	});
 
-	describe("should return true for PA", () => {
-		test("when IE for PA is correct", () => {
-			// base rule
+	describe("PA", () => {
+		test("should return true for a valid IE using the base rule", () => {
 			expect(isValidIe("PA", "150000006")).toBe(true);
-			// digit 10 converted to 0
+		});
+
+		test("should return true when digit 10 is converted to 0", () => {
 			expect(isValidIe("PA", "150000260")).toBe(true);
-			// digit 11 converted to 0
+		});
+
+		test("should return true when digit 11 is converted to 0", () => {
 			expect(isValidIe("PA", "150000030")).toBe(true);
 		});
-	});
-	describe("should return false for PA", () => {
-		test("when IE for PA is incorrect", () => {
-			// does not start with 15
+
+		test("should return true for IEs with prefixes 75 to 79", () => {
+			expect(isValidIe("PA", "750000023")).toBe(true);
+			expect(isValidIe("PA", "760000000")).toBe(true);
+			expect(isValidIe("PA", "770000002")).toBe(true);
+			expect(isValidIe("PA", "780000005")).toBe(true);
+			expect(isValidIe("PA", "790000008")).toBe(true);
+		});
+
+		test("should return false when the IE does not start with 15, 75, 76, 77, 78 or 79", () => {
 			expect(isValidIe("PA", "120000008")).toBe(false);
-			// length different from 9
+		});
+
+		test("should return false when the length is different from 9", () => {
 			expect(isValidIe("PA", "0150000006")).toBe(false);
-			// digit incorrect
+		});
+
+		test("should return false when the digit is incorrect", () => {
 			expect(isValidIe("PA", "150000007")).toBe(false);
 		});
 	});
 
-	describe("should return true for PB", () => {
-		test("when IE for PB is correct", () => {
-			// base rule
+	describe("PB", () => {
+		test("should return true for a valid IE using the base rule", () => {
 			expect(isValidIe("PB", "853511942")).toBe(true);
-			// digit 10 converted to 0
+		});
+
+		test("should return true when digit 10 is converted to 0", () => {
 			expect(isValidIe("PB", "853512230")).toBe(true);
-			// digit 11 converted to 0
+		});
+
+		test("should return true when digit 11 is converted to 0", () => {
 			expect(isValidIe("PB", "853511950")).toBe(true);
 		});
-	});
-	describe("should return false for PB", () => {
-		test("when IE for PB is incorrect", () => {
-			// length different from 9
+
+		test("should return false when the length is different from 9", () => {
 			expect(isValidIe("PB", "0853511942")).toBe(false);
-			// digit incorrect
+		});
+
+		test("should return false when the digit is incorrect", () => {
 			expect(isValidIe("PB", "853511943")).toBe(false);
 		});
 	});
 
-	describe("should return true for PE", () => {
-		test("when IE for PE is correct", () => {
-			// base rule
+	describe("PE", () => {
+		test("should return true for a valid IE using the base rule", () => {
 			expect(isValidIe("PE", "288625706")).toBe(true);
 		});
-	});
-	describe("should return false for PE", () => {
-		test("when IE for PE is incorrect", () => {
-			// length different from 9 digits
+
+		test("should return false when the length is different from 9 digits", () => {
 			expect(isValidIe("PE", "0925870110")).toBe(false);
-			// digit incorrect
+		});
+
+		test("should return false when the digit is incorrect", () => {
 			expect(isValidIe("PE", "925870101")).toBe(false);
 		});
 	});
 
-	describe("should return true for PI", () => {
-		test("when IE for PI is correct", () => {
-			// base rule
+	describe("PI", () => {
+		test("should return true for a valid IE using the base rule", () => {
 			expect(isValidIe("PI", "052364534")).toBe(true);
 		});
 	});
 
-	describe("should return true for PR", () => {
-		test("when IE for PR is correct", () => {
-			// base rule
+	describe("PR", () => {
+		test("should return true for a valid IE using the base rule", () => {
 			expect(isValidIe("PR", "4447953604")).toBe(true);
 		});
-	});
-	describe("should return false for PR", () => {
-		test("when IE for PR is incorrect", () => {
-			// length different from 10 digits
+
+		test("should return true when the first check digit is below 10 and needs no clamping", () => {
+			expect(isValidIe("PR", "0000000191")).toBe(true);
+		});
+
+		test("should return true when the second check digit is the exceptional 10, clamped to 0", () => {
+			expect(isValidIe("PR", "0000000000")).toBe(true);
+		});
+
+		test("should return false when the length is different from 10 digits", () => {
 			expect(isValidIe("PR", "04447953604")).toBe(false);
-			// digit incorrect
+		});
+
+		test("should return false when the digit is incorrect", () => {
 			expect(isValidIe("PR", "4447953640")).toBe(false);
 		});
 	});
 
-	describe("should return true for RJ", () => {
-		test("when IE for RJ is correct", () => {
-			// base rule
+	describe("RJ", () => {
+		test("should return true for a valid IE using the base rule", () => {
 			expect(isValidIe("RJ", "62545372")).toBe(true);
-			// digit 10 converted to 0
+		});
+
+		test("should return true when digit 10 is converted to 0", () => {
 			expect(isValidIe("RJ", "62545470")).toBe(true);
-			// digit 11 converted to 0
+		});
+
+		test("should return true when digit 11 is converted to 0", () => {
 			expect(isValidIe("RJ", "62545380")).toBe(true);
 		});
-	});
-	describe("should return false for RJ", () => {
-		test("when IE for RJ is incorrect", () => {
-			// first verified digit incorrect
+
+		test("should return false when the first verified digit is incorrect", () => {
 			expect(isValidIe("RJ", "20441620")).toBe(false);
-			// length different from 8
+		});
+
+		test("should return false when the length is different from 8", () => {
 			expect(isValidIe("RJ", "020441623")).toBe(false);
 		});
 	});
 
-	describe("should return true for RN", () => {
-		test("when IE for RN is correct", () => {
-			// base rule
+	describe("RN", () => {
+		test("should return true for a valid IE using the base rule", () => {
 			expect(isValidIe("RN", "2007693232")).toBe(true);
-			// digit 10 converted to 0
+		});
+
+		test("should return true when digit 10 is converted to 0", () => {
 			expect(isValidIe("RN", "2003569880")).toBe(true);
-			// old IE
+		});
+
+		test("should return true for an old-format IE", () => {
 			expect(isValidIe("RN", "203569881")).toBe(true);
 		});
-	});
-	describe("should return false for RN", () => {
-		test("when IE for RN is incorrect", () => {
-			// first verified digit incorrect
+
+		test("should return false when the first verified digit is incorrect", () => {
 			expect(isValidIe("RN", "2007693231")).toBe(false);
-			// does not start with 20
+		});
+
+		test("should return false when the IE does not start with 20", () => {
 			expect(isValidIe("RN", "0203569881")).toBe(false);
-			// length different from 9 or 10
+		});
+
+		test("should return false when the length is different from 9 or 10", () => {
 			expect(isValidIe("RN", "20356988104")).toBe(false);
 		});
 	});
 
-	describe("should return true for RO", () => {
-		test("when IE for RO is correct", () => {
-			// base rule
+	describe("RO", () => {
+		test("should return true for a valid IE using the base rule", () => {
 			expect(isValidIe("RO", "01078042249629")).toBe(true);
-			// digit 10 converted to 0
+		});
+
+		test("should return true when digit 10 is converted to 0", () => {
 			expect(isValidIe("RO", "01078042249670")).toBe(true);
-			// digit 11 converted to 0
+		});
+
+		test("should return true when digit 11 is converted to 0", () => {
 			expect(isValidIe("RO", "01078042249751")).toBe(true);
 		});
-	});
-	describe("should return false for RO", () => {
-		test("when IE for RO is incorrect", () => {
-			// first verified digit incorrect
+
+		test("should return false when the first verified digit is incorrect", () => {
 			expect(isValidIe("RO", "01078042249756")).toBe(false);
-			// length different from 14
+		});
+
+		test("should return false when the length is different from 14", () => {
 			expect(isValidIe("RO", "001078042249627")).toBe(false);
 		});
 	});
 
-	describe("should return true for RR", () => {
-		test("when IE for RR is correct", () => {
-			// base rule
+	describe("RR", () => {
+		test("should return true for a valid IE using the base rule", () => {
 			expect(isValidIe("RR", "240061536")).toBe(true);
 		});
-	});
-	describe("should return false for RR", () => {
-		test("when IE for RR is incorrect", () => {
-			// first verified digit incorrect
+
+		test("should return false when the first verified digit is incorrect", () => {
 			expect(isValidIe("RR", "240061537")).toBe(false);
-			// length different from 9
+		});
+
+		test("should return false when the length is different from 9", () => {
 			expect(isValidIe("RR", "2400615366")).toBe(false);
-			// does not start with 24
+		});
+
+		test("should return false when the IE does not start with 24", () => {
 			expect(isValidIe("RR", "024006150")).toBe(false);
 		});
 	});
 
-	describe("should return true for RS", () => {
-		test("when IE for RS is correct", () => {
-			// base rule
+	describe("RS", () => {
+		test("should return true for a valid IE using the base rule", () => {
 			expect(isValidIe("RS", "0305169149")).toBe(true);
-			// digit 10 converted to 0
+		});
+
+		test("should return true when digit 10 is converted to 0", () => {
 			expect(isValidIe("RS", "1202762660")).toBe(true);
-			// digit 11 converted to 0
+		});
+
+		test("should return true when digit 11 is converted to 0", () => {
 			expect(isValidIe("RS", "1202762120")).toBe(true);
 		});
-	});
-	describe("should return false for RS", () => {
-		test("when IE for RS is incorrect", () => {
-			// first verified digit incorrect
+
+		test("should return false when the first verified digit is incorrect", () => {
 			expect(isValidIe("RS", "2007693232")).toBe(false);
-			// length different from 10
+		});
+
+		test("should return false when the length is different from 10", () => {
 			expect(isValidIe("RS", "02007693230")).toBe(false);
 		});
 	});
 
-	describe("should return true for SC", () => {
-		test("when IE for SC is correct", () => {
-			// base rule
+	describe("SC", () => {
+		test("should return true for a valid IE using the base rule", () => {
 			expect(isValidIe("SC", "330430572")).toBe(true);
 		});
 	});
 
-	describe("should return true for SE", () => {
-		test("when IE for SE is correct", () => {
-			// base rule
+	describe("SE", () => {
+		test("should return true for a valid IE using the base rule", () => {
 			expect(isValidIe("SE", "017682606")).toBe(true);
 		});
 	});
 
-	describe("should return true for SP", () => {
-		test("when IE for SP is correct", () => {
-			// base rule
+	describe("SP", () => {
+		test("should return true for a valid IE using the base rule", () => {
 			expect(isValidIe("SP", "110042490114")).toBe(true);
 		});
-	});
-	describe("should return false for SP", () => {
-		test("when IE for SP is incorrect", () => {
-			// length bigger than 12
+
+		test("should return true for a produtor rural IE (P0MMMSSSSD000), including with formatting characters and lowercase prefix", () => {
+			expect(isValidIe("SP", "P011004243002")).toBe(true);
+			expect(isValidIe("SP", "P-01100424.3/002")).toBe(true);
+			expect(isValidIe("SP", "p011004243002")).toBe(true);
+		});
+
+		test("should return false when the length is bigger than 12", () => {
 			expect(isValidIe("SP", "1110042494114")).toBe(false);
-			// second verified digit incorrect
+		});
+
+		test("should return false when the second verified digit is incorrect", () => {
 			expect(isValidIe("SP", "110042490113")).toBe(false);
-			// first verified digit incorrect
+		});
+
+		test("should return false when the first verified digit is incorrect", () => {
 			expect(isValidIe("SP", "110042498113")).toBe(false);
 		});
-	});
 
-	describe("should return true for TO", () => {
-		test("when IE for TO is correct", () => {
-			// OLD base rule
-			expect(isValidIe("TO", "01027737427")).toBe(true);
+		test("should return false for a produtor rural IE with an incorrect verified digit", () => {
+			expect(isValidIe("SP", "P011004244002")).toBe(false);
+		});
 
-			// NEW base rule
-			expect(isValidIe("TO", "294467696")).toBe(true);
+		test("should return false for a produtor rural IE with a length different from 13", () => {
+			expect(isValidIe("SP", "P01100424300")).toBe(false);
+		});
 
-			// Digit zero
-			expect(isValidIe("TO", "294150870")).toBe(true);
+		test("should return false when a letter appears in a position that must be a digit", () => {
+			expect(isValidIe("SP", "11004249011A")).toBe(false);
 		});
 	});
-	describe("should return false for TO", () => {
-		test("when IE for TO is incorrect", () => {
-			// Old rule category invalid
+
+	describe("TO", () => {
+		test("should return true for a valid IE using the old base rule", () => {
+			expect(isValidIe("TO", "01027737427")).toBe(true);
+		});
+
+		test("should return true for a valid IE using the new base rule", () => {
+			expect(isValidIe("TO", "294467696")).toBe(true);
+		});
+
+		test("should return true when the digit is zero", () => {
+			expect(isValidIe("TO", "294150870")).toBe(true);
+		});
+
+		test("should return false for an old-rule IE with an invalid category", () => {
 			expect(isValidIe("TO", "01047737427")).toBe(false);
+		});
 
-			// more than 11 digits
+		test("should return false for an 11-digit IE with an invalid type, since it must not fall back to the 9-digit rule", () => {
+			expect(isValidIe("TO", "29000000947")).toBe(false);
+		});
+
+		test("should return false when the length is more than 11 digits", () => {
 			expect(isValidIe("TO", "099999916599")).toBe(false);
+		});
 
-			// verified digit incorrect
+		test("should return false when the verified digit is incorrect", () => {
 			expect(isValidIe("TO", "99999916598")).toBe(false);
+		});
 
-			// new rule verified digit incorrect
+		test("should return false for a new-rule IE with an incorrect verified digit", () => {
 			expect(isValidIe("TO", "294467690")).toBe(false);
+		});
+	});
+
+	describe("state code lookup", () => {
+		test("should not resolve properties from the prototype chain", () => {
+			// @ts-expect-error
+			expect(isValidIe("constructor", "110042490114")).toBe(false);
+			// @ts-expect-error
+			expect(isValidIe("toString", "110042490114")).toBe(false);
+			// @ts-expect-error
+			expect(isValidIe("__proto__", "110042490114")).toBe(false);
+			// @ts-expect-error
+			expect(isValidIe("valueOf", "110042490114")).toBe(false);
+		});
+
+		test("should accept lowercase state codes", () => {
+			// @ts-expect-error
+			expect(isValidIe("sp", "110042490114")).toBe(true);
+			// @ts-expect-error
+			expect(isValidIe("go", "109161793")).toBe(true);
+		});
+
+		test("should return false for missing arguments", () => {
+			// @ts-expect-error
+			expect(isValidIe(null, "110042490114")).toBe(false);
+			// @ts-expect-error
+			expect(isValidIe(1, "110042490114")).toBe(false);
+			// @ts-expect-error
+			expect(isValidIe("SP", null)).toBe(false);
+		});
+
+		test("should return false when the sanitized IE is empty", () => {
+			expect(isValidIe("RJ", "----")).toBe(false);
 		});
 	});
 });

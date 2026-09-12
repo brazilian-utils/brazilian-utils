@@ -19,6 +19,23 @@ type State = {
 	};
 };
 
+const isState = (value: unknown): value is State =>
+	typeof value === "object" &&
+	value !== null &&
+	"id" in value &&
+	typeof value.id === "number" &&
+	"sigla" in value &&
+	typeof value.sigla === "string" &&
+	"nome" in value &&
+	typeof value.nome === "string" &&
+	"regiao" in value &&
+	typeof value.regiao === "object" &&
+	value.regiao !== null &&
+	"sigla" in value.regiao &&
+	typeof value.regiao.sigla === "string" &&
+	"nome" in value.regiao &&
+	typeof value.regiao.nome === "string";
+
 const main = async () => {
 	const response = await fetchWithRetry(
 		"https://servicodados.ibge.gov.br/api/v1/localidades/estados",
@@ -28,21 +45,32 @@ const main = async () => {
 		throw new Error(`IBGE states request failed with status ${response.status}`);
 	}
 
-	const json = (await response.json()) as State[];
+	const json: unknown = await response.json();
+
+	if (!Array.isArray(json) || json.length === 0 || !json.every(isState)) {
+		throw new Error(
+			"IBGE states payload is not an array of states with id, sigla, nome and regiao",
+		);
+	}
 
 	const states = json
-		.sort((cityA, cityB) => (cityA.nome > cityB.nome ? 1 : -1))
+		.sort((stateA, stateB) => stateA.nome.localeCompare(stateB.nome, "pt-BR"))
 		.map((state) => ({
 			code: state.sigla,
 			name: state.nome,
 			regionCode: state.regiao.sigla,
 			regionName: state.regiao.nome,
+			ibgeCode: state.id,
 		}));
 
 	await writeFile(
 		resolve(scriptsDir, "..", "./src/_internals/constants/states.ts"),
 		`/**
- * @type {Array<{code: string, name: string, regionCode: string, regionName: string}>}
+ * Brazilian states published by the IBGE, sorted by name with \`localeCompare\` in the "pt-BR"
+ * locale. \`ibgeCode\` is the 2-digit IBGE code of the Federative Unit ("cUF"), the same code
+ * found in the first field of every DF-e access key (chave de acesso).
+ *
+ * @see https://servicodados.ibge.gov.br/api/docs/localidades
  */
 export const DATA = ${JSON.stringify(states)} as const
 

@@ -1,8 +1,8 @@
+import { PROCESSO_JURIDICO_LENGTH } from "../_internals/constants/processo-juridico";
 import { sanitizeToDigits } from "../_internals/sanitize-to-digits/sanitize-to-digits";
 import {
 	CHECK_DIGIT_LENGTH,
 	CHECK_DIGIT_START_POSITION,
-	LENGTH,
 	MOD_97_10_QUOTIENT,
 	MOD_97_10_SUM,
 } from "./constants";
@@ -45,15 +45,17 @@ const verifyCheckDigit = (value: string): boolean => {
  * @example
  * ```typescript
  * isValidProcessoJuridico("00020802520125150049"); // true
- * isValidProcessoJuridico("0002080-25.2012.515.0049"); // true
+ * isValidProcessoJuridico("0002080-25.2012.5.15.0049"); // true
  * ```
+ *
+ * @see Official: https://atos.cnj.jus.br/atos/detalhar/119 Resolução CNJ nº 65/2008
  */
 export const isValidProcessoJuridico = (value: string): boolean => {
-	if (!value || typeof value !== "string") return false;
+	if (typeof value !== "string" || value === "") return false;
 
 	const digits = sanitizeToDigits(value);
 
-	if (digits.length !== LENGTH) return false;
+	if (digits.length !== PROCESSO_JURIDICO_LENGTH) return false;
 
 	return verifyCheckDigit(digits);
 };

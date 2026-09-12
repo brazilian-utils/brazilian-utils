@@ -1,10 +1,13 @@
-const mercosulRegex = /^[a-z]{3}[0-9]{1}[a-z]{1}[0-9]{2}$|^[a-z]{3}[0-9]{2}[a-z]{1}[0-9]{1}$/i;
-
-const brazilianLicensePlateRegex = /^[a-z]{3}-?[0-9]{4}$/i;
+import { getFormatLicensePlate } from "../get-format-license-plate/get-format-license-plate";
 
 /**
  * Validates if a Brazilian license plate (placa de carro ou moto) is valid.
- * Supports the old Brazilian format (ABC-1234) and the Mercosul format for cars (ABC1D23) and motorcycles (ABC12D3).
+ *
+ * Supports the old Brazilian format (ABC-1234) and the Mercosul format (ABC1D23), the single
+ * sequence Resolução CONTRAN nº 969/2022 defines for every vehicle, motorcycles included.
+ * Accepts the usual mask characters (hyphens, spaces) and is case-insensitive, mirroring
+ * `getFormatLicensePlate`/`parseLicensePlate` (single source of truth for the supported
+ * formats).
  *
  * @param {string} value - The license plate value to be validated.
  * @returns {boolean} True if the license plate is valid, false otherwise.
@@ -13,13 +16,14 @@ const brazilianLicensePlateRegex = /^[a-z]{3}-?[0-9]{4}$/i;
  * ```typescript
  * isValidLicensePlate("abc1234"); // true (Brazilian format)
  * isValidLicensePlate("ABC-1234"); // true (Brazilian format with hyphen)
- * isValidLicensePlate("abc1d23"); // true (Mercosul format - Car)
- * isValidLicensePlate("ABC12D3"); // true (Mercosul format - Motorcycle)
+ * isValidLicensePlate("ABC 1234"); // true (whitespace mask)
+ * isValidLicensePlate("abc1d23"); // true (Mercosul format)
+ * isValidLicensePlate("ABC12D3"); // false (not a Mercosul sequence)
+ * isValidLicensePlate("ABC1234EXTRA"); // false (too many characters)
  * isValidLicensePlate("invalid"); // false
  * ```
+ *
+ * @see Official: https://www.gov.br/transportes/pt-br/assuntos/transito/conteudo-contran/resolucoes/resolucao9692022.pdf
  */
-export const isValidLicensePlate = (value: string): boolean => {
-	if (!value || typeof value !== "string") return false;
-
-	return mercosulRegex.test(value) || brazilianLicensePlateRegex.test(value);
-};
+export const isValidLicensePlate = (value: string): boolean =>
+	getFormatLicensePlate(value) !== null;

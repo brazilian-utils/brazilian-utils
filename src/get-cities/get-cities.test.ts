@@ -3,14 +3,26 @@ import { describe, expect, it } from "../_internals/test/runtime";
 import { getStates } from "../get-states/get-states";
 import { getCities } from "./get-cities";
 
-/**
- * https://cidades.ibge.gov.br/brasil/panorama
- */
-const NUMBER_OF_BRAZILIAN_CITIES = 5570;
+const NUMBER_OF_BRAZILIAN_CITIES = 5571;
+
+const NUMBER_OF_BRAZILIAN_STATES = 27;
+
+const KNOWN_STATE_CITY_COUNTS: Record<string, number> = {
+	MG: 853,
+	RS: 497,
+	SP: 645,
+};
 
 describe("getCities", () => {
 	it("should return cities of all states", () => {
 		expect(getCities().length).toEqual(NUMBER_OF_BRAZILIAN_CITIES);
+	});
+
+	it("should sort the combined list with the pt-BR comparator", () => {
+		const cities = getCities();
+		const sorted = [...cities].sort((a, b) => a.localeCompare(b, "pt-BR"));
+
+		expect(cities).toEqual(sorted);
 	});
 
 	it("should return empty array if state does not exist", () => {
@@ -18,13 +30,49 @@ describe("getCities", () => {
 		expect(getCities("ACC")).toEqual([]);
 	});
 
+	it("should return empty array for inherited Object property names instead of throwing", () => {
+		// @ts-expect-error
+		expect(getCities("toString")).toEqual([]);
+		// @ts-expect-error
+		expect(getCities("constructor")).toEqual([]);
+	});
+
+	it("should return a fresh copy so mutating the result does not affect subsequent calls", () => {
+		const all = getCities();
+		all.push("MUTATED CITY");
+
+		expect(getCities().length).toEqual(NUMBER_OF_BRAZILIAN_CITIES);
+
+		const spCities = getCities("SP");
+		spCities.push("MUTATED CITY");
+
+		expect(getCities("SP").length).toEqual(KNOWN_STATE_CITY_COUNTS.SP);
+	});
+
+	describe("data integrity (IBGE 2022, https://cidades.ibge.gov.br/brasil/panorama)", () => {
+		it(`should have exactly ${NUMBER_OF_BRAZILIAN_STATES} states with cities`, () => {
+			expect(Object.keys(DATA).length).toBe(NUMBER_OF_BRAZILIAN_STATES);
+		});
+
+		it(`should total exactly ${NUMBER_OF_BRAZILIAN_CITIES} cities across all states`, () => {
+			const total = Object.values(DATA).reduce((sum, cities) => sum + cities.length, 0);
+			expect(total).toBe(NUMBER_OF_BRAZILIAN_CITIES);
+		});
+
+		for (const [stateCode, expectedCount] of Object.entries(KNOWN_STATE_CITY_COUNTS)) {
+			it(`should have ${expectedCount} cities for ${stateCode}`, () => {
+				expect(getCities(stateCode as never).length).toBe(expectedCount);
+			});
+		}
+	});
+
 	describe("return cities from states", () => {
 		const states = getStates();
 
 		for (const { code } of states) {
 			it(`should return cities from code ${code}`, () => {
-				const stateCities = DATA[code];
-				expect(getCities(code)).toMatchObject(stateCities);
+				const stateCityNames = DATA[code].map(([name]) => name);
+				expect(getCities(code)).toEqual(stateCityNames);
 			});
 		}
 	});

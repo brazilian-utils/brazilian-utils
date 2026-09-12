@@ -1,38 +1,39 @@
+import { calculateCnhFirstVerifier } from "../_internals/calculate-cnh-first-verifier/calculate-cnh-first-verifier";
+import { calculateCnhSecondVerifier } from "../_internals/calculate-cnh-second-verifier/calculate-cnh-second-verifier";
+import { isRepeatedDigits } from "../_internals/is-repeated-digits/is-repeated-digits";
 import { sanitizeToDigits } from "../_internals/sanitize-to-digits/sanitize-to-digits";
 
-const repeatedDigits = (value: string): boolean => value === value[0].repeat(value.length);
-
+/**
+ * Validates if a CNH (Carteira Nacional de Habilitação, the Brazilian driver's license number) is valid.
+ *
+ * @param {string} value - The CNH value to be validated.
+ * @returns {boolean} True if the CNH is valid, false otherwise.
+ *
+ * @example
+ * ```typescript
+ * isValidCnh("00000000119"); // true
+ * isValidCnh("000000001-19"); // true
+ * isValidCnh("11111111111"); // false (repeated digits)
+ * isValidCnh("12345678901"); // false (invalid checksum)
+ * ```
+ *
+ * @see Official: https://www.planalto.gov.br/ccivil_03/leis/l9503compilado.htm
+ * @see Based on: https://siga0984.wordpress.com/2019/05/01/algoritmos-validacao-de-cnh/
+ */
 export const isValidCnh = (value: string): boolean => {
-	if (!value || typeof value !== "string") return false;
+	if (typeof value !== "string" || value === "") return false;
 
 	const digits = sanitizeToDigits(value);
 
-	if (digits.length !== 11 || repeatedDigits(digits)) return false;
+	if (digits.length !== 11 || isRepeatedDigits(digits)) return false;
 
-	let sum1 = 0;
-	for (let i = 0; i < 9; i++) {
-		sum1 += (digits.charCodeAt(i) - 48) * (9 - i);
-	}
+	const base = digits.slice(0, 9);
 
-	let digit1 = sum1 % 11;
-	let decrement = 0;
+	const { firstVerifier, decrement } = calculateCnhFirstVerifier(base);
 
-	if (digit1 >= 10) {
-		digit1 = 0;
-		decrement = 2;
-	}
+	if (firstVerifier !== digits.charCodeAt(9) - 48) return false;
 
-	if (digit1 !== digits.charCodeAt(9) - 48) return false;
+	const secondVerifier = calculateCnhSecondVerifier({ base, decrement });
 
-	let sum2 = 0;
-	for (let i = 0; i < 9; i++) {
-		sum2 += (digits.charCodeAt(i) - 48) * (i + 1);
-	}
-
-	let digit2 = (sum2 % 11) - decrement;
-
-	if (digit2 < 0) digit2 += 11;
-	if (digit2 >= 10) digit2 = 0;
-
-	return digit2 === digits.charCodeAt(10) - 48;
+	return secondVerifier === digits.charCodeAt(10) - 48;
 };

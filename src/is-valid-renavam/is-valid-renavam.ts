@@ -2,13 +2,6 @@ import { sanitizeToDigits } from "../_internals/sanitize-to-digits/sanitize-to-d
 
 const RENAVAM_LENGTH = 11;
 
-/**
- * Pads a string with zeros on the left to reach the desired length.
- *
- * @param {string} input - The input string to pad.
- * @param {number} padLength - The desired length after padding.
- * @returns {string} The padded string.
- */
 const padLeft = (input: string, padLength: number): string => {
 	const currentLength = input.length;
 	if (currentLength >= padLength) return input;
@@ -33,6 +26,8 @@ const padLeft = (input: string, padLength: number): string => {
  * isValidRenavam("00639884962"); // true (11 digits, new format)
  * isValidRenavam("12345678901"); // false (invalid checksum)
  * ```
+ *
+ * @see Official: https://www.planalto.gov.br/ccivil_03/leis/l9503compilado.htm
  */
 export const isValidRenavam = (renavam: string | number): boolean => {
 	if (!renavam) return false;
@@ -43,8 +38,6 @@ export const isValidRenavam = (renavam: string | number): boolean => {
 
 	const paddedDigits = padLeft(digits, RENAVAM_LENGTH);
 
-	if (!/^\d{11}$/.test(paddedDigits)) return false;
-
 	const renavamWithoutDigit = paddedDigits.substring(0, 10);
 
 	const reversedRenavam = renavamWithoutDigit.split("").reverse().join("");
@@ -52,25 +45,17 @@ export const isValidRenavam = (renavam: string | number): boolean => {
 	let sum = 0;
 	let multiplier = 2;
 	for (let i = 0; i < 10; i++) {
-		const digit = Number.parseInt(reversedRenavam[i] ?? "0", 10);
+		const digit = Number.parseInt(reversedRenavam[i], 10);
 		sum += digit * multiplier;
 
-		if (multiplier >= 9) {
-			multiplier = 2;
-		} else {
-			multiplier++;
-		}
+		multiplier = multiplier >= 9 ? 2 : multiplier + 1;
 	}
 
 	const mod11 = sum % 11;
 
-	let expectedDigit = 11 - mod11;
+	const expectedDigit = mod11 <= 1 ? 0 : 11 - mod11;
 
-	if (expectedDigit >= 10) {
-		expectedDigit = 0;
-	}
-
-	const actualDigit = Number.parseInt(paddedDigits[10] ?? "0", 10);
+	const actualDigit = Number.parseInt(paddedDigits[10], 10);
 
 	return expectedDigit === actualDigit;
 };

@@ -1,5 +1,3 @@
-export const LENGTH = 11;
-
 export const RESERVED_NUMBERS = [
 	"00000000000",
 	"11111111111",

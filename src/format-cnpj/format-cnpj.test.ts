@@ -1,5 +1,5 @@
+import { CNPJ_LENGTH } from "../_internals/constants/cnpj";
 import { describe, expect, it } from "../_internals/test/runtime";
-import { LENGTH } from "./constants";
 import { formatCnpj } from "./format-cnpj";
 
 describe("formatCnpj", () => {
@@ -73,7 +73,7 @@ describe("formatCnpj", () => {
 		expect(formatCnpj(46843485000186, { pad: true })).toBe("46.843.485/0001-86");
 	});
 
-	it(`should NOT add digits after the CNPJ length (${LENGTH})`, () => {
+	it(`should NOT add digits after the CNPJ length (${CNPJ_LENGTH})`, () => {
 		expect(formatCnpj("468434850001860000000000")).toBe("46.843.485/0001-86");
 	});
 
@@ -107,5 +107,28 @@ describe("formatCnpj", () => {
 		expect(formatCnpj("12ABC34501DE35", { version: 2 })).toBe("12.ABC.345/01DE-35");
 		expect(formatCnpj("12.ABC.345/01DE-35", { version: 2 })).toBe("12.ABC.345/01DE-35");
 		expect(formatCnpj("12OUT345000199", { version: 2 })).toBe("12.OUT.345/0001-99");
+	});
+
+	it("should hide the first 2 digits and the 2 check digits when obfuscate is true", () => {
+		expect(formatCnpj("46843485000186", { obfuscate: true })).toBe("**.843.485/0001-**");
+		expect(formatCnpj(46843485000186, { obfuscate: true })).toBe("**.843.485/0001-**");
+	});
+
+	it("should pad before obfuscating", () => {
+		expect(formatCnpj("4", { pad: true, obfuscate: true })).toBe("**.000.000/0000-**");
+	});
+
+	it("should apply the same positions to the alphanumeric CNPJ (version 2)", () => {
+		expect(formatCnpj("q0SLFMBD7VX439", { version: 2, obfuscate: true })).toBe(
+			"**.SLF.MBD/7VX4-**",
+		);
+	});
+
+	it("should behave exactly as without the option when obfuscate is false or absent", () => {
+		expect(formatCnpj("46843485000186", { obfuscate: false })).toBe("46.843.485/0001-86");
+		expect(formatCnpj("46843485000186")).toBe("46.843.485/0001-86");
+		expect(formatCnpj("q0SLFMBD7VX439", { version: 2, obfuscate: false })).toBe(
+			"Q0.SLF.MBD/7VX4-39",
+		);
 	});
 });

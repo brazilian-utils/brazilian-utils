@@ -10,5 +10,3 @@ export const RESERVED_NUMBERS = [
 	"88888888888888",
 	"99999999999999",
 ];
-
-export const LENGTH = 14;

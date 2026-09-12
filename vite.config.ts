@@ -172,6 +172,7 @@ export default defineConfig({
 		],
 	},
 	test: {
+		exclude: ["**/node_modules/**", "**/dist/**", "**/.stryker-tmp/**", "**/reports/**"],
 		browser: {
 			provider: webdriverio(),
 			connectTimeout: 120_000,

@@ -1,4 +1,4 @@
-name: Check
+name: Mutation tests
 
 on:
   pull_request:
@@ -14,10 +14,10 @@ permissions:
   contents: read
 
 jobs:
-  check:
-    name: Check
+  mutation:
+    name: Stryker
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 60
 
     steps:
       - name: Checkout code
@@ -28,17 +28,13 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup
 
-      - name: Run checks
-        run: vp check
+      - name: Mutation test every file
+        run: npm run test:mutation
 
-      - name: Check for duplicated code
-        run: npm run check:duplication
-
-      - name: Check for unused files, exports and dependencies
-        run: npm run check:unused
-
-      - name: Check llms.txt/llms-full.txt are up to date
-        run: npm run build:llms && git diff --exit-code -- docs/llms.txt docs/llms-full.txt
-
-      - name: Audit dependencies
-        run: npx --yes audit-ci@7.1.0 --high --allowlist GHSA-jmr9-qjv8-65gv GHSA-7pqw-9j4j-h8q3
+      - name: Upload the mutation report
+        if: ${{ always() }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: mutation-report
+          path: reports/mutation
+          if-no-files-found: ignore
